@@ -29,10 +29,12 @@ public class Clock implements Runnable, SerialPortEventListener {
 	static String output = null;
 
 	public static void main(String[] args) {
+		System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyS0:/dev/ttyACM0");
 		//System.out.println(System.getProperty("java.ext.dirs"));
 		System.out.println(System.getProperty("os.name"));
 		Enumeration<?> portList = CommPortIdentifier.getPortIdentifiers();
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd HH:mm:ss");
+
 		while (portList.hasMoreElements()) {
 			portId = (CommPortIdentifier) portList.nextElement();
 			System.out.println(portId.getName());
