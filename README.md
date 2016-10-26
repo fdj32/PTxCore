@@ -17,3 +17,5 @@ http://stackoverflow.com/questions/7562565/how-to-get-javax-comm-api
 http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-misc-419423.html
 
 Linux 3.0 doesn't work.
+
+rxtx-2.2 is ok for linux 64
