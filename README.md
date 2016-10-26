@@ -11,3 +11,9 @@ When the pinpad is connected to a linux system, the new device descriptor "/dev/
 http://rxtx.qbang.org/pub/rxtx/
 
 add rxtx-2.1-7r2 source to src
+
+http://stackoverflow.com/questions/7562565/how-to-get-javax-comm-api
+
+http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-misc-419423.html
+
+Linux 3.0 doesn't work.
