@@ -64,6 +64,9 @@ public class PINPad {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd HH:mm:ss");
 		display[3] = sdf.format(new Date());
 		PINPad.getInstance().write(UTFUtils.cpx58Display(display));
+		//PINPad.getInstance().write(UTFUtils.cpx58Display(display));
+		//PINPad.getInstance().write(UTFUtils.cpx59Clear(1));
+		//PINPad.getInstance().write(UTFUtils.cpx5DDeviceInformation(null));
 		serialPort.close();
 	}
 
