@@ -99,10 +99,10 @@ public class Cpx58DisplayMode01Request extends CpxRequest {
 		msg += this.getToggle();
 		msg += this.getLines();
 		msg += this.getLineStartIndex();
-		msg += StringUtils.defaultString(this.getPrompt1());
-		msg += StringUtils.defaultString(this.getPrompt2());
-		msg += StringUtils.defaultString(this.getPrompt3());
-		msg += StringUtils.defaultString(this.getPrompt4());
+		msg += StringUtils.rightPad(StringUtils.defaultString(this.getPrompt1()), 16, ' ');
+		msg += StringUtils.rightPad(StringUtils.defaultString(this.getPrompt2()), 16, ' ');
+		msg += StringUtils.rightPad(StringUtils.defaultString(this.getPrompt3()), 16, ' ');
+		msg += StringUtils.rightPad(StringUtils.defaultString(this.getPrompt4()), 16, ' ');
 		return msg;
 	}
 	

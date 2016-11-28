@@ -67,7 +67,7 @@ public class PINPad {
 		//PINPad.getInstance().write(UTFUtils.cpx58Display(display));
 		//PINPad.getInstance().write(UTFUtils.cpx59Clear(1));
 		//PINPad.getInstance().write(UTFUtils.cpx5DDeviceInformation(null));
-		serialPort.close();
+		PINPad.getInstance().getSerialPort().close();
 	}
 
 	public static SerialPort getSerialPort(String portName)

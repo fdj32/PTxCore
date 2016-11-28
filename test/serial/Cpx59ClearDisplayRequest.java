@@ -1,5 +1,7 @@
 package serial;
 
+import org.apache.commons.lang.StringUtils;
+
 /**
  * 0140-05252-0904 CPX+ EMV Emulation.pdf {Page.62/184} {59. Clear LCD Display}
  * 

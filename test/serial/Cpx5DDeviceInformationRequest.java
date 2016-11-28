@@ -1,5 +1,7 @@
 package serial;
 
+import org.apache.commons.lang.StringUtils;
+
 /**
  * 0140-05252-0904 CPX+ EMV Emulation.pdf {Page.65/184} {5D. Device Information}
  * 
@@ -31,7 +33,7 @@ public class Cpx5DDeviceInformationRequest extends CpxRequest {
 	@Override
 	public String toString() {
 		String msg = this.getMessageType();
-		msg += this.getOption();
+		msg += StringUtils.defaultString(this.getOption());
 		return msg;
 	}
 }
