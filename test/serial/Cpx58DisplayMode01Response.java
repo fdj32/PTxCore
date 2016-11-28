@@ -2,6 +2,12 @@ package serial;
 
 import org.apache.commons.lang.StringUtils;
 
+/**
+ * 0140-05252-0904 CPX+ EMV Emulation.pdf {Page.59/184} {58. Display Handling Command}
+ * 
+ * @author nfeng
+ *
+ */
 public class Cpx58DisplayMode01Response extends CpxResponse {
 
 	/**

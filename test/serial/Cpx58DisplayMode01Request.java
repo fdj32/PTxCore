@@ -1,7 +1,9 @@
 package serial;
 
+import org.apache.commons.lang.StringUtils;
+
 /**
- * 0140-05252-0904 CPX+ EMV Emulation.pdf {Page.59/184} {58. Display Handling Comman}
+ * 0140-05252-0904 CPX+ EMV Emulation.pdf {Page.59/184} {58. Display Handling Command}
  * 
  * @author nfeng
  *
@@ -89,6 +91,19 @@ public class Cpx58DisplayMode01Request extends CpxRequest {
 	public Cpx58DisplayMode01Request() {
 		super();
 		this.setMessageType("58.");
+	}
+	@Override
+	public String toString() {
+		String msg = this.getMessageType();
+		msg += this.getMode();
+		msg += this.getToggle();
+		msg += this.getLines();
+		msg += this.getLineStartIndex();
+		msg += StringUtils.defaultString(this.getPrompt1());
+		msg += StringUtils.defaultString(this.getPrompt2());
+		msg += StringUtils.defaultString(this.getPrompt3());
+		msg += StringUtils.defaultString(this.getPrompt4());
+		return msg;
 	}
 	
 }

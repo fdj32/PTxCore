@@ -76,7 +76,7 @@ public class Cpx40LoadSessionKeyRequest extends CpxRequest {
 	}
 
 	public String getCheckValue() {
-		return StringUtils.defaultString(checkValue, "");
+		return checkValue;
 	}
 
 	public void setCheckValue(String checkValue) {
@@ -84,7 +84,7 @@ public class Cpx40LoadSessionKeyRequest extends CpxRequest {
 	}
 
 	public String getKeySerialNumber() {
-		return StringUtils.defaultString(keySerialNumber, "0000000000000000");
+		return keySerialNumber;
 	}
 
 	public void setKeySerialNumber(String keySerialNumber) {
@@ -102,8 +102,8 @@ public class Cpx40LoadSessionKeyRequest extends CpxRequest {
 		msg += this.getSessionKeyType();
 		msg += this.getMasterkeyType();
 		msg += this.getMasterKeyOrSessionKey();
-		msg += this.getCheckValue();
-		msg += this.getKeySerialNumber();
+		msg += StringUtils.defaultString(this.getCheckValue());
+		msg += StringUtils.defaultString(this.getKeySerialNumber(), "0000000000000000");
 		return msg;
 	}
 	

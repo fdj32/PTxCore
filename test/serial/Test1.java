@@ -16,6 +16,7 @@ public class Test1 {
 //		String out = SimpleRead.write(data, "COM9");
 //		System.out.println(out);
 		System.out.println(StringUtils.rightPad("12345678901234567890123456789012345678901234567890".substring(32), 8, '0'));
+		System.out.println(StringUtils.defaultString(null));
 	}
 
 }
