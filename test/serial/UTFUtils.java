@@ -46,7 +46,7 @@ public class UTFUtils {
 	public static final String CPX_59_CLEAR = "59.";
 	public static final String CPX_6D_TIMED_MULTI_DISPLAY = "6D.";
 	
-	private static byte[] cmd(String cmd) {
+	public static byte[] cmd(String cmd) {
 		StringBuffer sb = new StringBuffer();
 		sb.append(STX);
 		sb.append(cmd);
