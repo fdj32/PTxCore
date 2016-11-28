@@ -35,7 +35,7 @@ public class CpxResponse extends CpxMessage {
 				return Cpx58DisplayMode27Response.parse(str);
 			}
 		}
-		// 40 50 59 5B
+		// 40 50 59 5B 5D
 		resp = new CpxResponse();
 		resp.setStatus(str.substring(3, 4));
 		return resp;
