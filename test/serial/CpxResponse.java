@@ -34,8 +34,10 @@ public class CpxResponse extends CpxMessage {
 			} else {
 				return Cpx58DisplayMode27Response.parse(str);
 			}
+		} else if(str.startsWith("5D.")){
+			return Cpx5DDeviceInformationResponse.parse(str);
 		}
-		// 40 50 59 5B 5D
+		// 40 50 59 5B
 		resp = new CpxResponse();
 		resp.setStatus(str.substring(3, 4));
 		return resp;
