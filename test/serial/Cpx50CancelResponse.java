@@ -2,14 +2,20 @@ package serial;
 
 import org.apache.commons.lang.StringUtils;
 
+/**
+ * 0140-05252-0904 CPX+ EMV Emulation.pdf {Page.53/184} {50. Cancel}
+ * 
+ * @author nfeng
+ *
+ */
 public class Cpx50CancelResponse extends CpxResponse {
 
 	public Cpx50CancelResponse() {
 		super();
 		this.setMessageType("50.");
 	}
-	
-	public Cpx50CancelResponse parse(String str) {
+
+	public static Cpx50CancelResponse parse(String str) {
 		if (StringUtils.isEmpty(str)) {
 			return null;
 		}

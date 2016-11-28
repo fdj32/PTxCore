@@ -18,12 +18,12 @@ public class Cpx40LoadSessionKeyRequest extends CpxRequest {
 	 * keys are loaded, this field identifies the type of session key to load.
 	 * "0" - encryption, "1" - MACing, "2" - decryption
 	 */
-	private char sessionKeyType;
+	private String sessionKeyType;
 	/**
 	 * 1 ASCII, "0" – encryption, "1" – decryption, "2" – MACing, "3" - Atalla
 	 * master key (U32 only). Not allowed in 2-level mode. "4" = Session key
 	 */
-	private char masterkeyType;
+	private String masterkeyType;
 	/**
 	 * Application/Terminal Based Single length: master key (KEK) or session
 	 * key, 16 hex ASCII characters key e(KTK,KEK) or e(KEK,SK), without
@@ -42,19 +42,19 @@ public class Cpx40LoadSessionKeyRequest extends CpxRequest {
 	 */
 	private String keySerialNumber;
 
-	public char getSessionKeyType() {
+	public String getSessionKeyType() {
 		return sessionKeyType;
 	}
 
-	public void setSessionKeyType(char sessionKeyType) {
+	public void setSessionKeyType(String sessionKeyType) {
 		this.sessionKeyType = sessionKeyType;
 	}
 
-	public char getMasterkeyType() {
+	public String getMasterkeyType() {
 		return masterkeyType;
 	}
 
-	public void setMasterkeyType(char masterkeyType) {
+	public void setMasterkeyType(String masterkeyType) {
 		this.masterkeyType = masterkeyType;
 	}
 

@@ -13,11 +13,11 @@ public class Cpx31DukptpinEncryptionRequest extends CpxRequest {
 	 * 1 ASCII character, "0" - "F" increments of 5 seconds, lowercase 'a'-'f'
 	 * is treated as the correspond uppercase letter.
 	 */
-	private char timeoutValue;
+	private String timeoutValue;
 	/**
 	 * 1 ASCII character, "0" - "4"
 	 */
-	private char displayLineNumber;
+	private String displayLineNumber;
 	/**
 	 * 16 ASCII hex characters
 	 */
@@ -30,19 +30,19 @@ public class Cpx31DukptpinEncryptionRequest extends CpxRequest {
 	 */
 	private String pinDisplayPrompt;
 
-	public char getTimeoutValue() {
+	public String getTimeoutValue() {
 		return timeoutValue;
 	}
 
-	public void setTimeoutValue(char timeoutValue) {
+	public void setTimeoutValue(String timeoutValue) {
 		this.timeoutValue = timeoutValue;
 	}
 
-	public char getDisplayLineNumber() {
+	public String getDisplayLineNumber() {
 		return displayLineNumber;
 	}
 
-	public void setDisplayLineNumber(char displayLineNumber) {
+	public void setDisplayLineNumber(String displayLineNumber) {
 		this.displayLineNumber = displayLineNumber;
 	}
 
