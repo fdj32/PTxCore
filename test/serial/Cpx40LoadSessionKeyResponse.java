@@ -10,6 +10,11 @@ import org.apache.commons.lang.StringUtils;
  *
  */
 public class Cpx40LoadSessionKeyResponse extends CpxResponse {
+	
+	public Cpx40LoadSessionKeyResponse() {
+		super();
+		this.setMessageType("40.");
+	}
 
 	public static Cpx40LoadSessionKeyResponse parse(String str) {
 		if (StringUtils.isEmpty(str)) {
@@ -19,8 +24,7 @@ public class Cpx40LoadSessionKeyResponse extends CpxResponse {
 			return null;
 		}
 		Cpx40LoadSessionKeyResponse resp = new Cpx40LoadSessionKeyResponse();
-		resp.setMessageType(str.substring(0, 3));
-		resp.setMessageType(str.substring(3, 4));
+		resp.setStatus(str.substring(3, 4));
 		return resp;
 	}
 

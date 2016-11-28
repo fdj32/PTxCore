@@ -48,6 +48,13 @@ public class Cpx31DukptpinEncryptionResponse extends CpxResponse {
 		this.keySerialNumber = keySerialNumber;
 	}
 	
+	
+	
+	public Cpx31DukptpinEncryptionResponse() {
+		super();
+		this.setMessageType("31.");
+	}
+
 	public static Cpx31DukptpinEncryptionResponse parse(String str) {
 		if(StringUtils.isEmpty(str)) {
 			return null;
@@ -56,7 +63,6 @@ public class Cpx31DukptpinEncryptionResponse extends CpxResponse {
 			return null;
 		}
 		Cpx31DukptpinEncryptionResponse resp = new Cpx31DukptpinEncryptionResponse();
-		resp.setMessageType(str.substring(0, 3));
 		resp.setStatus(str.substring(3, 4));
 		resp.setPinBlockFormat(str.substring(4, 6));
 		resp.setEncryptedPinBlock(str.substring(6, 22));

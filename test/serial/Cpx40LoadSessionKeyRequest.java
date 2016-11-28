@@ -91,6 +91,11 @@ public class Cpx40LoadSessionKeyRequest extends CpxRequest {
 		this.keySerialNumber = keySerialNumber;
 	}
 
+	public Cpx40LoadSessionKeyRequest() {
+		super();
+		this.setMessageType("40.");
+	}
+
 	@Override
 	public String toString() {
 		String msg = this.getMessageType();
