@@ -45,11 +45,13 @@ public class CpxResponse extends CpxMessage {
 		} else if (str.startsWith("6B.0")) {
 			// only success response
 			return Cpx6BInteracDebitSequenceResponse.parse(str);
-		} else if(str.startsWith("6C.0")) {
+		} else if (str.startsWith("6C.0")) {
 			// only success response
 			return Cpx6CScrollSelectResponse.parse(str);
 		} else if (str.startsWith("6D.")) {
 			return Cpx6DTimedMultiDisplayResponse.parse(str);
+		} else if (str.startsWith("6H.")) {
+			return Cpx6HMasterSessionPinDataEntryResponse.parse(str);
 		}
 		// 40 50 59 5B 6A 6B.ERROR 6C.ERROR
 		resp = new CpxResponse();
