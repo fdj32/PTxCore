@@ -34,6 +34,7 @@ public class UTFUtils {
 	
 	public static final String STX = "\u0002";
 	public static final String FS = "\u001C";
+	public static final String RS = "\u001E";
 	public static final String ETX = "\u0003";
 	public static final byte[] ACK = "\u0006".getBytes();
 
