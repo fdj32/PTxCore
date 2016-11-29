@@ -38,8 +38,12 @@ public class CpxResponse extends CpxMessage {
 			return Cpx5DDeviceInformationResponse.parse(str);
 		} else if(str.startsWith("64.")){
 			return Cpx64MacCalculationResponse.parse(str);
+		} else if(str.startsWith("66.")){
+			return Cpx66MacVerificationResponse.parse(str);
+		} else if(str.startsWith("67.")){
+			return Cpx67ActivateMsrResponse.parse(str);
 		}
-		// 40 50 59 5B
+		// 40 50 59 5B 6A
 		resp = new CpxResponse();
 		resp.setStatus(str.substring(3, 4));
 		return resp;
