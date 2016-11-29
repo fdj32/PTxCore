@@ -31,7 +31,7 @@ public class Cpx67ActivateMsrRequest extends CpxRequest {
 	/**
 	 * 1 hex ASCII char starting line #: "0" - "4" where 0 or 1 = line 1
 	 */
-	private String startLineIndex;
+	private String lineNumber;
 	/**
 	 * up to 17 characters Information to be display on line # - variable length
 	 * string where FS or 0x1C terminates the line and causes " " padding to the
@@ -86,12 +86,12 @@ public class Cpx67ActivateMsrRequest extends CpxRequest {
 		this.lines = lines;
 	}
 
-	public String getStartLineIndex() {
-		return startLineIndex;
+	public String getLineNumber() {
+		return lineNumber;
 	}
 
-	public void setStartLineIndex(String startLineIndex) {
-		this.startLineIndex = startLineIndex;
+	public void setLineNumber(String lineNumber) {
+		this.lineNumber = lineNumber;
 	}
 
 	public String getPrompt1() {
@@ -138,7 +138,7 @@ public class Cpx67ActivateMsrRequest extends CpxRequest {
 		msg += this.getTimeout();
 		msg += this.getFunctionKeysActive();
 		msg += this.getLines();
-		msg += this.getStartLineIndex();
+		msg += this.getLineNumber();
 		msg += this.getPrompt1();
 		msg += this.getPrompt2();
 		msg += this.getPrompt3();
