@@ -3,13 +3,13 @@ package serial;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * 0140-05252-0904 CPX+ EMV Emulation.pdf {Page.113/184} {67. Activate MSR with
- * Display Handling }
+ * 0142-07942-0225 Telium CPX E2EE solution v2.25.pdf {Page.14/35} {3.4. E2EE
+ * Activate MSR with Display handling}
  * 
  * @author nfeng
- *
+ * @see Cpx67ActivateMsrRequest
  */
-public class Cpx67ActivateMsrRequest extends CpxRequest {
+public class Cpx6IE2EEActivateMSRRequest extends CpxRequest {
 
 	/**
 	 * 1 ASCII char "1" ISO1 magnetic card reading "2" ISO2 magnetic card
@@ -21,37 +21,40 @@ public class Cpx67ActivateMsrRequest extends CpxRequest {
 	 */
 	private String timeout;
 	/**
-	 * 1 hex ASCII character "0" = no function keys active "1" = function key
+	 * 1 hex ASCII char "0" = no function keys active "1" = function key
 	 * response
 	 */
 	private String functionKeysActive;
 	/**
-	 * 1 hex ASCII char # of lines to be displayed: "0" - "4" where 0 or 1 = 1
-	 * line
+	 * 1 hex ASCII char Lines = # of lines to be displayed: "0" - "4" where 0 or
+	 * 1 = 1 line when Line # field is not set to 5 Or Time Delay ="0" -"F" (1
+	 * second increment, "0" =500ms) when line # field is set to 5
 	 */
-	private String lines;
+	private String LinesOrTimeDelay;
 	/**
-	 * 1 hex ASCII char starting line #: "0" - "4" where 0 or 1 = line 1
+	 * 1 hex ASCII char starting line #: "0" - "4" where 0 or 1 = line 1 "5" -
+	 * toggles specified prompts on line 1 with the rate of change specified in
+	 * Time Delay field
 	 */
 	private String lineNumber;
 	/**
-	 * up to 17 characters Information to be display on line # - variable length
+	 * up to 17 char s Information to be display on line # - variable length
 	 * string where FS or 0x1C terminates the line and causes " " padding to the
 	 * end of line
 	 */
 	private String prompt1;
 	/**
-	 * up to 17 characters Optional - variable length string terminated by a FS
+	 * up to 17 chars Optional - variable length string terminated by a FS
 	 * (0x1C)
 	 */
 	private String prompt2;
 	/**
-	 * up to 17 characters Optional - variable length string terminated by a FS
+	 * up to 17 chars Optional - variable length string terminated by a FS
 	 * (0x1C)
 	 */
 	private String prompt3;
 	/**
-	 * up to 17 characters Optional - variable length string terminated by a FS
+	 * up to 17 chars Optional - variable length string terminated by a FS
 	 * (0x1C)
 	 */
 	private String prompt4;
@@ -80,12 +83,12 @@ public class Cpx67ActivateMsrRequest extends CpxRequest {
 		this.functionKeysActive = functionKeysActive;
 	}
 
-	public String getLines() {
-		return lines;
+	public String getLinesOrTimeDelay() {
+		return LinesOrTimeDelay;
 	}
 
-	public void setLines(String lines) {
-		this.lines = lines;
+	public void setLinesOrTimeDelay(String linesOrTimeDelay) {
+		LinesOrTimeDelay = linesOrTimeDelay;
 	}
 
 	public String getLineNumber() {
@@ -128,9 +131,9 @@ public class Cpx67ActivateMsrRequest extends CpxRequest {
 		this.prompt4 = prompt4;
 	}
 
-	public Cpx67ActivateMsrRequest() {
+	public Cpx6IE2EEActivateMSRRequest() {
 		super();
-		this.setMessageType("67.");
+		this.setMessageType("6I.");
 	}
 
 	@Override
@@ -139,7 +142,7 @@ public class Cpx67ActivateMsrRequest extends CpxRequest {
 		msg += this.getTrackNumber();
 		msg += this.getTimeout();
 		msg += this.getFunctionKeysActive();
-		msg += this.getLines();
+		msg += this.getLinesOrTimeDelay();
 		msg += this.getLineNumber();
 		msg += this.getPrompt1() + UTFUtils.FS;
 		msg += StringUtils.defaultString(this.getPrompt2()) + UTFUtils.FS;
