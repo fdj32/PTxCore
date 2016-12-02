@@ -11,6 +11,8 @@ public class CpxF0Request extends CpxRequest {
 
 	private CpxF0Command cmd;
 
+	private boolean encode = true;
+
 	public CpxF0Command getCmd() {
 		return cmd;
 	}
@@ -19,15 +21,28 @@ public class CpxF0Request extends CpxRequest {
 		this.cmd = cmd;
 	}
 
+	public boolean isEncode() {
+		return encode;
+	}
+
+	public void setEncode(boolean encode) {
+		this.encode = encode;
+	}
+
 	public CpxF0Request() {
 		super();
 		this.setMessageType("F0.");
+		this.setEncode(true);
 	}
 
 	@Override
 	public String toString() {
 		String msg = this.getMessageType();
-		msg += this.getCmd().toString();
+		if (this.isEncode()) {
+			msg += UTFUtils.cpxP16Encode(this.getCmd().toString());
+		} else {
+			msg += this.getCmd().toString();
+		}
 		return msg;
 	}
 

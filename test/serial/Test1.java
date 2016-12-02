@@ -36,6 +36,9 @@ public class Test1 {
 		
 		byte[] decode = UTFUtils.cpxP16Decode(dest, 0, outputBufferIndex);
 		System.out.println(new String(decode));
+		
+		System.out.println(UTFUtils.cpxP16Decode(UTFUtils.cpxP16Encode("activenetwork")));
+		
 	}
 
 }

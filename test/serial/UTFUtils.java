@@ -135,6 +135,24 @@ public class UTFUtils {
 		}
 		return sb.toString();
 	}
+	
+	public static String cpxP16Encode(String src) {
+		byte[] inputBuffer = src.getBytes();
+		int inputBufferLength = src.length();
+		byte[] outputBuffer = new byte[inputBufferLength * 8];
+		int outputBufferIndex = 0;
+		outputBufferIndex = cpxP16Encode(inputBuffer, inputBufferLength, outputBuffer, outputBufferIndex);
+		byte[] dest = new byte[outputBufferIndex];
+		System.arraycopy(outputBuffer, 0, dest, 0, outputBufferIndex);
+		return new String(dest);
+	}
+	
+	public static String cpxP16Decode(String src) {
+		byte[] inputBuffer = src.getBytes();
+		int inputBufferLength = src.length();
+		byte[] decoded = cpxP16Decode(inputBuffer, 0, inputBufferLength);
+		return new String(decoded);
+	}
 
 	public static int cpxP16Encode(byte[] inputBuffer, int inputBufferLength,
 			byte[] outputBuffer, int outputBufferIndex) {
