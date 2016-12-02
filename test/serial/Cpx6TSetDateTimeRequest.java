@@ -9,12 +9,33 @@ package serial;
  */
 public class Cpx6TSetDateTimeRequest extends CpxRequest {
 
+	/**
+	 * Mode 1 – Set Date and Time
+	 */
 	private String mode;
+	/**
+	 * 4 characters "YYYY"
+	 */
 	private String year;
+	/**
+	 * 2 characters "MM"
+	 */
 	private String month;
+	/**
+	 * 2 characters "DD"
+	 */
 	private String day;
+	/**
+	 * 2 characters "HH"
+	 */
 	private String hour;
+	/**
+	 * 2 characters "MM"
+	 */
 	private String minute;
+	/**
+	 * 2 characters "SS"
+	 */
 	private String second;
 
 	public String getMode() {
