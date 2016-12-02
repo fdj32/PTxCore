@@ -136,7 +136,7 @@ public class UTFUtils {
 		return sb.toString();
 	}
 
-	private static int cpxP16Encode(byte[] inputBuffer, int inputBufferLength,
+	public static int cpxP16Encode(byte[] inputBuffer, int inputBufferLength,
 			byte[] outputBuffer, int outputBufferIndex) {
 		int outputBitIndex = 0;
 		byte newByte = 0x00;
@@ -164,11 +164,12 @@ public class UTFUtils {
 		return (outputBufferIndex);
 	}
 
-	private byte[] CpxP16Decode(byte[] inputBuffer, int inputStartIndex,
+	public static byte[] cpxP16Decode(byte[] inputBuffer, int inputStartIndex,
 			int inputBufferLength) {
 		int outputBitIndex = 0;
 		byte newByte = 0x00;
-		ByteBuffer outputBuffer = ByteBuffer.allocate(inputBufferLength);
+		ByteBuffer outputBuffer = ByteBuffer.allocate(inputBufferLength*6);
+		int length = 0;
 		for (int inputByteIndex = inputStartIndex; inputByteIndex < inputBufferLength; inputByteIndex++) {
 			for (int inputBitIndex = 5; inputBitIndex >= 0; inputBitIndex--) {
 				newByte <<= 1;
@@ -177,12 +178,15 @@ public class UTFUtils {
 
 				if (outputBitIndex == 8) {
 					outputBuffer.put(newByte);
+					length++;
 					outputBitIndex = 0;
 					newByte = 0x00;
 				}
 			}
 		}
-
-		return (outputBuffer.array());
+		outputBuffer.flip();
+		byte[] dst = new byte[length];
+		outputBuffer.get(dst, 0, length);
+		return dst;
 	}
 }

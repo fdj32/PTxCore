@@ -23,6 +23,19 @@ public class Test1 {
 		String bs = new String(new byte[]{UTFUtils.FS.getBytes()[0], b, UTFUtils.FS.getBytes()[0]});
 		System.out.println(bs);
 		System.out.println(bs.getBytes().length);
+		
+		byte[] inputBuffer = "helloworld".getBytes();
+		int inputBufferLength = inputBuffer.length;
+		byte[] outputBuffer = new byte[1024];
+		int outputBufferIndex = 0;
+		outputBufferIndex = UTFUtils.cpxP16Encode(inputBuffer, inputBufferLength, outputBuffer, outputBufferIndex);
+		System.out.println(outputBufferIndex);
+		byte[] dest = new byte[outputBufferIndex];
+		System.arraycopy(outputBuffer, 0, dest, 0, outputBufferIndex);
+		System.out.println(new String(dest));
+		
+		byte[] decode = UTFUtils.cpxP16Decode(dest, 0, outputBufferIndex);
+		System.out.println(new String(decode));
 	}
 
 }
