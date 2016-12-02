@@ -57,7 +57,7 @@ public class CpxResponse extends CpxMessage {
 		} else if (str.startsWith("6L.")) {
 			return Cpx6LE2EEPinEntryResponse.parse(str);
 		}
-		// 40 50 59 5B 6A 6B.ERROR 6C.ERROR
+		// 40 50 59 5B 6A 6B.ERROR 6C.ERROR 6N
 		resp = new CpxResponse();
 		resp.setStatus(str.substring(3, 4));
 		return resp;
