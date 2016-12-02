@@ -52,6 +52,8 @@ public class CpxResponse extends CpxMessage {
 			return Cpx6DTimedMultiDisplayResponse.parse(str);
 		} else if (str.startsWith("6H.")) {
 			return Cpx6HMasterSessionPinDataEntryResponse.parse(str);
+		} else if (str.startsWith("6K.")) {
+			return Cpx6KE2EEManualCardEntryResponse.parse(str);
 		}
 		// 40 50 59 5B 6A 6B.ERROR 6C.ERROR
 		resp = new CpxResponse();
