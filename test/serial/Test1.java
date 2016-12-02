@@ -17,6 +17,12 @@ public class Test1 {
 //		System.out.println(out);
 		System.out.println(StringUtils.rightPad("12345678901234567890123456789012345678901234567890".substring(32), 8, '0'));
 		System.out.println(StringUtils.defaultString(null));
+		System.out.println(UTFUtils.FS.getBytes().length);
+		System.out.println((new String(UTFUtils.FS.getBytes())).getBytes().length);
+		byte b = (byte)0;
+		String bs = new String(new byte[]{UTFUtils.FS.getBytes()[0], b, UTFUtils.FS.getBytes()[0]});
+		System.out.println(bs);
+		System.out.println(bs.getBytes().length);
 	}
 
 }

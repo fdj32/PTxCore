@@ -56,6 +56,8 @@ public class CpxResponse extends CpxMessage {
 			return Cpx6KE2EEManualCardEntryResponse.parse(str);
 		} else if (str.startsWith("6L.")) {
 			return Cpx6LE2EEPinEntryResponse.parse(str);
+		} else if (str.startsWith("F0.")) {
+			return CpxF0Response.parse(str);
 		}
 		// 40 50 59 5B 6A 6B.ERROR 6C.ERROR 6N 6T.1
 		resp = new CpxResponse();
