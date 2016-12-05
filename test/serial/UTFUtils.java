@@ -186,7 +186,7 @@ public class UTFUtils {
 			int inputBufferLength) {
 		int outputBitIndex = 0;
 		byte newByte = 0x00;
-		ByteBuffer outputBuffer = ByteBuffer.allocate(inputBufferLength*6);
+		ByteBuffer outputBuffer = ByteBuffer.allocate(inputBufferLength*2);
 		int length = 0;
 		for (int inputByteIndex = inputStartIndex; inputByteIndex < inputBufferLength; inputByteIndex++) {
 			for (int inputBitIndex = 5; inputBitIndex >= 0; inputBitIndex--) {
@@ -207,4 +207,50 @@ public class UTFUtils {
 		outputBuffer.get(dst, 0, length);
 		return dst;
 	}
+	
+	public static byte[] cpxP16Encode(byte[] in) {
+		if(null == in) {
+			return null;
+		}
+		ByteBuffer bb = ByteBuffer.allocate(in.length*2);
+		byte b;
+		for(int i=0; i<in.length; i++) {
+			switch(i%3) {
+			case 0:
+				b = (byte)(in[i] >> 2);
+				bb.put((byte)(b | 0x40));
+				if(i == in.length - 1) {
+					b = (byte)(in[i] << 6);
+					b = (byte)(b >> 2);
+					bb.put((byte)(b | 0x40));
+				}
+				break;
+			case 1:
+				b = (byte)(in[i - 1] << 6);
+				b = (byte)(b >> 2);
+				bb.put((byte)(b | 0x40 | (byte)(in[i] >> 4)));
+				if(i == in.length - 1) {
+					b = (byte)(in[i] << 4);
+					b = (byte)(b >> 2);
+					bb.put((byte)(0x40 | b));
+				}
+				break;
+			case 2:
+				b = (byte)(in[i - 1] << 4);
+				b = (byte)(b >> 2);
+				bb.put((byte)(0x40 | b | (byte)(in[i] >> 6)));
+				b = (byte)(in[i] << 2);
+				b = (byte)(b >> 2);
+				bb.put((byte)(0x40 | b));
+				break;
+			}
+		}
+		int position = bb.position();
+		byte[] out = new byte[position];
+		bb.flip();
+		bb.get(out, 0, position);
+		return out;
+	}
+	
+	
 }

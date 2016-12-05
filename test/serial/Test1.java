@@ -2,6 +2,7 @@ package serial;
 
 import java.nio.ByteBuffer;
 
+import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang.StringUtils;
 
 public class Test1 {
@@ -39,6 +40,17 @@ public class Test1 {
 		
 		System.out.println(UTFUtils.cpxP16Decode(UTFUtils.cpxP16Encode("activenetwork")));
 		
+		System.out.println(UTFUtils.cpxP16Encode("hello").getBytes().length);
+		System.out.println(Hex.encodeHex(UTFUtils.cpxP16Encode("hello").getBytes()));
+		System.out.println(UTFUtils.cpxP16Encode("hello".getBytes()).length);
+		System.out.println(Hex.encodeHex(UTFUtils.cpxP16Encode("hello".getBytes())));
+		
+		System.out.println(Hex.encodeHex(new byte[]{(byte)(0xFF >> 2)}));
+		System.out.println(Hex.encodeHex(new byte[]{(byte)(0xFF << 2)}));
+		
+		System.out.println(Hex.encodeHex(new byte[]{(byte)(0xFF >> 2 | 0x40)}));
+		System.out.println(Hex.encodeHex(new byte[]{(byte)((0xFF << 6) >> 2)}));
+		System.out.println(Hex.encodeHex(new byte[]{(byte)(((0xFF << 6) >> 2) | 0x40)}));
 	}
 
 }
