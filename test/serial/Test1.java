@@ -51,6 +51,9 @@ public class Test1 {
 		System.out.println(Hex.encodeHex(new byte[]{(byte)(0xFF >> 2 | 0x40)}));
 		System.out.println(Hex.encodeHex(new byte[]{(byte)((0xFF << 6) >> 2)}));
 		System.out.println(Hex.encodeHex(new byte[]{(byte)(((0xFF << 6) >> 2) | 0x40)}));
+		
+		System.out.println(new String(UTFUtils.cpxP16Decode(UTFUtils.cpxP16Encode("activenetwork".getBytes()))));
+		
 	}
 
 }

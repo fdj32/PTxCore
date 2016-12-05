@@ -252,5 +252,41 @@ public class UTFUtils {
 		return out;
 	}
 	
-	
+	public static byte[] cpxP16Decode(byte[] in) {
+		if(null == in) {
+			return null;
+		}
+		ByteBuffer bb = ByteBuffer.allocate(in.length);
+		byte a, b;
+		for(int i = 0; i < in.length; i++) {
+			switch(i%4) {
+			case 0:
+				// do nothing
+				break;
+			case 1:
+				a = (byte)(in[i-1] << 2);
+				b = (byte)(in[i] & 0x3F);
+				b = (byte)(b >> 4);
+				bb.put((byte)(a | b));
+				break;
+			case 2:
+				a = (byte)(in[i-1] & 0x0F);
+				a = (byte)(a << 4);
+				b = (byte)(in[i] & 0x3C);
+				b = (byte)(b >> 2);
+				bb.put((byte)(a | b));
+				break;
+			case 3:
+				a = (byte)(in[i-1] << 6);
+				b = (byte)(in[i] & 0x3F);
+				bb.put((byte)(a | b));
+				break;
+			}
+		}
+		int position = bb.position();
+		byte[] out = new byte[position];
+		bb.flip();
+		bb.get(out, 0, position);
+		return out;
+	}
 }
