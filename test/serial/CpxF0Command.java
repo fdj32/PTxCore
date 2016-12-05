@@ -1,5 +1,7 @@
 package serial;
 
+import org.apache.commons.lang.StringUtils;
+
 /**
  * 0140-05252-0904 CPX+ EMV Emulation.pdf {Page.71/184} {CHAPTER 6 – SPECIFIC
  * ELITE COMMANDS}
@@ -56,6 +58,11 @@ public class CpxF0Command {
 		this.to = to;
 	}
 
+	public void setTo(int to) {
+		setTo(new String(new byte[] { (byte) (to * 100 / 0x100),
+				(byte) (to * 100 % 0x100) }));
+	}
+
 	public String getCmd() {
 		return cmd;
 	}
@@ -78,8 +85,25 @@ public class CpxF0Command {
 		msg += this.getType();
 		msg += this.getTo();
 		msg += this.getCmd();
-		msg += this.getDataE();
+		msg += StringUtils.defaultString(this.getDataE());
 		return msg;
+	}
+
+	/**
+	 * 
+	 * @param to
+	 *            timeout in seconds
+	 * @param cmd
+	 *            1=track1, 2=track2, 3=track1+track2
+	 * @return
+	 */
+	public static CpxF0Command cpxF0MsrRead(int to, int cmd) {
+		CpxF0Command msrRead = new CpxF0Command();
+		msrRead.setLgt(new String(new byte[] { 0, 0x04 }));
+		msrRead.setType(new String(new byte[] { 0x04 }));
+		msrRead.setTo(to);
+		msrRead.setCmd(new String(new byte[] { (byte) (cmd) }));
+		return msrRead;
 	}
 
 }
