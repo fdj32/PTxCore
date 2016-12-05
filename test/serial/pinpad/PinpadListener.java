@@ -7,6 +7,8 @@ import gnu.io.SerialPortEventListener;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
+import serial.UTFUtils;
+
 public class PinpadListener implements Runnable, SerialPortEventListener {
 	
 	private SerialPort serialPort;

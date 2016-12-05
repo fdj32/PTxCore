@@ -1,4 +1,4 @@
-package serial;
+package serial.pinpad;
 
 public class DataObject {
 	private String recvData = null;

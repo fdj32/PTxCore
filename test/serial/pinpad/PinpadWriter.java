@@ -7,6 +7,8 @@ import gnu.io.SerialPort;
 import java.util.Enumeration;
 import java.util.Random;
 
+import serial.UTFUtils;
+
 public class PinpadWriter {
 
 	private static final String SERIAL_PORT_OWNER = "Ingenico";
