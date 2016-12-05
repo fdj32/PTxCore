@@ -1,4 +1,4 @@
-package serial;
+package serial.pinpad;
 
 import gnu.io.CommPortIdentifier;
 import gnu.io.PortInUseException;

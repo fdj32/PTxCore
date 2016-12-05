@@ -1,4 +1,4 @@
-package serial;
+package serial.pinpad;
 
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
