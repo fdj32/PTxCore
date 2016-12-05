@@ -14,7 +14,7 @@ public class CpxF0Result {
 	 */
 	private String lgt;
 	/**
-	 * 2 bytes TYPE . driver number in INGENICO UNICAPT structure
+	 * 1 bytes TYPE . driver number in INGENICO UNICAPT structure
 	 */
 	private String type;
 	/**
