@@ -1,7 +1,7 @@
 package serial;
 
 /**
- * 0140-05252-0904 CPX+ EMV Emulation.pdf {Page.71/184} {CHAPTER 6 – SPECIFIC
+ * 0140-05252-0904 CPX+ EMV Emulation.pdf {Page.71/184} {CHAPTER 6 - SPECIFIC
  * ELITE COMMANDS}
  * 
  * @author nfeng
