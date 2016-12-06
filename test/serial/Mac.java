@@ -40,6 +40,11 @@ public class Mac {
 	 */
 	private String sessionKcv;
 	/**
+	 * 4 bytes, The MAC Value that is being Verified against all the supplied
+	 * data
+	 */
+	private String macValue;
+	/**
 	 * 4 bytes, Total of all data bytes in all blocks to be sent (MAC engine
 	 * needs this to know when it is done calculating)
 	 */
@@ -92,6 +97,14 @@ public class Mac {
 		this.sessionKcv = sessionKcv;
 	}
 
+	public String getMacValue() {
+		return macValue;
+	}
+
+	public void setMacValue(String macValue) {
+		this.macValue = macValue;
+	}
+
 	public String getTotalLength() {
 		return totalLength;
 	}
@@ -112,34 +125,14 @@ public class Mac {
 	public String toString() {
 		String msg = this.getBlockNumber();
 		msg += this.getMaxBlockNumber();
-		msg += this.getKeyLenOrIndex();
-		msg += this.getSessionKey();
+		msg += StringUtils.defaultString(this.getKeyLenOrIndex());
+		msg += StringUtils.defaultString(this.getSessionKey());
 		msg += StringUtils.defaultString(this.getSessionKcv());
-		msg += this.getTotalLength();
-		msg += this.getMacData();
+		// CALCULATION is empty, VERIFICATION make sense
+		msg += StringUtils.defaultString(this.getMacValue());
+		msg += StringUtils.defaultString(this.getTotalLength());
+		msg += StringUtils.defaultString(this.getMacData());
 		return msg;
-	}
-
-	public static Mac parse(String str) {
-		Mac md = new Mac();
-		md.setBlockNumber(str.substring(0, 2));
-		md.setMaxBlockNumber(str.substring(2, 4));
-		md.setKeyLenOrIndex(str.substring(4, 5));
-		if("\u0001".equals(md.getKeyLenOrIndex())) {
-			// Single Length Key
-			md.setSessionKey(str.substring(5, 13));
-			md.setTotalLength(str.substring(13, 17));
-			md.setMacData(str.substring(17));
-		} else if("\u0002".equals(md.getKeyLenOrIndex())) {
-			// Double Length Key
-			md.setSessionKey(str.substring(5, 21));
-			md.setSessionKcv(str.substring(21, 25));
-			md.setTotalLength(str.substring(25, 29));
-			md.setMacData(str.substring(29));
-		} else {
-			return null;
-		}
-		return md;
 	}
 
 }
