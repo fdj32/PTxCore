@@ -9,6 +9,16 @@ import org.apache.commons.lang.StringUtils;
  * @see CpxF1Request
  */
 public class CpxF1Command {
+	
+	public static final String EMV_VERSION = "\u0001";
+	public static final String OPEN_SESSION = "\u0002";
+	public static final String CLOSE_SESSION = "\u0003";
+	public static final String ASYN_EMV = "\u0004";
+	public static final String ASYN_EMV_ACK = "\u0005";
+	public static final String ASYN_EMV_LONG_ACK = "\u0006";
+	public static final String EMV_REG_VEGA_FOR_AUTO_INIT = "\u0010";
+	public static final String BINARY_MAC_CALC = "\u0043";
+	public static final String BINARY_MAC_VERIFY = "\u0045";
 
 	/**
 	 * 2 bytes, length of application field information
@@ -104,7 +114,7 @@ public class CpxF1Command {
 	public String toString() {
 		String msg = this.getLgt();
 		msg += this.getCmdType();
-		msg += this.getMsgSeqId();
+		msg += StringUtils.defaultString(this.getMsgSeqId());
 		msg += StringUtils.defaultString(this.getMsgVer());
 		msg += StringUtils.defaultString(this.getpAppName());
 		msg += StringUtils.defaultString(this.geteAppName());
