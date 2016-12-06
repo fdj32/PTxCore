@@ -17,7 +17,7 @@ public class PINPad {
 	private static final int SERIAL_PORT_OPEN_TIMEOUT = 2000;
 	private static final int SERIAL_PORT_READ_TIMEOUT = 500;
 	private static final int SERIAL_PORT_READ_POLL = 50;
-	private static final String SERIAL_PORT_NAME = "/dev/ttyACM0"; // windows=COM9,
+	private static final String SERIAL_PORT_NAME = "COM8"; // windows=COM9,
 																	// ubuntu=/dev/ttyACM0
 	private static String[] display = new String[] { "Hello World!",
 			"nfeng@Active", "What time is it?", "" };
@@ -25,11 +25,12 @@ public class PINPad {
 	private static PINPadListener listener;
 	private static PINPad instance = null;
 
-	private PINPad() {}
+	private PINPad() {
+	}
 
 	public static PINPad getInstance() throws PortInUseException,
 			TooManyListenersException, UnsupportedCommOperationException {
-		System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyS0:/dev/ttyACM0");
+		//System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyS0:/dev/ttyACM0");
 		if (null != instance) {
 			return instance;
 		}
@@ -63,10 +64,23 @@ public class PINPad {
 	public static void main(String[] args) throws Exception {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd HH:mm:ss");
 		display[3] = sdf.format(new Date());
-		PINPad.getInstance().write(UTFUtils.cpx58Display(display));
-		//PINPad.getInstance().write(UTFUtils.cpx58Display(display));
-		//PINPad.getInstance().write(UTFUtils.cpx59Clear(1));
-		//PINPad.getInstance().write(UTFUtils.cpx5DDeviceInformation(null));
+
+//		PINPad.getInstance().write(
+//				new byte[] { 0x02, 0x46, 0x30, 0x2E, 0x40, 0x40, 0x50, 0x44,
+//						0x40, 0x40, 0x40, 0x41, 0x40, 0x03, 0x0E });
+		
+//		PINPad.getInstance().write(
+//		new byte[] { 0x02, 0x46, 0x30, 0x2E, 0x40, 0x40, 0x50, 0x44,
+//				0x40, 0x40, 0x40, 0x42, 0x40, 0x03, 0x0D });
+		
+//		PINPad.getInstance().write(
+//		new byte[] { 0x02, 0x46, 0x30, 0x2E, 0x40, 0x40, 0x50, 0x44,
+//				0x42, 0x7B, 0x60, 0x43, 0x40, 0x03, 0x15 });
+		
+		 PINPad.getInstance().write(UTFUtils.cpx58Display(display));
+		// PINPad.getInstance().write(UTFUtils.cpx58Display(display));
+		// PINPad.getInstance().write(UTFUtils.cpx59Clear(1));
+		// PINPad.getInstance().write(UTFUtils.cpx5DDeviceInformation(null));
 		PINPad.getInstance().getSerialPort().close();
 	}
 
@@ -86,7 +100,8 @@ public class PINPad {
 		return null;
 	}
 
-	public static void write(byte[] data) throws IOException, InterruptedException {
+	public static void write(byte[] data) throws IOException,
+			InterruptedException {
 		serialPort.getOutputStream().write(data);
 		long start = System.currentTimeMillis();
 		boolean timeout = true;
@@ -102,7 +117,7 @@ public class PINPad {
 				timeout = false;
 			}
 		}
-		if(timeout) {
+		if (timeout) {
 			serialPort.close();
 		}
 	}
