@@ -59,6 +59,12 @@ public class CpxF0Command {
 	}
 
 	public void setTo(int to) {
+		if(to > 75){
+			to = 75;
+		}
+		if(to < 0) {
+			to = 0;
+		}
 		setTo(new String(new byte[] { (byte) (to * 100 / 0x100),
 				(byte) (to * 100 % 0x100) }));
 	}
