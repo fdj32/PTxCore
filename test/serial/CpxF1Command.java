@@ -105,11 +105,26 @@ public class CpxF1Command {
 		String msg = this.getLgt();
 		msg += this.getCmdType();
 		msg += this.getMsgSeqId();
-		msg += this.getMsgVer();
-		msg += this.getpAppName();
-		msg += this.geteAppName();
+		msg += StringUtils.defaultString(this.getMsgVer());
+		msg += StringUtils.defaultString(this.getpAppName());
+		msg += StringUtils.defaultString(this.geteAppName());
 		msg += StringUtils.defaultString(this.getDataE());
 		return msg;
+	}
+
+	/**
+	 * ASYNCHRONOUS EMV COMMAND ACKNOWLEDMENT (ACK) (Type 0x05) [Asynchronous]
+	 * Page.158/184
+	 * 
+	 * @param inSeqId
+	 * @return
+	 */
+	public static CpxF1Command asynEmvCmdAck(String inSeqId) {
+		CpxF1Command c = new CpxF1Command();
+		c.setLgt(new String(new byte[] { 0, 0x02 }));
+		c.setCmdType(new String(new byte[] { (byte) 0x05 }));
+		c.setMsgSeqId(inSeqId);
+		return c;
 	}
 
 }
