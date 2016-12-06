@@ -1,0 +1,556 @@
+Transaction
+	IngenicoCPX: 50 Cancel
+		RecvAck - ACK
+	IngenicoCPX: 50 Cancel Response
+		Response Code: 0
+	IngenicoCPX: 6I E2EE Activate MSR with Display
+		Swipe Timeout: 45
+		RecvAck - ACK
+	IngenicoCPX: F0 Insert Card Command
+		Insert Timeout: 0
+		RecvAck - ACK
+	IngenicoCPX: F1 Open Session Command
+		RecvAck - ACK
+	IngenicoCPX: F1 Command Response
+		Async Seq ID: 1
+		Response Code: 0
+	IngenicoCPX: F1 Async EMV Command - EMV_START_CONTACTLESS
+		Async Seq ID: 0
+		Service Code: EMV_START_CONTACTLESS
+		Reason Code: EMV_UNDEF
+	IngenicoCPX: F1 Async EMV ACK Response
+		Async Seq ID: 0
+	IngenicoCPX: F1 Async EMV Response - EMV_START_CONTACTLESS
+		Async Seq ID: 80
+		Response Code: 0
+		Multi-Message Protocol: 0/0
+		Service Code: EMV_START_CONTACTLESS
+		Reason Code: EMV_OK
+	IngenicoCPX: F1 Async EMV ACK
+		Async Seq ID: 80
+	IngenicoCPX: F0 Command Response
+		Response Code: 0
+	IngenicoCPX: 50 Cancel
+		RecvAck - ACK
+	IngenicoCPX: 50 Cancel Response
+		Response Code: 0
+	IngenicoCPX: F1 Close Session Command
+		RecvAck - ACK
+	IngenicoCPX: F1 Command Response
+		Async Seq ID: 1
+		Response Code: 0
+	IngenicoCPX: 59 Clear Display
+		RecvAck - ACK
+	IngenicoCPX: 59 Clear Display Response
+		Response Code: 0
+	IngenicoCPX: F1 Open Session Command
+		RecvAck - ACK
+	IngenicoCPX: F1 Command Response
+		Async Seq ID: 1
+		Response Code: 0
+	IngenicoCPX: 58 Display Text
+		Message: Please Wait / 
+		RecvAck - ACK
+	IngenicoCPX: 58 Display Text Response
+		Response Code: 0
+	IngenicoCPX: F1 Async EMV Command - EMV_START
+		Async Seq ID: 0
+		Service Code: EMV_START
+		Reason Code: EMV_UNDEF
+	IngenicoCPX: F1 Async EMV ACK Response
+		Async Seq ID: 0
+	IngenicoCPX: F1 Async EMV Response - EMV_START
+		Async Seq ID: 80
+		Response Code: 0
+		Multi-Message Protocol: 0/0
+		Service Code: EMV_START
+		Reason Code: EMV_OK
+	IngenicoCPX: F1 Async EMV ACK
+		Async Seq ID: 80
+	IngenicoCPX: F1 Async EMV Response - EMV_SELECT_LANGUAGE
+		Async Seq ID: 81
+		Response Code: 0
+		Multi-Message Protocol: 0/0
+		Service Code: EMV_SELECT_LANGUAGE
+		Reason Code: EMV_UNDEF
+	IngenicoCPX: F1 Async EMV ACK
+		Async Seq ID: 81
+	IngenicoCPX: 6C Scroll Select
+		Title: Select Language 
+		Options: English         /Francais        /
+		RecvAck - ACK
+	IngenicoCPX: 6C Scroll Select Response
+		Response Code: 0
+		Selected Item: 1
+	IngenicoCPX: 59 Clear Display
+		RecvAck - ACK
+	IngenicoCPX: 59 Clear Display Response
+		Response Code: 0
+	IngenicoCPX: 58 Display Text
+		Message: Please Wait / 
+		RecvAck - ACK
+	IngenicoCPX: 58 Display Text Response
+		Response Code: 0
+	IngenicoCPX: F1 Async EMV Command - EMV_SELECT_LANGUAGE
+		Async Seq ID: 1
+		Service Code: EMV_SELECT_LANGUAGE
+		Reason Code: EMV_OK
+	IngenicoCPX: F1 Async EMV ACK Response
+		Async Seq ID: 1
+	IngenicoCPX: F1 Async EMV Response - EMV_SELECT_APPLICATION
+		Async Seq ID: 82
+		Response Code: 0
+		Multi-Message Protocol: 0/34
+		Service Code: EMV_SELECT_APPLICATION
+		Reason Code: EMV_UNDEF
+	IngenicoCPX: F1 Async EMV ACK
+		Async Seq ID: 82
+	IngenicoCPX: F1 Async EMV Command - EMV_SELECT_APPLICATION
+		Async Seq ID: 2
+		Service Code: EMV_SELECT_APPLICATION
+		Reason Code: EMV_OK
+	IngenicoCPX: F1 Async EMV ACK Response
+		Async Seq ID: 2
+	IngenicoCPX: F1 Async EMV Response - EMV_PASS_ICC_CVM_LIST
+		Async Seq ID: 83
+		Response Code: 0
+		Multi-Message Protocol: 0/24
+		Service Code: EMV_PASS_ICC_CVM_LIST
+		Reason Code: EMV_UNDEF
+	IngenicoCPX: F1 Async EMV ACK
+		Async Seq ID: 83
+	IngenicoCPX: F1 Async EMV Response - EMV_CALL_BACK
+		Async Seq ID: 84
+		Response Code: 0
+		Multi-Message Protocol: 0/482
+		Service Code: EMV_CALL_BACK
+		Reason Code: EMV_DECLINED
+	IngenicoCPX: F1 Async EMV ACK
+		Async Seq ID: 84
+		tag4F AID: A000000025010801
+		tag50 Application Label: Personal Account
+		tag5A Application PAN: 374245*****0001
+		tag82 Application Interchange Profile: 5C00
+			Byte1 Bit8: 0 - RFU
+			      Bit7: 1 - SDA supported
+			      Bit6: 0 - DDA supported
+			      Bit5: 1 - Cardholder verification is supported
+			      Bit4: 1 - Terminal risk management is to be performed
+			      Bit3: 1 - Issuer authentication is supported
+			      Bit2: 0 - RFU
+			      Bit1: 0 - CDA supported
+			Byte2 Bit8: 0 - RFU
+			      Bit7: 0 - RFU
+			      Bit6: 0 - RFU
+			      Bit5: 0 - RFU
+			      Bit4: 0 - RFU
+			      Bit3: 0 - RFU
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+		tag84 Dedicated Filename: A000000025010801
+		tag9A Transaction Date: 161206
+		tag9C EMV Transaction Type: 00
+		tag5F20 Cardholder Name: AN AEIPS 10               
+		tag5F24 Expiry Date: 151231
+		tag5F28 Issuer Country Code: 826
+		tag5F2A Currency Code: 840
+		tag5F34 Application PAN Sequence Number: 00
+		tag9F06 Terminal AID: A000000025010801
+		tag9F07 Application Usage Control: FF00
+			Byte1 Bit8: 1 - Valid for domestic cash transactions
+			      Bit7: 1 - Valid for international cash transactions
+			      Bit6: 1 - Valid for domestic goods
+			      Bit5: 1 - Valid for international goods
+			      Bit4: 1 - Valid for domestic services
+			      Bit3: 1 - Valid for international services
+			      Bit2: 1 - Valid at ATMs
+			      Bit1: 1 - Valid at terminals other than ATMs
+			Byte2 Bit8: 0 - Domestic cashback allowed
+			      Bit7: 0 - International cashback allowed
+			      Bit6: 0 - RFU
+			      Bit5: 0 - RFU
+			      Bit4: 0 - RFU
+			      Bit3: 0 - RFU
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+		tag9F0D Issuer Action Code - Default: F050ECA040
+		tag9F0E Issuer Action Code - Denial: 0000000000
+		tag9F0F Issuer Action Code - Online: F0F8FCF800
+		tag9F1A Terminal Country Code: 124
+		tag9F1E Interface Device Serial Number: PP814365
+		tag9F33 EMV Terminal Capabilities: E0B8C8
+		tag9F35 EMV Terminal Type: 22
+		tag9F39 POS Entry Mode: 05
+		tagFF1D
+		Mod10 Check: 1
+		Masked PAN: 374245*****0001=1512201*
+		Encrypted Data Flag: 1
+		DUKPT KSN (E2EE): FFFF200E2E3210E0016D0114
+		IC Card Data (E2EE): 207609432776523=020315642487122905018
+		AES PAN (E2EE): F31F20C7C9860220B8D9EA0567EF485E
+		LS Card Data (E2EE): B97D12F32C43CC7DCB15F77232CF0DA7DDD5A4E28FD0478048D860D8ABB5A7C0E482F3D1498DEB1DA4ADD45EF6C1F1EF
+		Extended Language Code (E2EE): 0
+	IngenicoCPX: F1 Async EMV Command - EMV_CALL_BACK
+		Async Seq ID: 3
+		Service Code: EMV_CALL_BACK
+		Reason Code: EMV_OK
+	IngenicoCPX: F1 Async EMV ACK Response
+		Async Seq ID: 3
+	IngenicoCPX: F1 Async EMV Response - EMV_GET_AMOUNT
+		Async Seq ID: 85
+		Response Code: 0
+		Multi-Message Protocol: 0/0
+		Service Code: EMV_GET_AMOUNT
+		Reason Code: EMV_UNDEF
+	IngenicoCPX: F1 Async EMV ACK
+		Async Seq ID: 85
+	IngenicoCPX: 58 Display Text
+		Message: PURCHASE / $10.00 Ok?
+		RecvAck - ACK
+	IngenicoCPX: 58 Display Text Response
+		Response Code: 0
+		Key Pressed = F - Ok
+	IngenicoCPX: 59 Clear Display
+		RecvAck - ACK
+	IngenicoCPX: 59 Clear Display Response
+		Response Code: 0
+	IngenicoCPX: F1 Async EMV Command - EMV_GET_AMOUNT
+		Async Seq ID: 4
+		Service Code: EMV_GET_AMOUNT
+		Reason Code: EMV_OK
+	IngenicoCPX: F1 Async EMV ACK Response
+		Async Seq ID: 4
+	IngenicoCPX: F1 Async EMV Response - EMV_GET_PREVIOUS_AMOUNT
+		Async Seq ID: 86
+		Response Code: 0
+		Multi-Message Protocol: 0/0
+		Service Code: EMV_GET_PREVIOUS_AMOUNT
+		Reason Code: EMV_UNDEF
+	IngenicoCPX: F1 Async EMV ACK
+		Async Seq ID: 86
+	IngenicoCPX: F1 Async EMV Command - EMV_GET_PREVIOUS_AMOUNT
+		Async Seq ID: 5
+		Service Code: EMV_GET_PREVIOUS_AMOUNT
+		Reason Code: EMV_OK
+	IngenicoCPX: F1 Async EMV ACK Response
+		Async Seq ID: 5
+	IngenicoCPX: F1 Async EMV Response - EMV_RELEASE_SSA
+		Async Seq ID: 87
+		Response Code: 0
+		Multi-Message Protocol: 0/0
+		Service Code: EMV_RELEASE_SSA
+		Reason Code: EMV_UNDEF
+	IngenicoCPX: F1 Async EMV ACK
+		Async Seq ID: 87
+	IngenicoCPX: F1 Async EMV Command - EMV_RELEASE_SSA
+		Async Seq ID: 6
+		Service Code: EMV_RELEASE_SSA
+		Reason Code: EMV_OK
+	IngenicoCPX: F1 Async EMV ACK Response
+		Async Seq ID: 6
+	IngenicoCPX: F1 Async EMV Response - EMV_GO_ONLINE
+		Async Seq ID: 88
+		Response Code: 0
+		Multi-Message Protocol: 0/437
+		Service Code: EMV_GO_ONLINE
+		Reason Code: EMV_UNDEF
+	IngenicoCPX: F1 Async EMV ACK
+		Async Seq ID: 88
+		tag4F AID: A000000025010801
+		tag82 Application Interchange Profile: 5C00
+			Byte1 Bit8: 0 - RFU
+			      Bit7: 1 - SDA supported
+			      Bit6: 0 - DDA supported
+			      Bit5: 1 - Cardholder verification is supported
+			      Bit4: 1 - Terminal risk management is to be performed
+			      Bit3: 1 - Issuer authentication is supported
+			      Bit2: 0 - RFU
+			      Bit1: 0 - CDA supported
+			Byte2 Bit8: 0 - RFU
+			      Bit7: 0 - RFU
+			      Bit6: 0 - RFU
+			      Bit5: 0 - RFU
+			      Bit4: 0 - RFU
+			      Bit3: 0 - RFU
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+		tag84 Dedicated Filename: A000000025010801
+		tag95 Terminal Verification Result: 4040008000
+			Byte1 Bit8: 0 - Offline data authentication was not performed
+			      Bit7: 1 - SDA failed
+			      Bit6: 0 - ICC data missing
+			      Bit5: 0 - Card appears on terminal exception file 21
+			      Bit4: 0 - DDA failed
+			      Bit3: 0 - CDA failed
+			      Bit2: 0 - SDA Selected
+			      Bit1: 0 - RFU
+			Byte2 Bit8: 0 - ICC and terminal have different application versions
+			      Bit7: 1 - Expired application
+			      Bit6: 0 - Application not yet effective
+			      Bit5: 0 - Requested service not allowed for card product
+			      Bit4: 0 - New card
+			      Bit3: 0 - RFU
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+			Byte3 Bit8: 0 - Cardholder verification was not successful
+			      Bit7: 0 - Unrecognised CVM
+			      Bit6: 0 - PIN Try Limit exceeded
+			      Bit5: 0 - PIN entry required and PIN pad not present or not working
+			      Bit4: 0 - PIN entry required, PIN pad present, but PIN was not entered
+			      Bit3: 0 - Online PIN entered
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+			Byte4 Bit8: 1 - Transaction exceeds floor limit
+			      Bit7: 0 - Lower consecutive offline limit exceeded
+			      Bit6: 0 - Upper consecutive offline limit exceeded
+			      Bit5: 0 - Transaction selected randomly for online processing
+			      Bit4: 0 - Merchant forced transaction online
+			      Bit3: 0 - RFU
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+			Byte5 Bit8: 0 - Default TDOL used
+			      Bit7: 0 - Issuer authentication failed
+			      Bit6: 0 - Script processing failed before final GENERATE AC
+			      Bit5: 0 - Script processing failed after final GENERATE AC
+			      Bit4: 0 - RFU
+			      Bit3: 0 - RFU
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+		tag9A Transaction Date: 161206
+		tag9B Transaction Status Indicator: E800
+			Byte1 Bit8: 1 - Offline data authentication was performed
+			      Bit7: 1 - Cardholder verification was performed
+			      Bit6: 1 - Card risk management was performed
+			      Bit5: 0 - Issuer authentication was performed
+			      Bit4: 1 - Terminal risk management was performed
+			      Bit3: 0 - Script processing was performed
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+			Byte2 Bit8: 0 - RFU
+			      Bit7: 0 - RFU
+			      Bit6: 0 - RFU
+			      Bit5: 0 - RFU
+			      Bit4: 0 - RFU
+			      Bit3: 0 - RFU
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+		tag9C EMV Transaction Type: 00
+		tag5F2A Currency Code: 840
+		tag5F34 Application PAN Sequence Number: 00
+		tag9F02 Primary Amount: 000000001000
+		tag9F08 ICC Application Version Number: 0001
+		tag9F09 ICC Application Version Number: 0001
+		tag9F10 Issuer Application Data: 06020103A40000
+		tag9F1A Terminal Country Code: 124
+		tag9F26 Cryptogram: BE9BE16310B895DB
+		tag9F27 Cryptogram Information Data: 80
+			Bit8-7: '80' - ARQC (Go Online)
+			Bit6-5: 00 - Reserved For Future Use
+			Bit4  : 0 - Advice Required
+			Bit3-1: '00' - No Advice Given
+		tag9F34 Cardholder Verification Method: 410302
+			Byte1 Bit8: 0 - RFU
+			      Bit7: 1 - Apply succeeding CVR if CVM Unsuccessful
+			      Bit6-1: '01' - Plain Text PIN Verification Performed by ICC
+			Byte2 '03' - If Terminal Supports CVM
+			Byte3 '02' - Successful (e.g. for Offline PIN)
+		tag9F35 EMV Terminal Type: 22
+		tag9F36 Application Transaction Counter: 0001
+		tag9F37 Unpredictable Number: 58880D8E
+		tag9F39 POS Entry Mode: 05
+		tag9F41 Transaction Sequence Counter: 00000001
+		tagFF1D
+		Mod10 Check: 1
+		Masked PAN: 374245*****0001=1512201*
+		Encrypted Data Flag: 1
+		DUKPT KSN (E2EE): FFFF200E2E3210E0016D0114
+		IC Card Data (E2EE): 207609432776523=020315642487122905018
+		AES PAN (E2EE): F31F20C7C9860220B8D9EA0567EF485E
+		LS Card Data (E2EE): B97D12F32C43CC7DCB15F77232CF0DA7DDD5A4E28FD0478048D860D8ABB5A7C0E482F3D1498DEB1DA4ADD45EF6C1F1EF
+		Extended Language Code (E2EE): 0
+	IngenicoCPX: 58 Display Text
+		Message: Please Wait / 
+		RecvAck - ACK
+	IngenicoCPX: 58 Display Text Response
+		Response Code: 0
+	IngenicoCPX: F1 Async EMV Command - EMV_GO_ONLINE
+		Async Seq ID: 7
+		Service Code: EMV_GO_ONLINE
+		Reason Code: EMV_OK
+	IngenicoCPX: F1 Async EMV ACK Response
+		Async Seq ID: 7
+	IngenicoCPX: F1 Async EMV Response - EMV_STOP_TRANSACTION
+		Async Seq ID: 89
+		Response Code: 0
+		Multi-Message Protocol: 0/484
+		Service Code: EMV_STOP_TRANSACTION
+		Reason Code: EMV_APPROVED
+	IngenicoCPX: F1 Async EMV ACK
+		Async Seq ID: 89
+		tag4F AID: A000000025010801
+		tag50 Application Label: Personal Account
+		tag5A Application PAN: 374245*****0001
+		tag82 Application Interchange Profile: 5C00
+			Byte1 Bit8: 0 - RFU
+			      Bit7: 1 - SDA supported
+			      Bit6: 0 - DDA supported
+			      Bit5: 1 - Cardholder verification is supported
+			      Bit4: 1 - Terminal risk management is to be performed
+			      Bit3: 1 - Issuer authentication is supported
+			      Bit2: 0 - RFU
+			      Bit1: 0 - CDA supported
+			Byte2 Bit8: 0 - RFU
+			      Bit7: 0 - RFU
+			      Bit6: 0 - RFU
+			      Bit5: 0 - RFU
+			      Bit4: 0 - RFU
+			      Bit3: 0 - RFU
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+		tag8A Authorization Response Code: 00
+		tag95 Terminal Verification Result: 4040008000
+			Byte1 Bit8: 0 - Offline data authentication was not performed
+			      Bit7: 1 - SDA failed
+			      Bit6: 0 - ICC data missing
+			      Bit5: 0 - Card appears on terminal exception file 21
+			      Bit4: 0 - DDA failed
+			      Bit3: 0 - CDA failed
+			      Bit2: 0 - SDA Selected
+			      Bit1: 0 - RFU
+			Byte2 Bit8: 0 - ICC and terminal have different application versions
+			      Bit7: 1 - Expired application
+			      Bit6: 0 - Application not yet effective
+			      Bit5: 0 - Requested service not allowed for card product
+			      Bit4: 0 - New card
+			      Bit3: 0 - RFU
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+			Byte3 Bit8: 0 - Cardholder verification was not successful
+			      Bit7: 0 - Unrecognised CVM
+			      Bit6: 0 - PIN Try Limit exceeded
+			      Bit5: 0 - PIN entry required and PIN pad not present or not working
+			      Bit4: 0 - PIN entry required, PIN pad present, but PIN was not entered
+			      Bit3: 0 - Online PIN entered
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+			Byte4 Bit8: 1 - Transaction exceeds floor limit
+			      Bit7: 0 - Lower consecutive offline limit exceeded
+			      Bit6: 0 - Upper consecutive offline limit exceeded
+			      Bit5: 0 - Transaction selected randomly for online processing
+			      Bit4: 0 - Merchant forced transaction online
+			      Bit3: 0 - RFU
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+			Byte5 Bit8: 0 - Default TDOL used
+			      Bit7: 0 - Issuer authentication failed
+			      Bit6: 0 - Script processing failed before final GENERATE AC
+			      Bit5: 0 - Script processing failed after final GENERATE AC
+			      Bit4: 0 - RFU
+			      Bit3: 0 - RFU
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+		tag9A Transaction Date: 161206
+		tag9B Transaction Status Indicator: E800
+			Byte1 Bit8: 1 - Offline data authentication was performed
+			      Bit7: 1 - Cardholder verification was performed
+			      Bit6: 1 - Card risk management was performed
+			      Bit5: 0 - Issuer authentication was performed
+			      Bit4: 1 - Terminal risk management was performed
+			      Bit3: 0 - Script processing was performed
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+			Byte2 Bit8: 0 - RFU
+			      Bit7: 0 - RFU
+			      Bit6: 0 - RFU
+			      Bit5: 0 - RFU
+			      Bit4: 0 - RFU
+			      Bit3: 0 - RFU
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+		tag9C EMV Transaction Type: 00
+		tag5F24 Expiry Date: 151231
+		tag5F2A Currency Code: 840
+		tag5F2D Cardholder Language: en
+		tag5F34 Application PAN Sequence Number: 00
+		tag9F02 Primary Amount: 000000001000
+		tag9F03 Secondary Amount: 000000000000
+		tag9F07 Application Usage Control: FF00
+			Byte1 Bit8: 1 - Valid for domestic cash transactions
+			      Bit7: 1 - Valid for international cash transactions
+			      Bit6: 1 - Valid for domestic goods
+			      Bit5: 1 - Valid for international goods
+			      Bit4: 1 - Valid for domestic services
+			      Bit3: 1 - Valid for international services
+			      Bit2: 1 - Valid at ATMs
+			      Bit1: 1 - Valid at terminals other than ATMs
+			Byte2 Bit8: 0 - Domestic cashback allowed
+			      Bit7: 0 - International cashback allowed
+			      Bit6: 0 - RFU
+			      Bit5: 0 - RFU
+			      Bit4: 0 - RFU
+			      Bit3: 0 - RFU
+			      Bit2: 0 - RFU
+			      Bit1: 0 - RFU
+		tag9F08 ICC Application Version Number: 0001
+		tag9F09 ICC Application Version Number: 0001
+		tag9F10 Issuer Application Data: 06020103640000
+		tag9F1A Terminal Country Code: 124
+		tag9F26 Cryptogram: 5C221DC28EB72FCF
+		tag9F27 Cryptogram Information Data: 40
+			Bit8-7: '40' - TC (Approved)
+			Bit6-5: 00 - Reserved For Future Use
+			Bit4  : 0 - Advice Required
+			Bit3-1: '00' - No Advice Given
+		tag9F34 Cardholder Verification Method: 410302
+			Byte1 Bit8: 0 - RFU
+			      Bit7: 1 - Apply succeeding CVR if CVM Unsuccessful
+			      Bit6-1: '01' - Plain Text PIN Verification Performed by ICC
+			Byte2 '03' - If Terminal Supports CVM
+			Byte3 '02' - Successful (e.g. for Offline PIN)
+		tag9F35 EMV Terminal Type: 22
+		tag9F36 Application Transaction Counter: 0001
+		tag9F39 POS Entry Mode: 05
+		tag9F41 Transaction Sequence Counter: 00000001
+		tagFF1D
+		Mod10 Check: 1
+		Masked PAN: 374245*****0001=1512201*
+		Encrypted Data Flag: 1
+		DUKPT KSN (E2EE): FFFF200E2E3210E0016D0114
+		IC Card Data (E2EE): 207609432776523=020315642487122905018
+		AES PAN (E2EE): F31F20C7C9860220B8D9EA0567EF485E
+		LS Card Data (E2EE): B97D12F32C43CC7DCB15F77232CF0DA7DDD5A4E28FD0478048D860D8ABB5A7C0E482F3D1498DEB1DA4ADD45EF6C1F1EF
+		Extended Language Code (E2EE): 0
+	IngenicoCPX: F1 Async EMV Command - EMV_STOP_TRANSACTION
+		Async Seq ID: 8
+		Service Code: EMV_STOP_TRANSACTION
+		Reason Code: EMV_APPROVED
+	IngenicoCPX: F1 Async EMV ACK Response
+		Async Seq ID: 8
+	IngenicoCPX: 50 Cancel
+		RecvAck - ACK
+	IngenicoCPX: 50 Cancel Response
+		Response Code: 0
+	IngenicoCPX: F1 Close Session Command
+		RecvAck - ACK
+	IngenicoCPX: F1 Command Response
+		Async Seq ID: 1
+		Response Code: 0
+	IngenicoCPX: 58 Display Text
+		Message: Approved / 
+		RecvAck - ACK
+	IngenicoCPX: 58 Display Text Response
+		Response Code: 0
+	IngenicoCPX: 5B Beep
+		RecvAck - ACK
+	IngenicoCPX: 5B Beep Response
+		Response Code: 0
+	IngenicoCPX: F0 Remove Card Command
+		Remove Timeout: 2
+		RecvAck - ACK
+	IngenicoCPX: F0 Command Response
+		Response Code: 0
+	IngenicoCPX: 58 Display Text
+		Message: WELCOME / 
+		RecvAck - ACK
+	IngenicoCPX: 58 Display Text Response
+		Response Code: 0
