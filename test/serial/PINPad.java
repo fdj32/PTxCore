@@ -77,10 +77,11 @@ public class PINPad {
 //		new byte[] { 0x02, 0x46, 0x30, 0x2E, 0x40, 0x40, 0x50, 0x44,
 //				0x42, 0x7B, 0x60, 0x43, 0x40, 0x03, 0x15 });
 		
-		 PINPad.getInstance().write(UTFUtils.cpx58Display(display));
+		// PINPad.getInstance().write(UTFUtils.cpx58Display(display));
 		// PINPad.getInstance().write(UTFUtils.cpx58Display(display));
 		// PINPad.getInstance().write(UTFUtils.cpx59Clear(1));
 		// PINPad.getInstance().write(UTFUtils.cpx5DDeviceInformation(null));
+		PINPad.getInstance().write(UTFUtils.cmd((new Cpx50CancelRequest()).toString()));
 		PINPad.getInstance().getSerialPort().close();
 	}
 
