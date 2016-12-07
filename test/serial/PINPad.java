@@ -81,7 +81,19 @@ public class PINPad {
 		// PINPad.getInstance().write(UTFUtils.cpx58Display(display));
 		// PINPad.getInstance().write(UTFUtils.cpx59Clear(1));
 		// PINPad.getInstance().write(UTFUtils.cpx5DDeviceInformation(null));
+		
 		PINPad.getInstance().write(UTFUtils.cmd((new Cpx50CancelRequest()).toString()));
+		
+		Cpx6KE2EEManualCardEntryRequest cpx6k = new Cpx6KE2EEManualCardEntryRequest();
+		cpx6k.setLineNumber("1");
+		//cpx6k.setPrompt1(String.format("%-32s", "KEY ACCOUNT #-OK"));
+		cpx6k.setPrompt1("KEY ACCOUNT #-OK");
+		cpx6k.setPrompt1index("10");
+		//cpx6k.setPrompt2(String.format("%-32s", "KEY EXP DATE -OK"));
+		cpx6k.setPrompt2("KEY EXP DATE -OK");
+		cpx6k.setPrompt2index("12");
+		PINPad.getInstance().write(UTFUtils.cmd(cpx6k.toString()));
+		
 		PINPad.getInstance().getSerialPort().close();
 	}
 
