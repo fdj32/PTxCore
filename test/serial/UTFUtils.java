@@ -3,6 +3,7 @@ package serial;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 
+import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang.CharUtils;
 
@@ -46,6 +47,27 @@ public class UTFUtils {
 	public static final String CPX_58_DISPLAY = "58.0041";
 	public static final String CPX_59_CLEAR = "59.";
 	public static final String CPX_6D_TIMED_MULTI_DISPLAY = "6D.";
+	
+	public static byte[] hexLog2bytes(String s) throws DecoderException {
+		s = s.replaceAll(" ", "");
+		return Hex.decodeHex(s.toCharArray());
+	}
+	
+	public static byte[] trimCmd(byte[] cmd){
+		byte[] data = new byte[cmd.length -3];
+		System.arraycopy(cmd, 1, data, 0, cmd.length - 3);
+		return data;
+	}
+	
+	public static byte[] decodeCmd(byte[] cmd) {
+		byte[] cmdEncoded = new byte[cmd.length - 6];
+		System.arraycopy(cmd, 4, cmdEncoded, 0, cmd.length - 6);
+		byte[] cmdDecoded = cpxP16Decode(cmdEncoded);
+		byte[] cmdData = new byte[3 + cmdDecoded.length];
+		System.arraycopy(cmd, 1, cmdData, 0, 3);
+		System.arraycopy(cmdDecoded, 0, cmdData, 3, cmdDecoded.length);
+		return cmdData;
+	}
 	
 	public static byte[] cmd(String cmd) {
 		StringBuffer sb = new StringBuffer();

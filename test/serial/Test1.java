@@ -1,13 +1,12 @@
 package serial;
 
-import java.nio.ByteBuffer;
-
+import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang.StringUtils;
 
 public class Test1 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws DecoderException {
 //		System.out.println((char)(0x1B));
 //		ByteBuffer bb = ByteBuffer.allocate(0);
 //		bb.put((byte)0x01);
@@ -54,6 +53,26 @@ public class Test1 {
 		
 		System.out.println(new String(UTFUtils.cpxP16Decode(UTFUtils.cpxP16Encode("activenetwork".getBytes()))));
 		System.out.println(CpxF1Command.OPEN_SESSION.length());
+		
+		String log = "02 36 49 2E 33 34 35 31  31 35 50 55 52 43 48 41";
+		log = log.replace("  ", " ");
+		String[] arr = log.split(" ");
+		byte[] data = new byte[arr.length];
+		for(int i = 0; i < arr.length; i++) {
+			data[i] = (byte)(Integer.parseInt(arr[i], 16));
+		}
+		System.out.println(Hex.encodeHexString(data));
+		
+		log = "02 36 49 2E 33 34 35 31  31 35 50 55 52 43 48 41"
+				+ "53 45 20 20 20 20 20 20  20 20 1C 24 31 30 2E 30"
+				+ "30 20 20 20 20 20 20 20  20 20 20 1C 49 6E 73 65"
+				+ "72 74 2C 20 54 61 70 20  6F 72 20 20 1C 53 77 69"
+				+ "70 65 20 43 61 72 64 20  20 20 20 20 20 1C 03 5A";
+		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
+		System.out.println(new String(UTFUtils.trimCmd(UTFUtils.hexLog2bytes(log))));
+		
+		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes("02 46 30 2E 40 40 50 47  40 40 40 44 03 48"))));
+		
 	}
 
 }
