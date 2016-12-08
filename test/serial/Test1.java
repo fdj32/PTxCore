@@ -82,6 +82,9 @@ public class Test1 {
 		cpx6IReq.setPrompt3("Insert, Tap or");
 		cpx6IReq.setPrompt4("Swipe Card");
 		System.out.println(cpx6IReq);
+		
+		System.out.println(Hex.encodeHexString(UTFUtils.cmd(cpx6IReq.toString())));
+		
 		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes("02 46 30 2E 40 40 50 47  40 40 40 44 03 48"))));
 		
 	}
