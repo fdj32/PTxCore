@@ -73,7 +73,9 @@ public class UTFUtils {
 		StringBuffer sb = new StringBuffer();
 		sb.append(STX);
 		sb.append(cmd);
-		sb.append(ETX);
+		if(!cmd.endsWith(ETX)) {
+			sb.append(ETX);
+		}
 		return appendLRCToString(sb.toString()).getBytes();
 	}
 

@@ -70,7 +70,18 @@ public class Test1 {
 				+ "70 65 20 43 61 72 64 20  20 20 20 20 20 1C 03 5A";
 		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
 		System.out.println(new String(UTFUtils.trimCmd(UTFUtils.hexLog2bytes(log))));
-		
+		// "6I.345115PURCHASE        $10.00          Insert, Tap or  Swipe Card      "
+		Cpx6IE2EEActivateMSRRequest cpx6IReq = new Cpx6IE2EEActivateMSRRequest();
+		cpx6IReq.setTrackNumber("3");
+		cpx6IReq.setTimeout("45");
+		cpx6IReq.setFunctionKeysActive("1");
+		cpx6IReq.setLinesOrTimeDelay("1");
+		cpx6IReq.setLineNumber("5");
+		cpx6IReq.setPrompt1("PURCHASE");
+		cpx6IReq.setPrompt2("$10.00");
+		cpx6IReq.setPrompt3("Insert, Tap or");
+		cpx6IReq.setPrompt4("Swipe Card");
+		System.out.println(cpx6IReq);
 		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes("02 46 30 2E 40 40 50 47  40 40 40 44 03 48"))));
 		
 	}

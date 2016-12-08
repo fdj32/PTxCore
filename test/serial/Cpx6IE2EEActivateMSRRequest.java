@@ -144,10 +144,10 @@ public class Cpx6IE2EEActivateMSRRequest extends CpxRequest {
 		msg += this.getFunctionKeysActive();
 		msg += this.getLinesOrTimeDelay();
 		msg += this.getLineNumber();
-		msg += this.getPrompt1() + UTFUtils.FS;
-		msg += StringUtils.defaultString(this.getPrompt2()) + UTFUtils.FS;
-		msg += StringUtils.defaultString(this.getPrompt3()) + UTFUtils.FS;
-		msg += StringUtils.defaultString(this.getPrompt4()) + UTFUtils.FS;
+		msg += StringUtils.rightPad(StringUtils.defaultString(this.getPrompt1()), 16, ' ') + UTFUtils.FS;
+		msg += StringUtils.rightPad(StringUtils.defaultString(this.getPrompt2()), 16, ' ') + UTFUtils.FS;
+		msg += StringUtils.rightPad(StringUtils.defaultString(this.getPrompt3()), 16, ' ') + UTFUtils.FS;
+		msg += StringUtils.rightPad(StringUtils.defaultString(this.getPrompt4()), 16, ' ') + UTFUtils.FS;
 		return msg;
 	}
 }
