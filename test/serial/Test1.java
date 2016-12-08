@@ -88,6 +88,19 @@ public class Test1 {
 		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes("02 46 30 2E 40 40 50 47  40 40 40 44 03 48"))));
 		
 		System.out.println(Hex.encodeHexString(UTFUtils.cmd((new CpxF0Request(CpxF0Command.cpxF0WaitForSmartCardInsertion(0))).toString())));
+		
+		log = "02 46 31 2E 40 41 6C 42  40 50 45 42 4C 65 7D 50"
+				+ "55 47 61 45 5B 66 5D 69  5B 66 55 43 50 53 41 43"
+				+ "4C 43 41 5F 50 57 41 56  5A 57 4C 03 33";
+		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
+		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(Hex.encodeHexString(UTFUtils.lgt(27, 2)));
+		System.out.println(Hex.encodeHexString(CpxF1Command.cpxF1OpenSession("\u0001").toString().getBytes()));
+		System.out.println((new CpxF1Request(CpxF1Command.cpxF1OpenSession("\u0001"))).toString());
+		System.out.println(Hex.encodeHexString((new CpxF1Request(CpxF1Command.cpxF1OpenSession("\u0001"))).toString().getBytes()));
+		System.out.println(Hex.encodeHexString(UTFUtils.cmd((new CpxF1Request(CpxF1Command.cpxF1OpenSession("\u0001"))).toString())));
+		
 	}
 
 }

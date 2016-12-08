@@ -34,6 +34,13 @@ public class CpxF1Request extends CpxRequest {
 		this.setMessageType("F1.");
 		this.setEncode(true);
 	}
+	
+	public CpxF1Request(CpxF1Command cmd) {
+		super();
+		this.setMessageType("F1.");
+		this.setEncode(true);
+		this.setCmd(cmd);
+	}
 
 	@Override
 	public String toString() {

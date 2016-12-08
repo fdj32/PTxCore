@@ -48,6 +48,15 @@ public class UTFUtils {
 	public static final String CPX_59_CLEAR = "59.";
 	public static final String CPX_6D_TIMED_MULTI_DISPLAY = "6D.";
 	
+	public static byte[] lgt(int value, int length) {
+		byte[] lgt = new byte[length];
+		for(int i = 0; i < length - 1; i++) {
+			lgt[i] = (byte)(value / Math.pow(0x100, length - 1 - i));
+		}
+		lgt[length - 1] = (byte)(value % 0x100);
+		return lgt;
+	}
+	
 	public static byte[] hexLog2bytes(String s) throws DecoderException {
 		s = s.replaceAll(" ", "");
 		return Hex.decodeHex(s.toCharArray());

@@ -9,7 +9,7 @@ import org.apache.commons.lang.StringUtils;
  * @see CpxF1Request
  */
 public class CpxF1Command {
-	
+
 	public static final String EMV_VERSION = "\u0001";
 	public static final String OPEN_SESSION = "\u0002";
 	public static final String CLOSE_SESSION = "\u0003";
@@ -134,6 +134,23 @@ public class CpxF1Command {
 		c.setLgt(new String(new byte[] { 0, 0x02 }));
 		c.setCmdType(new String(new byte[] { (byte) 0x05 }));
 		c.setMsgSeqId(inSeqId);
+		return c;
+	}
+
+	/**
+	 * EMV OPEN SESSION REQUEST (Type 0x02) [Synchronous] Page.154/184
+	 * 
+	 * @param inSeqId
+	 * @return
+	 */
+	public static CpxF1Command cpxF1OpenSession(String inSeqId) {
+		CpxF1Command c = new CpxF1Command();
+		c.setLgt(new String(UTFUtils.lgt(1+1+1+12+12, 2)));
+		c.setCmdType(new String(new byte[] { (byte) 0x02 }));
+		c.setMsgSeqId(inSeqId);
+		c.setMsgVer("\u0001");
+		c.setpAppName("B2_PTxEngine");
+		c.seteAppName("CA0C00_ApVis");
 		return c;
 	}
 
