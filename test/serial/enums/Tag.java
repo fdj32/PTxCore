@@ -1,5 +1,12 @@
 package serial.enums;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.lang.StringUtils;
+
 /**
  * merchant-service/info/EMV/EMV_v4
  * .3_Book/EMV_v4.3_Book_3_Application_Specification_20120607062110791.pdf
@@ -79,5 +86,84 @@ public class Tag {
 	public static final int tDF59_PROPRIETARY_TAG = 0xDF59;
 	public static final int t9F26_1ST_CRYPTOGRAM = 0x19F26;
 	public static final int t9F27_1ST_CRYPTO_INFO_DATA = 0x19F27;
+
+	/**
+	 * 2 bytes
+	 */
+	private int id;
+	/**
+	 * 2 bytes
+	 */
+	private int length;
+	/**
+	 * Hex String
+	 */
+	private String value;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getLength() {
+		return length;
+	}
+
+	public void setLength(int length) {
+		this.length = length;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
+	public Tag() {
+	}
+
+	public Tag(int id, String value) {
+		super();
+		this.setId(id);
+		this.setValue(value);
+		this.setLength(this.getValue().length() / 2);
+	}
+	
+	public static byte[] buildTLV(Tag t) throws DecoderException {
+		int size = 2 + 2 + t.getValue().length() / 2;
+		byte[] tlv = new byte[size];
+		tlv[0] = (byte) (t.getId() / 0x100);
+		tlv[1] = (byte) (t.getId() % 0x100);
+		tlv[2] = (byte) (t.getLength() / 0x100);
+		tlv[3] = (byte) (t.getLength() % 0x100);
+		System.arraycopy(Hex.decodeHex(t.getValue().toCharArray()), 0, tlv, 4,
+				t.getValue().length() / 2);
+		return tlv;
+	}
+
+	public static Tag parseTLV(String hexData) {
+		Tag t = new Tag();
+		t.setId(Integer.parseInt(hexData.substring(0, 4), 16));
+		t.setLength(Integer.parseInt(hexData.substring(4, 8), 16));
+		t.setValue(hexData.substring(8, 8 + t.getLength() * 2));
+		return t;
+	}
+
+	public static List<Tag> parseTLVList(String hexData) {
+		String str = hexData;
+		List<Tag> list = new ArrayList<Tag>();
+		Tag t = null;
+		while(StringUtils.isNotEmpty(str)) {
+			t = parseTLV(str);
+			list.add(t);
+			str = str.substring(4 + 4 + t.getLength() * 2);
+		}
+		return list;
+	}
 
 }

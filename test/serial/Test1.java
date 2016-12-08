@@ -1,8 +1,12 @@
 package serial;
 
+import java.util.List;
+
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang.StringUtils;
+
+import serial.enums.Tag;
 
 public class Test1 {
 
@@ -135,6 +139,23 @@ public class Test1 {
 		// IngenicoCPXVega.BuildEmvStartContactless
 		System.out.println(Hex.encodeHexString(new byte[]{(byte)0x9f, (byte)0x5a}));
 		System.out.println(Hex.encodeHexString(Hex.decodeHex("9f5a".toCharArray())));
+		
+		Tag t = new Tag(0xff04, "00");
+		System.out.println(Hex.encodeHexString(Tag.buildTLV(t)));
+		t = new Tag(0x81, "000003e8");
+		System.out.println(Hex.encodeHexString(Tag.buildTLV(t)));
+		t = new Tag(0x9f04, "00000000");
+		System.out.println(Hex.encodeHexString(Tag.buildTLV(t)));
+		t = new Tag(0x9f5a, "00");
+		System.out.println(Hex.encodeHexString(Tag.buildTLV(t)));
+		
+		t = Tag.parseTLV("ff04000100");
+		System.out.println(t.getLength());
+		
+		List<Tag> tagList = Tag.parseTLVList("ff0400010000810004000003e89f040004000000009f5a000100");
+		for(Tag tag : tagList) {
+			System.out.println(Hex.encodeHexString(Tag.buildTLV(tag)));
+		}
 	}
 
 }
