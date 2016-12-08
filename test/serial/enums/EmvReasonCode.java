@@ -1,0 +1,67 @@
+package serial.enums;
+
+public interface EmvReasonCode {
+
+	public static final int EMV_USER_CANCELLED = 0;
+	public static final int EMV_OK = 1;
+	public static final int EMV_APPROVED = 2;
+	public static final int EMV_DECLINED = 3;
+	public static final int EMV_END_OF_EMV_DIALOG = 4;
+	public static final int EMV_DIFFERENT_RID = 5;
+	public static final int EMV_RESELECTION = 6;
+	public static final int EMV_END_OF_DIAGNOSTICS_FLOW = 7;
+	public static final int EMV_FROM_FILE = 8;
+	public static final int EMV_OK_NO_MAC_KEY = 9;
+	public static final int EMV_ACK = 10;
+	public static final int EMV_OK_ACTION = 11;
+	public static final int EMV_OFFLINE_PIN_OK = 12;
+	public static final int EMV_CV_BYPASSED = 13;
+	public static final int EMV_CONTACTLESS_PERMITTED = 14;
+	public static final int EMV_CONTACTLESS_NOT_PERMITTED = 15;
+	public static final int EMV_REVERT = 16;
+	public static final int EMV_CONTACT_OK_CONTACTLESS_FAIL = 17;
+	public static final int EMV_NO_MAC_KEY_CONTACT_OK_CONTACTLESS_FAIL = 18;
+	public static final int EMV_MOBILE_PHONE_TAPPED = 19;
+	public static final int EMV_REPRESENT_CLESS_CARD = 20;
+	public static final int EMV_ISP_OK = 21;
+	public static final int EMV_ON_INFORM_ZEROLEN = 22;
+	public static final int EMV_KEYBOARD_INPUT_ZEROLEN = 23;
+	public static final int MAX_N_EMV_REASONS = 24;
+	public static final int EMV_CHIP_DATA_INACCESSIBLE = -100;
+	public static final int EMV_NO_AID_MATCH = -99;
+	public static final int EMV_PIN_TRY_EXCEEDED = -98;
+	public static final int EMV_CARD_REMOVED = -97;
+	public static final int EMV_TIME_OUT = -96;
+	public static final int EMV_FAIL = -95;
+	public static final int EMV_HOST_NOT_AVAILABLE = -94;
+	public static final int EMV_CARD_BLOCKED = -93;
+	public static final int EMV_CARD_OR_APP_BLOCKED = -93;
+	public static final int EMV_NOT_INITIALIZED = -92;
+	public static final int EMV_KEYBOARD_INPUT_TOO_SHORT = -91;
+	public static final int EMV_INVALID_PIN = -90;
+	public static final int EMV_LAST_PIN_TRY = -89;
+	public static final int EMV_KEYBOARD_INPUT_EMPTY = -88;
+	public static final int EMV_CARD_PROCESS_ERROR = -87;
+	public static final int EMV_FATAL_ERROR = -86;
+	public static final int EMV_SERVICE_NOT_SUPPORTED = -85;
+	public static final int EMV_INVALID_KEY = -84;
+	public static final int EMV_AID_BLOCKED = -83;
+	public static final int EMV_MAC_FAIL = -82;
+	public static final int EMV_NO_SSA_HANDLE = -81;
+	public static final int EMV_NAK = -80;
+	public static final int EMV_AUTH_INVALID_DATA = -79;
+	public static final int EMV_AUTH_TAG_NOT_SUPPORTED = -78;
+	public static final int EMV_MANDATORY_TAG_MISSING = -77;
+	public static final int EMV_INVALID_PARAMETER = -76;
+	public static final int EMV_CONTACTLESS_MULTIPLE_CARDS_NOT_ALLOWED = -75;
+	public static final int EMV_COMM_ERROR_WITH_EXTERNAL_READER = -74;
+	public static final int EMV_INVALID_AMOUNT = -73;
+	public static final int EMV_CARD_EXPIRED = -72;
+	public static final int EMV_CARD_NOT_SUPPORTED = -71;
+	public static final int EMV_NO_CARD_RESPONSE = -70;
+	public static final int EMV_DATA_AUTHENTICATION_FAIL = -69;
+	public static final int EMV_E2EE_ERROR = -68;
+	public static final int EMV_ISP_FAIL = -67;
+	public static final int EMV_UNDEF = -1;
+
+}

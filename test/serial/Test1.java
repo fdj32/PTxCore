@@ -130,7 +130,7 @@ public class Test1 {
 		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		// 19ff1a00ff0400010000810004000003e89f040004000000009f5a000100
-		// 0142-07204-0503%20Generic%20EMV%20API.pdf Page.167/167
+		// 0142-07204-0503%20Generic%20EMV%20API.pdf Page.106/167
 		
 	}
 
