@@ -130,8 +130,11 @@ public class Test1 {
 		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		// 19ff1a00ff0400010000810004000003e89f040004000000009f5a000100
+		// 19 ff 1a00 ff04 0001 00 0081 0004 000003e8 9f04 0004 00000000 9f5a 0001 00
 		// 0142-07204-0503%20Generic%20EMV%20API.pdf Page.106/167
-		
+		// IngenicoCPXVega.BuildEmvStartContactless
+		System.out.println(Hex.encodeHexString(new byte[]{(byte)0x9f, (byte)0x5a}));
+		System.out.println(Hex.encodeHexString(Hex.decodeHex("9f5a".toCharArray())));
 	}
 
 }
