@@ -21,6 +21,16 @@ public class CpxF1Command {
 	public static final String BINARY_MAC_VERIFY = "\u0045";
 
 	/**
+	 * Page.156/184 0x00=Normal
+	 */
+	public static final String STATUS_NORMAL = "\u0000";
+	/**
+	 * Page.156/184 0x04=EMV has closed session (DATA is TLV information sent
+	 * during close)
+	 */
+	public static final String STATUS_CLOSED = "\u0004";
+
+	/**
 	 * 2 bytes, length of application field information
 	 */
 	private String lgt;
@@ -34,6 +44,10 @@ public class CpxF1Command {
 	 * send).
 	 */
 	private String msgSeqId;
+	/**
+	 * 0 or 1 byte, Page.156/184 ASYNCHRONOUS EMV COMMAND (Type 0x04)
+	 */
+	private String status;
 	/**
 	 * 1 byte, message version to allow for future expansion and legacy message
 	 * handling
@@ -78,6 +92,14 @@ public class CpxF1Command {
 		this.msgSeqId = msgSeqId;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public String getMsgVer() {
 		return msgVer;
 	}
@@ -115,6 +137,7 @@ public class CpxF1Command {
 		String msg = this.getLgt();
 		msg += this.getCmdType();
 		msg += StringUtils.defaultString(this.getMsgSeqId());
+		msg += StringUtils.defaultString(this.getStatus());
 		msg += StringUtils.defaultString(this.getMsgVer());
 		msg += StringUtils.defaultString(this.getpAppName());
 		msg += StringUtils.defaultString(this.geteAppName());
@@ -132,7 +155,7 @@ public class CpxF1Command {
 	public static CpxF1Command asynEmvCmdAck(String inSeqId) {
 		CpxF1Command c = new CpxF1Command();
 		c.setLgt(new String(new byte[] { 0, 0x02 }));
-		c.setCmdType(new String(new byte[] { (byte) 0x05 }));
+		c.setCmdType(ASYN_EMV_ACK);
 		c.setMsgSeqId(inSeqId);
 		return c;
 	}
@@ -145,12 +168,31 @@ public class CpxF1Command {
 	 */
 	public static CpxF1Command cpxF1OpenSession(String inSeqId) {
 		CpxF1Command c = new CpxF1Command();
-		c.setLgt(new String(UTFUtils.lgt(1+1+1+12+12, 2)));
-		c.setCmdType(new String(new byte[] { (byte) 0x02 }));
+		c.setLgt(new String(UTFUtils.lgt(1 + 1 + 1 + 12 + 12, 2)));
+		c.setCmdType(OPEN_SESSION);
 		c.setMsgSeqId(inSeqId);
-		c.setMsgVer("\u0001");
+		c.setMsgVer(EMV_VERSION);
 		c.setpAppName("B2_PTxEngine");
 		c.seteAppName("CA0C00_ApVis");
+		return c;
+	}
+
+	/**
+	 * ASYNCHRONOUS EMV COMMAND (Type 0x04) [Asynchronous] Page.156/184
+	 * 
+	 * @param inSeqId
+	 * @return
+	 */
+	public static CpxF1Command cpxF1AsyncEmvData(String inSeqId, String emvData) {
+		CpxF1Command c = new CpxF1Command();
+		c.setLgt(new String(UTFUtils.lgt(1 + 1 + 1 + 1 + 12 + 12, 2)));
+		c.setCmdType(ASYN_EMV);
+		c.setMsgSeqId(inSeqId);
+		c.setStatus(STATUS_NORMAL); // Normal
+		c.setMsgVer(EMV_VERSION);
+		c.setpAppName("B2_PTxEngine");
+		c.seteAppName("CA0C00_ApVis");
+		c.setDataE(emvData); // VEGA Command
 		return c;
 	}
 

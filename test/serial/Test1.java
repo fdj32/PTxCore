@@ -119,6 +119,19 @@ public class Test1 {
 		System.out.println(cpxF1Resp.getRst().geteAppName());
 		System.out.println(cpxF1Resp.getRst().getpAppName());
 		
+		log = "02 46 31 2E 40 43 68 44  40 40 40 41 50 63 49 5F"
+				+ "54 45 51 78 51 56 79 67  5A 56 79 65 50 74 44 70"
+				+ "50 73 40 70 57 74 45 70  55 66 65 73 46 5F 7C 5A"
+				+ "40 4F 7C 44 40 40 44 40  40 48 44 40 41 40 40 40"
+				+ "40 7E 62 5F 41 40 40 44  40 40 40 40 40 49 7D 5A"
+				+ "40 40 44 40 03 7D";
+		
+		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
+		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		// 19ff1a00ff0400010000810004000003e89f040004000000009f5a000100
+		// 0142-07204-0503%20Generic%20EMV%20API.pdf Page.167/167
+		
 	}
 
 }
