@@ -34,6 +34,13 @@ public class CpxF0Request extends CpxRequest {
 		this.setMessageType("F0.");
 		this.setEncode(true);
 	}
+	
+	public CpxF0Request(CpxF0Command cmd) {
+		super();
+		this.setMessageType("F0.");
+		this.setEncode(true);
+		this.setCmd(cmd);
+	}
 
 	@Override
 	public String toString() {
