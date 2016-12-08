@@ -63,6 +63,8 @@ public class Test1 {
 		}
 		System.out.println(Hex.encodeHexString(data));
 		
+		System.out.println("--------------------------------------------------------------------------------");
+		
 		log = "02 36 49 2E 33 34 35 31  31 35 50 55 52 43 48 41"
 				+ "53 45 20 20 20 20 20 20  20 20 1C 24 31 30 2E 30"
 				+ "30 20 20 20 20 20 20 20  20 20 20 1C 49 6E 73 65"
@@ -89,6 +91,8 @@ public class Test1 {
 		
 		System.out.println(Hex.encodeHexString(UTFUtils.cmd((new CpxF0Request(CpxF0Command.cpxF0WaitForSmartCardInsertion(0))).toString())));
 		
+		System.out.println("--------------------------------------------------------------------------------");
+		
 		log = "02 46 31 2E 40 41 6C 42  40 50 45 42 4C 65 7D 50"
 				+ "55 47 61 45 5B 66 5D 69  5B 66 55 43 50 53 41 43"
 				+ "4C 43 41 5F 50 57 41 56  5A 57 4C 03 33";
@@ -100,6 +104,20 @@ public class Test1 {
 		System.out.println((new CpxF1Request(CpxF1Command.cpxF1OpenSession("\u0001"))).toString());
 		System.out.println(Hex.encodeHexString((new CpxF1Request(CpxF1Command.cpxF1OpenSession("\u0001"))).toString().getBytes()));
 		System.out.println(Hex.encodeHexString(UTFUtils.cmd((new CpxF1Request(CpxF1Command.cpxF1OpenSession("\u0001"))).toString())));
+		
+		System.out.println("--------------------------------------------------------------------------------");
+		
+		log = "02 46 31 2E 40 41 70 42  40 50 40 41 50 74 44 70"
+				+ "50 73 40 70 57 74 45 70  55 66 65 73 50 63 49 5F"
+				+ "54 45 51 78 51 56 79 67  5A 56 79 65 03 5C";
+		
+		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
+		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		CpxF1Response cpxF1Resp = CpxF1Response.parse(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(Hex.encodeHexString(cpxF1Resp.getRst().getStatus().getBytes()));
+		System.out.println(cpxF1Resp.getRst().geteAppName());
+		System.out.println(cpxF1Resp.getRst().getpAppName());
 		
 	}
 
