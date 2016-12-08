@@ -19,6 +19,10 @@ public class CpxF1Command {
 	public static final String EMV_REG_VEGA_FOR_AUTO_INIT = "\u0010";
 	public static final String BINARY_MAC_CALC = "\u0043";
 	public static final String BINARY_MAC_VERIFY = "\u0045";
+	
+	public static final String P_APP_NAME = "B2_PTxEngine";
+	
+	public static final String E_APP_NAME = "CA0C00_ApVis";
 
 	/**
 	 * Page.156/184 0x00=Normal
@@ -172,8 +176,8 @@ public class CpxF1Command {
 		c.setCmdType(OPEN_SESSION);
 		c.setMsgSeqId(inSeqId);
 		c.setMsgVer(EMV_VERSION);
-		c.setpAppName("B2_PTxEngine");
-		c.seteAppName("CA0C00_ApVis");
+		c.setpAppName(P_APP_NAME);
+		c.seteAppName(E_APP_NAME);
 		return c;
 	}
 
@@ -185,13 +189,13 @@ public class CpxF1Command {
 	 */
 	public static CpxF1Command cpxF1AsyncEmvData(String inSeqId, String emvData) {
 		CpxF1Command c = new CpxF1Command();
-		c.setLgt(new String(UTFUtils.lgt(1 + 1 + 1 + 1 + 12 + 12, 2)));
+		c.setLgt(new String(UTFUtils.lgt(1 + 1 + 1 + 1 + 12 + 12 + emvData.length(), 2)));
 		c.setCmdType(ASYN_EMV);
 		c.setMsgSeqId(inSeqId);
 		c.setStatus(STATUS_NORMAL); // Normal
 		c.setMsgVer(EMV_VERSION);
-		c.setpAppName("B2_PTxEngine");
-		c.seteAppName("CA0C00_ApVis");
+		c.setpAppName(P_APP_NAME);
+		c.seteAppName(E_APP_NAME);
 		c.setDataE(emvData); // VEGA Command
 		return c;
 	}
