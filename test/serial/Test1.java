@@ -156,6 +156,15 @@ public class Test1 {
 		for(Tag tag : tagList) {
 			System.out.println(Hex.encodeHexString(Tag.buildTLV(tag)));
 		}
+		
+		log = "02 46 31 2E 40 41 6C 43  40 50 45 42 4C 65 7D 50"
+				+ "55 47 61 45 5B 66 5D 69  5B 66 55 43 50 53 41 43"
+				+ "4C 43 41 5F 50 57 41 56  5A 57 4C 03 32";
+		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
+		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(Hex.encodeHex(UTFUtils.cmd((new CpxF1Request(CpxF1Command.cpxF1CloseSession("\u0001"))).toString())));
+		
 	}
 
 }

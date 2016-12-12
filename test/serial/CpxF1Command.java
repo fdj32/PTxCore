@@ -199,5 +199,22 @@ public class CpxF1Command {
 		c.setDataE(emvData); // VEGA Command
 		return c;
 	}
+	
+	/**
+	 * EMV CLOSE SESSION REQUEST (Type 0x03) [Synchronous] Page.155/184
+	 * 
+	 * @param inSeqId
+	 * @return
+	 */
+	public static CpxF1Command cpxF1CloseSession(String inSeqId) {
+		CpxF1Command c = new CpxF1Command();
+		c.setLgt(new String(UTFUtils.lgt(1 + 1 + 1 + 12 + 12, 2)));
+		c.setCmdType(CLOSE_SESSION);
+		c.setMsgSeqId(inSeqId);
+		c.setMsgVer(EMV_VERSION);
+		c.setpAppName(P_APP_NAME);
+		c.seteAppName(E_APP_NAME);
+		return c;
+	}
 
 }
