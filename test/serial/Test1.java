@@ -165,6 +165,19 @@ public class Test1 {
 		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		System.out.println(Hex.encodeHex(UTFUtils.cmd((new CpxF1Request(CpxF1Command.cpxF1CloseSession("\u0001"))).toString())));
 		
+		log = "02 35 38 2E 30 30 34 31  20 20 20 20 20 20 20 20"
+				+ "20 20 20 20 20 20 20 20  50 6C 65 61 73 65 20 57"
+				+ "61 69 74 20 20 20 20 20  20 20 20 20 20 20 20 20"
+				+ "20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20"
+				+ "20 20 20 20 20 20 20 20  03 20";
+		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
+		Cpx58DisplayMode01Request cpx58 = new Cpx58DisplayMode01Request();
+		cpx58.setMode("0");
+		cpx58.setToggle("0");
+		cpx58.setLines("4");
+		cpx58.setLineStartIndex("1");
+		cpx58.setPrompt2("Please Wait");
+		System.out.println(Hex.encodeHex(UTFUtils.cmd(cpx58.toString())));
 	}
 
 }
