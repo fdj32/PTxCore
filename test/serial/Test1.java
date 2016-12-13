@@ -1,5 +1,6 @@
 package serial;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import org.apache.commons.codec.DecoderException;
@@ -10,7 +11,7 @@ import serial.enums.Tag;
 
 public class Test1 {
 
-	public static void main(String[] args) throws DecoderException {
+	public static void main(String[] args) throws DecoderException, UnsupportedEncodingException {
 //		System.out.println((char)(0x1B));
 //		ByteBuffer bb = ByteBuffer.allocate(0);
 //		bb.put((byte)0x01);
@@ -178,6 +179,43 @@ public class Test1 {
 		cpx58.setLineStartIndex("1");
 		cpx58.setPrompt2("Please Wait");
 		System.out.println(Hex.encodeHex(UTFUtils.cmd(cpx58.toString())));
+		
+		log = "02 46 31 2E 40 43 64 44  40 40 40 41 50 63 49 5F"
+				+ "54 45 51 78 51 56 79 67  5A 56 79 65 50 74 44 70"
+				+ "50 73 40 70 57 74 45 70  55 66 65 73 40 6F 7C 59"
+				+ "40 4F 7E 5F 4E 50 40 41  41 5F 7C 44 40 40 44 40"
+				+ "67 74 44 40 41 40 40 40  40 40 45 5F 4A 60 40 42"
+				+ "42 44 40 03 27";
+		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
+		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		byte[] emvData = UTFUtils.hexLog2bytes("02ff1900ff9f39000105ff040001009f410004000000015f2a00020840");
+		byte[] cmdData = CpxF1Command.cpxF1AsyncEmvData("\u0000", emvData).toBinary();
+		System.out.println(Hex.encodeHexString(cmdData));
+		System.out.println(Hex.encodeHexString(UTFUtils.cpxP16Encode(cmdData)));
+		
+		byte[] out = new byte[cmdData.length*2];
+		int outlen = 0;
+		outlen = UTFUtils.cpxP16Encode(cmdData, cmdData.length, out, 0);
+		byte[] encoded = new byte[outlen];
+		System.arraycopy(out, 0, encoded, 0, outlen);
+		System.out.println(Hex.encodeHexString(encoded));
+		System.out.println(outlen);
+		
+		
+		
+		String s = new String(new byte[]{(byte)0xff});
+		System.out.println(Hex.encodeHexString(s.getBytes()));
+		System.out.println(Hex.encodeHexString("\u00ff".getBytes()));
+		System.out.println(String.format("%x", (byte)0xff));
+		
+		
+		
+		
+		System.out.println(Hex.encodeHexString(UTFUtils.cpxP16Encode(new byte[]{0, 0x39, 0x04})));
+		
+		//System.out.println(Hex.encodeHexString(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData("\u0000", emvData)).toBinary()));
+		
 	}
 
 }

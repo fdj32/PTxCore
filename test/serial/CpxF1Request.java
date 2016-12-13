@@ -42,15 +42,20 @@ public class CpxF1Request extends CpxRequest {
 		this.setCmd(cmd);
 	}
 
-	@Override
-	public String toString() {
-		String msg = this.getMessageType();
-		if (this.isEncode()) {
-			msg += UTFUtils.cpxP16Encode(this.getCmd().toString());
+	public byte[] toBinary() {
+		byte[] cmdData = this.getCmd().toBinary();
+		byte[] cmdEncoded = UTFUtils.cpxP16Encode(cmdData);
+		byte[] data = null;
+		if(this.isEncode()) {
+			data = new byte[3 + cmdEncoded.length];
+			System.arraycopy(this.getMessageType().getBytes(), 0, data, 0, 3);
+			System.arraycopy(cmdEncoded, 0, data, 3, cmdEncoded.length);
 		} else {
-			msg += this.getCmd().toString();
+			data = new byte[3 + cmdData.length];
+			System.arraycopy(this.getMessageType().getBytes(), 0, data, 0, 3);
+			System.arraycopy(cmdData, 0, data, 3, cmdData.length);
 		}
-		return msg;
+		return data;
 	}
 
 }

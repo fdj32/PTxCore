@@ -251,29 +251,39 @@ public class UTFUtils {
 			switch(i%3) {
 			case 0:
 				b = (byte)(in[i] >> 2);
+				b = (byte)(b & 0x3F);
 				bb.put((byte)(b | 0x40));
 				if(i == in.length - 1) {
 					b = (byte)(in[i] << 6);
 					b = (byte)(b >> 2);
+					b = (byte)(b & 0x3F);
 					bb.put((byte)(b | 0x40));
 				}
 				break;
 			case 1:
 				b = (byte)(in[i - 1] << 6);
 				b = (byte)(b >> 2);
-				bb.put((byte)(b | 0x40 | (byte)(in[i] >> 4)));
+				b = (byte)(b & 0x3F);
+				b = (byte)(b | 0x40);
+				b = (byte)(b | (byte)((in[i] >> 4) & 0x0F));
+				bb.put(b);
 				if(i == in.length - 1) {
 					b = (byte)(in[i] << 4);
 					b = (byte)(b >> 2);
+					b = (byte)(b & 0x3F);
 					bb.put((byte)(0x40 | b));
 				}
 				break;
 			case 2:
 				b = (byte)(in[i - 1] << 4);
 				b = (byte)(b >> 2);
-				bb.put((byte)(0x40 | b | (byte)(in[i] >> 6)));
+				b = (byte)(b & 0x3C);
+				b = (byte)(0x40 | b);
+				b = (byte)(b | (byte)((in[i]>>6) & 0x03));
+				bb.put(b);
 				b = (byte)(in[i] << 2);
 				b = (byte)(b >> 2);
+				b = (byte)(b & 0x3F);
 				bb.put((byte)(0x40 | b));
 				break;
 			}
@@ -322,4 +332,12 @@ public class UTFUtils {
 		bb.get(out, 0, position);
 		return out;
 	}
+	
+	public static String bytes2string(byte[] data) {
+		StringBuffer sb = new StringBuffer();
+		for(byte b : data) {
+			sb.append(new String(new byte[]{b}));
+		}
+		return sb.toString();
+	} 
 }

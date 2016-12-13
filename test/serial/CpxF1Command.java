@@ -70,7 +70,7 @@ public class CpxF1Command {
 	 * (LGT – 27) bytes, EMV data information field for the CPX EMV command
 	 * selected
 	 */
-	private String dataE;
+	private byte[] dataE;
 
 	public String getLgt() {
 		return lgt;
@@ -128,16 +128,15 @@ public class CpxF1Command {
 		this.eAppName = eAppName;
 	}
 
-	public String getDataE() {
+	public byte[] getDataE() {
 		return dataE;
 	}
 
-	public void setDataE(String dataE) {
+	public void setDataE(byte[] dataE) {
 		this.dataE = dataE;
 	}
 
-	@Override
-	public String toString() {
+	public byte[] toBinary() {
 		String msg = this.getLgt();
 		msg += this.getCmdType();
 		msg += StringUtils.defaultString(this.getMsgSeqId());
@@ -145,8 +144,11 @@ public class CpxF1Command {
 		msg += StringUtils.defaultString(this.getMsgVer());
 		msg += StringUtils.defaultString(this.getpAppName());
 		msg += StringUtils.defaultString(this.geteAppName());
-		msg += StringUtils.defaultString(this.getDataE());
-		return msg;
+		byte[] data1 = msg.getBytes();
+		byte[] data = new byte[data1.length + this.getDataE().length];
+		System.arraycopy(data1, 0, data, 0, data1.length);
+		System.arraycopy(this.getDataE(), 0, data, data1.length, this.getDataE().length);
+		return data;
 	}
 
 	/**
@@ -187,9 +189,9 @@ public class CpxF1Command {
 	 * @param inSeqId
 	 * @return
 	 */
-	public static CpxF1Command cpxF1AsyncEmvData(String inSeqId, String emvData) {
+	public static CpxF1Command cpxF1AsyncEmvData(String inSeqId, byte[] emvData) {
 		CpxF1Command c = new CpxF1Command();
-		c.setLgt(new String(UTFUtils.lgt(1 + 1 + 1 + 1 + 12 + 12 + emvData.length(), 2)));
+		c.setLgt(new String(UTFUtils.lgt(1 + 1 + 1 + 1 + 12 + 12 + emvData.length, 2)));
 		c.setCmdType(ASYN_EMV);
 		c.setMsgSeqId(inSeqId);
 		c.setStatus(STATUS_NORMAL); // Normal
