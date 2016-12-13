@@ -7,6 +7,7 @@ import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang.StringUtils;
 
+import serial.enums.AidCandidate;
 import serial.enums.Tag;
 import serial.enums.Vega;
 
@@ -106,10 +107,10 @@ public class Test1 {
 		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		System.out.println(Hex.encodeHexString(UTFUtils.lgt(27, 2)));
-		System.out.println(Hex.encodeHexString(CpxF1Command.cpxF1OpenSession("\u0001").toString().getBytes()));
-		System.out.println((new CpxF1Request(CpxF1Command.cpxF1OpenSession("\u0001"))).toString());
-		System.out.println(Hex.encodeHexString((new CpxF1Request(CpxF1Command.cpxF1OpenSession("\u0001"))).toString().getBytes()));
-		System.out.println(Hex.encodeHexString(UTFUtils.cmd((new CpxF1Request(CpxF1Command.cpxF1OpenSession("\u0001"))).toString())));
+		System.out.println(Hex.encodeHexString(CpxF1Command.cpxF1OpenSession((byte)0x01).toString().getBytes()));
+		System.out.println((new CpxF1Request(CpxF1Command.cpxF1OpenSession((byte)0x01))).toString());
+		System.out.println(Hex.encodeHexString((new CpxF1Request(CpxF1Command.cpxF1OpenSession((byte)0x01))).toString().getBytes()));
+		System.out.println(Hex.encodeHexString(UTFUtils.cmd((new CpxF1Request(CpxF1Command.cpxF1OpenSession((byte)0x01))).toString())));
 		
 		System.out.println("--------------------------------------------------------------------------------");
 		
@@ -165,7 +166,7 @@ public class Test1 {
 		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
 		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
-		System.out.println(Hex.encodeHex(UTFUtils.cmd((new CpxF1Request(CpxF1Command.cpxF1CloseSession("\u0001"))).toString())));
+		System.out.println(Hex.encodeHex(UTFUtils.cmd((new CpxF1Request(CpxF1Command.cpxF1CloseSession((byte)0x01))).toString())));
 		
 		log = "02 35 38 2E 30 30 34 31  20 20 20 20 20 20 20 20"
 				+ "20 20 20 20 20 20 20 20  50 6C 65 61 73 65 20 57"
@@ -191,7 +192,7 @@ public class Test1 {
 		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		byte[] emvData = UTFUtils.hexLog2bytes("02ff1900ff9f39000105ff040001009f410004000000015f2a00020840");
-		byte[] cmdData = CpxF1Command.cpxF1AsyncEmvData("\u0000", emvData).toBinary();
+		byte[] cmdData = CpxF1Command.cpxF1AsyncEmvData((byte)0, emvData).toBinary();
 		System.out.println(Hex.encodeHexString(cmdData));
 		System.out.println(Hex.encodeHexString(UTFUtils.cpxP16Encode(cmdData)));
 		System.out.println(Hex.encodeHexString(UTFUtils.cpxP16Decode(UTFUtils.cpxP16Encode(cmdData))));
@@ -216,7 +217,7 @@ public class Test1 {
 		
 		System.out.println(Hex.encodeHexString(UTFUtils.cpxP16Encode(new byte[]{0, 0x39, 0x04})));
 		
-		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData("\u0000", emvData)).toBinary())));
+		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData((byte)0, emvData)).toBinary())));
 		
 		log = "02 36 43 2E 30 31 33 31  39 30 30 31 53 65 6C 65"
 				+ "63 74 20 4C 61 6E 67 75  61 67 65 20 1E 46 31 3D"
@@ -253,7 +254,26 @@ public class Test1 {
 		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
 		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
-		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData("\u0001", Vega.EMV_SELECT_LANGUAGE_EN)).toBinary())));
+		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData((byte)0x01, Vega.EMV_SELECT_LANGUAGE_EN)).toBinary())));
+		
+		log = "02 46 31 2E 40 44 48 44  60 60 40 41 50 74 44 70"
+				+ "50 73 40 70 57 74 45 70  55 66 65 73 50 63 49 5F"
+				+ "54 45 51 78 51 56 79 67  5A 56 79 65 40 7F 7C 62"
+				+ "40 42 45 50 59 57 49 73  5B 76 79 61 5B 42 41 41"
+				+ "58 76 4D 6F 5D 56 79 74  42 64 44 70 4C 43 40 70"
+				+ "4C 43 40 70 4C 63 54 70  4C 53 40 78 4C 43 44 03"
+				+ "26";
+		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
+		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		emvData = Vega.selectApplicationRequest(new AidCandidate[]{new AidCandidate("Personal Account", "A000000025010801")});
+		System.out.println(Hex.encodeHexString(emvData));
+		cmdData = CpxF1Command.cpxF1AsyncEmvData((byte)0x82, emvData).toBinary();
+		System.out.println(Hex.encodeHexString(cmdData));
+		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData((byte)0x82, emvData)).toBinary())));
+		
+		
+		
 	}
 
 }

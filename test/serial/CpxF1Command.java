@@ -1,5 +1,7 @@
 package serial;
 
+import java.nio.ByteBuffer;
+
 import org.apache.commons.lang.StringUtils;
 
 /**
@@ -47,7 +49,7 @@ public class CpxF1Command {
 	 * SEQ ID for Asynchronous messages, it is incremented after each successful
 	 * send).
 	 */
-	private String msgSeqId;
+	private byte msgSeqId;
 	/**
 	 * 0 or 1 byte, Page.156/184 ASYNCHRONOUS EMV COMMAND (Type 0x04)
 	 */
@@ -88,11 +90,11 @@ public class CpxF1Command {
 		this.cmdType = cmdType;
 	}
 
-	public String getMsgSeqId() {
+	public byte getMsgSeqId() {
 		return msgSeqId;
 	}
 
-	public void setMsgSeqId(String msgSeqId) {
+	public void setMsgSeqId(byte msgSeqId) {
 		this.msgSeqId = msgSeqId;
 	}
 
@@ -137,18 +139,20 @@ public class CpxF1Command {
 	}
 
 	public byte[] toBinary() {
-		String msg = this.getLgt();
-		msg += this.getCmdType();
-		msg += StringUtils.defaultString(this.getMsgSeqId());
-		msg += StringUtils.defaultString(this.getStatus());
-		msg += StringUtils.defaultString(this.getMsgVer());
-		msg += StringUtils.defaultString(this.getpAppName());
-		msg += StringUtils.defaultString(this.geteAppName());
-		byte[] data1 = msg.getBytes();
-		byte[] data = new byte[data1.length + this.getDataE().length];
-		System.arraycopy(data1, 0, data, 0, data1.length);
-		System.arraycopy(this.getDataE(), 0, data, data1.length, this.getDataE().length);
-		return data;
+		ByteBuffer bb = ByteBuffer.allocate(256);
+		bb.put(this.getLgt().getBytes());
+		bb.put(this.getCmdType().getBytes());
+		bb.put(this.getMsgSeqId());
+		bb.put(StringUtils.defaultString(this.getStatus()).getBytes());
+		bb.put(StringUtils.defaultString(this.getMsgVer()).getBytes());
+		bb.put(StringUtils.defaultString(this.getpAppName()).getBytes());
+		bb.put(StringUtils.defaultString(this.geteAppName()).getBytes());
+		bb.put(this.getDataE());
+		int position = bb.position();
+		bb.flip();
+		byte[] dst = new byte[position];
+		bb.get(dst, 0, position);
+		return dst;
 	}
 
 	/**
@@ -158,7 +162,7 @@ public class CpxF1Command {
 	 * @param inSeqId
 	 * @return
 	 */
-	public static CpxF1Command asynEmvCmdAck(String inSeqId) {
+	public static CpxF1Command asynEmvCmdAck(byte inSeqId) {
 		CpxF1Command c = new CpxF1Command();
 		c.setLgt(new String(new byte[] { 0, 0x02 }));
 		c.setCmdType(ASYN_EMV_ACK);
@@ -172,7 +176,7 @@ public class CpxF1Command {
 	 * @param inSeqId
 	 * @return
 	 */
-	public static CpxF1Command cpxF1OpenSession(String inSeqId) {
+	public static CpxF1Command cpxF1OpenSession(byte inSeqId) {
 		CpxF1Command c = new CpxF1Command();
 		c.setLgt(new String(UTFUtils.lgt(1 + 1 + 1 + 12 + 12, 2)));
 		c.setCmdType(OPEN_SESSION);
@@ -189,7 +193,7 @@ public class CpxF1Command {
 	 * @param inSeqId
 	 * @return
 	 */
-	public static CpxF1Command cpxF1AsyncEmvData(String inSeqId, byte[] emvData) {
+	public static CpxF1Command cpxF1AsyncEmvData(byte inSeqId, byte[] emvData) {
 		CpxF1Command c = new CpxF1Command();
 		c.setLgt(new String(UTFUtils.lgt(1 + 1 + 1 + 1 + 12 + 12 + emvData.length, 2)));
 		c.setCmdType(ASYN_EMV);
@@ -208,7 +212,7 @@ public class CpxF1Command {
 	 * @param inSeqId
 	 * @return
 	 */
-	public static CpxF1Command cpxF1CloseSession(String inSeqId) {
+	public static CpxF1Command cpxF1CloseSession(byte inSeqId) {
 		CpxF1Command c = new CpxF1Command();
 		c.setLgt(new String(UTFUtils.lgt(1 + 1 + 1 + 12 + 12, 2)));
 		c.setCmdType(CLOSE_SESSION);

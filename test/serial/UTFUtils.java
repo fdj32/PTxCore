@@ -38,7 +38,8 @@ public class UTFUtils {
 	public static final String RS = "\u001E";
 	public static final String ETX = "\u0003";
 	public static final byte[] ACK = "\u0006".getBytes();
-
+	public static final byte SEPARATOR = (byte)0x0a;
+	
 	public static final String SPACE = "\u0020";
 	public static final String BEEP = "5B.";
 	public static final String BEEP_LENGTH = "3";
