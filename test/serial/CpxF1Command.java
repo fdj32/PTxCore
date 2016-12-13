@@ -139,7 +139,7 @@ public class CpxF1Command {
 	}
 
 	public byte[] toBinary() {
-		ByteBuffer bb = ByteBuffer.allocate(256);
+		ByteBuffer bb = ByteBuffer.allocate(1024);
 		bb.put(this.getLgt().getBytes());
 		bb.put(this.getCmdType().getBytes());
 		bb.put(this.getMsgSeqId());
