@@ -8,6 +8,7 @@ import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang.StringUtils;
 
 import serial.enums.Tag;
+import serial.enums.Vega;
 
 public class Test1 {
 
@@ -245,6 +246,14 @@ public class Test1 {
 		cpx6c.setSelectListStrings(new String[]{"English", "Francais"});
 		System.out.println(cpx6c.toString());
 		
+		log = "02 46 31 2E 40 42 48 44  40 50 40 41 50 63 49 5F"
+				+ "54 45 51 78 51 56 79 67  5A 56 79 65 50 74 44 70"
+				+ "50 73 40 70 57 74 45 70  55 66 65 73 41 50 44 42"
+				+ "40 46 55 6E 03 4B";
+		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
+		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData("\u0001", Vega.EMV_SELECT_LANGUAGE_EN)).toBinary())));
 	}
 
 }
