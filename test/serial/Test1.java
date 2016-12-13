@@ -272,7 +272,16 @@ public class Test1 {
 		System.out.println(Hex.encodeHexString(cmdData));
 		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData((byte)0x82, emvData)).toBinary())));
 		
-		
+		log = "02 46 31 2E 40 43 60 44  60 70 40 41 50 74 44 70"
+				+ "50 73 40 70 57 74 45 70  55 66 65 73 50 63 49 5F"
+				+ "54 45 51 78 51 56 79 67  5A 56 79 65 45 4F 7C 58"
+				+ "40 40 40 40 40 40 40 40  40 40 40 40 50 60 45 41"
+				+ "40 75 78 43 47 70 48 40  40 40 40 40 40 40 40 40"
+				+ "40 40 03 63";
+		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
+		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		// 0142-07204-0503%20Generic%20EMV%20API.pdf Page.84/167
 		
 	}
 
