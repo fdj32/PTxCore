@@ -308,7 +308,7 @@ public class UTFUtils {
 				break;
 			case 1:
 				a = (byte)(in[i-1] << 2);
-				b = (byte)(in[i] & 0x3F);
+				b = (byte)(in[i] & 0x30);
 				b = (byte)(b >> 4);
 				bb.put((byte)(a | b));
 				break;

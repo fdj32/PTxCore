@@ -193,6 +193,7 @@ public class Test1 {
 		byte[] cmdData = CpxF1Command.cpxF1AsyncEmvData("\u0000", emvData).toBinary();
 		System.out.println(Hex.encodeHexString(cmdData));
 		System.out.println(Hex.encodeHexString(UTFUtils.cpxP16Encode(cmdData)));
+		System.out.println(Hex.encodeHexString(UTFUtils.cpxP16Decode(UTFUtils.cpxP16Encode(cmdData))));
 		
 		byte[] out = new byte[cmdData.length*2];
 		int outlen = 0;
