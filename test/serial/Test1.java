@@ -217,6 +217,34 @@ public class Test1 {
 		
 		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData("\u0000", emvData)).toBinary())));
 		
+		log = "02 36 43 2E 30 31 33 31  39 30 30 31 53 65 6C 65"
+				+ "63 74 20 4C 61 6E 67 75  61 67 65 20 1E 46 31 3D"
+				+ "4E 65 78 74 20 46 32 3D  50 72 65 76 20 1E 46 31"
+				+ "3D 4E 65 78 74 20 20 20  20 20 20 20 20 20 1E 46"
+				+ "32 3D 50 72 65 76 20 20  20 20 20 20 20 20 20 1E"
+				+ "45 6E 67 6C 69 73 68 20  20 20 20 20 20 20 20 20"
+				+ "1E 46 72 61 6E 63 61 69  73 20 20 20 20 20 20 20"
+				+ "20 1E 03 18";
+		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
+		System.out.println(Hex.encodeHexString(UTFUtils.trimCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(new String(UTFUtils.trimCmd(UTFUtils.hexLog2bytes(log))));
+		// "6C.01319001Select Language F1=Next F2=Prev F1=Next         F2=Prev         English         Francais        "
+		
+		Cpx6CScrollSelectRequest cpx6c = new Cpx6CScrollSelectRequest();
+		cpx6c.setCommandMode("0");
+		cpx6c.setNextFunctionKey("1");
+		cpx6c.setPreviousFunctionKey("3");
+		cpx6c.setShowImages("1");
+		cpx6c.setTimeout("9");// 45/5
+		cpx6c.setInvalidBeep("0");
+		cpx6c.setDefaultSelection("01");
+		cpx6c.setTitleString("Select Language");
+		cpx6c.setNextOrPreviousString("F1=Next F2=Prev");
+		cpx6c.setPrevOnlyString("F1=Next");
+		cpx6c.setNextOnlyString("F2=Prev");
+		cpx6c.setSelectListStrings(new String[]{"English", "Francais"});
+		System.out.println(cpx6c.toString());
+		
 	}
 
 }
