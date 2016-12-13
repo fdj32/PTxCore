@@ -215,7 +215,7 @@ public class Test1 {
 		
 		System.out.println(Hex.encodeHexString(UTFUtils.cpxP16Encode(new byte[]{0, 0x39, 0x04})));
 		
-		//System.out.println(Hex.encodeHexString(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData("\u0000", emvData)).toBinary()));
+		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData("\u0000", emvData)).toBinary())));
 		
 	}
 

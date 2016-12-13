@@ -87,6 +87,18 @@ public class UTFUtils {
 		}
 		return appendLRCToString(sb.toString()).getBytes();
 	}
+	
+	public static byte[] cmd(byte[] cmdData) {
+		byte[] data = new byte[2+cmdData.length];
+		data[0] = STX.getBytes()[0];
+		System.arraycopy(cmdData, 0, data, 1, cmdData.length);
+		data[1+cmdData.length] = ETX.getBytes()[0];
+		byte lrc = calculateLRC(data);
+		byte[] total = new byte[3+cmdData.length];
+		System.arraycopy(data, 0, total, 0, 2+cmdData.length);
+		total[2+cmdData.length] = lrc;
+		return total;
+	}
 
 	public static byte[] cpx5DDeviceInformation(String option) {
 		return cmd(CPX_5D_DEVICE_INFORMATION + ((null == option) ? "" : option));
