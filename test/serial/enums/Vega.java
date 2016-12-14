@@ -45,6 +45,12 @@ public class Vega {
 		return dst;
 	}
 	
+	/**
+	 * Page.69/167
+	 * @param purchaseAmount
+	 * @param cashbackAmount
+	 * @return
+	 */
 	public static byte[] getAmountResponse(int purchaseAmount, int cashbackAmount) {
 		ByteBuffer bb = ByteBuffer.allocate(32);
 		bb.put((byte)EmvServiceCode.EMV_GET_AMOUNT);
@@ -62,5 +68,18 @@ public class Vega {
 		byte[] dst = new byte[position];
 		bb.get(dst, 0, position);
 		return dst;
+	}
+	
+	/**
+	 * Page.70/167
+	 * @return
+	 */
+	public static byte[] getPreviousAmountRequest() {
+		byte[] data = new byte[4];
+		data[0] = (byte)EmvServiceCode.EMV_GET_PREVIOUS_AMOUNT;
+		data[1] = (byte)EmvReasonCode.EMV_UNDEF;
+		data[2] = (byte)0;
+		data[3] = (byte)0;
+		return data;
 	}
 }
