@@ -336,6 +336,17 @@ public class Test1 {
 		for(Tag tag : list) {
 			System.out.println(String.format("%x", tag.getId()) + ":" + tag.getLength() + ":" + tag.getValue());
 		}
+		
+		log = "02 46 31 2E 40 43 50 44  41 40 40 41 50 63 49 5F"
+				+ "54 45 51 78 51 56 79 67  5A 56 79 65 50 74 44 70"
+				+ "50 73 40 70 57 74 45 70  55 66 65 73 41 60 44 54"
+				+ "40 40 60 40 4C 43 40 70  4C 43 44 70 4C 43 40 48"
+				+ "40 43 40 70 4C 43 40 70  4C 43 40 70 03 48";
+		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
+		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData((byte)0x04, Vega.getAmountResponse(1000, 0))).toBinary())));
+		
 	}
 
 }

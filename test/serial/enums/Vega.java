@@ -2,6 +2,8 @@ package serial.enums;
 
 import java.nio.ByteBuffer;
 
+import org.apache.commons.lang.StringUtils;
+
 public class Vega {
 
 	public static final String ENGLISH = "en";
@@ -36,6 +38,25 @@ public class Vega {
 		bb.put((byte)(emvData.length % 0x100));
 		bb.put((byte)(emvData.length / 0x100));
 		bb.put(emvData);
+		int position = bb.position();
+		bb.flip();
+		byte[] dst = new byte[position];
+		bb.get(dst, 0, position);
+		return dst;
+	}
+	
+	public static byte[] getAmountResponse(int purchaseAmount, int cashbackAmount) {
+		ByteBuffer bb = ByteBuffer.allocate(32);
+		bb.put((byte)EmvServiceCode.EMV_GET_AMOUNT);
+		bb.put((byte)EmvReasonCode.EMV_OK);
+		bb.put((byte)20);
+		bb.put((byte)0);
+		bb.put((byte)8);
+		bb.put((byte)0);
+		bb.put(StringUtils.leftPad(""+purchaseAmount, 8, '0').getBytes());
+		bb.put((byte)8);
+		bb.put((byte)0);
+		bb.put(StringUtils.leftPad(""+cashbackAmount, 8, '0').getBytes());
 		int position = bb.position();
 		bb.flip();
 		byte[] dst = new byte[position];
