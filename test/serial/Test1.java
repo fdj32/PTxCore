@@ -447,6 +447,22 @@ public class Test1 {
 		System.out.println(Hex.encodeHexString(CpxF1Command.cpxF1AsyncEmvData((byte)0x88, Vega.emvGoOnlineRequest(list)).toBinary()));
 		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData((byte)0x88, Vega.emvGoOnlineRequest(list))).toBinary())));
 
+		log = "02 46 31 2E 40 43 40 44  41 70 40 41 50 63 49 5F"
+				+ "54 45 51 78 51 56 79 67  5A 56 79 65 50 74 44 70"
+				+ "50 73 40 70 57 74 45 70  55 66 65 73 43 60 44 50"
+				+ "40 40 42 4A 40 40 48 70  4C 40 42 49 40 40 58 71"
+				+ "4C 63 4C 74 4D 53 58 03  31";
+		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
+		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		
+		list = Tag.parseTLVList("008a0002303000890006313233343536");
+		for(Tag tag : list) {
+			System.out.println(String.format("%x", tag.getId()) + ":" + tag.getLength() + ":" + tag.getValue());
+		}
+		System.out.println(Hex.encodeHexString(Vega.emvGoOnlineResponse(list)));
+		System.out.println(Hex.encodeHexString(CpxF1Command.cpxF1AsyncEmvData((byte)0x07, Vega.emvGoOnlineResponse(list)).toBinary()));
+		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData((byte)0x07, Vega.emvGoOnlineResponse(list))).toBinary())));
 	}
 
 }

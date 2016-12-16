@@ -159,7 +159,7 @@ public class Vega {
 	}
 
 	/**
-	 * Page.72/167
+	 * Page.74/167
 	 * 
 	 * @return
 	 * @throws DecoderException
@@ -170,6 +170,27 @@ public class Vega {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		baos.write((byte) EmvServiceCode.EMV_GO_ONLINE);
 		baos.write((byte) EmvReasonCode.EMV_UNDEF);
+		byte[] data = Tag.buildTLVList(list);
+		baos.write((byte) (data.length % 0x100));
+		baos.write((byte) (data.length / 0x100));
+		baos.write(data);
+		data = baos.toByteArray();
+		baos.close();
+		return data;
+	}
+	
+	/**
+	 * Page.75/167
+	 * 
+	 * @return
+	 * @throws DecoderException
+	 * @throws IOException
+	 */
+	public static byte[] emvGoOnlineResponse(List<Tag> list) throws IOException,
+			DecoderException {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		baos.write((byte) EmvServiceCode.EMV_GO_ONLINE);
+		baos.write((byte) EmvReasonCode.EMV_OK);
 		byte[] data = Tag.buildTLVList(list);
 		baos.write((byte) (data.length % 0x100));
 		baos.write((byte) (data.length / 0x100));
