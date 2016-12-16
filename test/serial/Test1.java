@@ -1,7 +1,6 @@
 package serial;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import org.apache.commons.codec.DecoderException;
@@ -385,6 +384,7 @@ public class Test1 {
 		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData((byte)0x87, Vega.emvReleaseSSARequest())).toBinary())));
 		
+
 		log = "02 46 31 2E 40 42 40 44  41 60 40 41 50 63 49 5F"
 				+ "54 45 51 78 51 56 79 67  5A 56 79 65 50 74 44 70"
 				+ "50 73 40 70 57 74 45 70  55 66 65 73 42 50 44 40"
@@ -446,6 +446,7 @@ public class Test1 {
 		System.out.println(Hex.encodeHexString(Vega.emvGoOnlineRequest(list)));
 		System.out.println(Hex.encodeHexString(CpxF1Command.cpxF1AsyncEmvData((byte)0x88, Vega.emvGoOnlineRequest(list)).toBinary()));
 		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData((byte)0x88, Vega.emvGoOnlineRequest(list))).toBinary())));
+
 	}
 
 }

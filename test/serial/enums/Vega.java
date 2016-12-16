@@ -178,4 +178,5 @@ public class Vega {
 		baos.close();
 		return data;
 	}
+
 }
