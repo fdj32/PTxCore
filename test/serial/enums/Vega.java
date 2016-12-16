@@ -99,4 +99,24 @@ public class Vega {
 		data[3] = (byte) 0;
 		return data;
 	}
+	
+	/**
+	 * Page.70/167
+	 * 0a0102000000 = 0a01010030
+	 * @return
+	 */
+	public static byte[] getPreviousAmountResponse(int amount) {
+		ByteBuffer bb = ByteBuffer.allocate(32);
+		bb.put((byte) EmvServiceCode.EMV_GET_PREVIOUS_AMOUNT);
+		bb.put((byte) EmvReasonCode.EMV_OK);
+		int length = (""+amount).length();
+		bb.put((byte) (length % 0x100));
+		bb.put((byte) (length / 0x100));
+		bb.put((""+amount).getBytes());
+		int position = bb.position();
+		bb.flip();
+		byte[] dst = new byte[position];
+		bb.get(dst, 0, position);
+		return dst;
+	}
 }
