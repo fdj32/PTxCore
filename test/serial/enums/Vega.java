@@ -1,5 +1,6 @@
 package serial.enums;
 
+import java.io.ByteArrayOutputStream;
 import java.nio.ByteBuffer;
 
 import org.apache.commons.lang.StringUtils;
@@ -99,24 +100,52 @@ public class Vega {
 		data[3] = (byte) 0;
 		return data;
 	}
-	
+
 	/**
-	 * Page.70/167
-	 * 0a0102000000 = 0a01010030
+	 * Page.70/167 0a0102000000 = 0a01010030
+	 * 
 	 * @return
 	 */
 	public static byte[] getPreviousAmountResponse(int amount) {
 		ByteBuffer bb = ByteBuffer.allocate(32);
 		bb.put((byte) EmvServiceCode.EMV_GET_PREVIOUS_AMOUNT);
 		bb.put((byte) EmvReasonCode.EMV_OK);
-		int length = (""+amount).length();
+		int length = ("" + amount).length();
 		bb.put((byte) (length % 0x100));
 		bb.put((byte) (length / 0x100));
-		bb.put((""+amount).getBytes());
+		bb.put(("" + amount).getBytes());
 		int position = bb.position();
 		bb.flip();
 		byte[] dst = new byte[position];
 		bb.get(dst, 0, position);
 		return dst;
+	}
+
+	/**
+	 * Page.72/167
+	 * 
+	 * @return
+	 */
+	public static byte[] emvReleaseSSARequest() {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		baos.write((byte) EmvServiceCode.EMV_RELEASE_SSA);
+		baos.write((byte) EmvReasonCode.EMV_UNDEF);
+		baos.write((byte) 0);
+		baos.write((byte) 0);
+		return baos.toByteArray();
+	}
+	
+	/**
+	 * Page.72/167
+	 * 
+	 * @return
+	 */
+	public static byte[] emvReleaseSSAResponse() {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		baos.write((byte) EmvServiceCode.EMV_RELEASE_SSA);
+		baos.write((byte) EmvReasonCode.EMV_OK);
+		baos.write((byte) 0);
+		baos.write((byte) 0);
+		return baos.toByteArray();
 	}
 }
