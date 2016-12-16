@@ -39,7 +39,7 @@ public class CpxF1Command {
 	/**
 	 * 2 bytes, length of application field information
 	 */
-	private String lgt;
+	private byte[] lgt;
 	/**
 	 * 1 byte, general command type
 	 */
@@ -74,11 +74,11 @@ public class CpxF1Command {
 	 */
 	private byte[] dataE;
 
-	public String getLgt() {
+	public byte[] getLgt() {
 		return lgt;
 	}
 
-	public void setLgt(String lgt) {
+	public void setLgt(byte[] lgt) {
 		this.lgt = lgt;
 	}
 
@@ -140,7 +140,7 @@ public class CpxF1Command {
 
 	public byte[] toBinary() {
 		ByteBuffer bb = ByteBuffer.allocate(1024);
-		bb.put(this.getLgt().getBytes());
+		bb.put(this.getLgt());
 		bb.put(this.getCmdType().getBytes());
 		bb.put(this.getMsgSeqId());
 		bb.put(StringUtils.defaultString(this.getStatus()).getBytes());
@@ -164,7 +164,7 @@ public class CpxF1Command {
 	 */
 	public static CpxF1Command asynEmvCmdAck(byte inSeqId) {
 		CpxF1Command c = new CpxF1Command();
-		c.setLgt(new String(new byte[] { 0, 0x02 }));
+		c.setLgt(new byte[] { 0, 0x02 });
 		c.setCmdType(ASYN_EMV_ACK);
 		c.setMsgSeqId(inSeqId);
 		return c;
@@ -178,7 +178,7 @@ public class CpxF1Command {
 	 */
 	public static CpxF1Command cpxF1OpenSession(byte inSeqId) {
 		CpxF1Command c = new CpxF1Command();
-		c.setLgt(new String(UTFUtils.lgt(1 + 1 + 1 + 12 + 12, 2)));
+		c.setLgt(UTFUtils.lgt(1 + 1 + 1 + 12 + 12, 2));
 		c.setCmdType(OPEN_SESSION);
 		c.setMsgSeqId(inSeqId);
 		c.setMsgVer(EMV_VERSION);
@@ -195,7 +195,7 @@ public class CpxF1Command {
 	 */
 	public static CpxF1Command cpxF1AsyncEmvData(byte inSeqId, byte[] emvData) {
 		CpxF1Command c = new CpxF1Command();
-		c.setLgt(new String(UTFUtils.lgt(1 + 1 + 1 + 1 + 12 + 12 + emvData.length, 2)));
+		c.setLgt(UTFUtils.lgt(1 + 1 + 1 + 1 + 12 + 12 + emvData.length, 2));
 		c.setCmdType(ASYN_EMV);
 		c.setMsgSeqId(inSeqId);
 		c.setStatus(STATUS_NORMAL); // Normal
@@ -214,7 +214,7 @@ public class CpxF1Command {
 	 */
 	public static CpxF1Command cpxF1CloseSession(byte inSeqId) {
 		CpxF1Command c = new CpxF1Command();
-		c.setLgt(new String(UTFUtils.lgt(1 + 1 + 1 + 12 + 12, 2)));
+		c.setLgt(UTFUtils.lgt(1 + 1 + 1 + 12 + 12, 2));
 		c.setCmdType(CLOSE_SESSION);
 		c.setMsgSeqId(inSeqId);
 		c.setMsgVer(EMV_VERSION);

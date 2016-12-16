@@ -1,5 +1,6 @@
 package serial;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import serial.enums.Vega;
 
 public class Test1 {
 
-	public static void main(String[] args) throws DecoderException, UnsupportedEncodingException {
+	public static void main(String[] args) throws DecoderException, IOException {
 //		System.out.println((char)(0x1B));
 //		ByteBuffer bb = ByteBuffer.allocate(0);
 //		bb.put((byte)0x01);
@@ -393,6 +394,58 @@ public class Test1 {
 		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData((byte)0x06, Vega.emvReleaseSSAResponse())).toBinary())));
 		
+		log = "02 46 31 2E 40 5D 54 44  62 40 40 41 50 74 44 70"
+				+ "50 73 40 70 57 74 45 70  55 66 65 73 50 63 49 5F"
+				+ "54 45 51 78 51 56 79 67  5A 56 79 65 43 6F 7E 75"
+				+ "40 50 41 4F 40 40 62 60  40 40 40 40 49 50 44 48"
+				+ "40 50 41 57 40 41 4C 40  40 40 40 40 40 40 40 40"
+				+ "40 40 40 40 40 40 40 40  40 40 40 40 40 40 40 40"
+				+ "40 48 48 40 40 65 70 40  40 48 50 40 42 4A 40 40"
+				+ "40 40 40 65 40 50 60 41  40 49 54 40 41 54 41 40"
+				+ "40 48 40 40 40 49 68 40  40 71 58 52 41 60 42 5B"
+				+ "40 40 4B 68 40 40 42 5C  40 40 44 40 57 72 68 40"
+				+ "40 60 61 40 57 73 50 40  40 50 42 5F 40 60 40 46"
+				+ "40 40 40 40 40 41 40 40  67 70 60 40 40 60 40 41"
+				+ "67 70 64 40 40 60 40 41  67 71 40 40 41 70 58 42"
+				+ "40 50 4E 64 40 40 42 5F  46 60 40 42 40 52 52 5F"
+				+ "49 60 40 48 6F 69 6F 61  58 71 42 78 65 5D 6E 5F"
+				+ "49 70 40 41 60 49 7C 74  40 40 4D 41 40 70 4A 5F"
+				+ "4D 50 40 41 48 69 7C 76  40 40 48 40 40 59 7C 77"
+				+ "40 40 51 58 62 40 76 4E  67 73 64 40 40 50 56 5F"
+				+ "50 50 40 44 40 40 40 40  40 5F 7C 5D 40 4F 5C 73"
+				+ "4D 73 50 72 4D 43 54 70  4C 43 40 71 4C 53 54 71"
+				+ "4C 53 54 71 4C 63 48 70  4C 53 40 72 4D 64 45 4E"
+				+ "48 44 45 45 52 55 41 53  48 43 44 70 48 42 40 60"
+				+ "48 42 40 60 48 42 40 60  48 42 40 60 48 42 40 60"
+				+ "4C 54 49 46 51 64 59 46  4C 63 40 70 51 53 49 45"
+				+ "4C 73 48 71 4C 44 54 70  4C 43 44 76 51 43 40 71"
+				+ "4C 53 50 73 4D 73 48 70  4D 73 58 70 4E 53 50 73"
+				+ "4C 63 5C 77 4D 63 54 72  4C 73 74 70 4C 63 40 73"
+				+ "4C 53 54 76 4D 43 48 74  4E 43 5C 71 4C 63 48 79"
+				+ "4C 43 54 70 4C 53 60 73  4C 64 58 73 4C 54 58 72"
+				+ "4C 44 4C 77 50 73 64 78  4D 63 40 72 4C 63 41 42"
+				+ "4E 44 50 79 51 54 44 70  4D 53 58 77 51 54 58 74"
+				+ "4E 43 55 45 4E 53 59 42  4E 53 5D 44 4C 53 49 46"
+				+ "4C 73 49 43 4D 43 4D 43  50 73 5D 44 50 74 48 71"
+				+ "4D 54 58 77 4D 73 48 73  4C 64 4D 46 4C 44 51 41"
+				+ "4D 74 51 44 51 43 55 41  4D 44 54 72 4E 44 59 44"
+				+ "4C 43 50 77 4E 43 40 74  4E 44 50 78 4D 63 41 44"
+				+ "4E 44 45 42 50 63 55 41  4D 74 4C 70 51 53 50 78"
+				+ "4C 64 58 73 51 43 44 74  4E 53 61 44 51 54 48 71"
+				+ "51 44 44 74 50 54 51 44  4D 43 55 45 51 63 59 43"
+				+ "4C 54 58 71 51 54 58 70  03 4A";
+		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
+		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		
+		list = Tag.parseTLVList("004f0008a0000000250108010057001300000000000000000000000000000000000000008200025c0000840008a000000025010801009500054040008000009a0003161206009b0002e800009c0001005f2a000208405f340001009f0200060000000010009f08000200019f09000200019f10000706020103a400009f1a000201249f260008be9be16310b895db9f270001809f3400034103029f350001229f36000200019f37000458880d8e9f390001059f41000400000001ff1d00f73337343234353030303131353131353132323031303236414e204145495053203130202020202020202020202020202020314246464646323030453245333231304530303136443031313433373230373630393433323737363532333d30323033313536343234383731323239303530313833324633314632304337433938363032323042384439454130353637454634383545393642393744313246333243343343433744434231354637373233324346304441374444443541344532384644303437383034384438363044384142423541374330453438324633443134393844454231444134414444343545463643314631454630");
+		
+		for(Tag tag : list) {
+			System.out.println(String.format("%x", tag.getId()) + ":" + tag.getLength() + ":" + tag.getValue());
+		}
+		System.out.println(Hex.encodeHexString(Vega.emvGoOnlineRequest(list)));
+		System.out.println(Hex.encodeHexString(CpxF1Command.cpxF1AsyncEmvData((byte)0x88, Vega.emvGoOnlineRequest(list)).toBinary()));
+		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData((byte)0x88, Vega.emvGoOnlineRequest(list))).toBinary())));
 	}
 
 }

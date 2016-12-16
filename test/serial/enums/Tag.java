@@ -1,5 +1,7 @@
 package serial.enums;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -146,6 +148,16 @@ public class Tag {
 		return tlv;
 	}
 
+	public static byte[] buildTLVList(List<Tag> list) throws IOException, DecoderException {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		for (Tag tag : list) {
+			baos.write(Tag.buildTLV(tag));
+		}
+		byte[] data = baos.toByteArray();
+		baos.close();
+		return data;
+	}
+	
 	public static Tag parseTLV(String hexData) {
 		Tag t = new Tag();
 		t.setId(Integer.parseInt(hexData.substring(0, 4), 16));

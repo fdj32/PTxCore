@@ -1,8 +1,11 @@
 package serial.enums;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.List;
 
+import org.apache.commons.codec.DecoderException;
 import org.apache.commons.lang.StringUtils;
 
 public class Vega {
@@ -125,27 +128,54 @@ public class Vega {
 	 * Page.72/167
 	 * 
 	 * @return
+	 * @throws IOException
 	 */
-	public static byte[] emvReleaseSSARequest() {
+	public static byte[] emvReleaseSSARequest() throws IOException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		baos.write((byte) EmvServiceCode.EMV_RELEASE_SSA);
 		baos.write((byte) EmvReasonCode.EMV_UNDEF);
 		baos.write((byte) 0);
 		baos.write((byte) 0);
-		return baos.toByteArray();
+		byte[] data = baos.toByteArray();
+		baos.close();
+		return data;
 	}
-	
+
 	/**
 	 * Page.72/167
 	 * 
 	 * @return
+	 * @throws IOException
 	 */
-	public static byte[] emvReleaseSSAResponse() {
+	public static byte[] emvReleaseSSAResponse() throws IOException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		baos.write((byte) EmvServiceCode.EMV_RELEASE_SSA);
 		baos.write((byte) EmvReasonCode.EMV_OK);
 		baos.write((byte) 0);
 		baos.write((byte) 0);
-		return baos.toByteArray();
+		byte[] data = baos.toByteArray();
+		baos.close();
+		return data;
+	}
+
+	/**
+	 * Page.72/167
+	 * 
+	 * @return
+	 * @throws DecoderException
+	 * @throws IOException
+	 */
+	public static byte[] emvGoOnlineRequest(List<Tag> list) throws IOException,
+			DecoderException {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		baos.write((byte) EmvServiceCode.EMV_GO_ONLINE);
+		baos.write((byte) EmvReasonCode.EMV_UNDEF);
+		byte[] data = Tag.buildTLVList(list);
+		baos.write((byte) (data.length % 0x100));
+		baos.write((byte) (data.length / 0x100));
+		baos.write(data);
+		data = baos.toByteArray();
+		baos.close();
+		return data;
 	}
 }
