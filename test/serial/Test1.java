@@ -355,6 +355,15 @@ public class Test1 {
 		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData((byte)0x86, Vega.getPreviousAmountRequest())).toBinary())));
+		
+		log = "02 46 31 2E 40 42 40 44  61 50 40 41 50 74 44 70"
+				+ "50 73 40 70 57 74 45 70  55 66 65 73 50 63 49 5F"
+				+ "54 45 51 78 51 56 79 67  5A 56 79 65 41 6F 7C 40"
+				+ "40 40 03 5A";
+		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
+		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
+		System.out.println(Hex.encodeHexString(UTFUtils.cmd(new CpxF1Request(CpxF1Command.cpxF1AsyncEmvData((byte)0x85, Vega.getAmountRequest())).toBinary())));
 	}
 
 }
