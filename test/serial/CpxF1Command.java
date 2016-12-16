@@ -147,7 +147,9 @@ public class CpxF1Command {
 		bb.put(StringUtils.defaultString(this.getMsgVer()).getBytes());
 		bb.put(StringUtils.defaultString(this.getpAppName()).getBytes());
 		bb.put(StringUtils.defaultString(this.geteAppName()).getBytes());
-		bb.put(this.getDataE());
+		if(null != this.getDataE() && 0 != this.getDataE().length) {
+			bb.put(this.getDataE());
+		}
 		int position = bb.position();
 		bb.flip();
 		byte[] dst = new byte[position];
