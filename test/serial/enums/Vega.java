@@ -178,7 +178,7 @@ public class Vega {
 		baos.close();
 		return data;
 	}
-	
+
 	/**
 	 * Page.75/167
 	 * 
@@ -186,8 +186,8 @@ public class Vega {
 	 * @throws DecoderException
 	 * @throws IOException
 	 */
-	public static byte[] emvGoOnlineResponse(List<Tag> list) throws IOException,
-			DecoderException {
+	public static byte[] emvGoOnlineResponse(List<Tag> list)
+			throws IOException, DecoderException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		baos.write((byte) EmvServiceCode.EMV_GO_ONLINE);
 		baos.write((byte) EmvReasonCode.EMV_OK);
@@ -200,4 +200,45 @@ public class Vega {
 		return data;
 	}
 
+	/**
+	 * Page.86/167
+	 * 
+	 * @param list
+	 * @return
+	 * @throws IOException
+	 * @throws DecoderException
+	 */
+	public static byte[] emvStopTransactionRequest(List<Tag> list)
+			throws IOException, DecoderException {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		baos.write((byte) EmvServiceCode.EMV_STOP_TRANSACTION);
+		baos.write((byte) EmvReasonCode.EMV_APPROVED);
+		byte[] data = Tag.buildTLVList(list);
+		baos.write((byte) (data.length % 0x100));
+		baos.write((byte) (data.length / 0x100));
+		baos.write(data);
+		data = baos.toByteArray();
+		baos.close();
+		return data;
+	}
+	
+	/**
+	 * Page.87/167
+	 * 
+	 * @param list
+	 * @return
+	 * @throws IOException
+	 * @throws DecoderException
+	 */
+	public static byte[] emvStopTransactionResponse()
+			throws IOException, DecoderException {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		baos.write((byte) EmvServiceCode.EMV_STOP_TRANSACTION);
+		baos.write((byte) EmvReasonCode.EMV_APPROVED);
+		baos.write((byte) 0);
+		baos.write((byte) 0);
+		byte[] data = baos.toByteArray();
+		baos.close();
+		return data;
+	}
 }
