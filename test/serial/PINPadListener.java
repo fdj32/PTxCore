@@ -56,9 +56,12 @@ public class PINPadListener implements SerialPortEventListener {
 				byte[] totalData = new byte[totalLength];
 				bb.get(totalData, 0, totalLength);
 				System.out.println(totalData.length);
-				this.getQ().add(totalData);
 				System.out.println("PINPadListener receive : " + UTFUtils.printFormat(totalData));
-				os.write(UTFUtils.ACK);
+				if(1 != totalData.length) {
+					// Ignore ACK, NAK
+					this.getQ().add(totalData);
+					os.write(UTFUtils.ACK);
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

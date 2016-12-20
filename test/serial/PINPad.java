@@ -17,7 +17,7 @@ public class PINPad {
 	private static final int SERIAL_PORT_OPEN_TIMEOUT = 2000;
 	private static final int SERIAL_PORT_READ_TIMEOUT = 500;
 	private static final int SERIAL_PORT_READ_POLL = 50;
-	private static final String SERIAL_PORT_NAME = "COM8"; // windows=COM9,
+	private static final String SERIAL_PORT_NAME = "COM9"; // windows=COM9,
 																	// ubuntu=/dev/ttyACM0
 	private static String[] display = new String[] { "Hello World!",
 			"nfeng@Active", "What time is it?", "" };
