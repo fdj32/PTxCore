@@ -241,4 +241,26 @@ public class Vega {
 		baos.close();
 		return data;
 	}
+	
+	/**
+	 * Page.105/167
+	 * 
+	 * @param list
+	 * @return
+	 * @throws IOException
+	 * @throws DecoderException
+	 */
+	public static byte[] emvstartContactlessRequest(List<Tag> list)
+			throws IOException, DecoderException {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		baos.write((byte) EmvServiceCode.EMV_START_CONTACTLESS);
+		baos.write((byte) EmvReasonCode.EMV_UNDEF);
+		byte[] data = Tag.buildTLVList(list);
+		baos.write((byte) (data.length % 0x100));
+		baos.write((byte) (data.length / 0x100));
+		baos.write(data);
+		data = baos.toByteArray();
+		baos.close();
+		return data;
+	}
 }

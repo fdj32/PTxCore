@@ -34,7 +34,6 @@ public class PINPadListener implements SerialPortEventListener {
 		case SerialPortEvent.OUTPUT_BUFFER_EMPTY:
 			break;
 		case SerialPortEvent.DATA_AVAILABLE:
-			System.out.println("DATA_AVAILABLE");
 			byte[] buffer = null;
 			int available = 0, totalLength = 0;
 			ByteBuffer bb = ByteBuffer.allocateDirect(1024);
@@ -45,7 +44,6 @@ public class PINPadListener implements SerialPortEventListener {
 			try {
 				is = port.getInputStream();
 				os = port.getOutputStream();
-				System.out.println(is.available());
 				while((available = is.available()) > 0) {
 					buffer = new byte[available];
 					is.read(buffer, 0, available);
@@ -55,8 +53,6 @@ public class PINPadListener implements SerialPortEventListener {
 				bb.flip();
 				byte[] totalData = new byte[totalLength];
 				bb.get(totalData, 0, totalLength);
-				System.out.println(totalData.length);
-				System.out.println("PINPadListener receive : " + UTFUtils.printFormat(totalData));
 				if(1 != totalData.length) {
 					// Ignore ACK, NAK
 					this.getQ().add(totalData);

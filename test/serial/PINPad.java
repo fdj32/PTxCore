@@ -11,11 +11,13 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.TooManyListenersException;
 
+import org.apache.commons.codec.binary.Hex;
+
 public class PINPad {
 
 	private static final String SERIAL_PORT_OWNER = "Ingenico";
 	private static final int SERIAL_PORT_OPEN_TIMEOUT = 2000;
-	private static final int SERIAL_PORT_READ_TIMEOUT = 500;
+	private static final int SERIAL_PORT_READ_TIMEOUT = 300;
 	private static final int SERIAL_PORT_READ_POLL = 50;
 	private static final String SERIAL_PORT_NAME = "COM9"; // windows=COM9,
 																	// ubuntu=/dev/ttyACM0
@@ -116,22 +118,16 @@ public class PINPad {
 	public static void write(byte[] data) throws IOException,
 			InterruptedException {
 		serialPort.getOutputStream().write(data);
+		System.out.println(">" + Hex.encodeHexString(data));
 		long start = System.currentTimeMillis();
-		boolean timeout = true;
 		while (System.currentTimeMillis() - start < SERIAL_PORT_READ_TIMEOUT) {
 			if (listener.getQ().isEmpty()) {
-				System.out.println("listener queue is empty");
 				Thread.sleep(SERIAL_PORT_READ_POLL);
 				continue;
 			} else {
 				byte[] responseData = listener.getQ().poll();
-				System.out.println("PINPad poll : "
-						+ UTFUtils.printFormat(responseData));
-				timeout = false;
+				System.out.println("<" + Hex.encodeHexString(responseData));
 			}
-		}
-		if (timeout) {
-			serialPort.close();
 		}
 	}
 
