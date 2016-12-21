@@ -128,7 +128,16 @@ public class PINPad {
 			} else {
 				byte[] responseData = listener.getQ().poll();
 				//System.out.println("<" + Hex.encodeHexString(responseData));
-				PrintUtil.print(responseData, false);
+				if((byte)0x06 == responseData[0]) {
+					PrintUtil.print(new byte[]{(byte)0x06}, false);
+					if(responseData.length > 1) {
+						byte[] dest = new byte[responseData.length - 1];
+						System.arraycopy(responseData, 1, dest, 0, responseData.length - 1);
+						PrintUtil.print(dest, false);
+					}
+				} else {
+					PrintUtil.print(responseData, false);
+				}
 			}
 		}
 	}

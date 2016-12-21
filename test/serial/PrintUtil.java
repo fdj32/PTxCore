@@ -7,6 +7,7 @@ public class PrintUtil {
 		StringBuffer sbEncoded = new StringBuffer();
 		StringBuffer sbDecoded = new StringBuffer();
 		byte[] dataDecoded = null;
+		byte[] src = null;
 		if (null != data && data.length > 6 && data[0] == (byte) 0x02
 				&& data[1] == (byte) 0x46 && data[3] == (byte) 0x2E) {
 			sbEncoded.append("[Encoded]");
@@ -14,14 +15,16 @@ public class PrintUtil {
 			sbDecoded.append("[Decoded]");
 			sbDecoded.append(System.lineSeparator());
 			
-			dataDecoded = UTFUtils.decodeCmd(data);
+			src = UTFUtils.decodeCmd(data);
+			dataDecoded = new byte[src.length - 3];
+			System.arraycopy(src, 3, dataDecoded, 0, src.length - 3);
 			for (int i = 0; i < dataDecoded.length; i++) {
 				if (0 == i % 16) {
 					sbDecoded.append(prefix);
 					sbDecoded.append(String.format(" %04d-%04d   ",
 							(i / 16) * 16 + 1, (i / 16 + 1) * 16));
 				}
-				sbDecoded.append(String.format("%02x", (byte) dataDecoded[i]));
+				sbDecoded.append(String.format("%02x", (byte) dataDecoded[i]).toUpperCase());
 				sbDecoded.append(' ');
 				if (7 == i % 8 && 15 != i % 16) {
 					sbDecoded.append(' ');
@@ -39,7 +42,7 @@ public class PrintUtil {
 				sbEncoded.append(String.format(" %04d-%04d   ",
 						(i / 16) * 16 + 1, (i / 16 + 1) * 16));
 			}
-			sbEncoded.append(String.format("%02x", (int) data[i]));
+			sbEncoded.append(String.format("%02x", (int) data[i]).toUpperCase());
 			sbEncoded.append(' ');
 			if (7 == i % 8 && 15 != i % 16) {
 				sbEncoded.append(' ');

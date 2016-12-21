@@ -15,7 +15,7 @@ public class Test2 {
 		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		
-		
+		PrintUtil.print(new byte[]{(byte)0x06}, false);
 		
 	}
 
