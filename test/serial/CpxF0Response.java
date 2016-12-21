@@ -8,7 +8,7 @@ package serial;
  * @see CpxF0Result
  */
 public class CpxF0Response extends CpxResponse {
-	
+
 	private CpxF0Result rst;
 
 	public CpxF0Result getRst() {
@@ -18,15 +18,17 @@ public class CpxF0Response extends CpxResponse {
 	public void setRst(CpxF0Result rst) {
 		this.rst = rst;
 	}
-	
+
 	public CpxF0Response() {
 		super();
 		this.setMessageType("F0.");
 	}
-	
-	public static CpxF0Response parse(String str) {
+
+	public static CpxF0Response parse(byte[] src) {
 		CpxF0Response resp = new CpxF0Response();
-		resp.setRst(CpxF0Result.parse(str.substring(3)));
+		byte[] dest = new byte[src.length - 3];
+		System.arraycopy(src, 3, dest, 0, src.length - 3);
+		resp.setRst(CpxF0Result.parse(dest));
 		return resp;
 	}
 

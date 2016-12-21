@@ -118,7 +118,8 @@ public class PINPad {
 	public static void write(byte[] data) throws IOException,
 			InterruptedException {
 		serialPort.getOutputStream().write(data);
-		System.out.println(">" + Hex.encodeHexString(data));
+		//System.out.println(">" + Hex.encodeHexString(data));
+		PrintUtil.print(data, true);
 		long start = System.currentTimeMillis();
 		while (System.currentTimeMillis() - start < SERIAL_PORT_READ_TIMEOUT) {
 			if (listener.getQ().isEmpty()) {
@@ -126,7 +127,8 @@ public class PINPad {
 				continue;
 			} else {
 				byte[] responseData = listener.getQ().poll();
-				System.out.println("<" + Hex.encodeHexString(responseData));
+				//System.out.println("<" + Hex.encodeHexString(responseData));
+				PrintUtil.print(responseData, false);
 			}
 		}
 	}

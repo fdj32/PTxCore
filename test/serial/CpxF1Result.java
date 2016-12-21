@@ -11,26 +11,26 @@ public class CpxF1Result {
 	/**
 	 * 2 bytes LGT . length of application field information for response
 	 */
-	private String lgt;
+	private byte[] lgt;
 	/**
 	 * 1 byte TYPE . general command type
 	 */
-	private String cmdType;
+	private byte cmdType;
 	/**
 	 * 1 byte, the message identifier of the request message (set by the sender
 	 * for both MSG ID and SEQ ID).
 	 */
-	private String msgSeqId;
+	private byte msgSeqId;
 	/**
 	 * 1 bytes STATUS . execution status (same as particular report in DRIVER
 	 * structure in SIMELITE)
 	 */
-	private String status;
+	private byte status;
 	/**
 	 * 1 byte, message version to allow for future expansion and legacy message
 	 * handling
 	 */
-	private String msgVer;
+	private byte msgVer;
 	/**
 	 * 12 bytes, response message source -> EMV application name
 	 */
@@ -44,45 +44,45 @@ public class CpxF1Result {
 	 * (LGT - 28) bytes DATA_R . data information response field for the driver
 	 * command selected
 	 */
-	private String dataR;
+	private byte[] dataR;
 
-	public String getLgt() {
+	public byte[] getLgt() {
 		return lgt;
 	}
 
-	public void setLgt(String lgt) {
+	public void setLgt(byte[] lgt) {
 		this.lgt = lgt;
 	}
 
-	public String getCmdType() {
+	public byte getCmdType() {
 		return cmdType;
 	}
 
-	public void setCmdType(String cmdType) {
+	public void setCmdType(byte cmdType) {
 		this.cmdType = cmdType;
 	}
 
-	public String getMsgSeqId() {
+	public byte getMsgSeqId() {
 		return msgSeqId;
 	}
 
-	public void setMsgSeqId(String msgSeqId) {
+	public void setMsgSeqId(byte msgSeqId) {
 		this.msgSeqId = msgSeqId;
 	}
 
-	public String getStatus() {
+	public byte getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(byte status) {
 		this.status = status;
 	}
 
-	public String getMsgVer() {
+	public byte getMsgVer() {
 		return msgVer;
 	}
 
-	public void setMsgVer(String msgVer) {
+	public void setMsgVer(byte msgVer) {
 		this.msgVer = msgVer;
 	}
 
@@ -102,24 +102,34 @@ public class CpxF1Result {
 		this.pAppName = pAppName;
 	}
 
-	public String getDataR() {
+	public byte[] getDataR() {
 		return dataR;
 	}
 
-	public void setDataR(String dataR) {
+	public void setDataR(byte[] dataR) {
 		this.dataR = dataR;
 	}
 
-	public static CpxF1Result parse(String str) {
+	public static CpxF1Result parse(byte[] src) {
 		CpxF1Result rst = new CpxF1Result();
-		rst.setLgt(str.substring(0, 2));
-		rst.setCmdType(str.substring(2, 3));
-		rst.setMsgSeqId(str.substring(3, 4));
-		rst.setStatus(str.substring(4, 5));
-		rst.setMsgVer(str.substring(5, 6));
-		rst.seteAppName(str.substring(6, 18));
-		rst.setpAppName(str.substring(18, 30));
-		rst.setDataR(str.substring(30));
+		byte[] dest = new byte[2];
+		System.arraycopy(src, 0, dest, 0, 2);
+		rst.setLgt(dest);
+		rst.setCmdType(src[2]);
+		rst.setMsgSeqId(src[3]);
+		rst.setStatus(src[4]);
+		rst.setMsgVer(src[5]);
+		dest = new byte[12];
+		System.arraycopy(src, 6, dest, 0, 12);
+		rst.seteAppName(new String(dest));
+		dest = new byte[12];
+		System.arraycopy(src, 18, dest, 0, 12);
+		rst.setpAppName(new String(dest));
+		if (src.length > 30) {
+			dest = new byte[src.length - 30];
+			System.arraycopy(src, 30, dest, 0, src.length - 30);
+			rst.setDataR(dest);
+		}
 		return rst;
 	}
 
