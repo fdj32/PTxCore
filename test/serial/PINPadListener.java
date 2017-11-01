@@ -23,17 +23,17 @@ public class PINPadListener implements SerialPortEventListener {
 	@Override
 	public void serialEvent(SerialPortEvent event) {
 		switch (event.getEventType()) {
-		case SerialPortEvent.BI:
-		case SerialPortEvent.OE:
-		case SerialPortEvent.FE:
-		case SerialPortEvent.PE:
-		case SerialPortEvent.CD:
-		case SerialPortEvent.CTS:
-		case SerialPortEvent.DSR:
-		case SerialPortEvent.RI:
-		case SerialPortEvent.OUTPUT_BUFFER_EMPTY:
+		case SerialPortEvent.BI: /* Break Interrupt, 通讯中断 */
+		case SerialPortEvent.OE: /* Overrun Error,溢位错误 */
+		case SerialPortEvent.FE: /* Framing Error,传帧错误 */
+		case SerialPortEvent.PE: /* Parity Error,校验错误 */
+		case SerialPortEvent.CD: /* Carrier detect,载波检测 */
+		case SerialPortEvent.CTS: /* Clear To Send,清除发送 */
+		case SerialPortEvent.DSR: /* Data Set Ready,数据设备就绪 */
+		case SerialPortEvent.RI: /* Ring Indicator,响铃指示 */
+		case SerialPortEvent.OUTPUT_BUFFER_EMPTY: /* Output Buffer is Empty,输出缓冲区清空 */
 			break;
-		case SerialPortEvent.DATA_AVAILABLE:
+		case SerialPortEvent.DATA_AVAILABLE: /* Data Available at the serial port,端口有可用数据。读到缓冲数组，输出到终端。 */
 			byte[] buffer = null;
 			int available = 0, totalLength = 0;
 			ByteBuffer bb = ByteBuffer.allocateDirect(1024);

@@ -28,3 +28,9 @@ in MacOSX, the pinpad serial port name is "/dev/tty.usbmodem1411"
 
 You can run command "ls /dev", before and after the pinpad was connected with the host machine to see the difference.
 
+# Reference
+
+http://www.cnblogs.com/dodoJavaLearner/p/5428418.html
+http://blog.csdn.net/kong_gu_you_lan/article/details/52302075
+http://www.jb51.net/article/70621.htm
+http://blog.csdn.net/linghao00/article/details/6852739
