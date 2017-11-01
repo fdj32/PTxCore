@@ -26,7 +26,7 @@ public class Pinpad {
 	private static final int SERIAL_PORT_OPEN_TIMEOUT = 2000;
 	private static final int SERIAL_PORT_READ_TIMEOUT = 8000;
 	private static final int SERIAL_PORT_POLL_TIME = 100;
-	private static final String SERIAL_PORT_NAME = "COM9";
+	private static final String SERIAL_PORT_NAME = "/dev/tty.usbmodem1411";
 
 	private SerialPort serialPort;
 	private ConcurrentLinkedQueue<byte[]> dataQ = new ConcurrentLinkedQueue<byte[]>();

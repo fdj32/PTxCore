@@ -19,3 +19,12 @@ http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-dow
 Linux 3.0 doesn't work.
 
 rxtx-2.2 is ok for linux 64
+
+# MACOSX
+
+copy /PTxCore/doc/rxtx-2.2pre2-bins/mac-10.5/librxtxSerial.jnilib to /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib
+
+in MacOSX, the pinpad serial port name is "/dev/tty.usbmodem1411"
+
+You can run command "ls /dev", before and after the pinpad was connected with the host machine to see the difference.
+
