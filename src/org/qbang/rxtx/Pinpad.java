@@ -1,5 +1,6 @@
 package org.qbang.rxtx;
 
+import java.io.IOException;
 import java.util.Enumeration;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -58,6 +59,40 @@ public class Pinpad {
 			}
 		}
 		return null;
+	}
+	
+	public byte[] write(byte[] data, boolean waitForResponse, int tryTimes) throws IOException, InterruptedException {
+		long start = System.currentTimeMillis();
+		byte[] response = null;
+		for(int i = 0; i < tryTimes; i ++) {
+			serialPort.getOutputStream().write(data);
+			boolean gotACK = false;
+			boolean gotResponse = false;
+			while((System.currentTimeMillis() - start) < SERIAL_PORT_READ_TIMEOUT) {
+				if(null == (response = dataQ.poll())) {
+					Thread.sleep(SERIAL_PORT_POLL_TIME);
+System.out.println(".");
+				} else if(1 == response.length && UTFUtils.ACK[0] == response[0]) {
+System.out.println("Got ACK");
+					// receive ACK
+					gotACK = true;
+					if(!waitForResponse)
+						break;
+				} else if(response.length > 1) {
+System.out.println("Got Response:" + UTFUtils.printFormat(response));
+					// receive response
+					gotResponse = true;
+					break;
+				}
+				start = System.currentTimeMillis();
+			}
+			if(waitForResponse) {
+				if(gotACK && gotResponse) break;
+			} else {
+				if(gotACK) break;
+			}
+		}
+		return response;
 	}
 
 	public void write(byte[] data) throws Exception {
