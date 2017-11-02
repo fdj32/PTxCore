@@ -81,6 +81,13 @@ https://github.com/NeuronRobotics/nrjavaserial
 https://serialio.com/
 https://sourceforge.net/projects/serial-io/
 
+# Windows Handler for Serial IO
+http://blog.csdn.net/u014729825/article/details/50354549
+http://blog.csdn.net/u013472838/article/details/52300875
+http://blog.csdn.net/codexy/article/details/5390550
+
+# JNI
+http://www.cnblogs.com/lsnproj/archive/2012/01/09/2317519.html
 
 
 
