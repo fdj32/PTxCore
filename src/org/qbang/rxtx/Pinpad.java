@@ -8,6 +8,8 @@ import gnu.io.CommPortIdentifier;
 import gnu.io.PortInUseException;
 import gnu.io.SerialPort;
 import serial.UTFUtils;
+import serial.enums.EmvReasonCode;
+import serial.enums.EmvServiceCode;
 
 public class Pinpad {
 
@@ -28,6 +30,7 @@ public class Pinpad {
 	private static final int SERIAL_PORT_READ_TIMEOUT = 8000;
 	private static final int SERIAL_PORT_POLL_TIME = 100;
 	private static final String SERIAL_PORT_NAME = "/dev/tty.usbmodem1411";
+	private static final int MAX_VEGA_PACKET_SIZE = 498;
 
 	private SerialPort serialPort;
 	private ConcurrentLinkedQueue<byte[]> dataQ = new ConcurrentLinkedQueue<byte[]>();
@@ -59,6 +62,31 @@ public class Pinpad {
 			}
 		}
 		return null;
+	}
+	
+	public void init(byte[] initData) {
+		int initDataIndex = 0;
+		boolean result = true; // CPX F1 Async EMV Data result
+		while(initDataIndex < initData.length && result) {
+			byte[] dataPacket = new byte[MAX_VEGA_PACKET_SIZE];
+			int initPacketSize = MAX_VEGA_PACKET_SIZE - 1;
+			int dataPacketSize = 0;
+			if(initData.length - initDataIndex > initPacketSize) {
+				dataPacketSize = initPacketSize;
+				dataPacket[0] = 0x01; // More to Follow
+			} else { // Last Packet
+				dataPacketSize = initData.length - initDataIndex;
+				dataPacket[0] = 0x00; // No more to Follow
+			}
+			System.arraycopy(initData, initDataIndex, dataPacket, 1, dataPacketSize);
+			result = cpxF1AsyncEmvData(EmvServiceCode.EMV_INIT, EmvReasonCode.EMV_UNDEF, dataPacket, true);
+			initDataIndex += dataPacketSize;
+		}
+	}
+	
+	public boolean cpxF1AsyncEmvData(int emvServiceCode, int emvReasonCode, byte[] data, boolean waitForResponse) {
+		// TODO
+		return true;
 	}
 	
 	public byte[] write(byte[] data, boolean waitForResponse, int tryTimes) throws IOException, InterruptedException {
