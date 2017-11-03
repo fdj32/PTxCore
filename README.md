@@ -89,7 +89,10 @@ http://blog.csdn.net/codexy/article/details/5390550
 # JNI
 http://www.cnblogs.com/lsnproj/archive/2012/01/09/2317519.html
 
-
+# Ingenico
+https://developer.ingenico.us/
+https://developer.ingenico.us/register/
+https://developer.ingenico.us/wp-content/uploads/2017/05/IngenicoUSBDrivers_3.10_setupEXT.zip
 
 
 

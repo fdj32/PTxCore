@@ -8,7 +8,8 @@ public class PinpadMain {
 		Pinpad pp = new Pinpad();
 //		pp.write(UTFUtils.cpx58Display(new String[]{"Hello Nick"}));
 //		pp.read();
-		pp.write(UTFUtils.cpx58Display(new String[]{"Hello Nick"}), true, 3);
+//		pp.write(UTFUtils.cpx58Display(new String[]{"Hello Nick"}), true, 3);
+		pp.write(UTFUtils.cpx5DDeviceInformation("6"), true, 3);
 		
 //		pp.write(UTFUtils.cpx58Display(new String[]{"Hello Nick"}), false, 3);
 		
