@@ -7,9 +7,9 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import gnu.io.CommPortIdentifier;
 import gnu.io.PortInUseException;
 import gnu.io.SerialPort;
+import serial.CpxF1Command;
 import serial.UTFUtils;
-import serial.enums.EmvReasonCode;
-import serial.enums.EmvServiceCode;
+import serial.VegaEmvInitReq;
 
 public class Pinpad {
 
@@ -31,6 +31,8 @@ public class Pinpad {
 	private static final int SERIAL_PORT_POLL_TIME = 100;
 	private static final String SERIAL_PORT_NAME = "/dev/tty.usbmodem1411";
 	private static final int MAX_VEGA_PACKET_SIZE = 498;
+	
+	private static int cpxSeqId = 0;
 
 	private SerialPort serialPort;
 	private ConcurrentLinkedQueue<byte[]> dataQ = new ConcurrentLinkedQueue<byte[]>();
@@ -68,23 +70,28 @@ public class Pinpad {
 		int initDataIndex = 0;
 		boolean result = true; // CPX F1 Async EMV Data result
 		while(initDataIndex < initData.length && result) {
+			boolean bMoreDataToCome = false;
 			byte[] dataPacket = new byte[MAX_VEGA_PACKET_SIZE];
-			int initPacketSize = MAX_VEGA_PACKET_SIZE - 1;
 			int dataPacketSize = 0;
-			if(initData.length - initDataIndex > initPacketSize) {
-				dataPacketSize = initPacketSize;
-				dataPacket[0] = 0x01; // More to Follow
+			if(initData.length - initDataIndex > MAX_VEGA_PACKET_SIZE) {
+				dataPacketSize = MAX_VEGA_PACKET_SIZE;
+				bMoreDataToCome = true; // More to Follow
 			} else { // Last Packet
 				dataPacketSize = initData.length - initDataIndex;
-				dataPacket[0] = 0x00; // No more to Follow
+				bMoreDataToCome = false; // No more to Follow
 			}
-			System.arraycopy(initData, initDataIndex, dataPacket, 1, dataPacketSize);
-			result = cpxF1AsyncEmvData(EmvServiceCode.EMV_INIT, EmvReasonCode.EMV_UNDEF, dataPacket, true);
+			System.arraycopy(initData, initDataIndex, dataPacket, 0, dataPacketSize);
+			VegaEmvInitReq initReq = new VegaEmvInitReq(bMoreDataToCome, dataPacket);
+			result = cpxF1AsyncEmvData(initReq, true);
 			initDataIndex += dataPacketSize;
 		}
 	}
 	
-	public boolean cpxF1AsyncEmvData(int emvServiceCode, int emvReasonCode, byte[] data, boolean waitForResponse) {
+	public boolean cpxF1AsyncEmvData(VegaEmvInitReq initReq, boolean waitForResponse) {
+		CpxF1Command cmd = CpxF1Command.cpxF1AsyncEmvData((byte) cpxSeqId, initReq.toBinary());
+		
+		
+		
 		// TODO
 		return true;
 	}
