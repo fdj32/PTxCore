@@ -136,6 +136,18 @@ public class Tag {
 		this.setLength(this.getValue().length() / 2);
 	}
 	
+	public Tag(int id) {
+		super();
+		this.setId(id);
+	}
+	
+	public byte[] getIdBin() {
+		byte[] idBin = new byte[2];
+		idBin[0] = (byte) (getId() / 0x100);
+		idBin[1] = (byte) (getId() % 0x100);
+		return idBin;
+	}
+	
 	public static byte[] buildTLV(Tag t) throws DecoderException {
 		int size = 2 + 2 + t.getValue().length() / 2;
 		byte[] tlv = new byte[size];

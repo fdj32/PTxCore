@@ -58,6 +58,13 @@ public class UTFUtils {
 		return lgt;
 	}
 	
+	public static byte[] lengthSwap(int length) {
+		byte[] lengthSwap = new byte[2];
+		lengthSwap[0] = (byte)(length % 0x100);
+		lengthSwap[1] = (byte)(length / 0x100);
+		return lengthSwap;
+	}
+	
 	public static byte[] hexLog2bytes(String s) throws DecoderException {
 		s = s.replaceAll(" ", "");
 		return Hex.decodeHex(s.toCharArray());
