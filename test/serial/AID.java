@@ -257,7 +257,7 @@ public class AID {
 		return data;
 	}
 	
-	public AID fromBinary(byte[] bin) {
+	public static AID fromBinary(byte[] bin) {
 		AID a = new AID();
 		a.setApplicationSelectionIndicator(bin[0]);
 		a.setLengthTLVData(bin[1]);
@@ -306,7 +306,7 @@ public class AID {
 		byte[] defaultTDOLLength = new byte[2];
 		System.arraycopy(bin, 51+a.getLengthTLVData(), defaultTDOLLength, 0, 2);
 		a.setDefaultTDOLLength(defaultTDOLLength);
-		int tdol = getDefaultTDOLLengthInt();
+		int tdol = a.getDefaultTDOLLengthInt();
 		
 		byte[] defaultTDOL = new byte[tdol];
 		System.arraycopy(bin, 53+a.getLengthTLVData(), defaultTDOL, 0, tdol);
@@ -315,7 +315,7 @@ public class AID {
 		byte[] defaultDDOLLength = new byte[2];
 		System.arraycopy(bin, 53+a.getLengthTLVData()+tdol, defaultDDOLLength, 0, 2);
 		a.setDefaultDDOLLength(defaultDDOLLength);
-		int ddol = getDefaultDDOLLengthInt();
+		int ddol = a.getDefaultDDOLLengthInt();
 		
 		byte[] defaultDDOL = new byte[ddol];
 		System.arraycopy(bin, 55+a.getLengthTLVData()+tdol, defaultDDOL, 0, ddol);
@@ -325,11 +325,11 @@ public class AID {
 	}
 	
 	public int getDefaultTDOLLengthInt() {
-		return defaultTDOLLength[0] * 16 + defaultTDOLLength[1];
+		return defaultTDOLLength[0] * 0x100 + defaultTDOLLength[1];
 	}
 	
 	public int getDefaultDDOLLengthInt() {
-		return defaultDDOLLength[0] * 16 + defaultDDOLLength[1];
+		return defaultDDOLLength[0] * 0x100 + defaultDDOLLength[1];
 	}
 	
 	public int totalLength() {

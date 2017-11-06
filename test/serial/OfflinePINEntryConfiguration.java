@@ -323,5 +323,10 @@ public class OfflinePINEntryConfiguration {
 		baos.close();
 		return data;
 	}
+	
+	public static OfflinePINEntryConfiguration fromBinary(byte[] bin) {
+		OfflinePINEntryConfiguration o = new OfflinePINEntryConfiguration();
+		return o;
+	}
 
 }
