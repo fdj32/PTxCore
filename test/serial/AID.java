@@ -256,5 +256,84 @@ public class AID {
 		baos.close();
 		return data;
 	}
+	
+	public AID fromBinary(byte[] bin) {
+		AID a = new AID();
+		a.setApplicationSelectionIndicator(bin[0]);
+		a.setLengthTLVData(bin[1]);
+		if(0 != a.getLengthTLVData()) {
+			byte[] tlvData = new byte[a.getLengthTLVData()];
+			System.arraycopy(bin, 2, tlvData, 0, a.getLengthTLVData());
+			a.setTlvData(tlvData);
+		}
+		a.setAidLength(bin[2+a.getLengthTLVData()]);
+		
+		byte[] aid = new byte[16];
+		System.arraycopy(bin, 3+a.getLengthTLVData(), aid, 0, 16);
+		a.setAid(aid);
+		
+		byte[] rid = new byte[5];
+		System.arraycopy(bin, 19+a.getLengthTLVData(), rid, 0, 5);
+		a.setRid(rid);
+		
+		byte[] applicationVersionNumber = new byte[2];
+		System.arraycopy(bin, 24+a.getLengthTLVData(), applicationVersionNumber, 0, 2);
+		a.setApplicaitonVersionNumber(applicationVersionNumber);
+		
+		byte[] tacDefault = new byte[5];
+		System.arraycopy(bin, 26+a.getLengthTLVData(), tacDefault, 0, 5);
+		a.setTacDefault(tacDefault);
+		
+		byte[] tacDenial = new byte[5];
+		System.arraycopy(bin, 31+a.getLengthTLVData(), tacDenial, 0, 5);
+		a.setTacDenial(tacDenial);
+		
+		byte[] tacOnline = new byte[5];
+		System.arraycopy(bin, 36+a.getLengthTLVData(), tacOnline, 0, 5);
+		a.setTacOnline(tacOnline);
+		
+		a.setMaximumTargetPercentage(bin[41+a.getLengthTLVData()]);
+		a.setTargetPercentage(bin[42+a.getLengthTLVData()]);
+		
+		byte[] thresholdValue = new byte[4];
+		System.arraycopy(bin, 43+a.getLengthTLVData(), thresholdValue, 0, 4);
+		a.setThresholdValue(thresholdValue);
+		
+		byte[] terminalFloorLimit = new byte[4];
+		System.arraycopy(bin, 47+a.getLengthTLVData(), terminalFloorLimit, 0, 4);
+		a.setTerminalFloorLimit(terminalFloorLimit);
+		
+		byte[] defaultTDOLLength = new byte[2];
+		System.arraycopy(bin, 51+a.getLengthTLVData(), defaultTDOLLength, 0, 2);
+		a.setDefaultTDOLLength(defaultTDOLLength);
+		int tdol = getDefaultTDOLLengthInt();
+		
+		byte[] defaultTDOL = new byte[tdol];
+		System.arraycopy(bin, 53+a.getLengthTLVData(), defaultTDOL, 0, tdol);
+		a.setDefaultTDOL(defaultTDOL);
+		
+		byte[] defaultDDOLLength = new byte[2];
+		System.arraycopy(bin, 53+a.getLengthTLVData()+tdol, defaultDDOLLength, 0, 2);
+		a.setDefaultDDOLLength(defaultDDOLLength);
+		int ddol = getDefaultDDOLLengthInt();
+		
+		byte[] defaultDDOL = new byte[ddol];
+		System.arraycopy(bin, 55+a.getLengthTLVData()+tdol, defaultDDOL, 0, ddol);
+		a.setDefaultDDOL(defaultDDOL);
+		
+		return a;
+	}
+	
+	public int getDefaultTDOLLengthInt() {
+		return defaultTDOLLength[0] * 16 + defaultTDOLLength[1];
+	}
+	
+	public int getDefaultDDOLLengthInt() {
+		return defaultDDOLLength[0] * 16 + defaultDDOLLength[1];
+	}
+	
+	public int totalLength() {
+		return 55+getLengthTLVData()+getDefaultTDOLLengthInt()+getDefaultDDOLLengthInt();
+	}
 
 }
