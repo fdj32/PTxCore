@@ -362,10 +362,33 @@ public class RID implements Constant {
 		r.setLengthExtendedAPIData(lengthExtendedAPIData);
 		int extend = r.getLengthExtendedAPIDataInt();
 		byte[] extendedAPIDataBin = new byte[extend];
+		System.arraycopy(bin, 22+key+online+endTags+previous, extendedAPIDataBin, 0, extend);
 		ExtendedAPIData extendedAPIData = ExtendedAPIData.fromBinary(extendedAPIDataBin);
 		r.setExtendedAPIData(extendedAPIData);
 		
-
+		byte[] lengthProprietaryRIDData = new byte[2]; // 0x00 0x00
+		System.arraycopy(bin, 22+key+online+endTags+previous+extend, lengthProprietaryRIDData, 0, 2);
+		r.setLengthProprietaryRIDData(lengthProprietaryRIDData);
+		
+		byte[] lengthIgnoreTags = new byte[2];
+		System.arraycopy(bin, 24+key+online+endTags+previous+extend, lengthIgnoreTags, 0, 2);
+		r.setLengthIgnoreTags(lengthIgnoreTags);
+		int ignore = r.getLengthIgnoreTagsInt();
+		byte[] ignoreTagsBin = new byte[ignore];
+		System.arraycopy(bin, 26+key+online+endTags+previous+extend, ignoreTagsBin, 0, ignore);
+		List<Tag> ignoreTags = Tag.fromBinaryToIdList(ignoreTagsBin);
+		r.setIgnoreTags(ignoreTags);
+		// RFU*1
+		r.setMiscellaneousOptions(bin[27+key+online+endTags+previous+extend+ignore]);
+		
+		byte[] lengthTLVData = new byte[2];
+		System.arraycopy(bin, 28+key+online+endTags+previous+extend+ignore, lengthTLVData, 0, 2);
+		r.setLengthTLVData(lengthTLVData);
+		int tlv = r.getLengthTLVDataInt();
+		byte[] tlvData = new byte[tlv];
+		System.arraycopy(bin, 30+key+online+endTags+previous+extend+ignore, tlvData, 0, tlv);
+		r.setTlvData(tlvData);
+		
 		return r;
 	}
 	
@@ -387,6 +410,14 @@ public class RID implements Constant {
 	
 	public int getLengthExtendedAPIDataInt() {
 		return lengthExtendedAPIData[0] * 0x100 + lengthExtendedAPIData[1];
+	}
+	
+	public int getLengthIgnoreTagsInt() {
+		return lengthIgnoreTags[0] * 0x100 + lengthIgnoreTags[1];
+	}
+	
+	public int getLengthTLVDataInt() {
+		return lengthTLVData[0] * 0x100 + lengthTLVData[1];
 	}
 
 }
