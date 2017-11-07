@@ -2,6 +2,7 @@ package serial;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +32,7 @@ public class RID implements Constant {
 	 * length=2
 	 */
 	private byte[] lengthEndOfTransactionTags;
-	private Map<EmvTransactionType, List<Tag>> endOfTransactionTags;
+	private Map<Integer, List<Tag>> endOfTransactionTags;
 	private byte[] EndOfTransactionStep;
 	/**
 	 * length=2
@@ -115,11 +116,11 @@ public class RID implements Constant {
 		this.lengthEndOfTransactionTags = lengthEndOfTransactionTags;
 	}
 
-	public Map<EmvTransactionType, List<Tag>> getEndOfTransactionTags() {
+	public Map<Integer, List<Tag>> getEndOfTransactionTags() {
 		return endOfTransactionTags;
 	}
 
-	public void setEndOfTransactionTags(Map<EmvTransactionType, List<Tag>> endOfTransactionTags) {
+	public void setEndOfTransactionTags(Map<Integer, List<Tag>> endOfTransactionTags) {
 		this.endOfTransactionTags = endOfTransactionTags;
 	}
 
@@ -237,9 +238,13 @@ public class RID implements Constant {
 		baos.reset();
 
 		for (int i = EmvTransactionType.EMV_PURCHASE; i <= EmvTransactionType.EMV_PREAUTH_COMPLETION; i++) {
-			baos.write(endOfTransactionTags.get(i).size());
-			for (Tag item : endOfTransactionTags.get(i)) {
-				baos.write(item.getIdBin());
+			if(null == endOfTransactionTags.get(i) || 0 == endOfTransactionTags.get(i).size()) {
+				baos.write(0x00);
+			} else {
+				baos.write(endOfTransactionTags.get(i).size());
+				for (Tag item : endOfTransactionTags.get(i)) {
+					baos.write(item.getIdBin());
+				}
 			}
 		}
 		byte[] endOfTransactionTagsBin = baos.toByteArray();
@@ -319,7 +324,29 @@ public class RID implements Constant {
 		List<Tag> goOnlineTags = Tag.fromBinaryToIdList(goOnlineTagsBin);
 		r.setGoOnlineTags(goOnlineTags);
 		
-		
+		byte[] lengthEndOfTransactionTags = new byte[2];
+		System.arraycopy(bin, 9+key+online, lengthEndOfTransactionTags, 0, 2);
+		r.setLengthEndOfTransactionTags(lengthEndOfTransactionTags);
+		int endTags = r.getLengthEndOfTransactionTagsInt();
+		byte[] endTagsBin = new byte[endTags]; 
+		System.arraycopy(bin, 11+key+online, endTagsBin, 0, endTags);
+		int index = 0;
+		Map<Integer, List<Tag>> endOfTransactionTags = new HashMap<Integer, List<Tag>>();
+		for (int i = EmvTransactionType.EMV_PURCHASE; i <= EmvTransactionType.EMV_PREAUTH_COMPLETION; i++) {
+			byte[] temp = new byte[endTags - index];
+			System.arraycopy(endTagsBin, index, temp, 0, endTags - index);
+			int size = temp[0];
+			index++;
+			if(0 == size) {
+				continue;
+			} else {
+				byte[] sub = new byte[size*2];
+				index += size*2;
+				System.arraycopy(temp, 1, sub, 0, size*2);
+				List<Tag> list = Tag.fromBinaryToIdList(sub);
+				endOfTransactionTags.put(i, list);
+			}
+		}
 		
 		
 		
@@ -333,6 +360,10 @@ public class RID implements Constant {
 	
 	public int getLengthGoOnlineTagsInt() {
 		return lengthGoOnlineTags[0] * 0x100 + lengthGoOnlineTags[1];
+	}
+	
+	public int getLengthEndOfTransactionTagsInt() {
+		return lengthEndOfTransactionTags[0] * 0x100 + lengthEndOfTransactionTags[1];
 	}
 
 }

@@ -143,7 +143,7 @@ public class Tag {
 	
 	public Tag(byte[] idBin) {
 		super();
-		int id = idBin[0] * 0x100 + idBin[1];
+		int id = idBin[1] * 0x100 + idBin[0];
 		this.setId(id);
 	}
 	
