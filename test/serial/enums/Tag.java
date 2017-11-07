@@ -141,6 +141,12 @@ public class Tag {
 		this.setId(id);
 	}
 	
+	public Tag(byte[] idBin) {
+		super();
+		int id = idBin[0] * 0x100 + idBin[1];
+		this.setId(id);
+	}
+	
 	public byte[] getIdBin() {
 		byte[] idBin = new byte[2];
 		idBin[0] = (byte) (getId() / 0x100);
@@ -186,6 +192,18 @@ public class Tag {
 			t = parseTLV(str);
 			list.add(t);
 			str = str.substring(4 + 4 + t.getLength() * 2);
+		}
+		return list;
+	}
+	
+	public static List<Tag> fromBinaryToIdList(byte[] bin) {
+		List<Tag> list = new ArrayList<Tag>();
+		int size = bin.length / 2;
+		for(int i = 0; i < size; i++) {
+			byte[] idBin = new byte[2];
+			System.arraycopy(bin, 0+i*2, idBin, 0, 2);
+			Tag t = new Tag(idBin);
+			list.add(t);
 		}
 		return list;
 	}

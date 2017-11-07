@@ -2,6 +2,8 @@ package serial;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 0142-07204-0503 Generic EMV API.pdf Page 29/167
@@ -126,6 +128,37 @@ public class KeyData {
 		byte[] data = baos.toByteArray();
 		baos.close();
 		return data;
+	}
+	
+	public static KeyData fromBinary(byte[] bin) {
+		KeyData k = new KeyData();
+		k.setKeyIndex(bin[0]);
+		k.setKeyAlgorithmIndicator(bin[1]);
+		k.setHashAlgorithmIndicator(bin[2]);
+		k.setKeyLength(bin[3]);
+		byte[] key = new byte[248];
+		System.arraycopy(bin, 4, key, 0, 248);
+		k.setKey(key);
+		k.setKeyExponentLength(bin[252]);
+		byte[] keyExponent = new byte[3];
+		System.arraycopy(bin, 253, keyExponent, 0, 3);
+		k.setKeyExponent(keyExponent);
+		byte[] keyCheckSum = new byte[20];
+		System.arraycopy(bin, 256, keyCheckSum, 0, 20);
+		k.setKeyCheckSum(keyCheckSum);
+		return k;
+	}
+	
+	public static List<KeyData> fromBinaryToList(byte[] bin) {
+		List<KeyData> list = new ArrayList<KeyData>();
+		int size = bin.length / 276;
+		for(int i = 0; i < size; i++) {
+			byte[] sub = new byte[276];
+			System.arraycopy(bin, 0+i*276, sub, 0, 276);
+			KeyData k = fromBinary(sub);
+			list.add(k);
+		}
+		return list;
 	}
 
 }

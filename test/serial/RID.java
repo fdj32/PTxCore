@@ -46,7 +46,7 @@ public class RID implements Constant {
 	/**
 	 * length=2
 	 */
-	private byte[] lengthProprietaryRIDData = new byte[] {0x00, 0x00};
+	private byte[] lengthProprietaryRIDData = new byte[] { 0x00, 0x00 };
 	private byte[] proprietaryRIDData;
 	/**
 	 * length=2
@@ -66,6 +66,158 @@ public class RID implements Constant {
 	 * FF09
 	 */
 	private byte[] tlvData;
+
+	public byte[] getRid() {
+		return rid;
+	}
+
+	public void setRid(byte[] rid) {
+		this.rid = rid;
+	}
+
+	public byte[] getKeyDataTotalLength() {
+		return keyDataTotalLength;
+	}
+
+	public void setKeyDataTotalLength(byte[] keyDataTotalLength) {
+		this.keyDataTotalLength = keyDataTotalLength;
+	}
+
+	public List<KeyData> getKeyDatas() {
+		return keyDatas;
+	}
+
+	public void setKeyDatas(List<KeyData> keyDatas) {
+		this.keyDatas = keyDatas;
+	}
+
+	public byte[] getLengthGoOnlineTags() {
+		return lengthGoOnlineTags;
+	}
+
+	public void setLengthGoOnlineTags(byte[] lengthGoOnlineTags) {
+		this.lengthGoOnlineTags = lengthGoOnlineTags;
+	}
+
+	public List<Tag> getGoOnlineTags() {
+		return goOnlineTags;
+	}
+
+	public void setGoOnlineTags(List<Tag> goOnlineTags) {
+		this.goOnlineTags = goOnlineTags;
+	}
+
+	public byte[] getLengthEndOfTransactionTags() {
+		return lengthEndOfTransactionTags;
+	}
+
+	public void setLengthEndOfTransactionTags(byte[] lengthEndOfTransactionTags) {
+		this.lengthEndOfTransactionTags = lengthEndOfTransactionTags;
+	}
+
+	public Map<EmvTransactionType, List<Tag>> getEndOfTransactionTags() {
+		return endOfTransactionTags;
+	}
+
+	public void setEndOfTransactionTags(Map<EmvTransactionType, List<Tag>> endOfTransactionTags) {
+		this.endOfTransactionTags = endOfTransactionTags;
+	}
+
+	public byte[] getEndOfTransactionStep() {
+		return EndOfTransactionStep;
+	}
+
+	public void setEndOfTransactionStep(byte[] endOfTransactionStep) {
+		EndOfTransactionStep = endOfTransactionStep;
+	}
+
+	public byte[] getLengthGetPreviousAmountTags() {
+		return lengthGetPreviousAmountTags;
+	}
+
+	public void setLengthGetPreviousAmountTags(byte[] lengthGetPreviousAmountTags) {
+		this.lengthGetPreviousAmountTags = lengthGetPreviousAmountTags;
+	}
+
+	public List<Tag> getGetPreviousAmountTags() {
+		return getPreviousAmountTags;
+	}
+
+	public void setGetPreviousAmountTags(List<Tag> getPreviousAmountTags) {
+		this.getPreviousAmountTags = getPreviousAmountTags;
+	}
+
+	public byte[] getLengthExtendedAPIData() {
+		return lengthExtendedAPIData;
+	}
+
+	public void setLengthExtendedAPIData(byte[] lengthExtendedAPIData) {
+		this.lengthExtendedAPIData = lengthExtendedAPIData;
+	}
+
+	public List<ExtendedAPIData> getExtendedAPIDatas() {
+		return extendedAPIDatas;
+	}
+
+	public void setExtendedAPIDatas(List<ExtendedAPIData> extendedAPIDatas) {
+		this.extendedAPIDatas = extendedAPIDatas;
+	}
+
+	public byte[] getLengthProprietaryRIDData() {
+		return lengthProprietaryRIDData;
+	}
+
+	public void setLengthProprietaryRIDData(byte[] lengthProprietaryRIDData) {
+		this.lengthProprietaryRIDData = lengthProprietaryRIDData;
+	}
+
+	public byte[] getProprietaryRIDData() {
+		return proprietaryRIDData;
+	}
+
+	public void setProprietaryRIDData(byte[] proprietaryRIDData) {
+		this.proprietaryRIDData = proprietaryRIDData;
+	}
+
+	public byte[] getLengthIgnoreTags() {
+		return lengthIgnoreTags;
+	}
+
+	public void setLengthIgnoreTags(byte[] lengthIgnoreTags) {
+		this.lengthIgnoreTags = lengthIgnoreTags;
+	}
+
+	public List<Tag> getIgnoreTags() {
+		return ignoreTags;
+	}
+
+	public void setIgnoreTags(List<Tag> ignoreTags) {
+		this.ignoreTags = ignoreTags;
+	}
+
+	public byte getMiscellaneousOptions() {
+		return miscellaneousOptions;
+	}
+
+	public void setMiscellaneousOptions(byte miscellaneousOptions) {
+		this.miscellaneousOptions = miscellaneousOptions;
+	}
+
+	public byte[] getLengthTLVData() {
+		return lengthTLVData;
+	}
+
+	public void setLengthTLVData(byte[] lengthTLVData) {
+		this.lengthTLVData = lengthTLVData;
+	}
+
+	public byte[] getTlvData() {
+		return tlvData;
+	}
+
+	public void setTlvData(byte[] tlvData) {
+		this.tlvData = tlvData;
+	}
 
 	public byte[] toBinary() throws IOException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -142,6 +294,45 @@ public class RID implements Constant {
 		byte[] data = baos.toByteArray();
 		baos.close();
 		return data;
+	}
+
+	public static RID fromBinary(byte[] bin) {
+		RID r = new RID();
+		
+		byte[] rid = new byte[5];
+		System.arraycopy(bin, 0, rid, 0, 5);
+		r.setRid(rid);
+		
+		byte[] keyDataTotalLength = new byte[2];
+		System.arraycopy(bin, 5, keyDataTotalLength, 0, 2);
+		r.setKeyDataTotalLength(keyDataTotalLength);
+		int key = r.getKeyDataTotalLengthInt();
+		byte[] keyDatasBin = new byte[key];
+		List<KeyData> keyDatas = KeyData.fromBinaryToList(keyDatasBin);
+		r.setKeyDatas(keyDatas);
+		
+		byte[] lengthGoOnlineTags = new byte[2];
+		System.arraycopy(bin, 7+key, lengthGoOnlineTags, 0, 2);
+		r.setLengthGoOnlineTags(lengthGoOnlineTags);
+		int online = r.getLengthGoOnlineTagsInt();
+		byte[] goOnlineTagsBin = new byte[online];
+		List<Tag> goOnlineTags = Tag.fromBinaryToIdList(goOnlineTagsBin);
+		r.setGoOnlineTags(goOnlineTags);
+		
+		
+		
+		
+		
+
+		return r;
+	}
+	
+	public int getKeyDataTotalLengthInt() {
+		return keyDataTotalLength[0] * 0x100 + keyDataTotalLength[1];
+	}
+	
+	public int getLengthGoOnlineTagsInt() {
+		return lengthGoOnlineTags[0] * 0x100 + lengthGoOnlineTags[1];
 	}
 
 }
