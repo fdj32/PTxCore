@@ -18,8 +18,8 @@ import serial.enums.Tag;
 public class ExtendedAPIData {
 
 	private byte[] lengthStepTags;
-	private Map<EmvTransactionType, Map<EmvTransactionStep, List<Tag>>> tagListToAskFor;
-	private Map<EmvTransactionType, Map<EmvTransactionStep, List<Tag>>> tagListInCallBack;
+	private Map<Integer, Map<Integer, List<Tag>>> tagListToAskFor;
+	private Map<Integer, Map<Integer, List<Tag>>> tagListInCallBack;
 
 	public byte[] toBinary() throws IOException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -56,6 +56,11 @@ public class ExtendedAPIData {
 		baosTemp.close();
 		baos.close();
 		return data;
+	}
+	
+	public static ExtendedAPIData fromBinary(byte[] bin) {
+		ExtendedAPIData e = new ExtendedAPIData();
+		return e;
 	}
 
 }

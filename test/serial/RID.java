@@ -43,7 +43,7 @@ public class RID implements Constant {
 	 * length=2
 	 */
 	private byte[] lengthExtendedAPIData;
-	private List<ExtendedAPIData> extendedAPIDatas;
+	private ExtendedAPIData extendedAPIData;
 	/**
 	 * length=2
 	 */
@@ -156,12 +156,12 @@ public class RID implements Constant {
 		this.lengthExtendedAPIData = lengthExtendedAPIData;
 	}
 
-	public List<ExtendedAPIData> getExtendedAPIDatas() {
-		return extendedAPIDatas;
+	public ExtendedAPIData getExtendedAPIData() {
+		return extendedAPIData;
 	}
 
-	public void setExtendedAPIDatas(List<ExtendedAPIData> extendedAPIDatas) {
-		this.extendedAPIDatas = extendedAPIDatas;
+	public void setExtendedAPIData(ExtendedAPIData extendedAPIData) {
+		this.extendedAPIData = extendedAPIData;
 	}
 
 	public byte[] getLengthProprietaryRIDData() {
@@ -257,13 +257,9 @@ public class RID implements Constant {
 		byte[] getPreviousAmountTagsBin = baos.toByteArray();
 		lengthGetPreviousAmountTags = UTFUtils.lgt(getPreviousAmountTagsBin.length, 2);
 		baos.reset();
-
-		for (ExtendedAPIData item : extendedAPIDatas) {
-			baos.write(item.toBinary());
-		}
-		byte[] extendedAPIDatasBin = baos.toByteArray();
-		lengthExtendedAPIData = UTFUtils.lgt(extendedAPIDatasBin.length, 2);
-		baos.reset();
+		
+		byte[] extendedAPIDataBin = extendedAPIData.toBinary();
+		lengthExtendedAPIData = UTFUtils.lgt(extendedAPIDataBin.length, 2);
 
 		for (Tag item : ignoreTags) {
 			baos.write(item.getIdBin());
@@ -284,7 +280,7 @@ public class RID implements Constant {
 		baos.write(lengthGetPreviousAmountTags);
 		baos.write(getPreviousAmountTagsBin);
 		baos.write(lengthExtendedAPIData);
-		baos.write(extendedAPIDatasBin);
+		baos.write(extendedAPIDataBin);
 		baos.write(lengthProprietaryRIDData);
 		// proprietaryRIDData = null
 		baos.write(lengthIgnoreTags);
@@ -348,7 +344,26 @@ public class RID implements Constant {
 			}
 		}
 		
+		byte[] endOfTransactionStep = new byte[7];
+		System.arraycopy(bin, 11+key+online+endTags, endOfTransactionStep, 0, 7);
+		r.setEndOfTransactionStep(endOfTransactionStep);
 		
+		byte[] lengthGetPreviousAmountTags = new byte[2];
+		System.arraycopy(bin, 18+key+online+endTags, lengthGetPreviousAmountTags, 0, 2);
+		r.setLengthGetPreviousAmountTags(lengthGetPreviousAmountTags);
+		int previous = r.getLengthGetPreviousAmountTagsInt();
+		byte[] getPreviousAmountTagsBin = new byte[previous];
+		System.arraycopy(bin, 20+key+online+endTags, getPreviousAmountTagsBin, 0, previous);
+		List<Tag> getPreviousAmountTags = Tag.fromBinaryToIdList(getPreviousAmountTagsBin);
+		r.setGetPreviousAmountTags(getPreviousAmountTags);
+		
+		byte[] lengthExtendedAPIData = new byte[2];
+		System.arraycopy(bin, 20+key+online+endTags+previous, lengthExtendedAPIData, 0, 2);
+		r.setLengthExtendedAPIData(lengthExtendedAPIData);
+		int extend = r.getLengthExtendedAPIDataInt();
+		byte[] extendedAPIDataBin = new byte[extend];
+		ExtendedAPIData extendedAPIData = ExtendedAPIData.fromBinary(extendedAPIDataBin);
+		r.setExtendedAPIData(extendedAPIData);
 		
 
 		return r;
@@ -364,6 +379,14 @@ public class RID implements Constant {
 	
 	public int getLengthEndOfTransactionTagsInt() {
 		return lengthEndOfTransactionTags[0] * 0x100 + lengthEndOfTransactionTags[1];
+	}
+	
+	public int getLengthGetPreviousAmountTagsInt() {
+		return lengthGetPreviousAmountTags[0] * 0x100 + lengthGetPreviousAmountTags[1];
+	}
+	
+	public int getLengthExtendedAPIDataInt() {
+		return lengthExtendedAPIData[0] * 0x100 + lengthExtendedAPIData[1];
 	}
 
 }
