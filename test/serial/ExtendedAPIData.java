@@ -2,6 +2,7 @@ package serial;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -64,7 +65,7 @@ public class ExtendedAPIData implements Constant {
 					}
 					byte[] tagListToAskForBin = baosTemp.toByteArray();
 					baosTemp.reset();
-					byte[] lenTagListToAskFor = UTFUtils.lgt(tagListToAskForBin.length, 2);
+					byte[] lenTagListToAskFor = UTFUtils.lgt(tagListToAskForBin.length, 1);
 					baos.write(lenTagListToAskFor);
 					baos.write(tagListToAskForBin);
 				}
@@ -81,7 +82,7 @@ public class ExtendedAPIData implements Constant {
 					}
 					byte[] tagListInCallBackBin = baosTemp.toByteArray();
 					baosTemp.reset();
-					byte[] lenTagListInCallBack = UTFUtils.lgt(tagListInCallBackBin.length, 2);
+					byte[] lenTagListInCallBack = UTFUtils.lgt(tagListInCallBackBin.length, 1);
 					baos.write(lenTagListInCallBack);
 					baos.write(tagListInCallBackBin);
 				}
@@ -101,7 +102,43 @@ public class ExtendedAPIData implements Constant {
 
 	public static ExtendedAPIData fromBinary(byte[] bin) {
 		ExtendedAPIData e = new ExtendedAPIData();
-
+		byte[] lengthStepTags = new byte[2];
+		System.arraycopy(bin, 0, lengthStepTags, 0, 2);
+		e.setLengthStepTags(lengthStepTags);
+		int index = 2;
+		Map<Integer, Map<Integer, List<Tag>>> tagListToAskFor = new HashMap<Integer, Map<Integer, List<Tag>>>();
+		Map<Integer, Map<Integer, List<Tag>>> tagListInCallBack = new HashMap<Integer, Map<Integer, List<Tag>>>();
+		for (int i = EmvTransactionType.EMV_PURCHASE; i <= EmvTransactionType.EMV_PREAUTH_COMPLETION; i++) {
+			Map<Integer, List<Tag>> mapAskFor = new HashMap<Integer, List<Tag>>();
+			Map<Integer, List<Tag>> mapCallBack = new HashMap<Integer, List<Tag>>();
+			for (int j = EmvTransactionStep.EMV_LANGUAGE_SELECTION; j <= EmvTransactionStep.EMV_TRANSACTION_COMPLETION; j++) {
+				byte[] temp = new byte[bin.length - index];
+				System.arraycopy(bin, index, temp, 0, temp.length);
+				// RFU*2
+				index+=2;
+				int lenTagListToAskFor = temp[2];
+				index++;
+				if(0 != lenTagListToAskFor) {
+					byte[] tagListToAskForBin = new byte[lenTagListToAskFor];
+					System.arraycopy(temp, 3, tagListToAskForBin, 0, lenTagListToAskFor);
+					List<Tag> listAskFor = Tag.fromBinaryToIdList(tagListToAskForBin);
+					mapAskFor.put(j, listAskFor);
+					index+=lenTagListToAskFor;
+				}
+				int lenTagListInCallBack = temp[3+lenTagListToAskFor];
+				if(0 != lenTagListInCallBack) {
+					byte[] tagListInCallBackBin = new byte[lenTagListInCallBack];
+					System.arraycopy(temp, 4+lenTagListToAskFor, tagListInCallBackBin, 0, lenTagListInCallBack);
+					List<Tag> listCallBack = Tag.fromBinaryToIdList(tagListInCallBackBin);
+					mapCallBack.put(j, listCallBack);
+					index+=lenTagListInCallBack;
+				}
+			}
+			tagListToAskFor.put(i, mapAskFor);
+			tagListInCallBack.put(i, mapCallBack);
+		}
+		e.setTagListToAskFor(tagListToAskFor);
+		e.setTagListInCallBack(tagListInCallBack);
 		return e;
 	}
 
