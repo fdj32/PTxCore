@@ -339,9 +339,9 @@ public class RID implements Constant {
 			if(0 == size) {
 				continue;
 			} else {
-				byte[] sub = new byte[size*2];
-				index += size*2;
-				System.arraycopy(temp, 1, sub, 0, size*2);
+				byte[] sub = new byte[size];
+				index += size;
+				System.arraycopy(temp, 1, sub, 0, size);
 				List<Tag> list = Tag.fromBinaryToIdList(sub);
 				endOfTransactionTags.put(i, list);
 			}
@@ -355,10 +355,12 @@ public class RID implements Constant {
 		System.arraycopy(bin, 18+key+online+endTags, lengthGetPreviousAmountTags, 0, 2);
 		r.setLengthGetPreviousAmountTags(lengthGetPreviousAmountTags);
 		int previous = r.getLengthGetPreviousAmountTagsInt();
-		byte[] getPreviousAmountTagsBin = new byte[previous];
-		System.arraycopy(bin, 20+key+online+endTags, getPreviousAmountTagsBin, 0, previous);
-		List<Tag> getPreviousAmountTags = Tag.fromBinaryToIdList(getPreviousAmountTagsBin);
-		r.setGetPreviousAmountTags(getPreviousAmountTags);
+		if(0 != previous) {
+			byte[] getPreviousAmountTagsBin = new byte[previous];
+			System.arraycopy(bin, 20+key+online+endTags, getPreviousAmountTagsBin, 0, previous);
+			List<Tag> getPreviousAmountTags = Tag.fromBinaryToIdList(getPreviousAmountTagsBin);
+			r.setGetPreviousAmountTags(getPreviousAmountTags);
+		}
 		
 		byte[] lengthExtendedAPIData = new byte[2];
 		System.arraycopy(bin, 20+key+online+endTags+previous, lengthExtendedAPIData, 0, 2);
