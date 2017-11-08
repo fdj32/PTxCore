@@ -309,27 +309,28 @@ public class AID {
 		System.arraycopy(bin, 51+a.getLengthTLVData(), defaultTDOLLength, 0, 2);
 		a.setDefaultTDOLLength(defaultTDOLLength);
 		int tdol = a.getDefaultTDOLLengthInt();
-		
-		byte[] defaultTDOL = new byte[tdol];
-		System.arraycopy(bin, 53+a.getLengthTLVData(), defaultTDOL, 0, tdol);
-		a.setDefaultTDOL(defaultTDOL);
+		if(0 != tdol) {
+			byte[] defaultTDOL = new byte[tdol];
+			System.arraycopy(bin, 53+a.getLengthTLVData(), defaultTDOL, 0, tdol);
+			a.setDefaultTDOL(defaultTDOL);
+		}
 		
 		byte[] defaultDDOLLength = new byte[2];
 		System.arraycopy(bin, 53+a.getLengthTLVData()+tdol, defaultDDOLLength, 0, 2);
 		a.setDefaultDDOLLength(defaultDDOLLength);
 		int ddol = a.getDefaultDDOLLengthInt();
-		
-		byte[] defaultDDOL = new byte[ddol];
-		System.arraycopy(bin, 55+a.getLengthTLVData()+tdol, defaultDDOL, 0, ddol);
-		a.setDefaultDDOL(defaultDDOL);
-		
+		if(0 != ddol) {
+			byte[] defaultDDOL = new byte[ddol];
+			System.arraycopy(bin, 55+a.getLengthTLVData()+tdol, defaultDDOL, 0, ddol);
+			a.setDefaultDDOL(defaultDDOL);
+		}
 		return a;
 	}
 	
 	public static List<AID> fromBinaryToList(byte[] bin) {
 		List<AID> list = new ArrayList<AID>();
 		int index = 0;
-		while(index <= bin.length) {
+		while(index < bin.length) {
 			byte[] temp = new byte[bin.length - index];
 			System.arraycopy(bin, index, temp, 0, temp.length);
 			AID aid = fromBinary(temp);
