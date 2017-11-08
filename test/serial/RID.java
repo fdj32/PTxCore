@@ -400,7 +400,7 @@ public class RID implements Constant {
 	public static List<RID> fromBinaryToList(byte[] bin) {
 		List<RID> list = new ArrayList<RID>();
 		int index = 0;
-		while(index <= bin.length) {
+		while(index < bin.length) {
 			byte[] temp = new byte[bin.length - index];
 			System.arraycopy(bin, index, temp, 0, temp.length);
 			RID rid = fromBinary(temp);
