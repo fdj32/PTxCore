@@ -310,6 +310,7 @@ public class RID implements Constant {
 		r.setKeyDataTotalLength(keyDataTotalLength);
 		int key = r.getKeyDataTotalLengthInt();
 		byte[] keyDatasBin = new byte[key];
+		System.arraycopy(bin, 7, keyDatasBin, 0, key);
 		List<KeyData> keyDatas = KeyData.fromBinaryToList(keyDatasBin);
 		r.setKeyDatas(keyDatas);
 		
@@ -417,31 +418,31 @@ public class RID implements Constant {
 	}
 	
 	public int getKeyDataTotalLengthInt() {
-		return UTFUtils.bigEndian(keyDataTotalLength);
+		return UTFUtils.littleEndian(keyDataTotalLength);
 	}
 	
 	public int getLengthGoOnlineTagsInt() {
-		return UTFUtils.bigEndian(lengthGoOnlineTags);
+		return UTFUtils.littleEndian(lengthGoOnlineTags);
 	}
 	
 	public int getLengthEndOfTransactionTagsInt() {
-		return UTFUtils.bigEndian(lengthEndOfTransactionTags);
+		return UTFUtils.littleEndian(lengthEndOfTransactionTags);
 	}
 	
 	public int getLengthGetPreviousAmountTagsInt() {
-		return UTFUtils.bigEndian(lengthGetPreviousAmountTags);
+		return UTFUtils.littleEndian(lengthGetPreviousAmountTags);
 	}
 	
 	public int getLengthExtendedAPIDataInt() {
-		return UTFUtils.bigEndian(lengthExtendedAPIData);
+		return UTFUtils.littleEndian(lengthExtendedAPIData);
 	}
 	
 	public int getLengthIgnoreTagsInt() {
-		return UTFUtils.bigEndian(lengthIgnoreTags);
+		return UTFUtils.littleEndian(lengthIgnoreTags);
 	}
 	
 	public int getLengthTLVDataInt() {
-		return UTFUtils.bigEndian(lengthTLVData);
+		return UTFUtils.littleEndian(lengthTLVData);
 	}
 
 }

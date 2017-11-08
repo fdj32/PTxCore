@@ -340,11 +340,11 @@ public class AID {
 	}
 	
 	public int getDefaultTDOLLengthInt() {
-		return UTFUtils.bigEndian(defaultTDOLLength);
+		return UTFUtils.littleEndian(defaultTDOLLength);
 	}
 	
 	public int getDefaultDDOLLengthInt() {
-		return UTFUtils.bigEndian(defaultDDOLLength);
+		return UTFUtils.littleEndian(defaultDDOLLength);
 	}
 	
 	public int totalLength() {
