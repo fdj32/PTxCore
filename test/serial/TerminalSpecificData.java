@@ -3,6 +3,10 @@ package serial;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import org.apache.commons.codec.binary.Hex;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 /**
  * 0142-07204-0503 Generic EMV API.pdf Page 24/167
  * 
@@ -350,6 +354,42 @@ public class TerminalSpecificData implements Constant {
 
 	public void setRidApps(byte[] ridApps) {
 		this.ridApps = ridApps;
+	}
+	
+	public Element element() {
+		Element r = DocumentHelper.createElement("terminalSpecificData");
+		r.addElement("terminalCapabilities").addText(Hex.encodeHexString(terminalCapabilities));
+		r.addElement("additionalTerminalCapabilities").addText(Hex.encodeHexString(additionalTerminalCapabilities));
+		r.addElement("terminalCountryCode").addText(Hex.encodeHexString(terminalCountryCode));
+		r.addElement("terminalType").addText(Hex.encodeHexString(new byte[] {terminalType}));
+		r.addElement("transactionCurrencyCode").addText(Hex.encodeHexString(transactionCurrencyCode));
+		r.addElement("transactionCurrencyExponent").addText(Hex.encodeHexString(new byte[] {transactionCurrencyExponent}));
+		r.addElement("transactionReferenceCurrencyCode").addText(Hex.encodeHexString(transactionReferenceCurrencyCode));
+		r.addElement("transactionReferenceCurrencyExponent").addText(Hex.encodeHexString(new byte[] {transactionReferenceCurrencyExponent}));
+		r.addElement("transactionReferenceCurrencyConversion").addText(Hex.encodeHexString(transactionReferenceCurrencyConversion));
+		r.addElement("acquirerIdentifier").addText(Hex.encodeHexString(acquirerIdentifier));
+		r.addElement("merchantCategoryCode").addText(Hex.encodeHexString(merchantCategoryCode));
+		r.addElement("merchantIdentifier").addText(Hex.encodeHexString(merchantIdentifier));
+		r.addElement("terminalRiskManagementData").addText(Hex.encodeHexString(terminalRiskManagementData));
+		r.addElement("ifdSerialNumber").addText(Hex.encodeHexString(ifdSerialNumber));
+		r.addElement("authorizationResponseCodeList").addText(Hex.encodeHexString(authorizationResponseCodeList));
+		r.addElement("miscellaneousOptions").addText(Hex.encodeHexString(new byte[] {miscellaneousOptions}));
+		r.addElement("miscellaneousOptions1").addText(Hex.encodeHexString(new byte[] {miscellaneousOptions1}));
+		r.addElement("lengthTLVData").addText(Hex.encodeHexString(lengthTLVData));
+		r.addElement("tlvData").addText(Hex.encodeHexString(tlvData));
+		r.addElement("lengthOfflinePINEntryConfiguration").addText(Hex.encodeHexString(lengthOfflinePINEntryConfiguration));
+		r.add(offlinePINEntryConfiguration.element());
+		r.addElement("terminalLanguages").addText(Hex.encodeHexString(terminalLanguages));
+		r.addElement("lengthDiagnosticsTags").addText(Hex.encodeHexString(lengthDiagnosticsTags));
+		if(null != diagnosticsTags)
+			r.addElement("diagnosticsTags").addText(Hex.encodeHexString(diagnosticsTags));
+		r.addElement("lengthAppSelectionTags").addText(Hex.encodeHexString(lengthAppSelectionTags));
+		if(null != appSelectionTags)
+			r.addElement("appSelectionTags").addText(Hex.encodeHexString(appSelectionTags));
+		r.addElement("lengthRIDApps").addText(Hex.encodeHexString(lengthRIDApps));
+		if(null != ridApps)
+			r.addElement("ridApps").addText(Hex.encodeHexString(ridApps));
+		return r;
 	}
 
 	/**

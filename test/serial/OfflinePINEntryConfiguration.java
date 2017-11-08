@@ -3,6 +3,10 @@ package serial;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import org.apache.commons.codec.binary.Hex;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 /**
  * 0142-07204-0503 Generic EMV API.pdf Page 28/167
  * 
@@ -289,6 +293,33 @@ public class OfflinePINEntryConfiguration {
 	public void setAddReqSettings(byte[] addReqSettings) {
 		this.addReqSettings = addReqSettings;
 	}
+	
+	public Element element() {
+		Element r = DocumentHelper.createElement("offlinePINEntryConfiguration");
+		r.addElement("textFont").addText(Hex.encodeHexString(new byte[] {textFont}));
+		r.addElement("prompt").addText(Hex.encodeHexString(prompt));
+		r.addElement("promptMAC").addText(Hex.encodeHexString(promptMAC));
+		r.addElement("promptX").addText(Hex.encodeHexString(promptX));
+		r.addElement("promptY").addText(Hex.encodeHexString(promptY));
+		r.addElement("editX").addText(Hex.encodeHexString(editX));
+		r.addElement("editY").addText(Hex.encodeHexString(editY));
+		r.addElement("formatType").addText(Hex.encodeHexString(new byte[] {formatType}));
+		r.addElement("formatSpMAC").addText(Hex.encodeHexString(formatSpMAC));
+		r.addElement("formatSpecifier").addText(Hex.encodeHexString(formatSpecifier));
+		r.addElement("minimumKeys").addText(Hex.encodeHexString(new byte[] {minimumKeys}));
+		r.addElement("maximumKeys").addText(Hex.encodeHexString(new byte[] {maximumKeys}));
+		r.addElement("echoCharacter").addText(Hex.encodeHexString(new byte[] {echoCharacter}));
+		r.addElement("cursorType").addText(Hex.encodeHexString(new byte[] {cursorType}));
+		r.addElement("direction").addText(Hex.encodeHexString(new byte[] {direction}));
+		r.addElement("beepInvalidKey").addText(Hex.encodeHexString(beepInvalidKey));
+		r.addElement("timeOutFirstKey").addText(Hex.encodeHexString(timeOutFirstKey));
+		r.addElement("timeOutInterKey").addText(Hex.encodeHexString(timeOutInterKey));
+		r.addElement("keyType").addText(Hex.encodeHexString(new byte[] {keyType}));
+		r.addElement("keyIndex").addText(Hex.encodeHexString(new byte[] {keyIndex}));
+		r.addElement("noEnterLessMin").addText(Hex.encodeHexString(noEnterLessMin));
+		r.addElement("addReqSettings").addText(Hex.encodeHexString(addReqSettings));
+		return r;
+	}
 
 	/**
 	 * 
@@ -326,6 +357,71 @@ public class OfflinePINEntryConfiguration {
 	
 	public static OfflinePINEntryConfiguration fromBinary(byte[] bin) {
 		OfflinePINEntryConfiguration o = new OfflinePINEntryConfiguration();
+		o.setTextFont(bin[0]);
+		
+		byte[] prompt = new byte[1000];
+		System.arraycopy(bin, 1, prompt, 0, 1000);
+		o.setPrompt(prompt);
+		
+		byte[] promptMAC = new byte[36];
+		System.arraycopy(bin, 1001, promptMAC, 0, 36);
+		o.setPromptMAC(promptMAC);
+		
+		byte[] promptX = new byte[4];
+		System.arraycopy(bin, 1037, promptX, 0, 4);
+		o.setPromptX(promptX);
+		
+		byte[] promptY = new byte[4];
+		System.arraycopy(bin, 1041, promptY, 0, 4);
+		o.setPromptY(promptY);
+		
+		byte[] editX = new byte[4];
+		System.arraycopy(bin, 1045, editX, 0, 4);
+		o.setEditX(editX);
+		
+		byte[] editY = new byte[4];
+		System.arraycopy(bin, 1049, editY, 0, 4);
+		o.setEditY(editY);
+		
+		o.setFormatType(bin[1053]);
+		
+		byte[] formatSpMac = new byte[9];
+		System.arraycopy(bin, 1054, formatSpMac, 0, 9);
+		o.setFormatSpMAC(formatSpMac);
+		
+		byte[] formatSpecifier = new byte[50];
+		System.arraycopy(bin, 1063, formatSpecifier, 0, 50);
+		o.setFormatSpecifier(formatSpecifier);
+		
+		o.setMinimumKeys(bin[1113]);
+		o.setMaximumKeys(bin[1114]);
+		o.setEchoCharacter(bin[1115]);
+		o.setCursorType(bin[1116]);
+		o.setDirection(bin[1117]);
+		
+		byte[] beepAtInvalidKey = new byte[4];
+		System.arraycopy(bin, 1118, beepAtInvalidKey, 0, 4);
+		o.setBeepInvalidKey(beepAtInvalidKey);
+		
+		byte[] timeOutFirstKey = new byte[4];
+		System.arraycopy(bin, 1122, timeOutFirstKey, 0, 4);
+		o.setTimeOutFirstKey(timeOutFirstKey);
+		
+		byte[] timeOutInterKey = new byte[4];
+		System.arraycopy(bin, 1126, timeOutInterKey, 0, 4);
+		o.setTimeOutInterKey(timeOutInterKey);
+		
+		o.setKeyType(bin[1130]);
+		o.setKeyIndex(bin[1131]);
+		
+		byte[] noEnterLessMin = new byte[4];
+		System.arraycopy(bin, 1132, noEnterLessMin, 0, 4);
+		o.setNoEnterLessMin(noEnterLessMin);
+		
+		byte[] addReqSettings = new byte[2];
+		System.arraycopy(bin, 1136, addReqSettings, 0, 2);
+		o.setAddReqSettings(addReqSettings);
+		
 		return o;
 	}
 

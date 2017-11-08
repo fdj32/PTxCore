@@ -23,11 +23,13 @@ public class UTFTest {
 		
 		byte[] bin = IOUtils.toByteArray(new FileInputStream(new File("/Users/nickfeng/Hub/fdj32/PTxCore/doc/131540886937708660.init.dat")));
 		
-		System.out.println(Hex.encodeHexString(bin));
+		//System.out.println(Hex.encodeHexString(bin));
 		
 		VegaInitData v = VegaInitData.fromBinary(bin);
 		
-		System.out.println(new Gson().toJson(v));
+		//System.out.println(new Gson().toJson(v));
+		
+		System.out.println(v.getTsd().element().asXML());
 	}
 
 }
