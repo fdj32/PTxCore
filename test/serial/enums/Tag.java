@@ -9,6 +9,8 @@ import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang.StringUtils;
 
+import serial.UTFUtils;
+
 /**
  * merchant-service/info/EMV/EMV_v4
  * .3_Book/EMV_v4.3_Book_3_Application_Specification_20120607062110791.pdf
@@ -143,7 +145,7 @@ public class Tag {
 	
 	public Tag(byte[] idBin) {
 		super();
-		int id = idBin[1] * 0x100 + idBin[0];
+		int id = UTFUtils.littleEndian(idBin);
 		this.setId(id);
 	}
 	

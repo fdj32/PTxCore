@@ -319,6 +319,7 @@ public class RID implements Constant {
 		r.setLengthGoOnlineTags(lengthGoOnlineTags);
 		int online = r.getLengthGoOnlineTagsInt();
 		byte[] goOnlineTagsBin = new byte[online];
+		System.arraycopy(bin, 9+key, goOnlineTagsBin, 0, online);
 		List<Tag> goOnlineTags = Tag.fromBinaryToIdList(goOnlineTagsBin);
 		r.setGoOnlineTags(goOnlineTags);
 		
