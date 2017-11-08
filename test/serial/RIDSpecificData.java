@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 /**
  * 0142-07204-0503 Generic EMV API.pdf Page 29/167
  * 
@@ -21,6 +24,14 @@ public class RIDSpecificData {
 
 	public void setList(List<RID> list) {
 		this.list = list;
+	}
+	
+	public Element element() {
+		Element r = DocumentHelper.createElement("RIDSpecificData");
+		for(RID rid : list) {
+			r.add(rid.element());
+		}
+		return r;
 	}
 
 	public byte[] toBinary() throws IOException {

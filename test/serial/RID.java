@@ -7,6 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.codec.binary.Hex;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 import serial.enums.EmvTransactionType;
 import serial.enums.Tag;
 
@@ -53,7 +57,7 @@ public class RID implements Constant {
 	/**
 	 * length=2
 	 */
-	private byte[] lengthIgnoreTags;
+	private byte[] lengthIgnoredTags;
 	private List<Tag> ignoreTags;
 	// RFU*8
 	/**
@@ -181,12 +185,12 @@ public class RID implements Constant {
 		this.proprietaryRIDData = proprietaryRIDData;
 	}
 
-	public byte[] getLengthIgnoreTags() {
-		return lengthIgnoreTags;
+	public byte[] getLengthIgnoredTags() {
+		return lengthIgnoredTags;
 	}
 
-	public void setLengthIgnoreTags(byte[] lengthIgnoreTags) {
-		this.lengthIgnoreTags = lengthIgnoreTags;
+	public void setLengthIgnoredTags(byte[] lengthIgnoredTags) {
+		this.lengthIgnoredTags = lengthIgnoredTags;
 	}
 
 	public List<Tag> getIgnoreTags() {
@@ -266,7 +270,7 @@ public class RID implements Constant {
 			baos.write(item.getIdBin());
 		}
 		byte[] ignoreTagsBin = baos.toByteArray();
-		lengthIgnoreTags = UTFUtils.lgt(ignoreTagsBin.length, 2);
+		lengthIgnoredTags = UTFUtils.lgt(ignoreTagsBin.length, 2);
 		baos.reset();
 
 		// start to build RID
@@ -284,7 +288,7 @@ public class RID implements Constant {
 		baos.write(extendedAPIDataBin);
 		baos.write(lengthProprietaryRIDData);
 		// proprietaryRIDData = null
-		baos.write(lengthIgnoreTags);
+		baos.write(lengthIgnoredTags);
 		baos.write(ignoreTagsBin);
 		for (int i = 0; i < 8; i++) {
 			baos.write(RFU);
@@ -346,6 +350,7 @@ public class RID implements Constant {
 				endOfTransactionTags.put(i, list);
 			}
 		}
+		r.setEndOfTransactionTags(endOfTransactionTags);
 		
 		byte[] endOfTransactionStep = new byte[7];
 		System.arraycopy(bin, 11+key+online+endTags, endOfTransactionStep, 0, 7);
@@ -375,10 +380,10 @@ public class RID implements Constant {
 		System.arraycopy(bin, 22+key+online+endTags+previous+extend, lengthProprietaryRIDData, 0, 2);
 		r.setLengthProprietaryRIDData(lengthProprietaryRIDData);
 		
-		byte[] lengthIgnoreTags = new byte[2];
-		System.arraycopy(bin, 24+key+online+endTags+previous+extend, lengthIgnoreTags, 0, 2);
-		r.setLengthIgnoreTags(lengthIgnoreTags);
-		int ignore = r.getLengthIgnoreTagsInt();
+		byte[] lengthIgnoredTags = new byte[2];
+		System.arraycopy(bin, 24+key+online+endTags+previous+extend, lengthIgnoredTags, 0, 2);
+		r.setLengthIgnoredTags(lengthIgnoredTags);
+		int ignore = r.getLengthIgnoredTagsInt();
 		byte[] ignoreTagsBin = new byte[ignore];
 		System.arraycopy(bin, 26+key+online+endTags+previous+extend, ignoreTagsBin, 0, ignore);
 		List<Tag> ignoreTags = Tag.fromBinaryToIdList(ignoreTagsBin);
@@ -416,7 +421,7 @@ public class RID implements Constant {
 		+ getLengthEndOfTransactionTagsInt()
 		+ getLengthGetPreviousAmountTagsInt()
 		+ getLengthExtendedAPIDataInt()
-		+ getLengthIgnoreTagsInt()
+		+ getLengthIgnoredTagsInt()
 		+ getLengthTLVDataInt();
 	}
 	
@@ -440,12 +445,58 @@ public class RID implements Constant {
 		return UTFUtils.littleEndian(lengthExtendedAPIData);
 	}
 	
-	public int getLengthIgnoreTagsInt() {
-		return UTFUtils.littleEndian(lengthIgnoreTags);
+	public int getLengthIgnoredTagsInt() {
+		return UTFUtils.littleEndian(lengthIgnoredTags);
 	}
 	
 	public int getLengthTLVDataInt() {
 		return UTFUtils.littleEndian(lengthTLVData);
+	}
+	
+	public Element element() {
+		Element r = DocumentHelper.createElement("RID");
+		r.addElement("rid").addText(Hex.encodeHexString(rid));
+		r.addElement("keyDataTotalLength").addText(Hex.encodeHexString(keyDataTotalLength));
+		Element kds = r.addElement("keyDatas");
+		for(KeyData kd : keyDatas) {
+			kds.add(kd.element());
+		}
+		r.addElement("lengthGoOnlineTags").addText(Hex.encodeHexString(lengthGoOnlineTags));
+		Element online = r.addElement("goOnlineTags");
+		for(Tag t : goOnlineTags) {
+			online.addElement("Tag").addAttribute("ID", Hex.encodeHexString(t.getIdBin()));
+		}
+		r.addElement("lengthEndOfTransactionTags").addText(Hex.encodeHexString(lengthEndOfTransactionTags));
+		Element end = r.addElement("endOfTransactionTags");
+		for(int i : endOfTransactionTags.keySet()) {
+			Element transaction = end.addElement("endOfTransaction").addAttribute("type", "" + i);
+			for(Tag t : endOfTransactionTags.get(i)) {
+				transaction.addElement("Tag").addAttribute("ID", Hex.encodeHexString(t.getIdBin()));
+			}
+		}
+		r.addElement("lengthGetPreviousAmountTags").addText(Hex.encodeHexString(lengthGetPreviousAmountTags));
+		Element previous = r.addElement("getPreviousAmountTags");
+		if(null != getPreviousAmountTags) {
+			for(Tag t : getPreviousAmountTags) {
+				previous.addElement("Tag").addAttribute("ID", Hex.encodeHexString(t.getIdBin()));
+			}
+		}
+		
+		r.addElement("lengthExtendedAPIData").addText(Hex.encodeHexString(lengthExtendedAPIData));
+		r.add(extendedAPIData.element());
+		
+		r.addElement("lengthProprietaryRIDData").addText(Hex.encodeHexString(lengthProprietaryRIDData));
+		
+		r.addElement("lengthIgnoredTags").addText(Hex.encodeHexString(lengthIgnoredTags));
+		Element ignored = r.addElement("ignoreTags");
+		for(Tag t : ignoreTags) {
+			ignored.addElement("Tag").addAttribute("ID", Hex.encodeHexString(t.getIdBin()));
+		}
+		
+		r.addElement("miscellaneousOptions").addText(Hex.encodeHexString(new byte[] {miscellaneousOptions}));
+		r.addElement("lengthTLVData").addText(Hex.encodeHexString(lengthTLVData));
+		r.addElement("TLVData").addText(Hex.encodeHexString(tlvData));
+		return r;
 	}
 
 }

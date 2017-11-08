@@ -29,7 +29,9 @@ public class UTFTest {
 		
 		//System.out.println(new Gson().toJson(v));
 		
-		System.out.println(v.getTsd().element().asXML());
+//		System.out.println(v.getTsd().element().asXML());
+		
+		System.out.println(v.getRsd().element().asXML());
 	}
 
 }

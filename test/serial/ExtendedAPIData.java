@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.codec.binary.Hex;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 import serial.enums.EmvTransactionStep;
 import serial.enums.EmvTransactionType;
 import serial.enums.Tag;
@@ -140,6 +144,45 @@ public class ExtendedAPIData implements Constant {
 		e.setTagListToAskFor(tagListToAskFor);
 		e.setTagListInCallBack(tagListInCallBack);
 		return e;
+	}
+	
+	public Element element() {
+		Element r = DocumentHelper.createElement("ExtendedAPIData");
+		r.addElement("lengthStepTags").addText(Hex.encodeHexString(lengthStepTags));
+		Element stepTags = r.addElement("EMVStepTags");
+		for (int i = EmvTransactionType.EMV_PURCHASE; i <= EmvTransactionType.EMV_PREAUTH_COMPLETION; i++) {
+			Map<Integer, List<Tag>> mapAskFor = null;
+			if(null != tagListToAskFor && !tagListToAskFor.isEmpty())
+				mapAskFor = tagListToAskFor.get(i);
+			Map<Integer, List<Tag>> mapCallBack = null;
+			if(null != tagListInCallBack && !tagListInCallBack.isEmpty())
+				mapCallBack = tagListInCallBack.get(i);
+			Element type = stepTags.addElement("EMVTransactionType").addAttribute("type", "" + i);
+			for (int j = EmvTransactionStep.EMV_LANGUAGE_SELECTION; j <= EmvTransactionStep.EMV_TRANSACTION_COMPLETION; j++) {
+				Element step = type.addElement("EMVStep").addAttribute("step", "" + j);
+				List<Tag> listAskFor = null;
+				if(null != tagListToAskFor && null != mapAskFor && null != mapAskFor.get(j))
+					listAskFor = mapAskFor.get(j);
+				if(null != listAskFor) {
+					Element askFor = step.addElement("tagListToAskFor");
+					for(Tag t : listAskFor) {
+						askFor.addElement("Tag").addAttribute("ID", Hex.encodeHexString(t.getIdBin()));
+					}
+				}
+				
+				List<Tag> listCallBack = null;
+				if(null != tagListInCallBack && null != mapCallBack && null != mapCallBack.get(j))
+					listCallBack = mapCallBack.get(j);
+				if(null != listCallBack) {
+					Element callBack = step.addElement("tagListInCallBack");
+					for(Tag t : listCallBack) {
+						callBack.addElement("Tag").addAttribute("ID", Hex.encodeHexString(t.getIdBin()));
+					}
+				}
+			}
+		}
+		
+		return r;
 	}
 
 }

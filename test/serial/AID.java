@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 /**
  * 0142-07204-0503 Generic EMV API.pdf Page 35/167
  * 
@@ -355,6 +358,11 @@ public class AID {
 	
 	public int totalLength() {
 		return 55+getLengthTLVDataInt()+getDefaultTDOLLengthInt()+getDefaultDDOLLengthInt();
+	}
+	
+	public Element element() {
+		Element r = DocumentHelper.createElement("AID");
+		return r;
 	}
 
 }

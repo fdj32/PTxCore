@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.codec.binary.Hex;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 /**
  * 0142-07204-0503 Generic EMV API.pdf Page 29/167
  * 
@@ -159,6 +163,19 @@ public class KeyData {
 			list.add(k);
 		}
 		return list;
+	}
+	
+	public Element element() {
+		Element r = DocumentHelper.createElement("KeyData");
+		r.addElement("keyIndex").addText(Hex.encodeHexString(new byte[] {keyIndex}));
+		r.addElement("keyAlgorithmIndicator").addText(Hex.encodeHexString(new byte[] {keyAlgorithmIndicator}));
+		r.addElement("hashAlgorithmIndicator").addText(Hex.encodeHexString(new byte[] {hashAlgorithmIndicator}));
+		r.addElement("keyLength").addText(Hex.encodeHexString(new byte[] {keyLength}));
+		r.addElement("key").addText(Hex.encodeHexString(key));
+		r.addElement("keyExponentLength").addText(Hex.encodeHexString(new byte[] {keyExponentLength}));
+		r.addElement("keyExponent").addText(Hex.encodeHexString(keyExponent));
+		r.addElement("keyCheckSum").addText(Hex.encodeHexString(keyCheckSum));
+		return r;
 	}
 
 }

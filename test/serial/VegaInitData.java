@@ -3,6 +3,10 @@ package serial;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import org.apache.commons.codec.binary.Hex;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 /**
  * 0142-07204-0503 Generic EMV API.pdf Page 23/167
  * 
@@ -84,6 +88,17 @@ public class VegaInitData {
 		this.tsd = tsd;
 		this.rsd = rsd;
 		this.asd = asd;
+	}
+	
+	public Element element() {
+		Element r = DocumentHelper.createElement("VegaInitData");
+		r.addElement("terminalDataTotalLength").addText(Hex.encodeHexString(terminalDataTotalLength));
+		r.add(tsd.element());
+		r.addElement("ridDataTotalLength").addText(Hex.encodeHexString(ridDataTotalLength));
+		r.add(rsd.element());
+		r.addElement("aidDataTotalLength").addText(Hex.encodeHexString(aidDataTotalLength));
+		r.add(asd.element());
+		return r;
 	}
 
 	public byte[] toBinary() throws IOException {
