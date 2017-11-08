@@ -15,6 +15,14 @@ public class AIDSpecificData {
 
 	private List<AID> list = new ArrayList<AID>();
 
+	public List<AID> getList() {
+		return list;
+	}
+
+	public void setList(List<AID> list) {
+		this.list = list;
+	}
+
 	public byte[] toBinary() throws IOException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		for (AID item : list) {
@@ -23,6 +31,13 @@ public class AIDSpecificData {
 		byte[] data = baos.toByteArray();
 		baos.close();
 		return data;
+	}
+	
+	public static AIDSpecificData fromBinary(byte[] bin) {
+		List<AID> list = AID.fromBinaryToList(bin);
+		AIDSpecificData asd = new AIDSpecificData();
+		asd.setList(list);
+		return asd;
 	}
 
 }

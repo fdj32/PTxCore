@@ -2,6 +2,8 @@ package serial;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 0142-07204-0503 Generic EMV API.pdf Page 35/167
@@ -322,6 +324,19 @@ public class AID {
 		a.setDefaultDDOL(defaultDDOL);
 		
 		return a;
+	}
+	
+	public static List<AID> fromBinaryToList(byte[] bin) {
+		List<AID> list = new ArrayList<AID>();
+		int index = 0;
+		while(index <= bin.length) {
+			byte[] temp = new byte[bin.length - index];
+			System.arraycopy(bin, index, temp, 0, temp.length);
+			AID aid = fromBinary(temp);
+			list.add(aid);
+			index += aid.totalLength();
+		}
+		return list;
 	}
 	
 	public int getDefaultTDOLLengthInt() {
