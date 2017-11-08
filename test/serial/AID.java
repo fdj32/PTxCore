@@ -263,65 +263,66 @@ public class AID {
 		AID a = new AID();
 		a.setApplicationSelectionIndicator(bin[0]);
 		a.setLengthTLVData(bin[1]);
-		if(0 != a.getLengthTLVData()) {
-			byte[] tlvData = new byte[a.getLengthTLVData()];
-			System.arraycopy(bin, 2, tlvData, 0, a.getLengthTLVData());
+		int tlv = a.getLengthTLVDataInt();
+		if(0 != tlv) {
+			byte[] tlvData = new byte[tlv];
+			System.arraycopy(bin, 2, tlvData, 0, tlv);
 			a.setTlvData(tlvData);
 		}
-		a.setAidLength(bin[2+a.getLengthTLVData()]);
+		a.setAidLength(bin[2+tlv]);
 		
 		byte[] aid = new byte[16];
-		System.arraycopy(bin, 3+a.getLengthTLVData(), aid, 0, 16);
+		System.arraycopy(bin, 3+tlv, aid, 0, 16);
 		a.setAid(aid);
 		
 		byte[] rid = new byte[5];
-		System.arraycopy(bin, 19+a.getLengthTLVData(), rid, 0, 5);
+		System.arraycopy(bin, 19+tlv, rid, 0, 5);
 		a.setRid(rid);
 		
 		byte[] applicationVersionNumber = new byte[2];
-		System.arraycopy(bin, 24+a.getLengthTLVData(), applicationVersionNumber, 0, 2);
+		System.arraycopy(bin, 24+tlv, applicationVersionNumber, 0, 2);
 		a.setApplicaitonVersionNumber(applicationVersionNumber);
 		
 		byte[] tacDefault = new byte[5];
-		System.arraycopy(bin, 26+a.getLengthTLVData(), tacDefault, 0, 5);
+		System.arraycopy(bin, 26+tlv, tacDefault, 0, 5);
 		a.setTacDefault(tacDefault);
 		
 		byte[] tacDenial = new byte[5];
-		System.arraycopy(bin, 31+a.getLengthTLVData(), tacDenial, 0, 5);
+		System.arraycopy(bin, 31+tlv, tacDenial, 0, 5);
 		a.setTacDenial(tacDenial);
 		
 		byte[] tacOnline = new byte[5];
-		System.arraycopy(bin, 36+a.getLengthTLVData(), tacOnline, 0, 5);
+		System.arraycopy(bin, 36+tlv, tacOnline, 0, 5);
 		a.setTacOnline(tacOnline);
 		
-		a.setMaximumTargetPercentage(bin[41+a.getLengthTLVData()]);
-		a.setTargetPercentage(bin[42+a.getLengthTLVData()]);
+		a.setMaximumTargetPercentage(bin[41+tlv]);
+		a.setTargetPercentage(bin[42+tlv]);
 		
 		byte[] thresholdValue = new byte[4];
-		System.arraycopy(bin, 43+a.getLengthTLVData(), thresholdValue, 0, 4);
+		System.arraycopy(bin, 43+tlv, thresholdValue, 0, 4);
 		a.setThresholdValue(thresholdValue);
 		
 		byte[] terminalFloorLimit = new byte[4];
-		System.arraycopy(bin, 47+a.getLengthTLVData(), terminalFloorLimit, 0, 4);
+		System.arraycopy(bin, 47+tlv, terminalFloorLimit, 0, 4);
 		a.setTerminalFloorLimit(terminalFloorLimit);
 		
 		byte[] defaultTDOLLength = new byte[2];
-		System.arraycopy(bin, 51+a.getLengthTLVData(), defaultTDOLLength, 0, 2);
+		System.arraycopy(bin, 51+tlv, defaultTDOLLength, 0, 2);
 		a.setDefaultTDOLLength(defaultTDOLLength);
 		int tdol = a.getDefaultTDOLLengthInt();
 		if(0 != tdol) {
 			byte[] defaultTDOL = new byte[tdol];
-			System.arraycopy(bin, 53+a.getLengthTLVData(), defaultTDOL, 0, tdol);
+			System.arraycopy(bin, 53+tlv, defaultTDOL, 0, tdol);
 			a.setDefaultTDOL(defaultTDOL);
 		}
 		
 		byte[] defaultDDOLLength = new byte[2];
-		System.arraycopy(bin, 53+a.getLengthTLVData()+tdol, defaultDDOLLength, 0, 2);
+		System.arraycopy(bin, 53+tlv+tdol, defaultDDOLLength, 0, 2);
 		a.setDefaultDDOLLength(defaultDDOLLength);
 		int ddol = a.getDefaultDDOLLengthInt();
 		if(0 != ddol) {
 			byte[] defaultDDOL = new byte[ddol];
-			System.arraycopy(bin, 55+a.getLengthTLVData()+tdol, defaultDDOL, 0, ddol);
+			System.arraycopy(bin, 55+tlv+tdol, defaultDDOL, 0, ddol);
 			a.setDefaultDDOL(defaultDDOL);
 		}
 		return a;
@@ -340,6 +341,10 @@ public class AID {
 		return list;
 	}
 	
+	public int getLengthTLVDataInt() {
+		return lengthTLVData >=0 ? lengthTLVData : lengthTLVData + 0x100;
+	}
+	
 	public int getDefaultTDOLLengthInt() {
 		return UTFUtils.littleEndian(defaultTDOLLength);
 	}
@@ -349,7 +354,7 @@ public class AID {
 	}
 	
 	public int totalLength() {
-		return 55+getLengthTLVData()+getDefaultTDOLLengthInt()+getDefaultDDOLLengthInt();
+		return 55+getLengthTLVDataInt()+getDefaultTDOLLengthInt()+getDefaultDDOLLengthInt();
 	}
 
 }
