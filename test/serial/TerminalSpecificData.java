@@ -432,98 +432,98 @@ public class TerminalSpecificData implements Constant {
 		t.setTransactionReferenceCurrencyExponent(bin[17]);
 
 		byte[] transactionReferenceCurrencyConversion = new byte[4];
-		System.arraycopy(bin, 15, transactionReferenceCurrencyConversion, 0, 4);
+		System.arraycopy(bin, 18, transactionReferenceCurrencyConversion, 0, 4);
 		t.setTransactionReferenceCurrencyConversion(transactionReferenceCurrencyConversion);
 
 		byte[] acquirerIdentifier = new byte[6];
-		System.arraycopy(bin, 19, acquirerIdentifier, 0, 6);
+		System.arraycopy(bin, 22, acquirerIdentifier, 0, 6);
 		t.setAcquirerIdentifier(acquirerIdentifier);
 
 		byte[] merchantCategoryCode = new byte[2];
-		System.arraycopy(bin, 25, merchantCategoryCode, 0, 2);
+		System.arraycopy(bin, 28, merchantCategoryCode, 0, 2);
 		t.setMerchantCategoryCode(merchantCategoryCode);
 
 		byte[] merchantIdentifier = new byte[15];
-		System.arraycopy(bin, 27, merchantIdentifier, 0, 15);
+		System.arraycopy(bin, 30, merchantIdentifier, 0, 15);
 		t.setMerchantIdentifier(merchantIdentifier);
-
+		
 		byte[] terminalIdentification = new byte[8];
-		System.arraycopy(bin, 42, terminalIdentification, 0, 8);
+		System.arraycopy(bin, 45, terminalIdentification, 0, 8);
 		t.setTerminalIdentification(terminalIdentification);
 
 		byte[] terminalRiskManagementData = new byte[8];
-		System.arraycopy(bin, 50, terminalRiskManagementData, 0, 8);
+		System.arraycopy(bin, 53, terminalRiskManagementData, 0, 8);
 		t.setTerminalRiskManagementData(terminalRiskManagementData);
 
 		byte[] ifdSerialNumber = new byte[8];
-		System.arraycopy(bin, 58, ifdSerialNumber, 0, 8);
+		System.arraycopy(bin, 61, ifdSerialNumber, 0, 8);
 		t.setIfdSerialNumber(ifdSerialNumber);
 
 		byte[] authorizationResponseCodeList = new byte[20];
-		System.arraycopy(bin, 66, authorizationResponseCodeList, 0, 8);
+		System.arraycopy(bin, 69, authorizationResponseCodeList, 0, 20);
 		t.setAuthorizationResponseCodeList(authorizationResponseCodeList);
 
-		t.setMiscellaneousOptions(bin[74]);
-		t.setMiscellaneousOptions1(bin[75]);
+		t.setMiscellaneousOptions(bin[89]);
+		t.setMiscellaneousOptions1(bin[90]);
 		// RFU*1
 		byte[] lengthTLVData = new byte[2];
-		System.arraycopy(bin, 77, lengthTLVData, 0, 2);
+		System.arraycopy(bin, 92, lengthTLVData, 0, 2);
 		t.setLengthTLVData(lengthTLVData);
 		int tlv = t.getLengthTLVDataInt();
 
 		if (0 != tlv) {
 			byte[] tlvData = new byte[tlv];
-			System.arraycopy(bin, 79, tlvData, 0, tlv);
+			System.arraycopy(bin, 94, tlvData, 0, tlv);
 			t.setTlvData(tlvData);
 		}
 		// RFU*20
 		byte[] lengthOfflinePINEntryConfiguration = new byte[2];
-		System.arraycopy(bin, 79 + tlv, lengthOfflinePINEntryConfiguration, 0, 2);
+		System.arraycopy(bin, 114 + tlv, lengthOfflinePINEntryConfiguration, 0, 2);
 		t.setLengthOfflinePINEntryConfiguration(lengthOfflinePINEntryConfiguration);
 		int off = t.getLengthOfflinePINEntryConfigurationInt();
 
 		if (0 != off) {
 			byte[] offlinePINEntryConfiguration = new byte[off];
-			System.arraycopy(bin, 81 + tlv, offlinePINEntryConfiguration, 0, off);
+			System.arraycopy(bin, 116 + tlv, offlinePINEntryConfiguration, 0, off);
 			OfflinePINEntryConfiguration o = OfflinePINEntryConfiguration.fromBinary(offlinePINEntryConfiguration);
 			t.setOfflinePINEntryConfiguration(o);
 		}
 
 		byte[] terminalLanguages = new byte[8];
-		System.arraycopy(bin, 81 + tlv + off, terminalLanguages, 0, 8);
+		System.arraycopy(bin, 116 + tlv + off, terminalLanguages, 0, 8);
 		t.setTerminalLanguages(terminalLanguages);
 		// RFU*2*2
 
 		byte[] lengthDiagnosticsTags = new byte[2];
-		System.arraycopy(bin, 93 + tlv + off, lengthDiagnosticsTags, 0, 2);
+		System.arraycopy(bin, 128 + tlv + off, lengthDiagnosticsTags, 0, 2);
 		t.setLengthDiagnosticsTags(lengthDiagnosticsTags);
 		int diag = t.getLengthDiagnosticsTagsInt();
 
 		if (0 != diag) {
 			byte[] diagnosticsTags = new byte[diag];
-			System.arraycopy(bin, 95 + tlv + off, diagnosticsTags, 0, diag);
+			System.arraycopy(bin, 130 + tlv + off, diagnosticsTags, 0, diag);
 			t.setDiagnosticsTags(diagnosticsTags);
 		}
 
 		byte[] lengthAppSelectionTags = new byte[2];
-		System.arraycopy(bin, 95 + tlv + off + diag, lengthAppSelectionTags, 0, 2);
+		System.arraycopy(bin, 130 + tlv + off + diag, lengthAppSelectionTags, 0, 2);
 		t.setLengthAppSelectionTags(lengthAppSelectionTags);
 		int app = t.getLengthAppSelectionTagsInt();
 
 		if (0 != app) {
 			byte[] appSelectionTags = new byte[app];
-			System.arraycopy(bin, 97 + tlv + off + diag, appSelectionTags, 0, app);
+			System.arraycopy(bin, 132 + tlv + off + diag, appSelectionTags, 0, app);
 			t.setAppSelectionTags(appSelectionTags);
 		}
 
 		byte[] lengthRIDApps = new byte[2];
-		System.arraycopy(bin, 97 + tlv + off + diag + app, lengthRIDApps, 0, 2);
+		System.arraycopy(bin, 132 + tlv + off + diag + app, lengthRIDApps, 0, 2);
 		t.setLengthRIDApps(lengthRIDApps);
 		int rid = t.getLengthRIDAppsInt();
 
 		if (0 != rid) {
 			byte[] ridApps = new byte[rid];
-			System.arraycopy(bin, 99 + tlv + off + diag + app, ridApps, 0, rid);
+			System.arraycopy(bin, 134 + tlv + off + diag + app, ridApps, 0, rid);
 			t.setRidApps(ridApps);
 		}
 
@@ -531,27 +531,27 @@ public class TerminalSpecificData implements Constant {
 	}
 
 	public int getLengthTLVDataInt() {
-		return UTFUtils.bigEndian(lengthTLVData);
+		return UTFUtils.littleEndian(lengthTLVData);
 	}
 
 	public int getLengthOfflinePINEntryConfigurationInt() {
-		return UTFUtils.bigEndian(lengthOfflinePINEntryConfiguration);
+		return UTFUtils.littleEndian(lengthOfflinePINEntryConfiguration);
 	}
 
 	public int getLengthDiagnosticsTagsInt() {
-		return UTFUtils.bigEndian(lengthDiagnosticsTags);
+		return UTFUtils.littleEndian(lengthDiagnosticsTags);
 	}
 
 	public int getLengthAppSelectionTagsInt() {
-		return UTFUtils.bigEndian(lengthAppSelectionTags);
+		return UTFUtils.littleEndian(lengthAppSelectionTags);
 	}
 
 	public int getLengthRIDAppsInt() {
-		return UTFUtils.bigEndian(lengthRIDApps);
+		return UTFUtils.littleEndian(lengthRIDApps);
 	}
 
 	public int totalLength() {
-		return 99 + getLengthTLVDataInt() + getLengthOfflinePINEntryConfigurationInt() + getLengthDiagnosticsTagsInt()
+		return 134 + getLengthTLVDataInt() + getLengthOfflinePINEntryConfigurationInt() + getLengthDiagnosticsTagsInt()
 				+ getLengthAppSelectionTagsInt() + getLengthRIDAppsInt();
 	}
 }

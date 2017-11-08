@@ -17,6 +17,8 @@ public class UTFTest {
 	public static void main(String[] args) throws IOException {
 		System.out.println(UTFUtils.printFormat(UTFUtils.lgt(1422, 2)));
 		System.out.println(UTFUtils.printFormat(UTFUtils.littleEndian(1422)));
+		System.out.println(UTFUtils.printFormat(UTFUtils.littleEndian(18620)));
+		System.out.println(UTFUtils.printFormat(UTFUtils.littleEndian(809)));
 		System.out.println(UTFUtils.printFormat(UTFUtils.lgt(5, 1)));
 		
 		byte[] bin = IOUtils.toByteArray(new FileInputStream(new File("/Users/nickfeng/Hub/fdj32/PTxCore/doc/131540886937708660.init.dat")));

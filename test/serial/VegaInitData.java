@@ -127,7 +127,7 @@ public class VegaInitData {
 		byte[] ridDataTotalLength = new byte[2];
 		System.arraycopy(bin, 2+terminal, ridDataTotalLength, 0, 2);
 		v.setRidDataTotalLength(ridDataTotalLength);
-		int rid = v.getTerminalDataTotalLengthInt();
+		int rid = v.getRIDDataTotalLengthInt();
 		byte[] rsdBin = new byte[rid];
 		System.arraycopy(bin, 4+terminal, rsdBin, 0, rid);
 		RIDSpecificData rsd = RIDSpecificData.fromBinary(rsdBin);
