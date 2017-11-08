@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.codec.binary.Hex;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
@@ -362,6 +363,26 @@ public class AID {
 	
 	public Element element() {
 		Element r = DocumentHelper.createElement("AID");
+		r.addElement("applicationSelectionIndicator").addText(Hex.encodeHexString(new byte[] {applicationSelectionIndicator}));
+		r.addElement("lengthTLVData").addText(Hex.encodeHexString(new byte[] {lengthTLVData}));
+		r.addElement("TLVData").addText(Hex.encodeHexString(tlvData));
+		r.addElement("aidLength").addText(Hex.encodeHexString(new byte[] {aidLength}));
+		r.addElement("aid").addText(Hex.encodeHexString(aid));
+		r.addElement("rid").addText(Hex.encodeHexString(rid));
+		r.addElement("applicaitonVersionNumber").addText(Hex.encodeHexString(applicaitonVersionNumber));
+		r.addElement("tacDefault").addText(Hex.encodeHexString(tacDefault));
+		r.addElement("tacDenial").addText(Hex.encodeHexString(tacDenial));
+		r.addElement("tacOnline").addText(Hex.encodeHexString(tacOnline));
+		r.addElement("maximumTargetPercentage").addText(Hex.encodeHexString(new byte[] {maximumTargetPercentage}));
+		r.addElement("targetPercentage").addText(Hex.encodeHexString(new byte[] {targetPercentage}));
+		r.addElement("thresholdValue").addText(Hex.encodeHexString(thresholdValue));
+		r.addElement("terminalFloorLimit").addText(Hex.encodeHexString(terminalFloorLimit));
+		r.addElement("defaultTDOLLength").addText(Hex.encodeHexString(defaultTDOLLength));
+		if(null != defaultTDOL)
+			r.addElement("defaultTDOL").addText(Hex.encodeHexString(defaultTDOL));
+		r.addElement("defaultDDOLLength").addText(Hex.encodeHexString(defaultDDOLLength));
+		if(null != defaultDDOL) 
+			r.addElement("defaultDDOL").addText(Hex.encodeHexString(defaultDDOL));
 		return r;
 	}
 

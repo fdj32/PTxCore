@@ -31,7 +31,11 @@ public class UTFTest {
 		
 //		System.out.println(v.getTsd().element().asXML());
 		
-		System.out.println(v.getRsd().element().asXML());
+//		System.out.println(v.getRsd().element().asXML());
+		
+//		System.out.println(v.getAsd().element().asXML());
+		
+		System.out.println(v.element().asXML());
 	}
 
 }
