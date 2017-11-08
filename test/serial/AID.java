@@ -340,11 +340,11 @@ public class AID {
 	}
 	
 	public int getDefaultTDOLLengthInt() {
-		return defaultTDOLLength[0] * 0x100 + defaultTDOLLength[1];
+		return UTFUtils.bigEndian(defaultTDOLLength);
 	}
 	
 	public int getDefaultDDOLLengthInt() {
-		return defaultDDOLLength[0] * 0x100 + defaultDDOLLength[1];
+		return UTFUtils.bigEndian(defaultDDOLLength);
 	}
 	
 	public int totalLength() {

@@ -417,31 +417,31 @@ public class RID implements Constant {
 	}
 	
 	public int getKeyDataTotalLengthInt() {
-		return keyDataTotalLength[0] * 0x100 + keyDataTotalLength[1];
+		return UTFUtils.bigEndian(keyDataTotalLength);
 	}
 	
 	public int getLengthGoOnlineTagsInt() {
-		return lengthGoOnlineTags[0] * 0x100 + lengthGoOnlineTags[1];
+		return UTFUtils.bigEndian(lengthGoOnlineTags);
 	}
 	
 	public int getLengthEndOfTransactionTagsInt() {
-		return lengthEndOfTransactionTags[0] * 0x100 + lengthEndOfTransactionTags[1];
+		return UTFUtils.bigEndian(lengthEndOfTransactionTags);
 	}
 	
 	public int getLengthGetPreviousAmountTagsInt() {
-		return lengthGetPreviousAmountTags[0] * 0x100 + lengthGetPreviousAmountTags[1];
+		return UTFUtils.bigEndian(lengthGetPreviousAmountTags);
 	}
 	
 	public int getLengthExtendedAPIDataInt() {
-		return lengthExtendedAPIData[0] * 0x100 + lengthExtendedAPIData[1];
+		return UTFUtils.bigEndian(lengthExtendedAPIData);
 	}
 	
 	public int getLengthIgnoreTagsInt() {
-		return lengthIgnoreTags[0] * 0x100 + lengthIgnoreTags[1];
+		return UTFUtils.bigEndian(lengthIgnoreTags);
 	}
 	
 	public int getLengthTLVDataInt() {
-		return lengthTLVData[0] * 0x100 + lengthTLVData[1];
+		return UTFUtils.bigEndian(lengthTLVData);
 	}
 
 }

@@ -58,11 +58,21 @@ public class UTFUtils {
 		return lgt;
 	}
 	
-	public static byte[] lengthSwap(int length) {
+	public static byte[] littleEndian(int length) {
 		byte[] lengthSwap = new byte[2];
 		lengthSwap[0] = (byte)(length % 0x100);
 		lengthSwap[1] = (byte)(length / 0x100);
 		return lengthSwap;
+	}
+	
+	public static int littleEndian(byte[] bin) {
+		return (bin[1] >= 0 ? bin[1] : bin[1] + 0x100) * 0x100
+				+ (bin[0] >= 0 ? bin[0] : bin[0] + 0x100);
+	}
+	
+	public static int bigEndian(byte[] bin) {
+		return (bin[0] >= 0 ? bin[0] : bin[0] + 0x100) * 0x100
+				+ (bin[1] >= 0 ? bin[1] : bin[1] + 0x100);
 	}
 	
 	public static byte[] hexLog2bytes(String s) throws DecoderException {

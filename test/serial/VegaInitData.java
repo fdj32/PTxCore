@@ -90,17 +90,17 @@ public class VegaInitData {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
 		byte[] data = tsd.toBinary();
-		terminalDataTotalLength = UTFUtils.lengthSwap(data.length);
+		terminalDataTotalLength = UTFUtils.littleEndian(data.length);
 		baos.write(terminalDataTotalLength);
 		baos.write(data);
 
 		data = rsd.toBinary();
-		ridDataTotalLength = UTFUtils.lengthSwap(data.length);
+		ridDataTotalLength = UTFUtils.littleEndian(data.length);
 		baos.write(ridDataTotalLength);
 		baos.write(data);
 
 		data = asd.toBinary();
-		aidDataTotalLength = UTFUtils.lengthSwap(data.length);
+		aidDataTotalLength = UTFUtils.littleEndian(data.length);
 		baos.write(aidDataTotalLength);
 		baos.write(data);
 		
@@ -146,15 +146,15 @@ public class VegaInitData {
 	}
 	
 	public int getTerminalDataTotalLengthInt() {
-		return terminalDataTotalLength[1] * 0x100 + terminalDataTotalLength[0];
+		return UTFUtils.littleEndian(terminalDataTotalLength);
 	}
 	
 	public int getRIDDataTotalLengthInt() {
-		return ridDataTotalLength[1] * 0x100 + ridDataTotalLength[0];
+		return UTFUtils.littleEndian(ridDataTotalLength);
 	}
 	
 	public int getAIDDataTotalLengthInt() {
-		return aidDataTotalLength[1] * 0x100 + aidDataTotalLength[0];
+		return UTFUtils.littleEndian(aidDataTotalLength);
 	}
 
 }

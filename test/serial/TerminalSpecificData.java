@@ -531,23 +531,23 @@ public class TerminalSpecificData implements Constant {
 	}
 
 	public int getLengthTLVDataInt() {
-		return lengthTLVData[0] * 0x100 + lengthTLVData[1];
+		return UTFUtils.bigEndian(lengthTLVData);
 	}
 
 	public int getLengthOfflinePINEntryConfigurationInt() {
-		return lengthOfflinePINEntryConfiguration[0] * 0x100 + lengthOfflinePINEntryConfiguration[1];
+		return UTFUtils.bigEndian(lengthOfflinePINEntryConfiguration);
 	}
 
 	public int getLengthDiagnosticsTagsInt() {
-		return lengthDiagnosticsTags[0] * 0x100 + lengthDiagnosticsTags[1];
+		return UTFUtils.bigEndian(lengthDiagnosticsTags);
 	}
 
 	public int getLengthAppSelectionTagsInt() {
-		return lengthAppSelectionTags[0] * 0x100 + lengthAppSelectionTags[1];
+		return UTFUtils.bigEndian(lengthAppSelectionTags);
 	}
 
 	public int getLengthRIDAppsInt() {
-		return lengthRIDApps[0] * 0x100 + lengthRIDApps[1];
+		return UTFUtils.bigEndian(lengthRIDApps);
 	}
 
 	public int totalLength() {
