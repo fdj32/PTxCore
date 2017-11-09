@@ -197,7 +197,7 @@ public class CpxF1Command {
 	 */
 	public static CpxF1Command cpxF1AsyncEmvData(byte inSeqId, byte[] emvData) {
 		CpxF1Command c = new CpxF1Command();
-		c.setLgt(UTFUtils.lgt(2 + 1 + 1 + 1 + 1 + 12 + 12 + emvData.length, 2));
+		c.setLgt(UTFUtils.lgt(1 + 1 + 1 + 1 + 12 + 12 + emvData.length, 2));
 		c.setCmdType(ASYN_EMV);
 		c.setMsgSeqId(inSeqId);
 		c.setStatus(STATUS_NORMAL); // Normal
