@@ -94,8 +94,9 @@ https://developer.ingenico.us/
 https://developer.ingenico.us/register/
 https://developer.ingenico.us/wp-content/uploads/2017/05/IngenicoUSBDrivers_3.10_setupEXT.zip
 
-
-
+# RS-232 for Linux, FreeBSD and windows
+https://www.teuniz.net/RS-232/
+https://www.teuniz.net/RS-232/RS-232.tar.gz
 
 
 
