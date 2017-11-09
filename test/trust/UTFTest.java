@@ -23,11 +23,17 @@ public class UTFTest {
 		
 		byte[] bin = IOUtils.toByteArray(new FileInputStream(new File("/Users/nickfeng/Hub/fdj32/PTxCore/doc/131540886937708660.init.dat")));
 		
-		//System.out.println(Hex.encodeHexString(bin));
+		String hex = Hex.encodeHexString(bin);
 		
 		VegaInitData v = VegaInitData.fromBinary(bin);
 		
-		//System.out.println(new Gson().toJson(v));
+		byte[] bin2 = v.toBinary();
+		
+		String hex2 = Hex.encodeHexString(bin2);
+		
+		System.out.println(hex.equals(hex2));
+		
+//		System.out.println(new Gson().toJson(v));
 		
 //		System.out.println(v.getTsd().element().asXML());
 		
@@ -35,7 +41,7 @@ public class UTFTest {
 		
 //		System.out.println(v.getAsd().element().asXML());
 		
-		System.out.println(v.element().asXML());
+//		System.out.println(v.element().asXML());
 	}
 
 }

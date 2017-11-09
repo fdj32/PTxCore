@@ -255,10 +255,12 @@ public class RID implements Constant {
 		byte[] endOfTransactionTagsBin = baos.toByteArray();
 		lengthEndOfTransactionTags = UTFUtils.lgt(endOfTransactionTagsBin.length, 2);
 		baos.reset();
-
-		for (Tag item : getPreviousAmountTags) {
-			baos.write(item.getIdBin());
+		if(null != getPreviousAmountTags) {
+			for (Tag item : getPreviousAmountTags) {
+				baos.write(item.getIdBin());
+			}
 		}
+		
 		byte[] getPreviousAmountTagsBin = baos.toByteArray();
 		lengthGetPreviousAmountTags = UTFUtils.lgt(getPreviousAmountTagsBin.length, 2);
 		baos.reset();

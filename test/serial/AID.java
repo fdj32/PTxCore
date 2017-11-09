@@ -254,9 +254,11 @@ public class AID {
 		baos.write(thresholdValue);
 		baos.write(terminalFloorLimit);
 		baos.write(defaultTDOLLength);
-		baos.write(defaultTDOL);
+		if(null != defaultTDOL)
+			baos.write(defaultTDOL);
 		baos.write(defaultDDOLLength);
-		baos.write(defaultDDOL);
+		if(null != defaultDDOL)
+			baos.write(defaultDDOL);
 
 		byte[] data = baos.toByteArray();
 		baos.close();

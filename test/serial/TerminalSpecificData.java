@@ -432,11 +432,14 @@ public class TerminalSpecificData implements Constant {
 			baos.write(RFU);
 		}
 		baos.write(lengthDiagnosticsTags);
-		baos.write(diagnosticsTags);
+		if(null != diagnosticsTags)
+			baos.write(diagnosticsTags);
 		baos.write(lengthAppSelectionTags);
-		baos.write(appSelectionTags);
+		if(null != appSelectionTags)
+			baos.write(appSelectionTags);
 		baos.write(lengthRIDApps);
-		baos.write(ridApps);
+		if(null != ridApps)
+			baos.write(ridApps);
 		byte[] data = baos.toByteArray();
 		baos.close();
 		return data;
