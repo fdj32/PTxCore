@@ -370,6 +370,7 @@ public class TerminalSpecificData implements Constant {
 		r.addElement("acquirerIdentifier").addText(Hex.encodeHexString(acquirerIdentifier));
 		r.addElement("merchantCategoryCode").addText(Hex.encodeHexString(merchantCategoryCode));
 		r.addElement("merchantIdentifier").addText(Hex.encodeHexString(merchantIdentifier));
+		r.addElement("terminalIdentification").addText(Hex.encodeHexString(terminalIdentification));
 		r.addElement("terminalRiskManagementData").addText(Hex.encodeHexString(terminalRiskManagementData));
 		r.addElement("ifdSerialNumber").addText(Hex.encodeHexString(ifdSerialNumber));
 		r.addElement("authorizationResponseCodeList").addText(Hex.encodeHexString(authorizationResponseCodeList));
@@ -412,6 +413,7 @@ public class TerminalSpecificData implements Constant {
 		baos.write(acquirerIdentifier);
 		baos.write(merchantCategoryCode);
 		baos.write(merchantIdentifier);
+		baos.write(terminalIdentification);
 		baos.write(terminalRiskManagementData);
 		baos.write(ifdSerialNumber);
 		baos.write(authorizationResponseCodeList);

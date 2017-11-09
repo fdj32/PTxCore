@@ -232,14 +232,14 @@ public class RID implements Constant {
 			baos.write(item.toBinary());
 		}
 		byte[] keyDatasBin = baos.toByteArray();
-		keyDataTotalLength = UTFUtils.lgt(keyDatasBin.length, 2);
+		keyDataTotalLength = UTFUtils.littleEndian(keyDatasBin.length);
 		baos.reset();
 
 		for (Tag item : goOnlineTags) {
 			baos.write(item.getIdBin());
 		}
 		byte[] goOnlineTagsBin = baos.toByteArray();
-		lengthGoOnlineTags = UTFUtils.lgt(goOnlineTagsBin.length, 2);
+		lengthGoOnlineTags = UTFUtils.littleEndian(goOnlineTagsBin.length);
 		baos.reset();
 
 		for (int i = EmvTransactionType.EMV_PURCHASE; i <= EmvTransactionType.EMV_PREAUTH_COMPLETION; i++) {

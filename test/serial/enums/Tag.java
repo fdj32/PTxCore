@@ -150,10 +150,7 @@ public class Tag {
 	}
 	
 	public byte[] getIdBin() {
-		byte[] idBin = new byte[2];
-		idBin[0] = (byte) (getId() / 0x100);
-		idBin[1] = (byte) (getId() % 0x100);
-		return idBin;
+		return UTFUtils.littleEndian(getId());
 	}
 	
 	public static byte[] buildTLV(Tag t) throws DecoderException {

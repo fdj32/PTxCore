@@ -25,13 +25,35 @@ public class UTFTest {
 		
 		String hex = Hex.encodeHexString(bin);
 		
+//		System.out.println(indent(hex));
+		
 		VegaInitData v = VegaInitData.fromBinary(bin);
+		
+		String tsd = Hex.encodeHexString(v.getTsd().toBinary());
+		
+		System.out.println("tsd:" + hex.indexOf(tsd));
+		
+//		System.out.println(tsd);
+		
+		String offline = Hex.encodeHexString(v.getTsd().getOfflinePINEntryConfiguration().toBinary());
+		
+		System.out.println("offline:" + hex.indexOf(offline));
+		
+		String rsd = Hex.encodeHexString(v.getRsd().toBinary());
+		
+		System.out.println("rsd:" + hex.indexOf(rsd));
+		
+		String asd = Hex.encodeHexString(v.getAsd().toBinary());
+		
+		System.out.println("asd:" + hex.indexOf(asd));
 		
 		byte[] bin2 = v.toBinary();
 		
 		String hex2 = Hex.encodeHexString(bin2);
 		
-		System.out.println(hex.equals(hex2));
+//		System.out.println(indent(hex2));
+		
+//		System.out.println(hex.equals(hex2));
 		
 //		System.out.println(new Gson().toJson(v));
 		
@@ -41,7 +63,18 @@ public class UTFTest {
 		
 //		System.out.println(v.getAsd().element().asXML());
 		
-//		System.out.println(v.element().asXML());
+		System.out.println(v.element().asXML());
 	}
+	
+	public static String indent(String s) {
+		StringBuffer sb = new StringBuffer();
+		for(int i = 0; i < s.length(); i++) {
+			if(i % 64 == 0)
+				sb.append(System.lineSeparator());
+			sb.append(s.charAt(i));
+		}
+		return sb.toString();
+	}
+	
 
 }
