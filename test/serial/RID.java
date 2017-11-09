@@ -246,14 +246,14 @@ public class RID implements Constant {
 			if(null == endOfTransactionTags.get(i) || 0 == endOfTransactionTags.get(i).size()) {
 				baos.write(0x00);
 			} else {
-				baos.write(endOfTransactionTags.get(i).size());
+				baos.write(endOfTransactionTags.get(i).size() * 2); // byte length
 				for (Tag item : endOfTransactionTags.get(i)) {
 					baos.write(item.getIdBin());
 				}
 			}
 		}
 		byte[] endOfTransactionTagsBin = baos.toByteArray();
-		lengthEndOfTransactionTags = UTFUtils.lgt(endOfTransactionTagsBin.length, 2);
+		lengthEndOfTransactionTags = UTFUtils.littleEndian(endOfTransactionTagsBin.length);
 		baos.reset();
 		if(null != getPreviousAmountTags) {
 			for (Tag item : getPreviousAmountTags) {
@@ -262,17 +262,17 @@ public class RID implements Constant {
 		}
 		
 		byte[] getPreviousAmountTagsBin = baos.toByteArray();
-		lengthGetPreviousAmountTags = UTFUtils.lgt(getPreviousAmountTagsBin.length, 2);
+		lengthGetPreviousAmountTags = UTFUtils.littleEndian(getPreviousAmountTagsBin.length);
 		baos.reset();
 		
 		byte[] extendedAPIDataBin = extendedAPIData.toBinary();
-		lengthExtendedAPIData = UTFUtils.lgt(extendedAPIDataBin.length, 2);
+		lengthExtendedAPIData = UTFUtils.littleEndian(extendedAPIDataBin.length);
 
 		for (Tag item : ignoreTags) {
 			baos.write(item.getIdBin());
 		}
 		byte[] ignoreTagsBin = baos.toByteArray();
-		lengthIgnoredTags = UTFUtils.lgt(ignoreTagsBin.length, 2);
+		lengthIgnoredTags = UTFUtils.littleEndian(ignoreTagsBin.length);
 		baos.reset();
 
 		// start to build RID
