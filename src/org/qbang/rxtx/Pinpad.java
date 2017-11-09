@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import org.apache.commons.codec.binary.Hex;
+
 import gnu.io.CommPortIdentifier;
 import gnu.io.PortInUseException;
 import gnu.io.SerialPort;
@@ -31,7 +33,7 @@ public class Pinpad {
 	private static final int SERIAL_PORT_READ_TIMEOUT = 8000;
 	private static final int SERIAL_PORT_POLL_TIME = 100;
 	private static final int MAX_TRY_SEND_TIMES = 3;
-	private static final String SERIAL_PORT_NAME = "/dev/tty.usbmodem1411";
+	private static final String SERIAL_PORT_NAME = "/dev/tty.usbmodem1421";
 	private static final int MAX_VEGA_PACKET_SIZE = 498;
 	
 	private static int cpxSeqId = 0;
@@ -72,10 +74,10 @@ public class Pinpad {
 		boolean result = true; // CPX F1 Async EMV Data result
 		while(initDataIndex < initData.length && result) {
 			boolean bMoreDataToCome = false;
-			byte[] dataPacket = new byte[MAX_VEGA_PACKET_SIZE];
+			byte[] dataPacket = new byte[MAX_VEGA_PACKET_SIZE - 1];
 			int dataPacketSize = 0;
-			if(initData.length - initDataIndex > MAX_VEGA_PACKET_SIZE) {
-				dataPacketSize = MAX_VEGA_PACKET_SIZE;
+			if(initData.length - initDataIndex > dataPacket.length) {
+				dataPacketSize = dataPacket.length;
 				bMoreDataToCome = true; // More to Follow
 			} else { // Last Packet
 				dataPacketSize = initData.length - initDataIndex;
@@ -83,6 +85,8 @@ public class Pinpad {
 			}
 			System.arraycopy(initData, initDataIndex, dataPacket, 0, dataPacketSize);
 			VegaEmvInitReq initReq = new VegaEmvInitReq(bMoreDataToCome, dataPacket);
+System.out.println(Hex.encodeHexString(dataPacket));
+System.out.println(Hex.encodeHexString(initReq.toBinary()));
 			result = cpxF1AsyncEmvData(initReq, true);
 			initDataIndex += dataPacketSize;
 		}
@@ -93,6 +97,7 @@ public class Pinpad {
 		CpxF1Request req = new CpxF1Request(cmd);
 		byte[] data = req.toBinary();
 		byte[] resp = null;
+		System.out.println(Hex.encodeHexString(data));
 		try {
 			resp = write(data, true, MAX_TRY_SEND_TIMES);
 		} catch (Exception e) {

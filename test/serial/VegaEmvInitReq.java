@@ -46,6 +46,7 @@ public class VegaEmvInitReq extends Vega {
 		ByteBuffer bb = ByteBuffer.allocate(1024);
 		bb.put((byte) getEmvServiceCode());
 		bb.put((byte) getEmvReasonCode());
+		bb.put(UTFUtils.littleEndian(getThisDataChunk().length));
 		bb.put(isbMoreDataToCome() ? (byte) 0x01 : (byte) 0x00);
 		bb.put(getThisDataChunk());
 		int position = bb.position();

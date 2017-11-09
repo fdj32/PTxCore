@@ -1,5 +1,7 @@
 package serial;
 
+import org.apache.commons.codec.binary.Hex;
+
 /**
  * 0140-05252-0904 CPX+ EMV Emulation.pdf {Page.151/184} {CHAPTER 8 – CPX EMV
  * COMMANDS}
@@ -45,6 +47,8 @@ public class CpxF1Request extends CpxRequest {
 	public byte[] toBinary() {
 		byte[] cmdData = this.getCmd().toBinary();
 		byte[] cmdEncoded = UTFUtils.cpxP16Encode(cmdData);
+		System.out.println(Hex.encodeHexString(cmdData));
+		System.out.println(Hex.encodeHexString(cmdEncoded));
 		byte[] data = null;
 		if(this.isEncode()) {
 			data = new byte[3 + cmdEncoded.length];
