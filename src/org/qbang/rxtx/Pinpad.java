@@ -119,13 +119,17 @@ System.out.println(Hex.encodeHexString(initReq.toBinary()));
 			while((System.currentTimeMillis() - start) < SERIAL_PORT_READ_TIMEOUT) {
 				if(null == (response = dataQ.poll())) {
 					Thread.sleep(SERIAL_PORT_POLL_TIME);
-System.out.println(".");
-				} else if(1 == response.length && UTFUtils.ACK[0] == response[0]) {
+System.out.print(".");
+				} else if(1 == response.length) {
+					if(UTFUtils.ACK[0] == response[0]) {
 System.out.println("Got ACK");
-					// receive ACK
-					gotACK = true;
-					if(!waitForResponse)
-						break;
+						// receive ACK
+						gotACK = true;
+						if(!waitForResponse)
+							break;
+					}
+System.out.println("Got " + Hex.encodeHexString(response));
+
 				} else if(response.length > 1) {
 System.out.println("Got Response:" + UTFUtils.printFormat(response));
 					// receive response
