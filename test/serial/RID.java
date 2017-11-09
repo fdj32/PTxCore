@@ -292,9 +292,7 @@ public class RID implements Constant {
 		// proprietaryRIDData = null
 		baos.write(lengthIgnoredTags);
 		baos.write(ignoreTagsBin);
-		for (int i = 0; i < 8; i++) {
-			baos.write(RFU);
-		}
+		baos.write(RFU);
 		baos.write(miscellaneousOptions);
 		baos.write(lengthTLVData);
 		baos.write(tlvData);

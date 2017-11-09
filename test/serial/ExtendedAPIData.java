@@ -61,8 +61,7 @@ public class ExtendedAPIData implements Constant {
 						|| 0 == tagListToAskFor.get(i).size()
 						|| null == tagListToAskFor.get(i).get(j)
 						|| 0 == tagListToAskFor.get(i).get(j).size()) {
-					baos.write(0x00);
-					baos.write(0x00);
+					baos.write(0x00); // LenTagListToAskFor
 				} else {
 					for (Tag item : tagListToAskFor.get(i).get(j)) {
 						baosTemp.write(item.getIdBin());
@@ -78,8 +77,7 @@ public class ExtendedAPIData implements Constant {
 						|| 0 == tagListInCallBack.get(i).size()
 						|| null == tagListInCallBack.get(i).get(j)
 						|| 0 == tagListInCallBack.get(i).get(j).size()) {
-					baos.write(0x00);
-					baos.write(0x00);
+					baos.write(0x00); // LenTagListInCallBack
 				} else {
 					for (Tag item : tagListInCallBack.get(i).get(j)) {
 						baosTemp.write(item.getIdBin());
@@ -123,7 +121,7 @@ public class ExtendedAPIData implements Constant {
 				index+=2;
 				int lenTagListToAskFor = temp[2];
 				index++;
-				if(0 != lenTagListToAskFor) {
+				if(0 != lenTagListToAskFor && 0xff != lenTagListToAskFor) {
 					byte[] tagListToAskForBin = new byte[lenTagListToAskFor];
 					System.arraycopy(temp, 3, tagListToAskForBin, 0, lenTagListToAskFor);
 					List<Tag> listAskFor = Tag.fromBinaryToIdList(tagListToAskForBin);
@@ -131,7 +129,8 @@ public class ExtendedAPIData implements Constant {
 					index+=lenTagListToAskFor;
 				}
 				int lenTagListInCallBack = temp[3+lenTagListToAskFor];
-				if(0 != lenTagListInCallBack) {
+				index++;
+				if(0 != lenTagListInCallBack && 0xff != lenTagListInCallBack) {
 					byte[] tagListInCallBackBin = new byte[lenTagListInCallBack];
 					System.arraycopy(temp, 4+lenTagListToAskFor, tagListInCallBackBin, 0, lenTagListInCallBack);
 					List<Tag> listCallBack = Tag.fromBinaryToIdList(tagListInCallBackBin);

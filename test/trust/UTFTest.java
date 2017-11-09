@@ -15,11 +15,11 @@ import serial.VegaInitData;
 public class UTFTest {
 
 	public static void main(String[] args) throws IOException {
-		System.out.println(UTFUtils.printFormat(UTFUtils.lgt(1422, 2)));
-		System.out.println(UTFUtils.printFormat(UTFUtils.littleEndian(1422)));
-		System.out.println(UTFUtils.printFormat(UTFUtils.littleEndian(18620)));
-		System.out.println(UTFUtils.printFormat(UTFUtils.littleEndian(809)));
-		System.out.println(UTFUtils.printFormat(UTFUtils.lgt(5, 1)));
+//		System.out.println(UTFUtils.printFormat(UTFUtils.lgt(1422, 2)));
+//		System.out.println(UTFUtils.printFormat(UTFUtils.littleEndian(1422)));
+//		System.out.println(UTFUtils.printFormat(UTFUtils.littleEndian(18620)));
+//		System.out.println(UTFUtils.printFormat(UTFUtils.littleEndian(809)));
+//		System.out.println(UTFUtils.printFormat(UTFUtils.lgt(5, 1)));
 		
 		byte[] bin = IOUtils.toByteArray(new FileInputStream(new File("/Users/nickfeng/Hub/fdj32/PTxCore/doc/131540886937708660.init.dat")));
 		
@@ -31,27 +31,27 @@ public class UTFTest {
 		
 		String tsd = Hex.encodeHexString(v.getTsd().toBinary());
 		
-		System.out.println("tsd:" + hex.indexOf(tsd));
+//		System.out.println("tsd:" + hex.indexOf(tsd));
 		
 //		System.out.println(tsd);
 		
 		String offline = Hex.encodeHexString(v.getTsd().getOfflinePINEntryConfiguration().toBinary());
 		
-		System.out.println("offline:" + hex.indexOf(offline));
+//		System.out.println("offline:" + hex.indexOf(offline));
 		
 		String rsd = Hex.encodeHexString(v.getRsd().toBinary());
 		
-		System.out.println("rsd:" + hex.indexOf(rsd));
+//		System.out.println("rsd:" + hex.indexOf(rsd));
 		
 		String asd = Hex.encodeHexString(v.getAsd().toBinary());
 		
-		System.out.println("asd:" + hex.indexOf(asd));
+//		System.out.println("asd:" + hex.indexOf(asd));
 		
 		byte[] bin2 = v.toBinary();
 		
 		String hex2 = Hex.encodeHexString(bin2);
 		
-//		System.out.println(indent(hex2));
+		System.out.println(indent(hex2));
 		
 //		System.out.println(hex.equals(hex2));
 		
@@ -63,7 +63,7 @@ public class UTFTest {
 		
 //		System.out.println(v.getAsd().element().asXML());
 		
-		System.out.println(v.element().asXML());
+//		System.out.println(v.element().asXML());
 	}
 	
 	public static String indent(String s) {
