@@ -65,7 +65,7 @@
 		<ridApps>4341304330305f41705669732041303030303030303235204130303030303031353220413030303030303237372041303030303030303635204130303030303030303420413030303030303030330a
 		</ridApps>
 	</terminalSpecificData>
-	<ridDataTotalLength>2046</ridDataTotalLength>
+	<ridDataTotalLength>ba48</ridDataTotalLength>
 	<RIDSpecificData>
 		<RID>
 			<rid>a000000025</rid>
@@ -441,16 +441,15 @@
 			<endOfTransactionStep>0803ff030308ff</endOfTransactionStep>
 			<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
 			<getPreviousAmountTags />
-			<lengthExtendedAPIData>b403</lengthExtendedAPIData>
+			<lengthExtendedAPIData>2a04</lengthExtendedAPIData>
 			<ExtendedAPIData>
-				<lengthStepTags>03b4</lengthStepTags>
+				<lengthStepTags>2804</lengthStepTags>
 				<EMVStepTags>
 					<EMVTransactionType type="0">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -514,6 +513,7 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
 						<EMVStep step="7" />
@@ -523,11 +523,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4" />
-						<EMVStep step="5" />
-						<EMVStep step="6" />
-						<EMVStep step="7">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -591,13 +587,80 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
+						<EMVStep step="5" />
+						<EMVStep step="6" />
+						<EMVStep step="7" />
 						<EMVStep step="8" />
 					</EMVTransactionType>
 					<EMVTransactionType type="2">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
+						<EMVStep step="3">
+							<tagListToAskFor>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListToAskFor>
+							<tagListInCallBack>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListInCallBack>
+						</EMVStep>
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -606,7 +669,9 @@
 					</EMVTransactionType>
 					<EMVTransactionType type="3">
 						<EMVStep step="0" />
-						<EMVStep step="1">
+						<EMVStep step="1" />
+						<EMVStep step="2" />
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -670,8 +735,6 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
-						<EMVStep step="2" />
-						<EMVStep step="3" />
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -682,8 +745,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -747,6 +809,7 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
 						<EMVStep step="7" />
@@ -756,11 +819,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4" />
-						<EMVStep step="5" />
-						<EMVStep step="6" />
-						<EMVStep step="7">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -824,13 +883,80 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
+						<EMVStep step="5" />
+						<EMVStep step="6" />
+						<EMVStep step="7" />
 						<EMVStep step="8" />
 					</EMVTransactionType>
 					<EMVTransactionType type="6">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
+						<EMVStep step="3">
+							<tagListToAskFor>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListToAskFor>
+							<tagListInCallBack>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListInCallBack>
+						</EMVStep>
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -1200,16 +1326,15 @@
 			<endOfTransactionStep>0803ff030308ff</endOfTransactionStep>
 			<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
 			<getPreviousAmountTags />
-			<lengthExtendedAPIData>b403</lengthExtendedAPIData>
+			<lengthExtendedAPIData>2a04</lengthExtendedAPIData>
 			<ExtendedAPIData>
-				<lengthStepTags>03b4</lengthStepTags>
+				<lengthStepTags>2804</lengthStepTags>
 				<EMVStepTags>
 					<EMVTransactionType type="0">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -1273,6 +1398,7 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
 						<EMVStep step="7" />
@@ -1282,11 +1408,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4" />
-						<EMVStep step="5" />
-						<EMVStep step="6" />
-						<EMVStep step="7">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -1350,13 +1472,80 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
+						<EMVStep step="5" />
+						<EMVStep step="6" />
+						<EMVStep step="7" />
 						<EMVStep step="8" />
 					</EMVTransactionType>
 					<EMVTransactionType type="2">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
+						<EMVStep step="3">
+							<tagListToAskFor>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListToAskFor>
+							<tagListInCallBack>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListInCallBack>
+						</EMVStep>
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -1365,7 +1554,9 @@
 					</EMVTransactionType>
 					<EMVTransactionType type="3">
 						<EMVStep step="0" />
-						<EMVStep step="1">
+						<EMVStep step="1" />
+						<EMVStep step="2" />
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -1429,8 +1620,6 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
-						<EMVStep step="2" />
-						<EMVStep step="3" />
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -1441,8 +1630,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -1506,6 +1694,7 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
 						<EMVStep step="7" />
@@ -1515,11 +1704,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4" />
-						<EMVStep step="5" />
-						<EMVStep step="6" />
-						<EMVStep step="7">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -1583,13 +1768,80 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
+						<EMVStep step="5" />
+						<EMVStep step="6" />
+						<EMVStep step="7" />
 						<EMVStep step="8" />
 					</EMVTransactionType>
 					<EMVTransactionType type="6">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
+						<EMVStep step="3">
+							<tagListToAskFor>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListToAskFor>
+							<tagListInCallBack>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListInCallBack>
+						</EMVStep>
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -1970,16 +2222,15 @@
 			<endOfTransactionStep>0808ff080808ff</endOfTransactionStep>
 			<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
 			<getPreviousAmountTags />
-			<lengthExtendedAPIData>b403</lengthExtendedAPIData>
+			<lengthExtendedAPIData>2a04</lengthExtendedAPIData>
 			<ExtendedAPIData>
-				<lengthStepTags>03b4</lengthStepTags>
+				<lengthStepTags>2804</lengthStepTags>
 				<EMVStepTags>
 					<EMVTransactionType type="0">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -2043,6 +2294,7 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
 						<EMVStep step="7" />
@@ -2052,11 +2304,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4" />
-						<EMVStep step="5" />
-						<EMVStep step="6" />
-						<EMVStep step="7">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -2120,13 +2368,80 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
+						<EMVStep step="5" />
+						<EMVStep step="6" />
+						<EMVStep step="7" />
 						<EMVStep step="8" />
 					</EMVTransactionType>
 					<EMVTransactionType type="2">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
+						<EMVStep step="3">
+							<tagListToAskFor>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListToAskFor>
+							<tagListInCallBack>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListInCallBack>
+						</EMVStep>
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -2135,7 +2450,9 @@
 					</EMVTransactionType>
 					<EMVTransactionType type="3">
 						<EMVStep step="0" />
-						<EMVStep step="1">
+						<EMVStep step="1" />
+						<EMVStep step="2" />
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -2199,8 +2516,6 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
-						<EMVStep step="2" />
-						<EMVStep step="3" />
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -2211,8 +2526,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -2276,6 +2590,7 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
 						<EMVStep step="7" />
@@ -2285,11 +2600,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4" />
-						<EMVStep step="5" />
-						<EMVStep step="6" />
-						<EMVStep step="7">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -2353,13 +2664,80 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
+						<EMVStep step="5" />
+						<EMVStep step="6" />
+						<EMVStep step="7" />
 						<EMVStep step="8" />
 					</EMVTransactionType>
 					<EMVTransactionType type="6">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
+						<EMVStep step="3">
+							<tagListToAskFor>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListToAskFor>
+							<tagListInCallBack>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListInCallBack>
+						</EMVStep>
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -2729,16 +3107,15 @@
 			<endOfTransactionStep>0803ff030308ff</endOfTransactionStep>
 			<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
 			<getPreviousAmountTags />
-			<lengthExtendedAPIData>b403</lengthExtendedAPIData>
+			<lengthExtendedAPIData>2a04</lengthExtendedAPIData>
 			<ExtendedAPIData>
-				<lengthStepTags>03b4</lengthStepTags>
+				<lengthStepTags>2804</lengthStepTags>
 				<EMVStepTags>
 					<EMVTransactionType type="0">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -2802,6 +3179,7 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
 						<EMVStep step="7" />
@@ -2811,11 +3189,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4" />
-						<EMVStep step="5" />
-						<EMVStep step="6" />
-						<EMVStep step="7">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -2879,13 +3253,80 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
+						<EMVStep step="5" />
+						<EMVStep step="6" />
+						<EMVStep step="7" />
 						<EMVStep step="8" />
 					</EMVTransactionType>
 					<EMVTransactionType type="2">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
+						<EMVStep step="3">
+							<tagListToAskFor>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListToAskFor>
+							<tagListInCallBack>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListInCallBack>
+						</EMVStep>
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -2894,7 +3335,9 @@
 					</EMVTransactionType>
 					<EMVTransactionType type="3">
 						<EMVStep step="0" />
-						<EMVStep step="1">
+						<EMVStep step="1" />
+						<EMVStep step="2" />
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -2958,8 +3401,6 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
-						<EMVStep step="2" />
-						<EMVStep step="3" />
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -2970,8 +3411,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -3035,6 +3475,7 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
 						<EMVStep step="7" />
@@ -3044,11 +3485,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4" />
-						<EMVStep step="5" />
-						<EMVStep step="6" />
-						<EMVStep step="7">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -3112,13 +3549,80 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
+						<EMVStep step="5" />
+						<EMVStep step="6" />
+						<EMVStep step="7" />
 						<EMVStep step="8" />
 					</EMVTransactionType>
 					<EMVTransactionType type="6">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
+						<EMVStep step="3">
+							<tagListToAskFor>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListToAskFor>
+							<tagListInCallBack>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListInCallBack>
+						</EMVStep>
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -3510,16 +4014,15 @@
 			<endOfTransactionStep>0803ff030308ff</endOfTransactionStep>
 			<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
 			<getPreviousAmountTags />
-			<lengthExtendedAPIData>b403</lengthExtendedAPIData>
+			<lengthExtendedAPIData>2a04</lengthExtendedAPIData>
 			<ExtendedAPIData>
-				<lengthStepTags>03b4</lengthStepTags>
+				<lengthStepTags>2804</lengthStepTags>
 				<EMVStepTags>
 					<EMVTransactionType type="0">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -3583,6 +4086,7 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
 						<EMVStep step="7" />
@@ -3592,11 +4096,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4" />
-						<EMVStep step="5" />
-						<EMVStep step="6" />
-						<EMVStep step="7">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -3660,13 +4160,80 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
+						<EMVStep step="5" />
+						<EMVStep step="6" />
+						<EMVStep step="7" />
 						<EMVStep step="8" />
 					</EMVTransactionType>
 					<EMVTransactionType type="2">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
+						<EMVStep step="3">
+							<tagListToAskFor>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListToAskFor>
+							<tagListInCallBack>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListInCallBack>
+						</EMVStep>
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -3675,7 +4242,9 @@
 					</EMVTransactionType>
 					<EMVTransactionType type="3">
 						<EMVStep step="0" />
-						<EMVStep step="1">
+						<EMVStep step="1" />
+						<EMVStep step="2" />
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -3739,8 +4308,6 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
-						<EMVStep step="2" />
-						<EMVStep step="3" />
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -3751,8 +4318,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -3816,6 +4382,7 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
 						<EMVStep step="7" />
@@ -3825,11 +4392,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4" />
-						<EMVStep step="5" />
-						<EMVStep step="6" />
-						<EMVStep step="7">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -3893,13 +4456,80 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
+						<EMVStep step="5" />
+						<EMVStep step="6" />
+						<EMVStep step="7" />
 						<EMVStep step="8" />
 					</EMVTransactionType>
 					<EMVTransactionType type="6">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
+						<EMVStep step="3">
+							<tagListToAskFor>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListToAskFor>
+							<tagListInCallBack>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListInCallBack>
+						</EMVStep>
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -4291,16 +4921,15 @@
 			<endOfTransactionStep>0803ff030308ff</endOfTransactionStep>
 			<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
 			<getPreviousAmountTags />
-			<lengthExtendedAPIData>b403</lengthExtendedAPIData>
+			<lengthExtendedAPIData>2a04</lengthExtendedAPIData>
 			<ExtendedAPIData>
-				<lengthStepTags>03b4</lengthStepTags>
+				<lengthStepTags>2804</lengthStepTags>
 				<EMVStepTags>
 					<EMVTransactionType type="0">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -4364,6 +4993,7 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
 						<EMVStep step="7" />
@@ -4373,11 +5003,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4" />
-						<EMVStep step="5" />
-						<EMVStep step="6" />
-						<EMVStep step="7">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -4441,13 +5067,80 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
+						<EMVStep step="5" />
+						<EMVStep step="6" />
+						<EMVStep step="7" />
 						<EMVStep step="8" />
 					</EMVTransactionType>
 					<EMVTransactionType type="2">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
+						<EMVStep step="3">
+							<tagListToAskFor>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListToAskFor>
+							<tagListInCallBack>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListInCallBack>
+						</EMVStep>
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -4456,7 +5149,9 @@
 					</EMVTransactionType>
 					<EMVTransactionType type="3">
 						<EMVStep step="0" />
-						<EMVStep step="1">
+						<EMVStep step="1" />
+						<EMVStep step="2" />
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -4520,8 +5215,6 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
-						<EMVStep step="2" />
-						<EMVStep step="3" />
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
@@ -4532,8 +5225,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -4597,6 +5289,7 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />
 						<EMVStep step="7" />
@@ -4606,11 +5299,7 @@
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
-						<EMVStep step="4" />
-						<EMVStep step="5" />
-						<EMVStep step="6" />
-						<EMVStep step="7">
+						<EMVStep step="3">
 							<tagListToAskFor>
 								<Tag ID="4f00" />
 								<Tag ID="5000" />
@@ -4674,13 +5363,80 @@
 								<Tag ID="1dff" />
 							</tagListInCallBack>
 						</EMVStep>
+						<EMVStep step="4" />
+						<EMVStep step="5" />
+						<EMVStep step="6" />
+						<EMVStep step="7" />
 						<EMVStep step="8" />
 					</EMVTransactionType>
 					<EMVTransactionType type="6">
 						<EMVStep step="0" />
 						<EMVStep step="1" />
 						<EMVStep step="2" />
-						<EMVStep step="3" />
+						<EMVStep step="3">
+							<tagListToAskFor>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListToAskFor>
+							<tagListInCallBack>
+								<Tag ID="4f00" />
+								<Tag ID="5000" />
+								<Tag ID="5700" />
+								<Tag ID="5a00" />
+								<Tag ID="8200" />
+								<Tag ID="8400" />
+								<Tag ID="9a00" />
+								<Tag ID="9c00" />
+								<Tag ID="205f" />
+								<Tag ID="245f" />
+								<Tag ID="285f" />
+								<Tag ID="2a5f" />
+								<Tag ID="305f" />
+								<Tag ID="345f" />
+								<Tag ID="069f" />
+								<Tag ID="079f" />
+								<Tag ID="0d9f" />
+								<Tag ID="0e9f" />
+								<Tag ID="0f9f" />
+								<Tag ID="119f" />
+								<Tag ID="129f" />
+								<Tag ID="1a9f" />
+								<Tag ID="1e9f" />
+								<Tag ID="339f" />
+								<Tag ID="349f" />
+								<Tag ID="359f" />
+								<Tag ID="399f" />
+								<Tag ID="429f" />
+								<Tag ID="1dff" />
+							</tagListInCallBack>
+						</EMVStep>
 						<EMVStep step="4" />
 						<EMVStep step="5" />
 						<EMVStep step="6" />

@@ -51,9 +51,9 @@ public class UTFTest {
 		
 		String hex2 = Hex.encodeHexString(bin2);
 		
-		System.out.println(indent(hex2));
+//		System.out.println(indent(hex2));
 		
-//		System.out.println(hex.equals(hex2));
+		System.out.println(hex.equals(hex2));
 		
 //		System.out.println(new Gson().toJson(v));
 		

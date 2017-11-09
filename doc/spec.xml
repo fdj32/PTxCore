@@ -15,6 +15,7 @@
 	<acquirerIdentifier>000000001234</acquirerIdentifier>
 	<merchantCategoryCode>0000</merchantCategoryCode>
 	<merchantIdentifier>373030303030323030373237202020</merchantIdentifier>
+	<terminalIdentification>3030303030303336</terminalIdentification>
 	<terminalRiskManagementData>0000000000000000
 	</terminalRiskManagementData>
 	<ifdSerialNumber>2020202020202020</ifdSerialNumber>
