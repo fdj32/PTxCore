@@ -36,8 +36,9 @@ public class Pinpad {
 	private static final String SERIAL_PORT_NAME = "/dev/tty.usbmodem1421";
 	private static final int MAX_VEGA_PACKET_SIZE = 498;
 	
-	private static int cpxSeqId = 0;
+	private int cpxSeqId = 0;
 	private SerialPort serialPort;
+	private byte[] tempResp = null;
 	private ConcurrentLinkedQueue<byte[]> dataQ = new ConcurrentLinkedQueue<byte[]>();
 
 	public ConcurrentLinkedQueue<byte[]> getDataQ() {
@@ -70,6 +71,8 @@ public class Pinpad {
 	}
 	
 	public void init(byte[] initData) {
+		if(!openSession())
+			return;
 		int initDataIndex = 0;
 		boolean result = true; // CPX F1 Async EMV Data result
 		while(initDataIndex < initData.length && result) {
@@ -90,23 +93,39 @@ System.out.println(Hex.encodeHexString(initReq.toBinary()));
 			result = cpxF1AsyncEmvData(initReq, true);
 			initDataIndex += dataPacketSize;
 		}
+		if(!closeSession())
+			return;
+	}
+	
+	public boolean sendCpxRequest(CpxF1Request req, boolean waitForResponse) {
+		byte[] data = req.toBinary();
+		System.out.println(Hex.encodeHexString(data));
+		data = UTFUtils.cmd(req.toBinary());
+		System.out.println(Hex.encodeHexString(data));
+		try {
+			write(data, waitForResponse, MAX_TRY_SEND_TIMES);
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean openSession() {
+		CpxF1Command cmd = CpxF1Command.cpxF1OpenSession((byte) cpxSeqId);
+		CpxF1Request req = new CpxF1Request(cmd);
+		return sendCpxRequest(req, true);
+	}
+	
+	public boolean closeSession() {
+		CpxF1Command cmd = CpxF1Command.cpxF1CloseSession((byte) cpxSeqId);
+		CpxF1Request req = new CpxF1Request(cmd);
+		return sendCpxRequest(req, true);
 	}
 	
 	public boolean cpxF1AsyncEmvData(VegaEmvInitReq initReq, boolean waitForResponse) {
 		CpxF1Command cmd = CpxF1Command.cpxF1AsyncEmvData((byte) cpxSeqId, initReq.toBinary());
 		CpxF1Request req = new CpxF1Request(cmd);
-		byte[] data = req.toBinary();
-		byte[] resp = null;
-		System.out.println(Hex.encodeHexString(data));
-		try {
-			resp = write(data, true, MAX_TRY_SEND_TIMES);
-		} catch (Exception e) {
-			return false;
-		}
-		
-		
-		// TODO
-		return true;
+		return sendCpxRequest(req, true);
 	}
 	
 	public byte[] write(byte[] data, boolean waitForResponse, int tryTimes) throws IOException, InterruptedException {
@@ -134,6 +153,8 @@ System.out.println("Got " + Hex.encodeHexString(response));
 System.out.println("Got Response:" + UTFUtils.printFormat(response));
 					// receive response
 					gotResponse = true;
+					tempResp = response;
+					cpxSeqId++;
 					break;
 				}
 				start = System.currentTimeMillis();

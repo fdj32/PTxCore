@@ -21,11 +21,17 @@ public class UTFTest {
 //		System.out.println(UTFUtils.printFormat(UTFUtils.littleEndian(809)));
 //		System.out.println(UTFUtils.printFormat(UTFUtils.lgt(5, 1)));
 		
-		byte[] bin = IOUtils.toByteArray(new FileInputStream(new File("/Users/nickfeng/Hub/fdj32/PTxCore/doc/131540886937708660.init.dat")));
+		byte[] bin = IOUtils.toByteArray(new FileInputStream(new File("/Users/nickfeng/Git/active-emv/ConsoleTest/bin/Debug/131546874042950770.init.dat")));
 		
 		String hex = Hex.encodeHexString(bin);
 		
-//		System.out.println(indent(hex));
+		bin = IOUtils.toByteArray(new FileInputStream(new File("/Users/nickfeng/Git/active-emv/ConsoleTest/bin/Debug/131546863971950160.init.dat")));
+		
+		String hex3 = Hex.encodeHexString(bin);
+		
+		System.out.println(hex.equals(hex3));
+		
+		System.out.println(indent(hex));
 		
 		VegaInitData v = VegaInitData.fromBinary(bin);
 		
