@@ -175,7 +175,7 @@
 				<Tag ID="18ff" />
 				<Tag ID="1dff" />
 			</goOnlineTags>
-			<lengthEndOfTransactionTags>01fb</lengthEndOfTransactionTags>
+			<lengthEndOfTransactionTags>fb01</lengthEndOfTransactionTags>
 			<endOfTransactionTags>
 				<endOfTransaction type="0">
 					<Tag ID="4f00" />
@@ -438,9 +438,10 @@
 					<Tag ID="29ff" />
 				</endOfTransaction>
 			</endOfTransactionTags>
+			<endOfTransactionStep>0803ff030308ff</endOfTransactionStep>
 			<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
 			<getPreviousAmountTags />
-			<lengthExtendedAPIData>03b4</lengthExtendedAPIData>
+			<lengthExtendedAPIData>b403</lengthExtendedAPIData>
 			<ExtendedAPIData>
 				<lengthStepTags>03b4</lengthStepTags>
 				<EMVStepTags>
@@ -839,7 +840,7 @@
 				</EMVStepTags>
 			</ExtendedAPIData>
 			<lengthProprietaryRIDData>0000</lengthProprietaryRIDData>
-			<lengthIgnoredTags>0002</lengthIgnoredTags>
+			<lengthIgnoredTags>0200</lengthIgnoredTags>
 			<ignoreTags>
 				<Tag ID="169f" />
 			</ignoreTags>
@@ -933,7 +934,7 @@
 				<Tag ID="18ff" />
 				<Tag ID="1dff" />
 			</goOnlineTags>
-			<lengthEndOfTransactionTags>01fb</lengthEndOfTransactionTags>
+			<lengthEndOfTransactionTags>fb01</lengthEndOfTransactionTags>
 			<endOfTransactionTags>
 				<endOfTransaction type="0">
 					<Tag ID="4f00" />
@@ -1196,9 +1197,10 @@
 					<Tag ID="29ff" />
 				</endOfTransaction>
 			</endOfTransactionTags>
+			<endOfTransactionStep>0803ff030308ff</endOfTransactionStep>
 			<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
 			<getPreviousAmountTags />
-			<lengthExtendedAPIData>03b4</lengthExtendedAPIData>
+			<lengthExtendedAPIData>b403</lengthExtendedAPIData>
 			<ExtendedAPIData>
 				<lengthStepTags>03b4</lengthStepTags>
 				<EMVStepTags>
@@ -1597,7 +1599,7 @@
 				</EMVStepTags>
 			</ExtendedAPIData>
 			<lengthProprietaryRIDData>0000</lengthProprietaryRIDData>
-			<lengthIgnoredTags>0002</lengthIgnoredTags>
+			<lengthIgnoredTags>0200</lengthIgnoredTags>
 			<ignoreTags>
 				<Tag ID="169f" />
 			</ignoreTags>
@@ -1702,7 +1704,7 @@
 				<Tag ID="18ff" />
 				<Tag ID="1dff" />
 			</goOnlineTags>
-			<lengthEndOfTransactionTags>01fb</lengthEndOfTransactionTags>
+			<lengthEndOfTransactionTags>fb01</lengthEndOfTransactionTags>
 			<endOfTransactionTags>
 				<endOfTransaction type="0">
 					<Tag ID="4f00" />
@@ -1965,9 +1967,10 @@
 					<Tag ID="29ff" />
 				</endOfTransaction>
 			</endOfTransactionTags>
+			<endOfTransactionStep>0808ff080808ff</endOfTransactionStep>
 			<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
 			<getPreviousAmountTags />
-			<lengthExtendedAPIData>03b4</lengthExtendedAPIData>
+			<lengthExtendedAPIData>b403</lengthExtendedAPIData>
 			<ExtendedAPIData>
 				<lengthStepTags>03b4</lengthStepTags>
 				<EMVStepTags>
@@ -2366,7 +2369,7 @@
 				</EMVStepTags>
 			</ExtendedAPIData>
 			<lengthProprietaryRIDData>0000</lengthProprietaryRIDData>
-			<lengthIgnoredTags>0002</lengthIgnoredTags>
+			<lengthIgnoredTags>0200</lengthIgnoredTags>
 			<ignoreTags>
 				<Tag ID="169f" />
 			</ignoreTags>
@@ -2460,7 +2463,7 @@
 				<Tag ID="18ff" />
 				<Tag ID="1dff" />
 			</goOnlineTags>
-			<lengthEndOfTransactionTags>01fb</lengthEndOfTransactionTags>
+			<lengthEndOfTransactionTags>fb01</lengthEndOfTransactionTags>
 			<endOfTransactionTags>
 				<endOfTransaction type="0">
 					<Tag ID="4f00" />
@@ -2723,9 +2726,10 @@
 					<Tag ID="29ff" />
 				</endOfTransaction>
 			</endOfTransactionTags>
+			<endOfTransactionStep>0803ff030308ff</endOfTransactionStep>
 			<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
 			<getPreviousAmountTags />
-			<lengthExtendedAPIData>03b4</lengthExtendedAPIData>
+			<lengthExtendedAPIData>b403</lengthExtendedAPIData>
 			<ExtendedAPIData>
 				<lengthStepTags>03b4</lengthStepTags>
 				<EMVStepTags>
@@ -3124,7 +3128,7 @@
 				</EMVStepTags>
 			</ExtendedAPIData>
 			<lengthProprietaryRIDData>0000</lengthProprietaryRIDData>
-			<lengthIgnoredTags>0002</lengthIgnoredTags>
+			<lengthIgnoredTags>0200</lengthIgnoredTags>
 			<ignoreTags>
 				<Tag ID="169f" />
 			</ignoreTags>
@@ -3240,7 +3244,7 @@
 				<Tag ID="18ff" />
 				<Tag ID="1dff" />
 			</goOnlineTags>
-			<lengthEndOfTransactionTags>01fb</lengthEndOfTransactionTags>
+			<lengthEndOfTransactionTags>fb01</lengthEndOfTransactionTags>
 			<endOfTransactionTags>
 				<endOfTransaction type="0">
 					<Tag ID="4f00" />
@@ -3503,9 +3507,10 @@
 					<Tag ID="29ff" />
 				</endOfTransaction>
 			</endOfTransactionTags>
+			<endOfTransactionStep>0803ff030308ff</endOfTransactionStep>
 			<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
 			<getPreviousAmountTags />
-			<lengthExtendedAPIData>03b4</lengthExtendedAPIData>
+			<lengthExtendedAPIData>b403</lengthExtendedAPIData>
 			<ExtendedAPIData>
 				<lengthStepTags>03b4</lengthStepTags>
 				<EMVStepTags>
@@ -3904,7 +3909,7 @@
 				</EMVStepTags>
 			</ExtendedAPIData>
 			<lengthProprietaryRIDData>0000</lengthProprietaryRIDData>
-			<lengthIgnoredTags>0002</lengthIgnoredTags>
+			<lengthIgnoredTags>0200</lengthIgnoredTags>
 			<ignoreTags>
 				<Tag ID="169f" />
 			</ignoreTags>
@@ -4020,7 +4025,7 @@
 				<Tag ID="18ff" />
 				<Tag ID="1dff" />
 			</goOnlineTags>
-			<lengthEndOfTransactionTags>01fb</lengthEndOfTransactionTags>
+			<lengthEndOfTransactionTags>fb01</lengthEndOfTransactionTags>
 			<endOfTransactionTags>
 				<endOfTransaction type="0">
 					<Tag ID="4f00" />
@@ -4283,9 +4288,10 @@
 					<Tag ID="29ff" />
 				</endOfTransaction>
 			</endOfTransactionTags>
+			<endOfTransactionStep>0803ff030308ff</endOfTransactionStep>
 			<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
 			<getPreviousAmountTags />
-			<lengthExtendedAPIData>03b4</lengthExtendedAPIData>
+			<lengthExtendedAPIData>b403</lengthExtendedAPIData>
 			<ExtendedAPIData>
 				<lengthStepTags>03b4</lengthStepTags>
 				<EMVStepTags>
@@ -4684,7 +4690,7 @@
 				</EMVStepTags>
 			</ExtendedAPIData>
 			<lengthProprietaryRIDData>0000</lengthProprietaryRIDData>
-			<lengthIgnoredTags>0002</lengthIgnoredTags>
+			<lengthIgnoredTags>0200</lengthIgnoredTags>
 			<ignoreTags>
 				<Tag ID="169f" />
 			</ignoreTags>

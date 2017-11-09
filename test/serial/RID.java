@@ -38,7 +38,7 @@ public class RID implements Constant {
 	 */
 	private byte[] lengthEndOfTransactionTags;
 	private Map<Integer, List<Tag>> endOfTransactionTags;
-	private byte[] EndOfTransactionStep;
+	private byte[] endOfTransactionStep;
 	/**
 	 * length=2
 	 */
@@ -130,11 +130,11 @@ public class RID implements Constant {
 	}
 
 	public byte[] getEndOfTransactionStep() {
-		return EndOfTransactionStep;
+		return endOfTransactionStep;
 	}
 
 	public void setEndOfTransactionStep(byte[] endOfTransactionStep) {
-		EndOfTransactionStep = endOfTransactionStep;
+		this.endOfTransactionStep = endOfTransactionStep;
 	}
 
 	public byte[] getLengthGetPreviousAmountTags() {
@@ -283,7 +283,7 @@ public class RID implements Constant {
 		baos.write(goOnlineTagsBin);
 		baos.write(lengthEndOfTransactionTags);
 		baos.write(endOfTransactionTagsBin);
-		baos.write(EndOfTransactionStep);
+		baos.write(endOfTransactionStep);
 		baos.write(lengthGetPreviousAmountTags);
 		baos.write(getPreviousAmountTagsBin);
 		baos.write(lengthExtendedAPIData);
@@ -476,6 +476,7 @@ public class RID implements Constant {
 				transaction.addElement("Tag").addAttribute("ID", Hex.encodeHexString(t.getIdBin()));
 			}
 		}
+		r.addElement("endOfTransactionStep").addText(Hex.encodeHexString(endOfTransactionStep));
 		r.addElement("lengthGetPreviousAmountTags").addText(Hex.encodeHexString(lengthGetPreviousAmountTags));
 		Element previous = r.addElement("getPreviousAmountTags");
 		if(null != getPreviousAmountTags) {
