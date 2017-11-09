@@ -94,11 +94,12 @@ public class ExtendedAPIData implements Constant {
 		}
 		byte[] data = baos.toByteArray();
 		baos.reset();
-		lengthStepTags = UTFUtils.lgt(data.length, 2);
+		lengthStepTags = UTFUtils.littleEndian(data.length);
 
 		baos.write(lengthStepTags);
 		baos.write(data);
-
+		data = baos.toByteArray();
+		
 		baosTemp.close();
 		baos.close();
 		return data;
