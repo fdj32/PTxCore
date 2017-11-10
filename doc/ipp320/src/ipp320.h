@@ -302,4 +302,7 @@ typedef struct VegaInitData {
 	AID * aidSpecificData;
 } VegaInitData;
 
+char * hex(char * s, int offset, int length);
+
+char hexChar(char c);
 #endif /* IPP320_H_ */
