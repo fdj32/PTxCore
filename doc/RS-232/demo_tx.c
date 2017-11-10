@@ -12,6 +12,7 @@ compile with the command: gcc demo_tx.c rs232.c -Wall -Wextra -o2 -o test_tx
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -25,8 +26,8 @@ compile with the command: gcc demo_tx.c rs232.c -Wall -Wextra -o2 -o test_tx
 
 int main()
 {
-  int i=0,
-      cport_nr=0,        /* /dev/ttyS0 (COM1 on windows) */
+  int 
+      cport_nr=38,        /* /dev/ttyS0 (COM1 on windows) */
       bdrate=9600;       /* 9600 baud */
 
   char mode[]={'8','N','1',0},
@@ -44,6 +45,23 @@ int main()
     return(0);
   }
 
+  char s[74];
+
+  char * msg = "58.0041Goodjob,            Nick!                                       ";
+
+  s[0] = 0x02;
+  s[72] = 0x03;
+  s[73] = 'c';
+
+  for(int i=1; i<72; i++) {
+    s[i] = msg[i-1];
+  }
+
+  printf("%s", s);
+
+RS232_cputs(cport_nr, s);
+
+/*
   while(1)
   {
     RS232_cputs(cport_nr, str[i]);
@@ -53,14 +71,14 @@ int main()
 #ifdef _WIN32
     Sleep(1000);
 #else
-    usleep(1000000);  /* sleep for 1 Second */
+    usleep(1000000);  //sleep for 1 Second
 #endif
 
     i++;
 
     i %= 2;
   }
-
+*/
   return(0);
 }
 

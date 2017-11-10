@@ -33,7 +33,7 @@ public class Pinpad {
 	private static final int SERIAL_PORT_READ_TIMEOUT = 8000;
 	private static final int SERIAL_PORT_POLL_TIME = 100;
 	private static final int MAX_TRY_SEND_TIMES = 3;
-	private static final String SERIAL_PORT_NAME = "/dev/tty.usbmodem1421";
+	private static final String SERIAL_PORT_NAME = "/dev/tty.usbmodem1411";
 	private static final int MAX_VEGA_PACKET_SIZE = 498;
 	
 	private int cpxSeqId = 0;
@@ -167,9 +167,13 @@ System.out.println("Got Response:" + UTFUtils.printFormat(response));
 		}
 		return response;
 	}
-
+	
 	public void write(byte[] data) throws Exception {
 		serialPort.getOutputStream().write(data);
+	}
+	
+	public void ack() throws Exception {
+		write(UTFUtils.ACK);
 	}
 
 	public void read() throws Exception {
