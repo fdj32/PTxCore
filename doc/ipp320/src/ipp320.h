@@ -232,4 +232,74 @@ typedef struct RID {
 	RID * next;
 } RID;
 
+typedef struct OfflinePINEntryConfiguration {
+	byte textFont;
+	char ** prompt;
+	char ** promptMAC;
+	char * promptX;
+	char * promptY;
+	char * editX;
+	char * editY;
+	byte formatType;
+	char * formatSpMAC;
+	char * formatSpecifier;
+	byte minimumKeys;
+	byte maximumKeys;
+	byte echoCharacter;
+	byte cursorType;
+	byte direction;
+	char * beepInvalidKey;
+	char * timeOutFirstKey;
+	char * timeOutInterKey;
+	byte keyType;
+	byte keyIndex;
+	char * noEnterLessMin;
+	char * addReqSettings;
+} OfflinePINEntryConfiguration;
+
+typedef struct TerminalSpecificData {
+	//RFU*1
+	char * terminalCapabilities;
+	char * additionalTerminalCapabilities;
+	byte2 terminalCountryCode;
+	byte terminalType;
+	char * transactionCurrencyCode;
+	byte transactionCurrencyExponent;
+	byte2 transactionReferenceCurrencyCode;
+	byte transactionReferenceCurrencyExponent;
+	char * transactionReferenceCurrencyConversion;
+	char * acquirerIdentifier;
+	byte2 merchantCategoryCode;
+	char * merchantIdentifier;
+	char * terminalIdentification;
+	char * terminalRiskManagementData;
+	char * ifdSerialNumber;
+	char * authorizationResponseCodeList;
+	byte miscellaneousOptions;
+	byte miscellaneousOptions1;
+	// RFU*1
+	byte2 lengthTLVData;
+	char * tlvData;
+	// RFU*20
+	byte2 lengthOfflinePINEntryConfiguration;
+	OfflinePINEntryConfiguration offlinePINEntryConfiguration;
+	char * terminalLanguages;
+	// RFU*2*2
+	byte2 lengthDiagnosticsTags;
+	char * diagnosticsTags;
+	byte2 lengthAppSelectionTags;
+	char * appSelectionTags;
+	byte2 lengthRIDApps;
+	char * ridApps;
+} TerminalSpecificData;
+
+typedef struct VegaInitData {
+	byte2 terminalDataTotalLength;
+	TerminalSpecificData terminalSpecificData;
+	byte2 ridDataTotalLength;
+	RID * ridSpecificData;
+	byte2 aidDataTotalLength;
+	AID * aidSpecificData;
+} VegaInitData;
+
 #endif /* IPP320_H_ */
