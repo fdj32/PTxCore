@@ -121,7 +121,7 @@ public class Test1 {
 		System.out.println(Hex.encodeHexString(UTFUtils.hexLog2bytes(log)));
 		System.out.println(Hex.encodeHexString(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		System.out.println(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
-		CpxF1Response cpxF1Resp = CpxF1Response.parse(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log)));
+		CpxF1Response cpxF1Resp = CpxF1Response.parse(new String(UTFUtils.decodeCmd(UTFUtils.hexLog2bytes(log))));
 		System.out.println(Hex.encodeHexString(new byte[]{cpxF1Resp.getRst().getStatus()}));
 		System.out.println(cpxF1Resp.getRst().geteAppName());
 		System.out.println(cpxF1Resp.getRst().getpAppName());

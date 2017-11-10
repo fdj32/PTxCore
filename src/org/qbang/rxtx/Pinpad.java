@@ -72,7 +72,7 @@ public class Pinpad {
 		return null;
 	}
 	
-	public void init(byte[] initData) {
+	public void init(byte[] initData) throws Exception {
 		if(!openSession())
 			return;
 		int initDataIndex = 0;
@@ -99,7 +99,7 @@ System.out.println(Hex.encodeHexString(initReq.toBinary()));
 			return;
 	}
 	
-	public boolean sendCpxRequestForBool(CpxRequest req, boolean waitForResponse) {
+	public boolean sendCpxRequestForBool(CpxRequest req, boolean waitForResponse) throws Exception {
 		byte[] data = req.toString().getBytes();
 		System.out.println(Hex.encodeHexString(data));
 		data = UTFUtils.cmd(data);
@@ -110,23 +110,26 @@ System.out.println(Hex.encodeHexString(initReq.toBinary()));
 			return false;
 		}
 		CpxResponse resp = CpxResponse.parse(new String(data));
+		// send ACK
+		ack();
+		// send Async EMV ACK
 		
-		return true;
+		return null != resp && resp.succeed();
 	}
 	
-	public boolean openSession() {
+	public boolean openSession() throws Exception {
 		CpxF1Command cmd = CpxF1Command.cpxF1OpenSession((byte) cpxSeqId);
 		CpxRequest req = new CpxF1Request(cmd);
 		return sendCpxRequestForBool(req, true);
 	}
 	
-	public boolean closeSession() {
+	public boolean closeSession() throws Exception {
 		CpxF1Command cmd = CpxF1Command.cpxF1CloseSession((byte) cpxSeqId);
 		CpxRequest req = new CpxF1Request(cmd);
 		return sendCpxRequestForBool(req, true);
 	}
 	
-	public boolean cpxF1AsyncEmvData(VegaEmvInitReq initReq, boolean waitForResponse) {
+	public boolean cpxF1AsyncEmvData(VegaEmvInitReq initReq, boolean waitForResponse) throws Exception {
 		CpxF1Command cmd = CpxF1Command.cpxF1AsyncEmvData((byte) cpxSeqId, initReq.toBinary());
 		CpxF1Request req = new CpxF1Request(cmd);
 		return sendCpxRequestForBool(req, true);
