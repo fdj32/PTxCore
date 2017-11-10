@@ -98,7 +98,11 @@ https://developer.ingenico.us/wp-content/uploads/2017/05/IngenicoUSBDrivers_3.10
 https://www.teuniz.net/RS-232/
 https://www.teuniz.net/RS-232/RS-232.tar.gz
 
+|| defined(__APPLE__)
 
+38 >> 40
+
+,"/dev/tty.usbmodem1411","/dev/tty.usbmodem1421"
 
 
 
