@@ -43,6 +43,13 @@ public class CpxF1Request extends CpxRequest {
 		this.setEncode(true);
 		this.setCmd(cmd);
 	}
+	
+	@Override
+	public String toString() {
+		String msg = this.getMessageType();
+		
+		return msg;
+	}
 
 	public byte[] toBinary() {
 		byte[] cmdData = this.getCmd().toBinary();

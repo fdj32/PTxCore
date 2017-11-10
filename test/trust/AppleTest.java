@@ -15,6 +15,13 @@ public class AppleTest {
 		System.out.println(new String(bin));
 		String hex = Hex.encodeHexString(bin);
 		System.out.println(hex);
+		
+		String a = "Hello";
+		a = a.replace('e', (char)0x00);
+		System.out.println(a);
+		
+		System.out.println(a.getBytes().length);
+		
 	}
 
 }

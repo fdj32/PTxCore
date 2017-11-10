@@ -137,6 +137,11 @@ public class CpxF1Command {
 	public void setDataE(byte[] dataE) {
 		this.dataE = dataE;
 	}
+	
+	@Override
+	public String toString() {
+		return new String(toBinary());
+	}
 
 	public byte[] toBinary() {
 		ByteBuffer bb = ByteBuffer.allocate(1024);
