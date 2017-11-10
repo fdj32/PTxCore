@@ -113,7 +113,8 @@ System.out.println(Hex.encodeHexString(initReq.toBinary()));
 		// send ACK
 		ack();
 		// send Async EMV ACK
-		
+		asyncEmvACK((byte) cpxSeqId);
+		cpxSeqId++;
 		return null != resp && resp.succeed();
 	}
 	
@@ -161,7 +162,6 @@ System.out.println("Got Response:" + UTFUtils.printFormat(response));
 					// receive response
 					gotResponse = true;
 					tempResp = response;
-					cpxSeqId++;
 					break;
 				}
 				start = System.currentTimeMillis();
@@ -181,6 +181,14 @@ System.out.println("Got Response:" + UTFUtils.printFormat(response));
 	
 	public void ack() throws Exception {
 		write(UTFUtils.ACK);
+	}
+	
+	public void asyncEmvACK(byte inSeqId) throws Exception {
+		CpxF1Command cmd = CpxF1Command.asynEmvCmdAck(inSeqId);
+		CpxF1Request req = new CpxF1Request(cmd);
+		byte[] data = req.toString().getBytes();
+		data = UTFUtils.cmd(data);
+		write(data);
 	}
 
 	public void read() throws Exception {
