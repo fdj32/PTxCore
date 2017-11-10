@@ -36,6 +36,28 @@ enum EMV_TRANSACTION_STEP {
 	EMV_TRANSACTION_VALIDATION,
 	EMV_ACTION_ANALYSIS,
 	EMV_TRANSACTION_COMPLETION
-}
+};
+
+struct AID {
+	unsigned char applicationSelectionIndicator;
+	unsigned char lengthTLVData;
+	char * tlvData;
+	unsigned char aidLength;
+	char * aid;
+	char * rid;
+	char * applicationVersionNumber;
+	char * tacDefault;
+	char * tacDenial;
+	char * tacOnline;
+	unsigned char maximumTargetPercentage;
+	unsigned char targetPercentage;
+	char * thresholdValue;
+	char * terminalFloorLimit;
+	unsigned short defaultTDOLLength;
+	char * defaultTDOL;
+	unsigned short defaultDDOLLength;
+	char * defaultDDOL;
+	struct AID * next;
+};
 
 #endif /* IPP320_H_ */
