@@ -105,11 +105,11 @@ System.out.println(Hex.encodeHexString(initReq.toBinary()));
 		data = UTFUtils.cmd(data);
 		System.out.println(Hex.encodeHexString(data));
 		try {
-			data = write(data, waitForResponse, MAX_TRY_SEND_TIMES);
+			write(data, waitForResponse, MAX_TRY_SEND_TIMES);
 		} catch (Exception e) {
 			return false;
 		}
-		CpxResponse resp = CpxResponse.parse(new String(data));
+		CpxResponse resp = CpxResponse.parse(new String(tempResp));
 		// send ACK
 		ack();
 		// send Async EMV ACK
