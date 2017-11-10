@@ -163,7 +163,7 @@ typedef struct AID {
 	char * defaultTDOL;
 	byte2 defaultDDOLLength;
 	char * defaultDDOL;
-	AID * next;
+	struct AID * next;
 } AID;
 
 typedef struct KeyData {
@@ -175,32 +175,32 @@ typedef struct KeyData {
 	byte keyExponentLength;
 	char * keyExponent;
 	char * keyCheckSum;
-	KeyData * next;
+	struct KeyData * next;
 } KeyData;
 
 typedef struct Tag {
 	int id;
 	int length;
 	char * value;
-	Tag * next;
+	struct Tag * next;
 } Tag;
 
 typedef struct EndOfTransactionTags {
 	EmvTransactionType type;
 	Tag * tags;
-	EndOfTransactionTags * next;
+	struct EndOfTransactionTags * next;
 } EndOfTransactionTags;
 
 typedef struct EmvTransactionStepTags {
 	EmvTransactionStep step;
 	Tag * tags;
-	EmvTransactionStepTags * next;
+	struct EmvTransactionStepTags * next;
 } EmvTransactionStepTags;
 
 typedef struct EmvTransactionTypeStepTags {
 	EmvTransactionType type;
 	EmvTransactionStepTags * stepTags;
-	EmvTransactionTypeStepTags * next;
+	struct EmvTransactionTypeStepTags * next;
 } EmvTransactionTypeStepTags;
 
 typedef struct ExtendedAPIData {
@@ -229,7 +229,7 @@ typedef struct RID {
 	byte miscellaneousOptions;
 	byte2 lengthTLVData;
 	char * tlvData;
-	RID * next;
+	struct RID * next;
 } RID;
 
 typedef struct OfflinePINEntryConfiguration {

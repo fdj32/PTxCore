@@ -15,5 +15,7 @@
 
 int main(void) {
 	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+	char a = '\0';
+	printf("%d", a);
 	return EXIT_SUCCESS;
 }
