@@ -33,10 +33,18 @@ public class CpxResponse extends CpxMessage {
 		return null != status && 0x00 == status.charAt(0);
 	}
 
+	/**
+	 * STX+cpx16Encode+ETX+LRC
+	 * @param str
+	 * @return
+	 */
 	public static CpxResponse parse(String str) {
 		if (StringUtils.isEmpty(str)) {
 			return null;
 		}
+		int len = str.length();
+		
+		str = str.substring(1, 4) + UTFUtils.cpxP16Decode(str.substring(4, len-2));
 		if ((3 + 1) > str.length() || '.' != str.charAt(2)) {
 			return null;
 		}

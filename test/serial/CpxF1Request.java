@@ -46,9 +46,7 @@ public class CpxF1Request extends CpxRequest {
 	
 	@Override
 	public String toString() {
-		String msg = this.getMessageType();
-		
-		return msg;
+		return new String(toBinary());
 	}
 
 	public byte[] toBinary() {

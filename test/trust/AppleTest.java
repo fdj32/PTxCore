@@ -22,6 +22,14 @@ public class AppleTest {
 		
 		System.out.println(a.getBytes().length);
 		
+		String b = "@ApB@@\\APtDpPs@pWtEpUfesPcI_TEQxQVygZVye";
+		
+		String c = UTFUtils.cpxP16Encode(b);
+		
+		System.out.println(c);
+		System.out.println(Hex.encodeHexString(c.getBytes()));
+		
+		
 	}
 
 }
