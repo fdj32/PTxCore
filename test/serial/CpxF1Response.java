@@ -23,7 +23,8 @@ public class CpxF1Response extends CpxResponse {
 		this.setMessageType("F1.");
 	}
 
-	public static CpxF1Response parse(byte[] src) {
+	public static CpxF1Response parse(String str) {
+		byte[] src = str.getBytes();
 		CpxF1Response resp = new CpxF1Response();
 		byte[] dest = new byte[src.length - 3];
 		System.arraycopy(src, 3, dest, 0, src.length - 3);

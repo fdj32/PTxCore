@@ -12,6 +12,7 @@ import gnu.io.SerialPort;
 import serial.CpxF1Command;
 import serial.CpxF1Request;
 import serial.CpxRequest;
+import serial.CpxResponse;
 import serial.UTFUtils;
 import serial.VegaEmvInitReq;
 
@@ -98,7 +99,7 @@ System.out.println(Hex.encodeHexString(initReq.toBinary()));
 			return;
 	}
 	
-	public boolean sendCpxRequest(CpxRequest req, boolean waitForResponse) {
+	public boolean sendCpxRequestForBool(CpxRequest req, boolean waitForResponse) {
 		byte[] data = req.toString().getBytes();
 		System.out.println(Hex.encodeHexString(data));
 		data = UTFUtils.cmd(data);
@@ -108,7 +109,7 @@ System.out.println(Hex.encodeHexString(initReq.toBinary()));
 		} catch (Exception e) {
 			return false;
 		}
-		
+		CpxResponse resp = CpxResponse.parse(new String(data));
 		
 		return true;
 	}
@@ -116,19 +117,19 @@ System.out.println(Hex.encodeHexString(initReq.toBinary()));
 	public boolean openSession() {
 		CpxF1Command cmd = CpxF1Command.cpxF1OpenSession((byte) cpxSeqId);
 		CpxRequest req = new CpxF1Request(cmd);
-		return sendCpxRequest(req, true);
+		return sendCpxRequestForBool(req, true);
 	}
 	
 	public boolean closeSession() {
 		CpxF1Command cmd = CpxF1Command.cpxF1CloseSession((byte) cpxSeqId);
 		CpxRequest req = new CpxF1Request(cmd);
-		return sendCpxRequest(req, true);
+		return sendCpxRequestForBool(req, true);
 	}
 	
 	public boolean cpxF1AsyncEmvData(VegaEmvInitReq initReq, boolean waitForResponse) {
 		CpxF1Command cmd = CpxF1Command.cpxF1AsyncEmvData((byte) cpxSeqId, initReq.toBinary());
 		CpxF1Request req = new CpxF1Request(cmd);
-		return sendCpxRequest(req, true);
+		return sendCpxRequestForBool(req, true);
 	}
 	
 	public byte[] write(byte[] data, boolean waitForResponse, int tryTimes) throws IOException, InterruptedException {

@@ -2,8 +2,23 @@ package serial;
 
 import org.apache.commons.lang.StringUtils;
 
+/**
+ * 0140-07748-0103 Telium CPX and EMV Emulation.pdf Page 164/195
+ * 
+ * @author nickfeng
+ *
+ */
 public class CpxResponse extends CpxMessage {
 
+	/**
+	 * <ul>
+	 * <li>0x00=Success</li>
+	 * <li>0x01= Failed(General Failure – i.e., Incorrect header (more than LGT
+	 * bytes))</li>
+	 * <li>0x02=Failed(Specified EMV Application not found))</li>
+	 * <li>0x04=Failed(Unknown MSGVER)</li>
+	 * </ul>
+	 */
 	private String status;
 
 	public String getStatus() {
@@ -12,6 +27,10 @@ public class CpxResponse extends CpxMessage {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	public boolean succeed() {
+		return null != status && 0x00 == status.charAt(0);
 	}
 
 	public static CpxResponse parse(String str) {
@@ -58,6 +77,8 @@ public class CpxResponse extends CpxMessage {
 			return Cpx6LE2EEPinEntryResponse.parse(str);
 		} else if (str.startsWith("F0.")) {
 			return CpxF0Response.parse(str);
+		} else if (str.startsWith("F1.")) {
+			return CpxF1Response.parse(str);
 		}
 		// 40 50 59 5B 6A 6B.ERROR 6C.ERROR 6N 6T.1
 		resp = new CpxResponse();
