@@ -34,9 +34,9 @@
 #include "rs232.h"
 
 
-#if defined(__linux__) || defined(__FreeBSD__)   /* Linux & FreeBSD */
+#if defined(__linux__) || defined(__FreeBSD__) || defined(__APPLE__)  /* Linux & FreeBSD & MacOSX */
 
-#define RS232_PORTNR  38
+#define RS232_PORTNR  40
 
 
 int Cport[RS232_PORTNR],
@@ -52,7 +52,8 @@ char *comports[RS232_PORTNR]={"/dev/ttyS0","/dev/ttyS1","/dev/ttyS2","/dev/ttyS3
                        "/dev/ttyAMA0","/dev/ttyAMA1","/dev/ttyACM0","/dev/ttyACM1",
                        "/dev/rfcomm0","/dev/rfcomm1","/dev/ircomm0","/dev/ircomm1",
                        "/dev/cuau0","/dev/cuau1","/dev/cuau2","/dev/cuau3",
-                       "/dev/cuaU0","/dev/cuaU1","/dev/cuaU2","/dev/cuaU3"};
+                       "/dev/cuaU0","/dev/cuaU1","/dev/cuaU2","/dev/cuaU3",
+                       "/dev/tty.usbmodem1411","/dev/tty.usbmodem1421"};
 
 int RS232_OpenComport(int comport_number, int baudrate, const char *mode)
 {
@@ -103,6 +104,7 @@ int RS232_OpenComport(int comport_number, int baudrate, const char *mode)
                    break;
     case  230400 : baudr = B230400;
                    break;
+/*
     case  460800 : baudr = B460800;
                    break;
     case  500000 : baudr = B500000;
@@ -127,6 +129,7 @@ int RS232_OpenComport(int comport_number, int baudrate, const char *mode)
                    break;
     case 4000000 : baudr = B4000000;
                    break;
+  */
     default      : printf("invalid baudrate\n");
                    return(1);
                    break;
