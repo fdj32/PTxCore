@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <rs232.h>
+#include "rs232.h"
 
 int main(void) {
 	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
