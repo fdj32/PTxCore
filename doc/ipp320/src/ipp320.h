@@ -17,7 +17,11 @@
 #define RS  0x1e
 #define SPACE 0x20
 
-enum EMV_REASON_CODE {
+typedef unsigned char byte;
+
+typedef unsigned short byte2;
+
+typedef enum EmvReasonCode {
 	EMV_USER_CANCELLED,
 	EMV_OK,
 	EMV_APPROVED,
@@ -77,9 +81,9 @@ enum EMV_REASON_CODE {
 	EMV_E2EE_ERROR,
 	EMV_ISP_FAIL,
 	EMV_UNDEF = 0xff
-};
+} EmvReasonCode;
 
-enum EMV_SERVICE_CODE {
+typedef enum EmvServiceCode {
 	EMV_INIT,
 	EMV_INQUIRE_EMV,
 	EMV_START,
@@ -116,9 +120,9 @@ enum EMV_SERVICE_CODE {
 	EMV_LOG_FILE,
 	EMV_INIT_PAYPASS3_PARAM,
 	EMV_SERVICE_NONE = 0xFF
-};
+} EmvServiceCode;
 
-enum EMV_TRANSACTION_TYPE {
+typedef enum EmvTransactionType {
 	EMV_PURCHASE,
 	EMV_PURCHASE_CORRECTION,
 	EMV_PURCHASE_AND_CASHBACK,
@@ -126,9 +130,9 @@ enum EMV_TRANSACTION_TYPE {
 	EMV_REFUND_CORRECTION,
 	EMV_PREAUTH,
 	EMV_PREAUTH_COMPLETION
-};
+} EmvTransactionType;
 
-enum EMV_TRANSACTION_STEP {
+typedef enum EmvTransactionStep {
 	EMV_LANGUAGE_SELECTION,
 	EMV_APP_SELECTION,
 	EMV_INIT_CONTEXT,
@@ -138,28 +142,94 @@ enum EMV_TRANSACTION_STEP {
 	EMV_TRANSACTION_VALIDATION,
 	EMV_ACTION_ANALYSIS,
 	EMV_TRANSACTION_COMPLETION
-};
+} EmvTransactionStep;
 
-struct AID {
-	unsigned char applicationSelectionIndicator;
-	unsigned char lengthTLVData;
+typedef struct AID {
+	byte applicationSelectionIndicator;
+	byte lengthTLVData;
 	char * tlvData;
-	unsigned char aidLength;
+	byte aidLength;
 	char * aid;
 	char * rid;
 	char * applicationVersionNumber;
 	char * tacDefault;
 	char * tacDenial;
 	char * tacOnline;
-	unsigned char maximumTargetPercentage;
-	unsigned char targetPercentage;
+	byte maximumTargetPercentage;
+	byte targetPercentage;
 	char * thresholdValue;
 	char * terminalFloorLimit;
-	unsigned short defaultTDOLLength;
+	byte2 defaultTDOLLength;
 	char * defaultTDOL;
-	unsigned short defaultDDOLLength;
+	byte2 defaultDDOLLength;
 	char * defaultDDOL;
-	struct AID * next;
-};
+	AID * next;
+} AID;
+
+typedef struct KeyData {
+	byte keyIndex;
+	byte keyAlgorithmIndicator;
+	byte hashAlgorithmIndicator;
+	byte keyLength;
+	char * key;
+	byte keyExponentLength;
+	char * keyExponent;
+	char * keyCheckSum;
+	KeyData * next;
+} KeyData;
+
+typedef struct Tag {
+	int id;
+	int length;
+	char * value;
+	Tag * next;
+} Tag;
+
+typedef struct EndOfTransactionTags {
+	EmvTransactionType type;
+	Tag * tags;
+	EndOfTransactionTags * next;
+} EndOfTransactionTags;
+
+typedef struct EmvTransactionStepTags {
+	EmvTransactionStep step;
+	Tag * tags;
+	EmvTransactionStepTags * next;
+} EmvTransactionStepTags;
+
+typedef struct EmvTransactionTypeStepTags {
+	EmvTransactionType type;
+	EmvTransactionStepTags * stepTags;
+	EmvTransactionTypeStepTags * next;
+} EmvTransactionTypeStepTags;
+
+typedef struct ExtendedAPIData {
+	byte2 lengthStepTags;
+	EmvTransactionTypeStepTags * tagListToAskFor;
+	EmvTransactionTypeStepTags * tagListInCallBack;
+} ExtendedAPIData;
+
+typedef struct RID {
+	char * rid;
+	byte2 keyDataTotalLength;
+	struct KeyData * keyDatas;
+	byte2 lengthGoOnlineTags;
+	struct Tag * goOnlineTags;
+	byte2 lengthEndOfTransactionTags;
+	struct EndOfTransactionTags endOfTransactionTags;
+	char * endOfTransactionStep;
+	byte2 lengthGetPreviousAmountTags;
+	struct Tag * getPreviousAmountTags;
+	byte2 lengthExtendedAPIData;
+	ExtendedAPIData * extendedAPIData;
+	byte2 lengthProprietaryRIDData;
+	char * proprietaryRIDData;
+	byte2 lengthIgnoredTags;
+	Tag * ignoreTags;
+	byte miscellaneousOptions;
+	byte2 lengthTLVData;
+	char * tlvData;
+	RID * next;
+} RID;
 
 #endif /* IPP320_H_ */
