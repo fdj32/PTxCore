@@ -50,7 +50,18 @@ int main(void) {
 
 	//printf("%s\n", out);
 
-	print(out, 80);
+	// print(out, 80);
+
+	char * li = calloc(2, sizeof(char));
+	li[0] = 0x02;
+	li[1] = 0x03;
+
+	printf("%d\n", littleEndianInt(li));
+
+	li = littleEndianBin(0x4321);
+
+	printf("%x\n", li[0]);
+	printf("%x\n", li[1]);
 
 	return EXIT_SUCCESS;
 }
