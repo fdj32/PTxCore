@@ -28,6 +28,19 @@ char hexChar(char c) {
 	return c>9 ? c-10+'a' : c+'0';
 }
 
+char lrc(char * s , int offset, int length) {
+	char c = s[offset];
+	int startIndex = offset + 1;
+	if(0x02 == c) {
+		c = s[startIndex];
+		startIndex++;
+	}
+	for(int i = startIndex; i < length; i++) {
+		c ^= s[i];
+	}
+	return c;
+}
+
 int main(void) {
 	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
 	char a = '\0';
@@ -36,7 +49,9 @@ int main(void) {
 	char * s = calloc(11, sizeof(char));
 	s = "Hello world";
 	char * out = hex(s, 0, 11);
+	char c = lrc(s, 0, 11);
 	puts(s);
 	puts(out);
+	printf("%d\n", c);
 	return EXIT_SUCCESS;
 }

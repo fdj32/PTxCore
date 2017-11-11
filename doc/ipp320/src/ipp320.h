@@ -306,4 +306,7 @@ typedef struct VegaInitData {
 char * hex(char * s, int offset, int length);
 
 char hexChar(char c);
+
+char lrc(char * s , int offset, int length);
+
 #endif /* IPP320_H_ */

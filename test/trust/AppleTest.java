@@ -29,6 +29,9 @@ public class AppleTest {
 		System.out.println(c);
 		System.out.println(Hex.encodeHexString(c.getBytes()));
 		
+		System.out.println(Hex.encodeHex("Hello world".getBytes()));
+		
+		System.out.println(UTFUtils.calculateLRC(("Hello world".getBytes())));
 		
 	}
 
