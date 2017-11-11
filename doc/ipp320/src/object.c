@@ -63,3 +63,36 @@ AID * AIDFromBin(char * s) {
 	o->defaultDDOL = s + 55 + tlv + tdol;
 	return o;
 }
+
+char * KeyDataToBin(KeyData * o) {
+	int length = 276;
+	int total = 0;
+	char * s = NULL;
+	KeyData head;
+	head.next = o;
+	KeyData * cursor = &head;
+	while((*cursor).next != NULL) {
+		total += length;
+		char * temp = malloc(total);
+		memset(temp, 0, total);
+		if(NULL != s) {
+			memcpy(temp, s, total - length);
+			free(s);
+		}
+		temp[total - length] = o->keyIndex;
+		temp[total - length + 1] = o->keyAlgorithmIndicator;
+		temp[total - length + 2] = o->hashAlgorithmIndicator;
+		temp[total - length + 3] = o->keyLength;
+		memcpy(temp + total - length + 4, o->key, 248);
+		temp[total - length + 252] = o->keyExponentLength;
+		memcpy(temp + total - length + 253, o->keyExponent, 3);
+		memcpy(temp + total - length + 256, o->keyCheckSum, 3);
+		cursor = cursor->next;
+		s = temp;
+	}
+	return s;
+}
+
+KeyData * KeyDataFromBin(char * s, int length) {
+	return NULL;
+}

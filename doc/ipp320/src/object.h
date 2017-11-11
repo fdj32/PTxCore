@@ -183,6 +183,10 @@ typedef struct KeyData {
 	struct KeyData * next;
 } KeyData;
 
+char * KeyDataToBin(KeyData * o);
+
+KeyData * KeyDataFromBin(char * s, int length);
+
 typedef struct Tag {
 	int id;
 	int length;
