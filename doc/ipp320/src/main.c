@@ -36,5 +36,10 @@ int main(void) {
 	s2[decodedLength] = 0;
 	puts(s2);
 	printf("%d\n", decodedLength);
+
+	char * fileName = "E:/nfeng/hub/PTxCore/doc/131540886937708660.init.dat";
+
+	int fileSize = getFileSize(fileName);
+	printf("%d\n", fileSize);
 	return EXIT_SUCCESS;
 }

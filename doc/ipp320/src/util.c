@@ -107,3 +107,13 @@ int cpx16Decode(char * in, int inOffset, int inLength, char * out, int outOffset
 	return outLength;
 }
 
+int getFileSize(char * fileName) {
+	int size = 0;
+	FILE *fp = fopen(fileName, "rb");
+	if(fp) {
+		fseek(fp, 0, SEEK_END);
+		size = ftell(fp);
+		fclose(fp);
+	}
+	return size;
+}

@@ -18,4 +18,6 @@ int cpx16Encode(char * in, int inOffset, int inLength, char * out, int outOffset
 
 int cpx16Decode(char * in, int inOffset, int inLength, char * out, int outOffset);
 
+int getFileSize(char * fileName);
+
 #endif /* UTIL_H_ */
