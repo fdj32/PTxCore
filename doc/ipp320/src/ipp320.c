@@ -25,7 +25,7 @@ char * hex(char * s, int offset, int length) {
 }
 
 char hexChar(char c) {
-	return c>9 ? c-10+'a' : c+'1';
+	return c>9 ? c-10+'a' : c+'0';
 }
 
 int main(void) {
