@@ -94,5 +94,28 @@ char * KeyDataToBin(KeyData * o) {
 }
 
 KeyData * KeyDataFromBin(char * s, int length) {
-	return NULL;
+	int index = 0;
+	KeyData * o = NULL;
+	KeyData * tail = NULL;
+	while(index < length) {
+		KeyData * temp = malloc(sizeof(KeyData));
+		temp->keyIndex = s[index];
+		temp->keyAlgorithmIndicator = s[index+1];
+		temp->hashAlgorithmIndicator = s[index+2];
+		temp->keyLength = s[index+3];
+		temp->key = s+index+4;
+		temp->keyExponentLength = s[index+252];
+		temp->keyExponent = s+index+253;
+		temp->keyCheckSum = s+index+256;
+
+		if(NULL == o) {
+			o = temp;
+		} else {
+			tail->next = temp;
+		}
+		tail = temp;
+		index += 276;
+
+	}
+	return o;
 }
