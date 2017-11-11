@@ -22,4 +22,6 @@ int getFileSize(char * fileName);
 
 char * loadFile(char * fileName);
 
+void print(char * s, int lineLength);
+
 #endif /* UTIL_H_ */

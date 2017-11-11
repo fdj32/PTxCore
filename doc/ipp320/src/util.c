@@ -134,3 +134,14 @@ char * loadFile(char * fileName) {
 	fclose(fp);
 	return s;
 }
+
+
+void print(char * s, int lineLength) {
+	int i = 0;
+	while('\0' != s[i]) {
+		printf("%c", s[i]);
+		i++;
+		if(i % lineLength == 0)
+			printf("\n");
+	}
+}

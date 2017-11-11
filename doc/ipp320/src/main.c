@@ -48,7 +48,9 @@ int main(void) {
 
 	//puts(out);
 
-	printf("%s\n", out);
+	//printf("%s\n", out);
+
+	print(out, 80);
 
 	return EXIT_SUCCESS;
 }
