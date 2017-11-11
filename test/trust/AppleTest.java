@@ -35,6 +35,8 @@ public class AppleTest {
 		
 		System.out.println(Hex.encodeHex(UTFUtils.cpxP16Encode("Hello world".getBytes())));
 		
+		
+		
 	}
 
 }
