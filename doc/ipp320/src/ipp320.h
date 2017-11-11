@@ -309,4 +309,8 @@ char hexChar(char c);
 
 char lrc(char * s , int offset, int length);
 
+int cpx16Encode(char * in, int inOffset, int inLength, char * out, int outOffset);
+
+int cpx16Decode(char * in, int inOffset, int inLength, char * out, int outOffset);
+
 #endif /* IPP320_H_ */

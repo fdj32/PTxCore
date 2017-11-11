@@ -41,6 +41,53 @@ char lrc(char * s , int offset, int length) {
 	return c;
 }
 
+int cpx16Encode(char * in, int inOffset, int inLength, char * out, int outOffset) {
+	int outLength = 0;
+	char b;
+	for(int i=inOffset; i<inLength; i++) {
+		switch(i%3) {
+		case 0:
+			b = ((in[i]>>2)&0x3f)|0x40;
+			out[outOffset+outLength] = b;
+			outLength++;
+			if(i==inLength - 1) {
+				b = ((in[i]&0x03)<<4)|0x40;
+				out[outOffset+outLength] = b;
+				outLength++;
+			}
+			break;
+		case 1:
+			b = (in[i-1]&0x03)<<4;
+			b |= (in[i]>>4)&0x0f;
+			b |= 0x40;
+			out[outOffset+outLength] = b;
+			outLength++;
+			if(i==inLength - 1) {
+				b = ((in[i]&0x0f)<<2)|0x40;
+				out[outOffset+outLength] = b;
+				outLength++;
+			}
+			break;
+		case 2:
+			b = (in[i-1]&0x0f)<<2;
+			b |= (in[i]>>6)&0x03;
+			b |= 0x40;
+			out[outOffset+outLength] = b;
+			outLength++;
+			b = (in[i]&0x3f)|0x40;
+			out[outOffset+outLength] = b;
+			outLength++;
+			break;
+		}
+	}
+	return outLength;
+}
+
+int cpx16Decode(char * in, int inOffset, int inLength, char * out, int outOffset) {
+	int outLength = 0;
+	return outLength;
+}
+
 int main(void) {
 	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
 	char a = '\0';
@@ -53,5 +100,15 @@ int main(void) {
 	puts(s);
 	puts(out);
 	printf("%d\n", c);
+
+	int encodedLength = 0;
+
+	char * encoded = calloc(22, sizeof(char));
+
+	encodedLength = cpx16Encode(s, 0, 11, encoded, 0);
+
+	out = hex(encoded, 0, encodedLength);
+	puts(out);
+
 	return EXIT_SUCCESS;
 }
