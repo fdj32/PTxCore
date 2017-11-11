@@ -12,7 +12,7 @@ int main(void) {
 	char a = '\0';
 	printf("%d\n", a);
 
-	char * s = calloc(11, sizeof(char));
+	char * s = malloc(11);
 	s = "Hello world";
 	char * out = hex(s, 0, 11);
 	char c = lrc(s, 0, 11);
@@ -22,14 +22,14 @@ int main(void) {
 
 	int encodedLength = 0;
 
-	char * encoded = calloc(22, sizeof(char));
+	char * encoded = malloc(22);
 
 	encodedLength = cpx16Encode(s, 0, 11, encoded, 0);
 
 	out = hex(encoded, 0, encodedLength);
 	puts(out);
 
-	char * s2 = calloc(12, sizeof(char));
+	char * s2 = malloc(12);
 	int decodedLength = 0;
 
 	decodedLength = cpx16Decode(encoded, 0, encodedLength, s2, 0);
@@ -52,7 +52,7 @@ int main(void) {
 
 	// print(out, 80);
 
-	char * li = calloc(2, sizeof(char));
+	char * li = malloc(2);
 	li[0] = 0x02;
 	li[1] = 0x03;
 

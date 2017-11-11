@@ -8,7 +8,7 @@
 
 char * hex(char * s, int offset, int length) {
 	int hexLen = length * 2 + 1;
-	char * hex = calloc(hexLen, sizeof(char));
+	char * hex = malloc(hexLen);
 	hex[hexLen] = '\0';
 	for(int i = 0; i < length; i++) {
 		hex[i*2] = hexChar(((s[i]&0xf0)>>4)&0x0f);
@@ -125,7 +125,7 @@ char * loadFile(char * fileName) {
 	if(fp) {
 		fseek(fp, 0, SEEK_END);
 		size = ftell(fp);
-		s = calloc(size, sizeof(char));
+		s = malloc(size);
 		fseek(fp, 0, SEEK_SET);
 		fread(s, sizeof(char), size, fp);
 	} else {
@@ -151,7 +151,7 @@ int littleEndianInt(char * s) {
 }
 
 char * littleEndianBin(int i) {
-	char * s = calloc(2, sizeof(char));
+	char * s = malloc(2);
 	s[0] = i;
 	s[1] = i>>8;
 	return s;
@@ -162,7 +162,7 @@ int bigEndianInt(char * s) {
 }
 
 char * bigEndianBin(int i) {
-	char * s = calloc(2, sizeof(char));
+	char * s = malloc(2);
 	s[0] = i>>8;
 	s[1] = i;
 	return s;
