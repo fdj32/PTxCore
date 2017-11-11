@@ -33,6 +33,8 @@ public class AppleTest {
 		
 		System.out.println(UTFUtils.calculateLRC(("Hello world".getBytes())));
 		
+		System.out.println(Hex.encodeHex(UTFUtils.cpxP16Encode("Hello world".getBytes())));
+		
 	}
 
 }

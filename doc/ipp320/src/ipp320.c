@@ -8,9 +8,6 @@
  ============================================================================
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "rs232.h"
 #include "ipp320.h"
 
 char * hex(char * s, int offset, int length) {
@@ -88,27 +85,3 @@ int cpx16Decode(char * in, int inOffset, int inLength, char * out, int outOffset
 	return outLength;
 }
 
-int main(void) {
-	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
-	char a = '\0';
-	printf("%d\n", a);
-
-	char * s = calloc(11, sizeof(char));
-	s = "Hello world";
-	char * out = hex(s, 0, 11);
-	char c = lrc(s, 0, 11);
-	puts(s);
-	puts(out);
-	printf("%d\n", c);
-
-	int encodedLength = 0;
-
-	char * encoded = calloc(22, sizeof(char));
-
-	encodedLength = cpx16Encode(s, 0, 11, encoded, 0);
-
-	out = hex(encoded, 0, encodedLength);
-	puts(out);
-
-	return EXIT_SUCCESS;
-}
