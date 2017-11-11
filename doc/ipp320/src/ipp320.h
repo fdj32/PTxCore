@@ -13,6 +13,7 @@
 #define ETX 0x03
 #define NAK 0x05
 #define ACK 0x06
+#define SEPARATOR 0x0a
 #define FS  0x1c
 #define RS  0x1e
 #define SPACE 0x20

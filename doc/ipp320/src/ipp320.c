@@ -18,7 +18,7 @@ char * hex(char * s, int offset, int length) {
 	char * hex = calloc(hexLen, sizeof(char));
 	hex[hexLen] = '\0';
 	for(int i = 0; i < length; i++) {
-		hex[i*2] = hexChar((s[i]&0xf0)>>4);
+		hex[i*2] = hexChar(((s[i]&0xf0)>>4)&0x0f);
 		hex[i*2+1] = hexChar(s[i]&0x0f);
 	}
 	return hex;
@@ -33,9 +33,9 @@ int main(void) {
 	char a = '\0';
 	printf("%d\n", a);
 
-	char * s = calloc(10, sizeof(char));
-	s = "Helloworld";
-	char * out = hex(s, 0, 10);
+	char * s = calloc(11, sizeof(char));
+	s = "Hello world";
+	char * out = hex(s, 0, 11);
 	puts(s);
 	puts(out);
 	return EXIT_SUCCESS;
