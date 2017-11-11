@@ -1,6 +1,6 @@
 /*
  * util.c
- *
+ * encoders and decoders, base algorithm utilities
  *  Created on: 2017Äê11ÔÂ11ÈÕ
  *      Author: Administrator
  */

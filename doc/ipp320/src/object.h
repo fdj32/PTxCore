@@ -1,6 +1,6 @@
 /*
  * object.h
- *
+ * object definitions
  *  Created on: 2017Äê11ÔÂ11ÈÕ
  *      Author: Administrator
  */

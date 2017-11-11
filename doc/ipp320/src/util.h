@@ -1,6 +1,6 @@
 /*
  * util.h
- *
+ * utilities definitions
  *  Created on: 2017Äê11ÔÂ11ÈÕ
  *      Author: Administrator
  */
