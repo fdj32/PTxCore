@@ -117,3 +117,20 @@ int getFileSize(char * fileName) {
 	}
 	return size;
 }
+
+char * loadFile(char * fileName) {
+	char * s;
+	int size = 0;
+	FILE *fp = fopen(fileName, "rb");
+	if(fp) {
+		fseek(fp, 0, SEEK_END);
+		size = ftell(fp);
+		s = calloc(size, sizeof(char));
+		fseek(fp, 0, SEEK_SET);
+		fread(s, sizeof(char), size, fp);
+	} else {
+		return 0;
+	}
+	fclose(fp);
+	return s;
+}

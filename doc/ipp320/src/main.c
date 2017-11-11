@@ -41,5 +41,14 @@ int main(void) {
 
 	int fileSize = getFileSize(fileName);
 	printf("%d\n", fileSize);
+
+	char * fileData = loadFile(fileName);
+
+	out = hex(fileData, 0, fileSize);
+
+	//puts(out);
+
+	printf("%s\n", out);
+
 	return EXIT_SUCCESS;
 }
