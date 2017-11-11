@@ -78,6 +78,32 @@ int cpx16Encode(char * in, int inOffset, int inLength, char * out, int outOffset
 
 int cpx16Decode(char * in, int inOffset, int inLength, char * out, int outOffset) {
 	int outLength = 0;
+	char a, b;
+	for(int i=inOffset; i<inLength; i++) {
+		switch(i%4) {
+		case 0:
+			// do nothing
+			break;
+		case 1:
+			a = (in[i-1]<<2)&0xfc;
+			b = (in[i]>>4)&0x03;
+			out[outOffset+outLength] = a|b;
+			outLength++;
+			break;
+		case 2:
+			a = (in[i-1]<<4)&0xf0;
+			b = (in[i]>>2)&0x0f;
+			out[outOffset+outLength] = a|b;
+			outLength++;
+			break;
+		case 3:
+			a = (in[i-1]<<6)&0xc0;
+			b = in[i]&0x3f;
+			out[outOffset+outLength] = a|b;
+			outLength++;
+			break;
+		}
+	}
 	return outLength;
 }
 

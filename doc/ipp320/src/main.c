@@ -29,5 +29,12 @@ int main(void) {
 	out = hex(encoded, 0, encodedLength);
 	puts(out);
 
+	char * s2 = calloc(12, sizeof(char));
+	int decodedLength = 0;
+
+	decodedLength = cpx16Decode(encoded, 0, encodedLength, s2, 0);
+	s2[decodedLength] = 0;
+	puts(s2);
+	printf("%d\n", decodedLength);
 	return EXIT_SUCCESS;
 }
