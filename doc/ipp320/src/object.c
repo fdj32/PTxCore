@@ -7,13 +7,17 @@
 #include "ipp320.h"
 
 int AIDLength(AID * o) {
-	return 0;
+	return 55+o->lengthTLVData+littleEndianInt(o->defaultDDOLLength)+littleEndianInt(o->defaultTDOLLength);
 }
 
 char * AIDToBin(AID * o) {
-	return NULL;
+	int length = AIDLength(o);
+	char * s = calloc(length, sizeof(char));
+	return s;
 }
 
 AID * AIDFromBin(char * s) {
-	return NULL;
+	AID * o = malloc(sizeof(AID));
+
+	return o;
 }
