@@ -145,3 +145,27 @@ void print(char * s, int lineLength) {
 			printf("\n");
 	}
 }
+
+int littleEndianInt(char * s) {
+	return (s[0]>=0 ? s[0]:(s[0]+0x100))
+			+ (s[1]>=0 ? s[1]:(s[1]+0x100))*0x100;
+}
+
+char * littleEndianBin(int i) {
+	char s[2];
+	s[0] = i%0x100;
+	s[1] = i/0x100;
+	return s;
+}
+
+int bigEndianInt(char * s) {
+	return (s[1]>=0 ? s[1]:(s[1]+0x100))
+			+ (s[0]>=0 ? s[0]:(s[0]+0x100))*0x100;
+}
+
+char * bigEndianBin(int i) {
+	char s[2];
+	s[0] = i/0x100;
+	s[1] = i%0x100;
+	return s;
+}

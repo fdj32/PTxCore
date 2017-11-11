@@ -6,4 +6,14 @@
  */
 #include "ipp320.h"
 
+int AIDLength(AID * o) {
 
+}
+
+char * AIDToBin(AID * o) {
+
+}
+
+AID * AIDFromBin(char * s) {
+
+}

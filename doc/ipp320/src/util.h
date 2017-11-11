@@ -24,4 +24,12 @@ char * loadFile(char * fileName);
 
 void print(char * s, int lineLength);
 
+int littleEndianInt(char * s);
+
+char * littleEndianBin(int i);
+
+int bigEndianInt(char * s);
+
+char * bigEndianBin(int i);
+
 #endif /* UTIL_H_ */

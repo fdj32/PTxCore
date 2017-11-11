@@ -20,8 +20,6 @@
 
 typedef unsigned char byte;
 
-typedef unsigned short byte2;
-
 typedef enum EmvReasonCode {
 	EMV_USER_CANCELLED,
 	EMV_OK,
@@ -160,12 +158,18 @@ typedef struct AID {
 	byte targetPercentage;
 	char * thresholdValue;
 	char * terminalFloorLimit;
-	byte2 defaultTDOLLength;
+	char * defaultTDOLLength;
 	char * defaultTDOL;
-	byte2 defaultDDOLLength;
+	char * defaultDDOLLength;
 	char * defaultDDOL;
 	struct AID * next;
 } AID;
+
+int AIDLength(AID * o);
+
+char * AIDToBin(AID * o);
+
+AID * AIDFromBin(char * s);
 
 typedef struct KeyData {
 	byte keyIndex;
@@ -205,30 +209,30 @@ typedef struct EmvTransactionTypeStepTags {
 } EmvTransactionTypeStepTags;
 
 typedef struct ExtendedAPIData {
-	byte2 lengthStepTags;
+	char * lengthStepTags;
 	EmvTransactionTypeStepTags * tagListToAskFor;
 	EmvTransactionTypeStepTags * tagListInCallBack;
 } ExtendedAPIData;
 
 typedef struct RID {
 	char * rid;
-	byte2 keyDataTotalLength;
+	char * keyDataTotalLength;
 	struct KeyData * keyDatas;
-	byte2 lengthGoOnlineTags;
+	char * lengthGoOnlineTags;
 	struct Tag * goOnlineTags;
-	byte2 lengthEndOfTransactionTags;
+	char * lengthEndOfTransactionTags;
 	struct EndOfTransactionTags endOfTransactionTags;
 	char * endOfTransactionStep;
-	byte2 lengthGetPreviousAmountTags;
+	char * lengthGetPreviousAmountTags;
 	struct Tag * getPreviousAmountTags;
-	byte2 lengthExtendedAPIData;
+	char * lengthExtendedAPIData;
 	ExtendedAPIData * extendedAPIData;
-	byte2 lengthProprietaryRIDData;
+	char * lengthProprietaryRIDData;
 	char * proprietaryRIDData;
-	byte2 lengthIgnoredTags;
+	char * lengthIgnoredTags;
 	Tag * ignoreTags;
 	byte miscellaneousOptions;
-	byte2 lengthTLVData;
+	char * lengthTLVData;
 	char * tlvData;
 	struct RID * next;
 } RID;
@@ -262,15 +266,15 @@ typedef struct TerminalSpecificData {
 	//RFU*1
 	char * terminalCapabilities;
 	char * additionalTerminalCapabilities;
-	byte2 terminalCountryCode;
+	char * terminalCountryCode;
 	byte terminalType;
 	char * transactionCurrencyCode;
 	byte transactionCurrencyExponent;
-	byte2 transactionReferenceCurrencyCode;
+	char * transactionReferenceCurrencyCode;
 	byte transactionReferenceCurrencyExponent;
 	char * transactionReferenceCurrencyConversion;
 	char * acquirerIdentifier;
-	byte2 merchantCategoryCode;
+	char * merchantCategoryCode;
 	char * merchantIdentifier;
 	char * terminalIdentification;
 	char * terminalRiskManagementData;
@@ -279,27 +283,27 @@ typedef struct TerminalSpecificData {
 	byte miscellaneousOptions;
 	byte miscellaneousOptions1;
 	// RFU*1
-	byte2 lengthTLVData;
+	char * lengthTLVData;
 	char * tlvData;
 	// RFU*20
-	byte2 lengthOfflinePINEntryConfiguration;
+	char * lengthOfflinePINEntryConfiguration;
 	OfflinePINEntryConfiguration offlinePINEntryConfiguration;
 	char * terminalLanguages;
 	// RFU*2*2
-	byte2 lengthDiagnosticsTags;
+	char * lengthDiagnosticsTags;
 	char * diagnosticsTags;
-	byte2 lengthAppSelectionTags;
+	char * lengthAppSelectionTags;
 	char * appSelectionTags;
-	byte2 lengthRIDApps;
+	char * lengthRIDApps;
 	char * ridApps;
 } TerminalSpecificData;
 
 typedef struct VegaInitData {
-	byte2 terminalDataTotalLength;
+	char * terminalDataTotalLength;
 	TerminalSpecificData terminalSpecificData;
-	byte2 ridDataTotalLength;
+	char * ridDataTotalLength;
 	RID * ridSpecificData;
-	byte2 aidDataTotalLength;
+	char * aidDataTotalLength;
 	AID * aidSpecificData;
 } VegaInitData;
 
