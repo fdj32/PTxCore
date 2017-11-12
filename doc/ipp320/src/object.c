@@ -64,35 +64,47 @@ AID * AIDFromBin(char * s) {
 	return o;
 }
 
+AID * AIDListFromBin(char * s, int length) {
+	AID * o = AIDFromBin(s);
+	AID * tail = o;
+	int index = AIDLength(o);
+	while (index < length - 1) {
+		tail->next = AIDListFromBin(s + index, length - index);
+		index += AIDLength(tail->next);
+		tail = tail->next;
+	}
+	return o;
+}
+
 char * KeyDataToBin(KeyData * o, int size) {
-	int length = 276*size;
+	int length = 276 * size;
 	char * s = malloc(length);
 	memset(s, 0, length);
-	for(int i =0; i<size;i++) {
-		s[i*276] = o[i].keyIndex;
-		s[i*276+1] = o[i].keyAlgorithmIndicator;
-		s[i*276+2] = o[i].hashAlgorithmIndicator;
-		s[i*276+3] = o[i].keyLength;
-		memcpy(s+i*276+4, o[i].key, 248);
-		s[i*276+252] = o[i].keyExponentLength;
-		memcpy(s+i*276+253, o[i].keyExponent, 3);
-		memcpy(s+i*276+256, o[i].keyCheckSum, 20);
+	for (int i = 0; i < size; i++) {
+		s[i * 276] = o[i].keyIndex;
+		s[i * 276 + 1] = o[i].keyAlgorithmIndicator;
+		s[i * 276 + 2] = o[i].hashAlgorithmIndicator;
+		s[i * 276 + 3] = o[i].keyLength;
+		memcpy(s + i * 276 + 4, o[i].key, 248);
+		s[i * 276 + 252] = o[i].keyExponentLength;
+		memcpy(s + i * 276 + 253, o[i].keyExponent, 3);
+		memcpy(s + i * 276 + 256, o[i].keyCheckSum, 20);
 	}
 	return s;
 }
 
 KeyData * KeyDataFromBin(char * s, int length) {
-	int size = length/276;
+	int size = length / 276;
 	KeyData * o = calloc(size, sizeof(KeyData));
-	for(int i =0; i<size;i++) {
-		o[i].keyIndex = s[i*276];
-		o[i].keyAlgorithmIndicator = s[i*276+1];
-		o[i].hashAlgorithmIndicator = s[i*276+2];
-		o[i].keyLength = s[i*276+3];
-		o[i].key = s+i*276+4;
-		o[i].keyExponentLength = s[i*276+252];
-		o[i].keyExponent = s+i*276+253;
-		o[i].keyCheckSum = s+i*276+256;
+	for (int i = 0; i < size; i++) {
+		o[i].keyIndex = s[i * 276];
+		o[i].keyAlgorithmIndicator = s[i * 276 + 1];
+		o[i].hashAlgorithmIndicator = s[i * 276 + 2];
+		o[i].keyLength = s[i * 276 + 3];
+		o[i].key = s + i * 276 + 4;
+		o[i].keyExponentLength = s[i * 276 + 252];
+		o[i].keyExponent = s + i * 276 + 253;
+		o[i].keyCheckSum = s + i * 276 + 256;
 	}
 	return o;
 }

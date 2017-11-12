@@ -171,6 +171,8 @@ char * AIDToBin(AID * o);
 
 AID * AIDFromBin(char * s);
 
+AID * AIDListFromBin(char * s, int length);
+
 typedef struct KeyData {
 	byte keyIndex;
 	byte keyAlgorithmIndicator;
