@@ -173,5 +173,22 @@ OfflinePINEntryConfiguration * OfflinePINEntryConfigurationFromBin(char * s) {
 	o->keyIndex = s[1131];
 	o->noEnterLessMin = s + 1132;
 	o->addReqSettings = s + 1136;
-	return NULL;
+	return o;
 }
+
+int TerminalSpecificDataLength(TerminalSpecificData * o) {
+	return 134 + littleEndianInt(o->lengthTLVData)
+			+ littleEndianInt(o->lengthOfflinePINEntryConfiguration)
+			+ littleEndianInt(o->lengthDiagnosticsTags)
+			+ littleEndianInt(o->lengthAppSelectionTags)
+			+ littleEndianInt(o->lengthRIDApps);
+}
+
+char * TerminalSpecificDataToBin(TerminalSpecificData * o) {
+
+}
+
+TerminalSpecificData * TerminalSpecificDataFromBin(char * s) {
+
+}
+

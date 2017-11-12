@@ -306,6 +306,12 @@ typedef struct TerminalSpecificData {
 	char * ridApps;
 } TerminalSpecificData;
 
+int TerminalSpecificDataLength(TerminalSpecificData * o);
+
+char * TerminalSpecificDataToBin(TerminalSpecificData * o);
+
+TerminalSpecificData * TerminalSpecificDataFromBin(char * s);
+
 typedef struct VegaInitData {
 	char * terminalDataTotalLength;
 	TerminalSpecificData terminalSpecificData;
