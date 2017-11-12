@@ -194,14 +194,18 @@ typedef struct Tag {
 	struct Tag * next;
 } Tag;
 
+
+
 typedef struct EndOfTransactionTags {
 	EmvTransactionType type;
+	byte lengthOfTagList;
 	Tag * tags;
 	struct EndOfTransactionTags * next;
 } EndOfTransactionTags;
 
 typedef struct EmvTransactionStepTags {
 	EmvTransactionStep step;
+	byte lenTagList;
 	Tag * tags;
 	struct EmvTransactionStepTags * next;
 } EmvTransactionStepTags;
