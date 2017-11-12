@@ -233,7 +233,44 @@ char * TerminalSpecificDataToBin(TerminalSpecificData * o) {
 
 TerminalSpecificData * TerminalSpecificDataFromBin(char * s) {
 	TerminalSpecificData * o = malloc(sizeof(TerminalSpecificData));
-
+	// RFU*1
+	o->terminalCapabilities = s + 1;
+	o->additionalTerminalCapabilities = s + 4;
+	o->terminalCountryCode = s + 9;
+	o->terminalType = s[11];
+	o->transactionCurrencyCode = s + 12;
+	o->transactionCurrencyExponent = s[14];
+	o->transactionReferenceCurrencyCode = s + 15;
+	o->transactionReferenceCurrencyExponent = s[17];
+	o->transactionReferenceCurrencyConversion = s + 18;
+	o->acquirerIdentifier = s + 22;
+	o->merchantCategoryCode = s + 28;
+	o->merchantIdentifier = s + 30;
+	o->terminalIdentification = s + 45;
+	o->terminalRiskManagementData = s + 53;
+	o->ifdSerialNumber = s + 61;
+	o->authorizationResponseCodeList = s + 69;
+	o->miscellaneousOptions = s[89];
+	o->miscellaneousOptions1 = s[90];
+	//RFU*1
+	o->lengthTLVData = s + 92;
+	int tlv = littleEndianInt(o->lengthTLVData);
+	o->tlvData = s + 94;
+	//RFU*20
+	o->lengthOfflinePINEntryConfiguration = s + 114 + tlv;
+	int offline = littleEndianInt(o->lengthOfflinePINEntryConfiguration);
+	o->offlinePINEntryConfiguration = OfflinePINEntryConfigurationFromBin(
+			s + 116 + tlv);
+	o->terminalLanguages = s + 116 + tlv + offline;
+	// RFU*2*2
+	o->lengthDiagnosticsTags = s + 128 + tlv + offline;
+	int diag = littleEndianInt(o->lengthDiagnosticsTags);
+	o->diagnosticsTags = s + 130 + tlv + offline;
+	o->lengthAppSelectionTags = s + 130 + tlv + offline + diag;
+	int app = littleEndianInt(o->lengthAppSelectionTags);
+	o->appSelectionTags = s + 132 + tlv + offline + diag;
+	o->lengthRIDApps = s + 132 + tlv + offline + diag + app;
+	o->ridApps = s +134 + tlv + offline + diag + app;
 	return o;
 }
 
