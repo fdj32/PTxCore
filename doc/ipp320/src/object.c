@@ -64,34 +64,35 @@ AID * AIDFromBin(char * s) {
 	return o;
 }
 
-char * AIDListToBin(AID * o) {
+char * AIDArrayToBin(AID * o, int size) {
+	if (NULL == o || 0 == size)
+		return NULL;
 	int length = 0;
-	AID * tail = o;
-	while (NULL != tail) {
-		length += AIDLength(tail);
-		tail = tail->next;
+	for (int i = 0; i < size; i++) {
+		length += AIDLength(o + i);
 	}
 	char * s = malloc(length);
 	memset(s, 0, length);
 	length = 0;
-	tail = o;
-	while (NULL != tail) {
-		int tempLength = AIDLength(tail);
-		memcpy(s + length, AIDToBin(tail), tempLength);
-		tail = tail->next;
+	for (int i = 0; i < size; i++) {
+		int tempLength = AIDLength(o + i);
+		memcpy(s + length, AIDToBin(o + i), tempLength);
 		length += tempLength;
 	}
 	return s;
 }
 
-AID * AIDListFromBin(char * s, int length) {
+AID * AIDArrayFromBin(char * s, int length) {
+	if (NULL == s || 0 == length)
+		return NULL;
 	AID * o = AIDFromBin(s);
-	AID * tail = o;
+	int size = 1;
 	int index = AIDLength(o);
-	while (index < length - 1) {
-		tail->next = AIDListFromBin(s + index, length - index);
-		index += AIDLength(tail->next);
-		tail = tail->next;
+	while (index < length) {
+		size++;
+		o = realloc(o, size);
+		o[size - 1] = *(AIDFromBin(s + index));
+		index += AIDLength(o + size - 1);
 	}
 	return o;
 }
@@ -140,7 +141,7 @@ char * TagsToBin(Tag * tags, int size) {
 }
 
 Tag * TagsFromBin(char * s, int length) {
-	if(NULL == s || 0 == length)
+	if (NULL == s || 0 == length)
 		return NULL;
 	int size = length >> 1; // /2bytes
 	Tag * tags = calloc(size, sizeof(Tag));
