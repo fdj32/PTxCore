@@ -200,31 +200,14 @@ char * TagsToBin(Tag * tags, int size);
 
 Tag * TagsFromBin(char * s, int length);
 
-typedef struct EndOfTransactionTags {
-	EmvTransactionType type;
-	byte lengthOfTagList;
+typedef struct LengthThenTags {
+	byte length;
 	Tag * tags;
-	struct EndOfTransactionTags * next;
-} EndOfTransactionTags;
+} LengthThenTags;
 
-typedef struct EmvTransactionStepTags {
-	EmvTransactionStep step;
-	byte lenTagList;
-	Tag * tags;
-	struct EmvTransactionStepTags * next;
-} EmvTransactionStepTags;
+typedef LengthThenTags EndOfTransactionTags;
 
-typedef struct EmvTransactionTypeStepTags {
-	EmvTransactionType type;
-	EmvTransactionStepTags * stepTags;
-	struct EmvTransactionTypeStepTags * next;
-} EmvTransactionTypeStepTags;
-
-typedef struct ExtendedAPIData {
-	char * lengthStepTags;
-	EmvTransactionTypeStepTags * tagListToAskFor;
-	EmvTransactionTypeStepTags * tagListInCallBack;
-} ExtendedAPIData;
+typedef LengthThenTags ExtendedAPIData;
 
 typedef struct RID {
 	char * rid;
@@ -233,12 +216,12 @@ typedef struct RID {
 	char * lengthGoOnlineTags;
 	struct Tag * goOnlineTags;
 	char * lengthEndOfTransactionTags;
-	struct EndOfTransactionTags endOfTransactionTags;
+	EndOfTransactionTags endOfTransactionTags; // size=7
 	char * endOfTransactionStep;
 	char * lengthGetPreviousAmountTags;
 	struct Tag * getPreviousAmountTags;
 	char * lengthExtendedAPIData;
-	ExtendedAPIData * extendedAPIData;
+	ExtendedAPIData * extendedAPIData; // size=2*7*8
 	char * lengthProprietaryRIDData;
 	char * proprietaryRIDData;
 	char * lengthIgnoredTags;
