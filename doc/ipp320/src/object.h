@@ -205,6 +205,10 @@ typedef struct LengthThenTags {
 	Tag * tags;
 } LengthThenTags;
 
+char * LengthThenTagsToBin(LengthThenTags * o);
+
+LengthThenTags * LengthThenTagsFromBin(char * s);
+
 typedef LengthThenTags EndOfTransactionTags;
 
 typedef LengthThenTags ExtendedAPIData;

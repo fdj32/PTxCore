@@ -67,7 +67,7 @@ AID * AIDFromBin(char * s) {
 char * AIDListToBin(AID * o) {
 	int length = 0;
 	AID * tail = o;
-	while(NULL != tail) {
+	while (NULL != tail) {
 		length += AIDLength(tail);
 		tail = tail->next;
 	}
@@ -75,9 +75,9 @@ char * AIDListToBin(AID * o) {
 	memset(s, 0, length);
 	length = 0;
 	tail = o;
-	while(NULL != tail) {
+	while (NULL != tail) {
 		int tempLength = AIDLength(tail);
-		memcpy(s+length, AIDToBin(tail), tempLength);
+		memcpy(s + length, AIDToBin(tail), tempLength);
 		tail = tail->next;
 		length += tempLength;
 	}
@@ -146,6 +146,23 @@ Tag * TagsFromBin(char * s, int length) {
 		tags[i].id = littleEndianInt(s + i * 2);
 	}
 	return tags;
+}
+
+char * LengthThenTagsToBin(LengthThenTags * o) {
+	int length = 1 + o->length;
+	char * s = malloc(length);
+	memset(s, 0, length);
+	s[0] = o->length;
+	int size = length >> 1;
+	memcpy(s + 1, TagsToBin(o->tags, size), length);
+	return s;
+}
+
+LengthThenTags * LengthThenTagsFromBin(char * s) {
+	LengthThenTags * o = malloc(sizeof(LengthThenTags));
+	o->length = s[0];
+	o->tags = TagsFromBin(s + 1, o->length);
+	return o;
 }
 
 char * OfflinePINEntryConfigurationToBin(OfflinePINEntryConfiguration * o) {
