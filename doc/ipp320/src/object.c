@@ -120,6 +120,25 @@ KeyData * KeyDataFromBin(char * s, int length) {
 	return o;
 }
 
+char * TagsToBin(Tag * tags, int size) {
+	int length = size << 1; // *2bytes
+	char * s = malloc(length);
+	memset(s, 0, length);
+	for (int i = 0; i < size; i++) {
+		memcpy(s + i * 2, littleEndianBin(tags[i].id), 2);
+	}
+	return s;
+}
+
+Tag * TagsFromBin(char * s, int length) {
+	int size = length >> 1; // /2bytes
+	Tag * tags = calloc(size, sizeof(Tag));
+	for (int i = 0; i < size; i++) {
+		tags[i].id = littleEndianInt(s + i * 2);
+	}
+	return tags;
+}
+
 char * OfflinePINEntryConfigurationToBin(OfflinePINEntryConfiguration * o) {
 	char * s = malloc(1138);
 	memset(s, 0, 1138);
@@ -270,7 +289,7 @@ TerminalSpecificData * TerminalSpecificDataFromBin(char * s) {
 	int app = littleEndianInt(o->lengthAppSelectionTags);
 	o->appSelectionTags = s + 132 + tlv + offline + diag;
 	o->lengthRIDApps = s + 132 + tlv + offline + diag + app;
-	o->ridApps = s +134 + tlv + offline + diag + app;
+	o->ridApps = s + 134 + tlv + offline + diag + app;
 	return o;
 }
 

@@ -191,10 +191,11 @@ typedef struct Tag {
 	int id;
 	int length;
 	char * value;
-	struct Tag * next;
 } Tag;
 
+char * TagsToBin(Tag * tags, int size);
 
+Tag * TagsFromBin(char * s, int length);
 
 typedef struct EndOfTransactionTags {
 	EmvTransactionType type;
