@@ -140,6 +140,8 @@ char * TagsToBin(Tag * tags, int size) {
 }
 
 Tag * TagsFromBin(char * s, int length) {
+	if(NULL == s || 0 == length)
+		return NULL;
 	int size = length >> 1; // /2bytes
 	Tag * tags = calloc(size, sizeof(Tag));
 	for (int i = 0; i < size; i++) {
