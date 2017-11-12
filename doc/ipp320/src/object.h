@@ -243,8 +243,8 @@ typedef struct RID {
 
 typedef struct OfflinePINEntryConfiguration {
 	byte textFont;
-	char ** prompt;
-	char ** promptMAC;
+	char * prompt;
+	char * promptMAC;
 	char * promptX;
 	char * promptY;
 	char * editX;
@@ -265,6 +265,10 @@ typedef struct OfflinePINEntryConfiguration {
 	char * noEnterLessMin;
 	char * addReqSettings;
 } OfflinePINEntryConfiguration;
+
+char * OfflinePINEntryConfigurationToBin(OfflinePINEntryConfiguration * o);
+
+OfflinePINEntryConfiguration * OfflinePINEntryConfigurationFromBin(char * s);
 
 typedef struct TerminalSpecificData {
 	//RFU*1

@@ -71,11 +71,11 @@ char * KeyDataToBin(KeyData * o) {
 	KeyData head;
 	head.next = o;
 	KeyData * cursor = &head;
-	while((*cursor).next != NULL) {
+	while ((*cursor).next != NULL) {
 		total += length;
 		char * temp = malloc(total);
 		memset(temp, 0, total);
-		if(NULL != s) {
+		if (NULL != s) {
 			memcpy(temp, s, total - length);
 			free(s);
 		}
@@ -97,18 +97,18 @@ KeyData * KeyDataFromBin(char * s, int length) {
 	int index = 0;
 	KeyData * o = NULL;
 	KeyData * tail = NULL;
-	while(index < length) {
+	while (index < length) {
 		KeyData * temp = malloc(sizeof(KeyData));
 		temp->keyIndex = s[index];
-		temp->keyAlgorithmIndicator = s[index+1];
-		temp->hashAlgorithmIndicator = s[index+2];
-		temp->keyLength = s[index+3];
-		temp->key = s+index+4;
-		temp->keyExponentLength = s[index+252];
-		temp->keyExponent = s+index+253;
-		temp->keyCheckSum = s+index+256;
+		temp->keyAlgorithmIndicator = s[index + 1];
+		temp->hashAlgorithmIndicator = s[index + 2];
+		temp->keyLength = s[index + 3];
+		temp->key = s + index + 4;
+		temp->keyExponentLength = s[index + 252];
+		temp->keyExponent = s + index + 253;
+		temp->keyCheckSum = s + index + 256;
 
-		if(NULL == o) {
+		if (NULL == o) {
 			o = temp;
 		} else {
 			tail->next = temp;
@@ -118,4 +118,60 @@ KeyData * KeyDataFromBin(char * s, int length) {
 
 	}
 	return o;
+}
+
+char * OfflinePINEntryConfigurationToBin(OfflinePINEntryConfiguration * o) {
+	char * s = malloc(1138);
+	memset(s, 0, 1138);
+	s[0] = o->textFont;
+	memcpy(s + 1, o->prompt, 1000);
+	memcpy(s + 1001, o->promptMAC, 36);
+	memcpy(s + 1037, o->promptX, 4);
+	memcpy(s + 1041, o->promptY, 4);
+	memcpy(s + 1045, o->editX, 4);
+	memcpy(s + 1049, o->editY, 4);
+	s[1053] = o->formatType;
+	memcpy(s + 1054, o->formatSpMAC, 9);
+	memcpy(s + 1063, o->formatSpecifier, 50);
+	s[1113] = o->minimumKeys;
+	s[1114] = o->maximumKeys;
+	s[1115] = o->echoCharacter;
+	s[1116] = o->cursorType;
+	s[1117] = o->direction;
+	memcpy(s + 1118, o->beepInvalidKey, 4);
+	memcpy(s + 1122, o->timeOutFirstKey, 4);
+	memcpy(s + 1126, o->timeOutInterKey, 4);
+	s[1130] = o->keyType;
+	s[1131] = o->keyIndex;
+	memcpy(s + 1132, o->noEnterLessMin, 4);
+	memcpy(s + 1136, o->addReqSettings, 2);
+	return s;
+}
+
+OfflinePINEntryConfiguration * OfflinePINEntryConfigurationFromBin(char * s) {
+	OfflinePINEntryConfiguration * o = malloc(
+			sizeof(OfflinePINEntryConfiguration));
+	o->textFont = s[0];
+	o->prompt = s + 1;
+	o->promptMAC = s + 1001;
+	o->promptX = s + 1037;
+	o->promptY = s + 1041;
+	o->editX = s + 1045;
+	o->editY = s + 1049;
+	o->formatType = s[1053];
+	o->formatSpMAC = s + 1054;
+	o->formatSpecifier = s + 1063;
+	o->minimumKeys = s[1113];
+	o->maximumKeys = s[1114];
+	o->echoCharacter = s[1115];
+	o->cursorType = s[1116];
+	o->direction = s[1117];
+	o->beepInvalidKey = s + 1118;
+	o->timeOutFirstKey = s + 1122;
+	o->timeOutInterKey = s + 1126;
+	o->keyType = s[1130];
+	o->keyIndex = s[1131];
+	o->noEnterLessMin = s + 1132;
+	o->addReqSettings = s + 1136;
+	return NULL;
 }
