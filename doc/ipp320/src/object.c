@@ -64,58 +64,35 @@ AID * AIDFromBin(char * s) {
 	return o;
 }
 
-char * KeyDataToBin(KeyData * o) {
-	int length = 276;
-	int total = 0;
-	char * s = NULL;
-	KeyData head;
-	head.next = o;
-	KeyData * cursor = &head;
-	while ((*cursor).next != NULL) {
-		total += length;
-		char * temp = malloc(total);
-		memset(temp, 0, total);
-		if (NULL != s) {
-			memcpy(temp, s, total - length);
-			free(s);
-		}
-		temp[total - length] = o->keyIndex;
-		temp[total - length + 1] = o->keyAlgorithmIndicator;
-		temp[total - length + 2] = o->hashAlgorithmIndicator;
-		temp[total - length + 3] = o->keyLength;
-		memcpy(temp + total - length + 4, o->key, 248);
-		temp[total - length + 252] = o->keyExponentLength;
-		memcpy(temp + total - length + 253, o->keyExponent, 3);
-		memcpy(temp + total - length + 256, o->keyCheckSum, 3);
-		cursor = cursor->next;
-		s = temp;
+char * KeyDataToBin(KeyData * o, int size) {
+	int length = 276*size;
+	char * s = malloc(length);
+	memset(s, 0, length);
+	for(int i =0; i<size;i++) {
+		s[i*276] = o[i].keyIndex;
+		s[i*276+1] = o[i].keyAlgorithmIndicator;
+		s[i*276+2] = o[i].hashAlgorithmIndicator;
+		s[i*276+3] = o[i].keyLength;
+		memcpy(s+i*276+4, o[i].key, 248);
+		s[i*276+252] = o[i].keyExponentLength;
+		memcpy(s+i*276+253, o[i].keyExponent, 3);
+		memcpy(s+i*276+256, o[i].keyCheckSum, 20);
 	}
 	return s;
 }
 
 KeyData * KeyDataFromBin(char * s, int length) {
-	int index = 0;
-	KeyData * o = NULL;
-	KeyData * tail = NULL;
-	while (index < length) {
-		KeyData * temp = malloc(sizeof(KeyData));
-		temp->keyIndex = s[index];
-		temp->keyAlgorithmIndicator = s[index + 1];
-		temp->hashAlgorithmIndicator = s[index + 2];
-		temp->keyLength = s[index + 3];
-		temp->key = s + index + 4;
-		temp->keyExponentLength = s[index + 252];
-		temp->keyExponent = s + index + 253;
-		temp->keyCheckSum = s + index + 256;
-
-		if (NULL == o) {
-			o = temp;
-		} else {
-			tail->next = temp;
-		}
-		tail = temp;
-		index += 276;
-
+	int size = length/276;
+	KeyData * o = calloc(size, sizeof(KeyData));
+	for(int i =0; i<size;i++) {
+		o[i].keyIndex = s[i*276];
+		o[i].keyAlgorithmIndicator = s[i*276+1];
+		o[i].hashAlgorithmIndicator = s[i*276+2];
+		o[i].keyLength = s[i*276+3];
+		o[i].key = s+i*276+4;
+		o[i].keyExponentLength = s[i*276+252];
+		o[i].keyExponent = s+i*276+253;
+		o[i].keyCheckSum = s+i*276+256;
 	}
 	return o;
 }

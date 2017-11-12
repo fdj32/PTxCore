@@ -180,10 +180,9 @@ typedef struct KeyData {
 	byte keyExponentLength;
 	char * keyExponent;
 	char * keyCheckSum;
-	struct KeyData * next;
 } KeyData;
 
-char * KeyDataToBin(KeyData * o);
+char * KeyDataToBin(KeyData * o, int size);
 
 KeyData * KeyDataFromBin(char * s, int length);
 
