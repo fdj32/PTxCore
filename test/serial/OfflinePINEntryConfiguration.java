@@ -114,7 +114,7 @@ public class OfflinePINEntryConfiguration {
 	 */
 	private byte[] noEnterLessMin;
 	/**
-	 * length=4, Not used in Telium VEGA.
+	 * length=2, Not used in Telium VEGA.
 	 */
 	private byte[] addReqSettings;
 
