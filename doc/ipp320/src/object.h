@@ -171,6 +171,8 @@ char * AIDToBin(AID * o);
 
 AID * AIDFromBin(char * s);
 
+char * AIDListToBin(AID * o);
+
 AID * AIDListFromBin(char * s, int length);
 
 typedef struct KeyData {

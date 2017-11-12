@@ -64,6 +64,26 @@ AID * AIDFromBin(char * s) {
 	return o;
 }
 
+char * AIDListToBin(AID * o) {
+	int length = 0;
+	AID * tail = o;
+	while(NULL != tail) {
+		length += AIDLength(tail);
+		tail = tail->next;
+	}
+	char * s = malloc(length);
+	memset(s, 0, length);
+	length = 0;
+	tail = o;
+	while(NULL != tail) {
+		int tempLength = AIDLength(tail);
+		memcpy(s+length, AIDToBin(tail), tempLength);
+		tail = tail->next;
+		length += tempLength;
+	}
+	return s;
+}
+
 AID * AIDListFromBin(char * s, int length) {
 	AID * o = AIDFromBin(s);
 	AID * tail = o;
