@@ -12,6 +12,10 @@ char * hex(char * s, int offset, int length);
 
 char hexChar(char c);
 
+char unHexChar(char c);
+
+char * unHex(char * s, int offset, int length);
+
 char lrc(char * s , int offset, int length);
 
 int cpx16Encode(char * in, int inOffset, int inLength, char * out, int outOffset);
