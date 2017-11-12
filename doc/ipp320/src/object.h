@@ -295,7 +295,7 @@ typedef struct TerminalSpecificData {
 	char * tlvData;
 	// RFU*20
 	char * lengthOfflinePINEntryConfiguration;
-	OfflinePINEntryConfiguration offlinePINEntryConfiguration;
+	OfflinePINEntryConfiguration * offlinePINEntryConfiguration;
 	char * terminalLanguages;
 	// RFU*2*2
 	char * lengthDiagnosticsTags;

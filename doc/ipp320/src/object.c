@@ -185,10 +185,55 @@ int TerminalSpecificDataLength(TerminalSpecificData * o) {
 }
 
 char * TerminalSpecificDataToBin(TerminalSpecificData * o) {
-
+	int length = TerminalSpecificDataLength(o);
+	char * s = malloc(length);
+	memset(s, 0, length);
+	//RFU*1
+	memcpy(s + 1, o->terminalCapabilities, 3);
+	memcpy(s + 4, o->additionalTerminalCapabilities, 5);
+	memcpy(s + 9, o->terminalCountryCode, 2);
+	s[11] = o->terminalType;
+	memcpy(s + 12, o->transactionCurrencyCode, 2);
+	s[14] = o->transactionCurrencyExponent;
+	memcpy(s + 15, o->transactionReferenceCurrencyCode, 2);
+	s[17] = o->transactionReferenceCurrencyExponent;
+	memcpy(s + 18, o->transactionReferenceCurrencyConversion, 4);
+	memcpy(s + 22, o->acquirerIdentifier, 6);
+	memcpy(s + 28, o->merchantCategoryCode, 2);
+	memcpy(s + 30, o->merchantIdentifier, 15);
+	memcpy(s + 45, o->terminalIdentification, 8);
+	memcpy(s + 53, o->terminalRiskManagementData, 8);
+	memcpy(s + 61, o->ifdSerialNumber, 8);
+	memcpy(s + 69, o->authorizationResponseCodeList, 20);
+	s[89] = o->miscellaneousOptions;
+	s[90] = o->miscellaneousOptions1;
+	//RFU*1
+	memcpy(s + 92, o->lengthTLVData, 2);
+	int tlv = littleEndianInt(o->lengthTLVData);
+	memcpy(s + 94, o->tlvData, tlv);
+	//RFU*20
+	memcpy(s + 114 + tlv, o->lengthOfflinePINEntryConfiguration, 2);
+	int offline = littleEndianInt(o->lengthOfflinePINEntryConfiguration);
+	memcpy(s + 116 + tlv,
+			OfflinePINEntryConfigurationToBin(o->offlinePINEntryConfiguration),
+			offline);
+	memcpy(s + 116 + tlv + offline, o->terminalLanguages, 8);
+	// RFU*2*2
+	memcpy(s + 128 + tlv + offline, o->lengthDiagnosticsTags, 2);
+	int diag = littleEndianInt(o->lengthDiagnosticsTags);
+	memcpy(s + 130 + tlv + offline, o->diagnosticsTags, diag);
+	memcpy(s + 130 + tlv + offline + diag, o->lengthAppSelectionTags, 2);
+	int app = littleEndianInt(o->lengthAppSelectionTags);
+	memcpy(s + 132 + tlv + offline + diag, o->diagnosticsTags, app);
+	memcpy(s + 132 + tlv + offline + diag + app, o->lengthRIDApps, 2);
+	int rid = littleEndianInt(o->lengthRIDApps);
+	memcpy(s + 134 + tlv + offline + diag + app, o->ridApps, rid);
+	return s;
 }
 
 TerminalSpecificData * TerminalSpecificDataFromBin(char * s) {
+	TerminalSpecificData * o = malloc(sizeof(TerminalSpecificData));
 
+	return o;
 }
 
