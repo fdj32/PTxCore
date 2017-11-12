@@ -162,6 +162,7 @@ typedef struct AID {
 	char * defaultTDOL;
 	char * defaultDDOLLength;
 	char * defaultDDOL;
+	struct AID * next;
 } AID;
 
 int AIDLength(AID * o);
@@ -173,6 +174,10 @@ AID * AIDFromBin(char * s);
 char * AIDArrayToBin(AID * o, int size);
 
 AID * AIDArrayFromBin(char * s, int length);
+
+char * AIDListToBin(AID * o);
+
+AID * AIDListFromBin(char * s, int length);
 
 typedef struct KeyData {
 	byte keyIndex;
@@ -232,6 +237,7 @@ typedef struct RID {
 	byte miscellaneousOptions;
 	char * lengthTLVData;
 	char * tlvData;
+	struct RID * next;
 } RID;
 
 typedef struct OfflinePINEntryConfiguration {

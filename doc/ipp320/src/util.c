@@ -32,7 +32,7 @@ char * unHex(char * s, int offset, int length) {
 	char * t = malloc(size);
 	memset(t, 0, size);
 	for (int i = 0; i < size; i++) {
-		t[i] = unHexChar(s[i]) << 4 + unHexChar(s[i + 1]);
+		t[i] = (char) ((unHexChar(s[i]) << 4) + unHexChar(s[i + 1]));
 	}
 	return t;
 }
