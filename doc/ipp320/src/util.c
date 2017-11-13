@@ -163,8 +163,12 @@ void print(char * s, int lineLength) {
 	}
 }
 
+int unsignedInt(char c) {
+	return c > 0 ? c : c + 0x100;
+}
+
 int littleEndianInt(char * s) {
-	return NULL == s ? 0 : s[0] + (s[1] << 8);
+	return NULL == s ? 0 : unsignedInt(s[0]) + (unsignedInt(s[1]) * 0x100);
 }
 
 char * littleEndianBin(int i) {

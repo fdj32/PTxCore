@@ -28,6 +28,8 @@ char * loadFile(char * fileName);
 
 void print(char * s, int lineLength);
 
+int unsignedInt(char c);
+
 int littleEndianInt(char * s);
 
 char * littleEndianBin(int i);

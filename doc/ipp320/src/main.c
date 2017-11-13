@@ -53,15 +53,20 @@ int main(void) {
 	// print(out, 80);
 
 	char * li = malloc(2);
-	li[0] = 0x02;
-	li[1] = 0x03;
+	li[0] = 0x8e;
+	li[1] = 0x05;
 
 	printf("%d\n", littleEndianInt(li));
 
-	li = littleEndianBin(0x4321);
+	li = littleEndianBin(1422);
 
-	printf("%x\n", li[0]);
-	printf("%x\n", li[1]);
+	printf("%d\n", littleEndianInt(li));
 
+	printf("%s\n", hex(li, 0, 2));
+
+	VegaInitData * v = VegaInitDataFromBin(fileData);
+	printf("%d\n", littleEndianInt(v->aidDataTotalLength));
+	printf("%d\n", littleEndianInt(v->ridDataTotalLength));
+	printf("%d\n", littleEndianInt(v->terminalDataTotalLength));
 	return EXIT_SUCCESS;
 }
