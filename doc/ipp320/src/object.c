@@ -213,6 +213,8 @@ int RIDLength(RID * o) {
 }
 
 char * RIDToBin(RID * o) {
+	if (NULL == o)
+		return NULL;
 	int length = RIDLength(o);
 	char * s = malloc(length);
 	memset(s, 0, length);
@@ -238,7 +240,10 @@ char * RIDToBin(RID * o) {
 			TagsToBin(o->getPreviousAmountTags, previous >> 1), previous);
 	memcpy(s + 20 + key + online + end + previous, o->lengthExtendedAPIData, 2);
 	int extended = littleEndianInt(o->lengthExtendedAPIData);
-	index = 22 + key + online + end + previous;
+	// ExtendedAPIData.LengthEMVStepTags = extended - 2
+	memcpy(s + 22 + key + online + end + previous,
+			littleEndianBin(extended - 2), 2);
+	index = 24 + key + online + end + previous;
 	for (int i = 0; i < 7; i++) {
 		for (int j = 0; j < 8; j++) {
 			// RFU*2
@@ -279,7 +284,58 @@ char * RIDToBin(RID * o) {
 }
 
 RID * RIDFromBin(char * s) {
-	return NULL;
+	if (NULL == s)
+		return NULL;
+	RID * o = malloc(sizeof(RID));
+	o->rid = s;
+	o->keyDataTotalLength = s + 5;
+	int key = littleEndianInt(o->keyDataTotalLength);
+	o->keyDatas = KeyDataFromBin(s + 7, key);
+	o->lengthGoOnlineTags = s + 7 + key;
+	int online = littleEndianInt(o->lengthGoOnlineTags);
+	o->goOnlineTags = TagsFromBin(s + 9 + key, online);
+	o->lengthEndOfTransactionTags = s + 9 + key + online;
+	int end = littleEndianInt(o->lengthEndOfTransactionTags);
+	o->endOfTransactionTags = calloc(7, sizeof(LengthThenTags));
+	int index = 11 + key + online;
+	for (int i = 0; i < 7; i++) {
+		o->endOfTransactionTags[i] = *LengthThenTagsFromBin(s + index);
+		index += 1 + o->endOfTransactionTags[i].length;
+	}
+	o->endOfTransactionStep = s + 11 + key + online + end;
+	o->lengthGetPreviousAmountTags = s + 18 + key + online + end;
+	int previous = littleEndianInt(o->lengthGetPreviousAmountTags);
+	o->getPreviousAmountTags = TagsFromBin(s + 20 + key + online + end,
+			previous);
+	o->lengthExtendedAPIData = s + 20 + key + online + end + previous;
+	int extended = littleEndianInt(o->lengthExtendedAPIData);
+	index = 22 + key + online + end + previous + 2; // ExtendedAPIData.LengthEMVStepTags
+	o->extendedAPIData = calloc(7 * 8 * 2, sizeof(LengthThenTags));
+	for (int i = 0; i < 7; i++) {
+		for (int j = 0; j < 8; j++) {
+			// RFU*2
+			index += 2;
+			o->extendedAPIData[i * j] = *LengthThenTagsFromBin(s + index);
+			index += 1 + o->extendedAPIData[i * j].length;
+			o->extendedAPIData[i * j + 1] = *LengthThenTagsFromBin(s + index);
+			index += 1 + o->extendedAPIData[i * j + 1].length;
+		}
+	}
+	// LengthProprietaryRIDData = 0x0000, ProprietaryRIDData = NULL
+	o->lengthProprietaryRIDData = s + 22 + key + online + end + previous
+			+ extended;
+	o->proprietaryRIDData = NULL;
+	o->lengthIgnoredTags = s + 24 + key + online + end + previous + extended;
+	int ignore = littleEndianInt(o->lengthIgnoredTags);
+	o->ignoreTags = TagsFromBin(
+			s + 26 + key + online + end + previous + extended, ignore);
+	//RFU*1
+	o->miscellaneousOptions = s[27 + key + online + end + previous + extended
+			+ ignore];
+	o->lengthTLVData = s + 28 + key + online + end + previous + extended
+			+ ignore;
+	o->tlvData = s + 30 + key + online + end + previous + extended + ignore;
+	return o;
 }
 
 char * RIDListToBin(RID * o) {
