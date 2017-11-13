@@ -164,7 +164,7 @@ void print(char * s, int lineLength) {
 }
 
 int unsignedInt(char c) {
-	return c > 0 ? c : c + 0x100;
+	return c >= 0 ? c : c + 0x100;
 }
 
 int littleEndianInt(char * s) {
@@ -179,12 +179,12 @@ char * littleEndianBin(int i) {
 }
 
 int bigEndianInt(char * s) {
-	return s[1] + (s[0] << 8);
+	return NULL == s ? 0 : unsignedInt(s[1]) + (unsignedInt(s[0]) * 0x100);
 }
 
 char * bigEndianBin(int i) {
 	char * s = malloc(2);
-	s[0] = i >> 8;
 	s[1] = i;
+	s[0] = i >> 8;
 	return s;
 }
