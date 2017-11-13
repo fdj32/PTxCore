@@ -164,7 +164,7 @@ void print(char * s, int lineLength) {
 }
 
 int littleEndianInt(char * s) {
-	return s[0] + (s[1] << 8);
+	return NULL == s ? 0 : s[0] + (s[1] << 8);
 }
 
 char * littleEndianBin(int i) {
