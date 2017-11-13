@@ -9,7 +9,7 @@
 char * hex(char * s, int offset, int length) {
 	int hexLen = length * 2 + 1;
 	char * hex = malloc(hexLen);
-	hex[hexLen] = '\0';
+	hex[hexLen - 1] = '\0';
 	for (int i = 0; i < length; i++) {
 		hex[i * 2] = hexChar(((s[i] & 0xf0) >> 4) & 0x0f);
 		hex[i * 2 + 1] = hexChar(s[i] & 0x0f);
