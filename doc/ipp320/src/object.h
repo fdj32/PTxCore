@@ -240,6 +240,16 @@ typedef struct RID {
 	struct RID * next;
 } RID;
 
+int RIDLength(RID * o);
+
+char * RIDToBin(RID * o);
+
+RID * RIDFromBin(char * s);
+
+char * RIDListToBin(RID * o);
+
+RID * RIDListFromBin(char * s);
+
 typedef struct OfflinePINEntryConfiguration {
 	byte textFont;
 	char * prompt;

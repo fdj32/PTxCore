@@ -200,6 +200,26 @@ LengthThenTags * LengthThenTagsFromBin(char * s) {
 	return o;
 }
 
+int RIDLength(RID * o) {
+	return 0;
+}
+
+char * RIDToBin(RID * o) {
+	return NULL;
+}
+
+RID * RIDFromBin(char * s) {
+	return NULL;
+}
+
+char * RIDListToBin(RID * o) {
+	return NULL;
+}
+
+RID * RIDListFromBin(char * s) {
+	return NULL;
+}
+
 char * OfflinePINEntryConfigurationToBin(OfflinePINEntryConfiguration * o) {
 	char * s = malloc(1138);
 	memset(s, 0, 1138);
