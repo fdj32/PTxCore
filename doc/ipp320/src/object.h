@@ -248,7 +248,7 @@ RID * RIDFromBin(char * s);
 
 char * RIDListToBin(RID * o);
 
-RID * RIDListFromBin(char * s);
+RID * RIDListFromBin(char * s, int length);
 
 typedef struct OfflinePINEntryConfiguration {
 	byte textFont;

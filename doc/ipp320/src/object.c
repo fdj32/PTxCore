@@ -339,11 +339,35 @@ RID * RIDFromBin(char * s) {
 }
 
 char * RIDListToBin(RID * o) {
-	return NULL;
+	int length = 0;
+	RID * tail = o;
+	while (NULL != tail) {
+		length += RIDLength(tail);
+		tail = tail->next;
+	}
+	char * s = malloc(length);
+	memset(s, 0, length);
+	length = 0;
+	tail = o;
+	while (NULL != tail) {
+		int tempLength = RIDLength(tail);
+		memcpy(s + length, RIDToBin(tail), tempLength);
+		tail = tail->next;
+		length += tempLength;
+	}
+	return s;
 }
 
-RID * RIDListFromBin(char * s) {
-	return NULL;
+RID * RIDListFromBin(char * s, int length) {
+	RID * o = RIDFromBin(s);
+	RID * tail = o;
+	int index = RIDLength(o);
+	while (index < length - 1) {
+		tail->next = RIDListFromBin(s + index, length - index);
+		index += RIDLength(tail->next);
+		tail = tail->next;
+	}
+	return o;
 }
 
 char * OfflinePINEntryConfigurationToBin(OfflinePINEntryConfiguration * o) {
