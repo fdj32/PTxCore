@@ -224,7 +224,7 @@ typedef struct RID {
 	char * lengthGoOnlineTags;
 	struct Tag * goOnlineTags;
 	char * lengthEndOfTransactionTags;
-	EndOfTransactionTags endOfTransactionTags; // size=7
+	EndOfTransactionTags * endOfTransactionTags; // size=7
 	char * endOfTransactionStep;
 	char * lengthGetPreviousAmountTags;
 	struct Tag * getPreviousAmountTags;

@@ -188,8 +188,10 @@ char * LengthThenTagsToBin(LengthThenTags * o) {
 	char * s = malloc(length);
 	memset(s, 0, length);
 	s[0] = o->length;
-	int size = length >> 1;
-	memcpy(s + 1, TagsToBin(o->tags, size), length);
+	if (0 != o->length) {
+		int size = length >> 1;
+		memcpy(s + 1, TagsToBin(o->tags, size), length);
+	}
 	return s;
 }
 
@@ -201,10 +203,78 @@ LengthThenTags * LengthThenTagsFromBin(char * s) {
 }
 
 int RIDLength(RID * o) {
-	return 0;
+	return 30 + littleEndianInt(o->keyDataTotalLength)
+			+ littleEndianInt(o->lengthGoOnlineTags)
+			+ littleEndianInt(o->lengthEndOfTransactionTags)
+			+ littleEndianInt(o->lengthGetPreviousAmountTags)
+			+ littleEndianInt(o->lengthExtendedAPIData)
+			+ littleEndianInt(o->lengthIgnoredTags)
+			+ littleEndianInt(o->lengthTLVData);
 }
 
 char * RIDToBin(RID * o) {
+	int length = RIDLength(o);
+	char * s = malloc(length);
+	memset(s, 0, length);
+	memcpy(s, o->rid, 5);
+	memcpy(s + 5, o->keyDataTotalLength, 2);
+	int key = littleEndianInt(o->keyDataTotalLength);
+	memcpy(s + 7, KeyDataToBin(o->keyDatas, key / 276), key);
+	memcpy(s + 7 + key, o->lengthGoOnlineTags, 2);
+	int online = littleEndianInt(o->lengthGoOnlineTags);
+	memcpy(s + 9 + key, TagsToBin(o->goOnlineTags, online >> 1), online);
+	memcpy(s + 9 + key + online, o->lengthEndOfTransactionTags, 2);
+	int end = littleEndianInt(o->lengthEndOfTransactionTags);
+	int index = 11 + key + online;
+	for (int i = 0; i < 7; i++) { // EMV Transaction Type
+		memcpy(s + index, LengthThenTagsToBin(o->endOfTransactionTags + i),
+				1 + o->endOfTransactionTags[i].length);
+		index += o->endOfTransactionTags[i].length;
+	}
+	memcpy(s + 11 + key + online + end, o->endOfTransactionStep, 7);
+	memcpy(s + 18 + key + online + end, o->lengthGetPreviousAmountTags, 2);
+	int previous = littleEndianInt(o->lengthGetPreviousAmountTags);
+	memcpy(s + 20 + key + online + end,
+			TagsToBin(o->getPreviousAmountTags, previous >> 1), previous);
+	memcpy(s + 20 + key + online + end + previous, o->lengthExtendedAPIData, 2);
+	int extended = littleEndianInt(o->lengthExtendedAPIData);
+	index = 22 + key + online + end + previous;
+	for (int i = 0; i < 7; i++) {
+		for (int j = 0; j < 8; j++) {
+			// RFU*2
+			index += 2;
+			memcpy(s + index, LengthThenTagsToBin(o->extendedAPIData + i * j),
+					1 + o->extendedAPIData[i * j].length);
+			index += 1 + o->extendedAPIData[i * j].length;
+			memcpy(s + index,
+					LengthThenTagsToBin(o->extendedAPIData + i * j + 1),
+					1 + o->extendedAPIData[i * j + 1].length);
+			index += 1 + o->extendedAPIData[i * j + 1].length;
+		}
+	}
+	// LengthProprietaryRIDData = 0x0000, ProprietaryRIDData = NULL
+	memcpy(s + 22 + key + online + end + previous + extended,
+			o->lengthProprietaryRIDData, 2);
+	int proprietary = littleEndianInt(o->lengthProprietaryRIDData);
+	if (0 != proprietary) {
+		memcpy(s + 24 + key + online + end + previous + extended,
+				o->proprietaryRIDData, proprietary);
+	}
+	memcpy(s + 24 + key + online + end + previous + extended + proprietary,
+			o->lengthIgnoredTags, 2);
+	int ignore = littleEndianInt(o->lengthIgnoredTags);
+	memcpy(s + 26 + key + online + end + previous + extended + proprietary,
+			TagsToBin(o->ignoreTags, ignore >> 1), ignore);
+	// RFU*1
+	s[27 + key + online + end + previous + extended + proprietary + ignore] =
+			o->miscellaneousOptions;
+	memcpy(
+			s + 28 + key + online + end + previous + extended + proprietary
+					+ ignore, o->lengthTLVData, 2);
+	int tlv = littleEndianInt(o->lengthTLVData);
+	memcpy(
+			s + 30 + key + online + end + previous + extended + proprietary
+					+ ignore, o->tlvData, tlv);
 	return NULL;
 }
 
