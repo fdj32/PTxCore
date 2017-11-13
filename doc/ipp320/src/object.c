@@ -7,11 +7,15 @@
 #include "ipp320.h"
 
 int AIDLength(AID * o) {
-	return 55 + o->lengthTLVData + littleEndianInt(o->defaultDDOLLength)
-			+ littleEndianInt(o->defaultTDOLLength);
+	return NULL == o ?
+			0 :
+			55 + o->lengthTLVData + littleEndianInt(o->defaultDDOLLength)
+					+ littleEndianInt(o->defaultTDOLLength);
 }
 
 char * AIDToBin(AID * o) {
+	if (NULL == o)
+		return NULL;
 	int length = AIDLength(o);
 	char * s = malloc(length);
 	memset(s, 0, length);
@@ -40,6 +44,8 @@ char * AIDToBin(AID * o) {
 }
 
 AID * AIDFromBin(char * s) {
+	if (NULL == s)
+		return NULL;
 	AID * o = malloc(sizeof(AID));
 	o->applicationSelectionIndicator = s[0];
 	o->lengthTLVData = s[1];
@@ -83,7 +89,7 @@ char * AIDArrayToBin(AID * o, int size) {
 }
 
 AID * AIDArrayFromBin(char * s, int length) {
-	if (NULL == s || 0 == length)
+	if (NULL == s || 0 >= length)
 		return NULL;
 	AID * o = AIDFromBin(s);
 	int size = 1;
@@ -98,6 +104,8 @@ AID * AIDArrayFromBin(char * s, int length) {
 }
 
 char * AIDListToBin(AID * o) {
+	if (NULL == o)
+		return NULL;
 	int length = 0;
 	AID * tail = o;
 	while (NULL != tail) {
@@ -118,6 +126,8 @@ char * AIDListToBin(AID * o) {
 }
 
 AID * AIDListFromBin(char * s, int length) {
+	if (NULL == s || 0 >= length)
+		return NULL;
 	AID * o = AIDFromBin(s);
 	AID * tail = o;
 	int index = AIDLength(o);
@@ -130,6 +140,8 @@ AID * AIDListFromBin(char * s, int length) {
 }
 
 char * KeyDataToBin(KeyData * o, int size) {
+	if (NULL == o || 0 == size)
+		return NULL;
 	int length = 276 * size;
 	char * s = malloc(length);
 	memset(s, 0, length);
@@ -147,6 +159,8 @@ char * KeyDataToBin(KeyData * o, int size) {
 }
 
 KeyData * KeyDataFromBin(char * s, int length) {
+	if (NULL == s || 0 >= length)
+		return NULL;
 	int size = length / 276;
 	KeyData * o = calloc(size, sizeof(KeyData));
 	for (int i = 0; i < size; i++) {
@@ -163,6 +177,8 @@ KeyData * KeyDataFromBin(char * s, int length) {
 }
 
 char * TagsToBin(Tag * tags, int size) {
+	if (NULL == tags || 0 == size)
+		return NULL;
 	int length = size << 1; // *2bytes
 	char * s = malloc(length);
 	memset(s, 0, length);
@@ -173,7 +189,7 @@ char * TagsToBin(Tag * tags, int size) {
 }
 
 Tag * TagsFromBin(char * s, int length) {
-	if (NULL == s || 0 == length)
+	if (NULL == s || 0 >= length)
 		return NULL;
 	int size = length >> 1; // /2bytes
 	Tag * tags = calloc(size, sizeof(Tag));
@@ -184,6 +200,8 @@ Tag * TagsFromBin(char * s, int length) {
 }
 
 char * LengthThenTagsToBin(LengthThenTags * o) {
+	if (NULL == o)
+		return NULL;
 	int length = 1 + o->length;
 	char * s = malloc(length);
 	memset(s, 0, length);
@@ -196,6 +214,8 @@ char * LengthThenTagsToBin(LengthThenTags * o) {
 }
 
 LengthThenTags * LengthThenTagsFromBin(char * s) {
+	if (NULL == s)
+		return NULL;
 	LengthThenTags * o = malloc(sizeof(LengthThenTags));
 	o->length = s[0];
 	o->tags = TagsFromBin(s + 1, o->length);
@@ -203,13 +223,15 @@ LengthThenTags * LengthThenTagsFromBin(char * s) {
 }
 
 int RIDLength(RID * o) {
-	return 30 + littleEndianInt(o->keyDataTotalLength)
-			+ littleEndianInt(o->lengthGoOnlineTags)
-			+ littleEndianInt(o->lengthEndOfTransactionTags)
-			+ littleEndianInt(o->lengthGetPreviousAmountTags)
-			+ littleEndianInt(o->lengthExtendedAPIData)
-			+ littleEndianInt(o->lengthIgnoredTags)
-			+ littleEndianInt(o->lengthTLVData);
+	return NULL == o ?
+			0 :
+			30 + littleEndianInt(o->keyDataTotalLength)
+					+ littleEndianInt(o->lengthGoOnlineTags)
+					+ littleEndianInt(o->lengthEndOfTransactionTags)
+					+ littleEndianInt(o->lengthGetPreviousAmountTags)
+					+ littleEndianInt(o->lengthExtendedAPIData)
+					+ littleEndianInt(o->lengthIgnoredTags)
+					+ littleEndianInt(o->lengthTLVData);
 }
 
 char * RIDToBin(RID * o) {
@@ -339,6 +361,8 @@ RID * RIDFromBin(char * s) {
 }
 
 char * RIDListToBin(RID * o) {
+	if (NULL == o)
+		return NULL;
 	int length = 0;
 	RID * tail = o;
 	while (NULL != tail) {
@@ -359,6 +383,8 @@ char * RIDListToBin(RID * o) {
 }
 
 RID * RIDListFromBin(char * s, int length) {
+	if (NULL == s || 0 >= length)
+		return NULL;
 	RID * o = RIDFromBin(s);
 	RID * tail = o;
 	int index = RIDLength(o);
@@ -371,6 +397,8 @@ RID * RIDListFromBin(char * s, int length) {
 }
 
 char * OfflinePINEntryConfigurationToBin(OfflinePINEntryConfiguration * o) {
+	if (NULL == o)
+		return NULL;
 	char * s = malloc(1138);
 	memset(s, 0, 1138);
 	s[0] = o->textFont;
@@ -399,6 +427,8 @@ char * OfflinePINEntryConfigurationToBin(OfflinePINEntryConfiguration * o) {
 }
 
 OfflinePINEntryConfiguration * OfflinePINEntryConfigurationFromBin(char * s) {
+	if (NULL == s)
+		return NULL;
 	OfflinePINEntryConfiguration * o = malloc(
 			sizeof(OfflinePINEntryConfiguration));
 	o->textFont = s[0];
@@ -427,14 +457,18 @@ OfflinePINEntryConfiguration * OfflinePINEntryConfigurationFromBin(char * s) {
 }
 
 int TerminalSpecificDataLength(TerminalSpecificData * o) {
-	return 134 + littleEndianInt(o->lengthTLVData)
-			+ littleEndianInt(o->lengthOfflinePINEntryConfiguration)
-			+ littleEndianInt(o->lengthDiagnosticsTags)
-			+ littleEndianInt(o->lengthAppSelectionTags)
-			+ littleEndianInt(o->lengthRIDApps);
+	return NULL == o ?
+			0 :
+			134 + littleEndianInt(o->lengthTLVData)
+					+ littleEndianInt(o->lengthOfflinePINEntryConfiguration)
+					+ littleEndianInt(o->lengthDiagnosticsTags)
+					+ littleEndianInt(o->lengthAppSelectionTags)
+					+ littleEndianInt(o->lengthRIDApps);
 }
 
 char * TerminalSpecificDataToBin(TerminalSpecificData * o) {
+	if (NULL == o)
+		return NULL;
 	int length = TerminalSpecificDataLength(o);
 	char * s = malloc(length);
 	memset(s, 0, length);
@@ -482,6 +516,8 @@ char * TerminalSpecificDataToBin(TerminalSpecificData * o) {
 }
 
 TerminalSpecificData * TerminalSpecificDataFromBin(char * s) {
+	if (NULL == s)
+		return NULL;
 	TerminalSpecificData * o = malloc(sizeof(TerminalSpecificData));
 	// RFU*1
 	o->terminalCapabilities = s + 1;
@@ -524,3 +560,49 @@ TerminalSpecificData * TerminalSpecificDataFromBin(char * s) {
 	return o;
 }
 
+int VegaInitDataLength(VegaInitData * o) {
+	// append 0x00 at the end of the binary data.
+	return NULL == o ?
+			0 :
+			7 + littleEndianInt(o->aidDataTotalLength)
+					+ littleEndianInt(o->ridDataTotalLength)
+					+ littleEndianInt(o->terminalDataTotalLength);
+}
+
+char * VegaInitDataToBin(VegaInitData * o) {
+	if (NULL == o)
+		return NULL;
+	int length = VegaInitDataLength(o);
+	char * s = malloc(length);
+	memset(s, 0, length);
+	int terminal = littleEndianInt(o->terminalDataTotalLength);
+	memcpy(s, o->terminalDataTotalLength, 2);
+	memcpy(s + 2, TerminalSpecificDataToBin(o->terminalSpecificData), terminal);
+
+	memcpy(s + 2 + terminal, o->ridDataTotalLength, 2);
+	int rid = littleEndianInt(o->ridDataTotalLength);
+	memcpy(s + 4 + terminal, RIDListToBin(o->ridSpecificData), rid);
+
+	memcpy(s + 4 + terminal + rid, o->aidDataTotalLength, 2);
+	int aid = littleEndianInt(o->aidDataTotalLength);
+	memcpy(s + 6 + terminal + rid, AIDListToBin(o->aidSpecificData), aid);
+	return s;
+}
+
+VegaInitData * VegaInitDataFromBin(char * s) {
+	if (NULL == s)
+		return NULL;
+	VegaInitData * o = malloc(sizeof(VegaInitData));
+	o->terminalDataTotalLength = s;
+	int terminal = littleEndianInt(o->terminalDataTotalLength);
+	o->terminalSpecificData = TerminalSpecificDataFromBin(s + 2);
+
+	o->ridDataTotalLength = s + 2 + terminal;
+	int rid = littleEndianInt(o->ridDataTotalLength);
+	o->ridSpecificData = RIDListFromBin(s + 4 + terminal, rid);
+
+	o->aidDataTotalLength = s + 4 + terminal + rid;
+	int aid = littleEndianInt(o->aidDataTotalLength);
+	o->aidSpecificData = AIDListFromBin(s + 6 + terminal + rid, aid);
+	return o;
+}

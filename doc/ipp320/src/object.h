@@ -323,12 +323,18 @@ TerminalSpecificData * TerminalSpecificDataFromBin(char * s);
 
 typedef struct VegaInitData {
 	char * terminalDataTotalLength;
-	TerminalSpecificData terminalSpecificData;
+	TerminalSpecificData * terminalSpecificData;
 	char * ridDataTotalLength;
 	RID * ridSpecificData;
 	char * aidDataTotalLength;
 	AID * aidSpecificData;
 } VegaInitData;
+
+int VegaInitDataLength(VegaInitData * o);
+
+char * VegaInitDataToBin(VegaInitData * o);
+
+VegaInitData * VegaInitDataFromBin(char * s);
 
 
 #endif /* OBJECT_H_ */
