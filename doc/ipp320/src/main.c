@@ -37,7 +37,7 @@ int main(void) {
 	puts(s2);
 	printf("%d\n", decodedLength);
 
-	char * fileName = "E:/nfeng/hub/PTxCore/doc/131540886937708660.init.dat";
+	char * fileName = "D:/hub/fdj32/PTxCore/doc/131540886937708660.init.dat";
 
 	int fileSize = getFileSize(fileName);
 	printf("%d\n", fileSize);
@@ -68,5 +68,10 @@ int main(void) {
 	printf("%d\n", littleEndianInt(v->aidDataTotalLength));
 	printf("%d\n", littleEndianInt(v->ridDataTotalLength));
 	printf("%d\n", littleEndianInt(v->terminalDataTotalLength));
+
+	fileData = VegaInitDataToBin(v);
+	out = hex(fileData, 0, VegaInitDataLength(v));
+	puts(out);
+
 	return EXIT_SUCCESS;
 }
