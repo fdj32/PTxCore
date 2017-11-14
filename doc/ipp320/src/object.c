@@ -136,6 +136,7 @@ AID * AIDListFromBin(char * s, int length) {
 		index += AIDLength(tail->next);
 		tail = tail->next;
 	}
+	tail->next = NULL;
 	return o;
 }
 
@@ -302,7 +303,7 @@ char * RIDToBin(RID * o) {
 	memcpy(
 			s + 30 + key + online + end + previous + extended + proprietary
 					+ ignore, o->tlvData, tlv);
-	return NULL;
+	return s;
 }
 
 RID * RIDFromBin(char * s) {
@@ -393,6 +394,7 @@ RID * RIDListFromBin(char * s, int length) {
 		index += RIDLength(tail->next);
 		tail = tail->next;
 	}
+	tail->next = NULL;
 	return o;
 }
 
