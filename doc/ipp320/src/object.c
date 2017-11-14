@@ -131,8 +131,8 @@ AID * AIDListFromBin(char * s, int length) {
 	AID * o = AIDFromBin(s);
 	AID * tail = o;
 	int index = AIDLength(o);
-	while (index < length - 1) {
-		tail->next = AIDListFromBin(s + index, length - index);
+	while (index < length) {
+		tail->next = AIDFromBin(s + index);
 		index += AIDLength(tail->next);
 		tail = tail->next;
 	}
@@ -388,8 +388,8 @@ RID * RIDListFromBin(char * s, int length) {
 	RID * o = RIDFromBin(s);
 	RID * tail = o;
 	int index = RIDLength(o);
-	while (index < length - 1) {
-		tail->next = RIDListFromBin(s + index, length - index);
+	while (index < length) {
+		tail->next = RIDFromBin(s + index);
 		index += RIDLength(tail->next);
 		tail = tail->next;
 	}
