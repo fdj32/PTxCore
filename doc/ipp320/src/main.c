@@ -50,7 +50,7 @@ int main(void) {
 
 	//printf("%s\n", out);
 
-	// print(out, 80);
+	//print(out, 80);
 
 	char * li = malloc(2);
 	li[0] = 0x8e;
@@ -71,7 +71,7 @@ int main(void) {
 
 	fileData = VegaInitDataToBin(v);
 	out = hex(fileData, 0, VegaInitDataLength(v));
-	puts(out);
+	print(out, 80);
 
 	return EXIT_SUCCESS;
 }
