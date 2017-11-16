@@ -350,8 +350,8 @@ char * RIDToXML(RID * o) {
 	strcat(f, "<getPreviousAmountTags>%s</getPreviousAmountTags>");
 	strcat(f, "<lengthExtendedAPIData>%s</lengthExtendedAPIData>");
 	strcat(f, "<extendedAPIData>%s</extendedAPIData>");
-	strcat(f, "<lengthProprietaryRIDData>%s</lengthProprietaryRIDData>");
-	strcat(f, "<proprietaryRIDData>%s</proprietaryRIDData>");
+	strcat(f, "<lengthProprietaryRIDData>0000</lengthProprietaryRIDData>");
+	strcat(f, "<proprietaryRIDData></proprietaryRIDData>");
 	strcat(f, "<lengthIgnoredTags>%s</lengthIgnoredTags>");
 	strcat(f, "<ignoreTags>%s</ignoreTags>");
 	strcat(f, "<miscellaneousOptions>%s</miscellaneousOptions>");
@@ -371,8 +371,8 @@ char * RIDToXML(RID * o) {
 			TagsToXML(o->getPreviousAmountTags, littleEndianInt(o->lengthGetPreviousAmountTags)>>1),
 			hex(o->lengthExtendedAPIData, 0, 2),
 			LengthThenTagsToXML(o->extendedAPIData, 112),
-			hex(o->lengthProprietaryRIDData, 0, 2),
-			hex(o->proprietaryRIDData, 0, littleEndianInt(o->lengthProprietaryRIDData)),
+			//hex(o->lengthProprietaryRIDData, 0, 2),
+			//hex(o->proprietaryRIDData, 0, littleEndianInt(o->lengthProprietaryRIDData)),
 			hex(o->lengthIgnoredTags, 0, 2),
 			hex(o->ignoreTags, 0, TagsToXML(o->ignoreTags, littleEndianInt(o->lengthIgnoredTags)>>1)),
 			hexByte(o->miscellaneousOptions),

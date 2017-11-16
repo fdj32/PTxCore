@@ -84,7 +84,8 @@
 		<Tag id="18ff" />
 		<Tag id="1dff" />
 	</goOnlineTags>
-	<lengthEndOfTransactionTags>
+	<lengthEndOfTransactionTags>fb01</lengthEndOfTransactionTags>
+	<endOfTransactionTags>
 		<LengthThenTags>
 			<Length>64</Length>
 			<Tag id="4f00" />
@@ -356,12 +357,12 @@
 		<LengthThenTags>
 			<Length>00</Length>
 		</LengthThenTags>
-	</lengthEndOfTransactionTags>
-	<endOfTransactionTags>0803ff030308ff</endOfTransactionTags>
-	<endOfTransactionStep>0000</endOfTransactionStep>
-	<lengthGetPreviousAmountTags>(null)</lengthGetPreviousAmountTags>
-	<getPreviousAmountTags>2a04</getPreviousAmountTags>
-	<lengthExtendedAPIData>
+	</endOfTransactionTags>
+	<endOfTransactionStep>0803ff030308ff</endOfTransactionStep>
+	<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
+	<getPreviousAmountTags>(null)</getPreviousAmountTags>
+	<lengthExtendedAPIData>2a04</lengthExtendedAPIData>
+	<extendedAPIData>
 		<LengthThenTags>
 			<Length>3a</Length>
 			<Tag id="4f00" />
@@ -814,16 +815,14 @@
 		<LengthThenTags>
 			<Length>00</Length>
 		</LengthThenTags>
-	</lengthExtendedAPIData>
-	<extendedAPIData>0000</extendedAPIData>
-	<lengthProprietaryRIDData></lengthProprietaryRIDData>
-	<proprietaryRIDData>0200</proprietaryRIDData>
-	<lengthIgnoredTags></lengthIgnoredTags>
-	<ignoreTags>00</ignoreTags>
-	<miscellaneousOptions>0400</miscellaneousOptions>
-	<lengthTLVData>ff090000</lengthTLVData>
-	<tlvData>H壠H崊利??H冹AUAV?蛋???胆???禒???禈???祼???祱???祤???祒???祊???礹???礰??L媿X??M夬L夅H壼H壡?
-	</tlvData>
+	</extendedAPIData>
+	<lengthProprietaryRIDData>0000</lengthProprietaryRIDData>
+	<proprietaryRIDData></proprietaryRIDData>
+	<lengthIgnoredTags>0200</lengthIgnoredTags>
+	<ignoreTags></ignoreTags>
+	<miscellaneousOptions>00</miscellaneousOptions>
+	<lengthTLVData>0400</lengthTLVData>
+	<tlvData>ff090000</tlvData>
 </RID>
 <RID>
 	<rid>a000000277</rid>
@@ -922,7 +921,8 @@
 		<Tag id="18ff" />
 		<Tag id="1dff" />
 	</goOnlineTags>
-	<lengthEndOfTransactionTags>
+	<lengthEndOfTransactionTags>fb01</lengthEndOfTransactionTags>
+	<endOfTransactionTags>
 		<LengthThenTags>
 			<Length>64</Length>
 			<Tag id="4f00" />
@@ -1194,12 +1194,12 @@
 		<LengthThenTags>
 			<Length>00</Length>
 		</LengthThenTags>
-	</lengthEndOfTransactionTags>
-	<endOfTransactionTags>0808ff080808ff</endOfTransactionTags>
-	<endOfTransactionStep>0000</endOfTransactionStep>
-	<lengthGetPreviousAmountTags>(null)</lengthGetPreviousAmountTags>
-	<getPreviousAmountTags>2a04</getPreviousAmountTags>
-	<lengthExtendedAPIData>
+	</endOfTransactionTags>
+	<endOfTransactionStep>0808ff080808ff</endOfTransactionStep>
+	<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
+	<getPreviousAmountTags>(null)</getPreviousAmountTags>
+	<lengthExtendedAPIData>2a04</lengthExtendedAPIData>
+	<extendedAPIData>
 		<LengthThenTags>
 			<Length>3a</Length>
 			<Tag id="4f00" />
@@ -1652,16 +1652,14 @@
 		<LengthThenTags>
 			<Length>00</Length>
 		</LengthThenTags>
-	</lengthExtendedAPIData>
-	<extendedAPIData>0000</extendedAPIData>
-	<lengthProprietaryRIDData></lengthProprietaryRIDData>
-	<proprietaryRIDData>0200</proprietaryRIDData>
-	<lengthIgnoredTags></lengthIgnoredTags>
-	<ignoreTags>00</ignoreTags>
-	<miscellaneousOptions>0400</miscellaneousOptions>
-	<lengthTLVData>ff090000</lengthTLVData>
-	<tlvData>H壠H崊利??H冹AUAV?蛋???胆???禒???禈???祼???祱???祤???祒???祊???礹???礰??L媿X??M夬L夅H壼H壡?
-	</tlvData>
+	</extendedAPIData>
+	<lengthProprietaryRIDData>0000</lengthProprietaryRIDData>
+	<proprietaryRIDData></proprietaryRIDData>
+	<lengthIgnoredTags>0200</lengthIgnoredTags>
+	<ignoreTags></ignoreTags>
+	<miscellaneousOptions>00</miscellaneousOptions>
+	<lengthTLVData>0400</lengthTLVData>
+	<tlvData>ff090000</tlvData>
 </RID>
 <RID>
 	<rid>a000000065</rid>
@@ -1749,7 +1747,8 @@
 		<Tag id="18ff" />
 		<Tag id="1dff" />
 	</goOnlineTags>
-	<lengthEndOfTransactionTags>
+	<lengthEndOfTransactionTags>fb01</lengthEndOfTransactionTags>
+	<endOfTransactionTags>
 		<LengthThenTags>
 			<Length>64</Length>
 			<Tag id="4f00" />
@@ -2021,12 +2020,12 @@
 		<LengthThenTags>
 			<Length>00</Length>
 		</LengthThenTags>
-	</lengthEndOfTransactionTags>
-	<endOfTransactionTags>0803ff030308ff</endOfTransactionTags>
-	<endOfTransactionStep>0000</endOfTransactionStep>
-	<lengthGetPreviousAmountTags>(null)</lengthGetPreviousAmountTags>
-	<getPreviousAmountTags>2a04</getPreviousAmountTags>
-	<lengthExtendedAPIData>
+	</endOfTransactionTags>
+	<endOfTransactionStep>0803ff030308ff</endOfTransactionStep>
+	<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
+	<getPreviousAmountTags>(null)</getPreviousAmountTags>
+	<lengthExtendedAPIData>2a04</lengthExtendedAPIData>
+	<extendedAPIData>
 		<LengthThenTags>
 			<Length>3a</Length>
 			<Tag id="4f00" />
@@ -2479,16 +2478,14 @@
 		<LengthThenTags>
 			<Length>00</Length>
 		</LengthThenTags>
-	</lengthExtendedAPIData>
-	<extendedAPIData>0000</extendedAPIData>
-	<lengthProprietaryRIDData></lengthProprietaryRIDData>
-	<proprietaryRIDData>0200</proprietaryRIDData>
-	<lengthIgnoredTags></lengthIgnoredTags>
-	<ignoreTags>00</ignoreTags>
-	<miscellaneousOptions>0400</miscellaneousOptions>
-	<lengthTLVData>ff090000</lengthTLVData>
-	<tlvData>H壠H崊利??H冹AUAV?蛋???胆???禒???禈???祼???祱???祤???祒???祊???礹???礰??L媿X??M夬L夅H壼H壡?
-	</tlvData>
+	</extendedAPIData>
+	<lengthProprietaryRIDData>0000</lengthProprietaryRIDData>
+	<proprietaryRIDData></proprietaryRIDData>
+	<lengthIgnoredTags>0200</lengthIgnoredTags>
+	<ignoreTags></ignoreTags>
+	<miscellaneousOptions>00</miscellaneousOptions>
+	<lengthTLVData>0400</lengthTLVData>
+	<tlvData>ff090000</tlvData>
 </RID>
 <RID>
 	<rid>a000000004</rid>
@@ -2598,7 +2595,8 @@
 		<Tag id="18ff" />
 		<Tag id="1dff" />
 	</goOnlineTags>
-	<lengthEndOfTransactionTags>
+	<lengthEndOfTransactionTags>fb01</lengthEndOfTransactionTags>
+	<endOfTransactionTags>
 		<LengthThenTags>
 			<Length>64</Length>
 			<Tag id="4f00" />
@@ -2870,12 +2868,12 @@
 		<LengthThenTags>
 			<Length>00</Length>
 		</LengthThenTags>
-	</lengthEndOfTransactionTags>
-	<endOfTransactionTags>0803ff030308ff</endOfTransactionTags>
-	<endOfTransactionStep>0000</endOfTransactionStep>
-	<lengthGetPreviousAmountTags>(null)</lengthGetPreviousAmountTags>
-	<getPreviousAmountTags>2a04</getPreviousAmountTags>
-	<lengthExtendedAPIData>
+	</endOfTransactionTags>
+	<endOfTransactionStep>0803ff030308ff</endOfTransactionStep>
+	<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
+	<getPreviousAmountTags>(null)</getPreviousAmountTags>
+	<lengthExtendedAPIData>2a04</lengthExtendedAPIData>
+	<extendedAPIData>
 		<LengthThenTags>
 			<Length>3a</Length>
 			<Tag id="4f00" />
@@ -3328,16 +3326,14 @@
 		<LengthThenTags>
 			<Length>00</Length>
 		</LengthThenTags>
-	</lengthExtendedAPIData>
-	<extendedAPIData>0000</extendedAPIData>
-	<lengthProprietaryRIDData></lengthProprietaryRIDData>
-	<proprietaryRIDData>0200</proprietaryRIDData>
-	<lengthIgnoredTags></lengthIgnoredTags>
-	<ignoreTags>00</ignoreTags>
-	<miscellaneousOptions>0400</miscellaneousOptions>
-	<lengthTLVData>ff090000</lengthTLVData>
-	<tlvData>H壠H崊利??H冹AUAV?蛋???胆???禒???禈???祼???祱???祤???祒???祊???礹???礰??L媿X??M夬L夅H壼H壡?
-	</tlvData>
+	</extendedAPIData>
+	<lengthProprietaryRIDData>0000</lengthProprietaryRIDData>
+	<proprietaryRIDData></proprietaryRIDData>
+	<lengthIgnoredTags>0200</lengthIgnoredTags>
+	<ignoreTags></ignoreTags>
+	<miscellaneousOptions>00</miscellaneousOptions>
+	<lengthTLVData>0400</lengthTLVData>
+	<tlvData>ff090000</tlvData>
 </RID>
 <RID>
 	<rid>a000000003</rid>
@@ -3447,7 +3443,8 @@
 		<Tag id="18ff" />
 		<Tag id="1dff" />
 	</goOnlineTags>
-	<lengthEndOfTransactionTags>
+	<lengthEndOfTransactionTags>fb01</lengthEndOfTransactionTags>
+	<endOfTransactionTags>
 		<LengthThenTags>
 			<Length>64</Length>
 			<Tag id="4f00" />
@@ -3719,12 +3716,12 @@
 		<LengthThenTags>
 			<Length>00</Length>
 		</LengthThenTags>
-	</lengthEndOfTransactionTags>
-	<endOfTransactionTags>0803ff030308ff</endOfTransactionTags>
-	<endOfTransactionStep>0000</endOfTransactionStep>
-	<lengthGetPreviousAmountTags>(null)</lengthGetPreviousAmountTags>
-	<getPreviousAmountTags>2a04</getPreviousAmountTags>
-	<lengthExtendedAPIData>
+	</endOfTransactionTags>
+	<endOfTransactionStep>0803ff030308ff</endOfTransactionStep>
+	<lengthGetPreviousAmountTags>0000</lengthGetPreviousAmountTags>
+	<getPreviousAmountTags>(null)</getPreviousAmountTags>
+	<lengthExtendedAPIData>2a04</lengthExtendedAPIData>
+	<extendedAPIData>
 		<LengthThenTags>
 			<Length>3a</Length>
 			<Tag id="4f00" />
@@ -4177,14 +4174,12 @@
 		<LengthThenTags>
 			<Length>00</Length>
 		</LengthThenTags>
-	</lengthExtendedAPIData>
-	<extendedAPIData>0000</extendedAPIData>
-	<lengthProprietaryRIDData></lengthProprietaryRIDData>
-	<proprietaryRIDData>0200</proprietaryRIDData>
-	<lengthIgnoredTags></lengthIgnoredTags>
-	<ignoreTags>00</ignoreTags>
-	<miscellaneousOptions>0400</miscellaneousOptions>
-	<lengthTLVData>ff090000</lengthTLVData>
-	<tlvData>H壠H崊利??H冹AUAV?蛋???胆???禒???禈???祼???祱???祤???祒???祊???礹???礰??L媿X??M夬L夅H壼H壡?
-	</tlvData>
+	</extendedAPIData>
+	<lengthProprietaryRIDData>0000</lengthProprietaryRIDData>
+	<proprietaryRIDData></proprietaryRIDData>
+	<lengthIgnoredTags>0200</lengthIgnoredTags>
+	<ignoreTags></ignoreTags>
+	<miscellaneousOptions>00</miscellaneousOptions>
+	<lengthTLVData>0400</lengthTLVData>
+	<tlvData>ff090000</tlvData>
 </RID>
