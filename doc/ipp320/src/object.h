@@ -213,6 +213,8 @@ typedef struct LengthThenTags {
 	Tag * tags;
 } LengthThenTags;
 
+char * LengthThenTagsToXML(LengthThenTags * o);
+
 char * LengthThenTagsToBin(LengthThenTags * o);
 
 LengthThenTags * LengthThenTagsFromBin(char * s);

@@ -88,8 +88,16 @@ int main(void) {
 //		aidp = aidp->next;
 //	}
 
-	out = KeyDataToXML(v->ridSpecificData->keyDatas, littleEndianInt(v->ridSpecificData->keyDataTotalLength)/276);
-	puts(out);
+	//out = KeyDataToXML(v->ridSpecificData->keyDatas, littleEndianInt(v->ridSpecificData->keyDataTotalLength)/276);
+
+
+	LengthThenTags * ltg = v->ridSpecificData->endOfTransactionTags;
+	for(int i =0 ; i<7;i++) {
+		out = LengthThenTagsToXML(ltg+i);
+		puts(out);
+	}
+
+
 
 //	print(out, 80);
 

@@ -38,14 +38,14 @@ char * AIDToXML(AID * o) {
 	strcat(f, "<defaultDDOL>%s</defaultDDOL>");
 	strcat(f, "</AID>");
 
-	return format(f, hex(&o->applicationSelectionIndicator, 0, 1),
-			hex(&o->lengthTLVData, 0, 1),
-			hex(o->tlvData, 0, littleEndianInt(&o->lengthTLVData)),
-			hex(&o->aidLength, 0, 1), hex(o->aid, 0, 16), hex(o->rid, 0, 5),
+	return format(f, hexByte(o->applicationSelectionIndicator),
+			hexByte(o->lengthTLVData),
+			hex(o->tlvData, 0, (int)(o->lengthTLVData)),
+			hexByte(o->aidLength), hex(o->aid, 0, 16), hex(o->rid, 0, 5),
 			hex(o->applicationVersionNumber, 0, 2), hex(o->tacDefault, 0, 5),
 			hex(o->tacDenial, 0, 5), hex(o->tacOnline, 0, 5),
-			hex(&o->maximumTargetPercentage, 0, 1),
-			hex(&o->targetPercentage, 0, 1), hex(o->thresholdValue, 0, 4),
+			hexByte(o->maximumTargetPercentage),
+			hexByte(o->targetPercentage), hex(o->thresholdValue, 0, 4),
 			hex(o->terminalFloorLimit, 0, 4), hex(o->defaultTDOLLength, 0, 2),
 			hex(o->defaultTDOL, 0, littleEndianInt(o->defaultTDOLLength)),
 			hex(o->defaultDDOLLength, 0, 2),
@@ -180,6 +180,8 @@ AID * AIDListFromBin(char * s, int length) {
 }
 
 char * KeyDataToXML(KeyData * o, int size) {
+	if(NULL == o)
+		return NULL;
 	char * out = malloc(102400);
 	char f[1024] = "<KeyData>";
 	strcat(f, "<keyIndex>%s</keyIndex>");
@@ -192,12 +194,12 @@ char * KeyDataToXML(KeyData * o, int size) {
 	strcat(f, "<keyCheckSum>%s</keyCheckSum>");
 	strcat(f, "</KeyData>");
 	for(int i = 0; i < size; i++) {
-		char * s = format(f, hex(&((o+i)->keyIndex), 0, 1),
-				hex(&((o+i)->keyAlgorithmIndicator), 0, 1),
-				hex(&((o+i)->hashAlgorithmIndicator), 0, 1),
-				hex(&((o+i)->keyLength), 0, 1),
+		char * s = format(f, hexByte((o+i)->keyIndex),
+				hexByte((o+i)->keyAlgorithmIndicator),
+				hexByte((o+i)->hashAlgorithmIndicator),
+				hexByte((o+i)->keyLength),
 				hex((o+i)->key, 0, 248),
-				hex(&((o+i)->keyExponentLength), 0, 1),
+				hexByte((o+i)->keyExponentLength),
 				hex((o+i)->keyExponent, 0, 3),
 				hex((o+i)->keyCheckSum, 0, 20)
 				);
@@ -264,6 +266,26 @@ Tag * TagsFromBin(char * s, int length) {
 		tags[i].id = littleEndianInt(s + i * 2);
 	}
 	return tags;
+}
+
+char * LengthThenTagsToXML(LengthThenTags * o) {
+	if(NULL == o)
+		return NULL;
+	if(0 == o->length) {
+		return "00";
+	}
+	char * s = malloc(512);
+	strcat(s, "<LengthThenTags><Length>");
+	strcat(s, hexByte(o->length));
+	strcat(s, "</Length>");
+	int size = o->length>>1;
+	for(int i =0; i < size; i++) {
+		strcat(s, "<Tag id=\"");
+		strcat(s, hex(littleEndianBin((o->tags+i)->id), 0, 2));
+		strcat(s, "\"/>");
+	}
+	strcat(s, "</LengthThenTags>");
+	return s;
 }
 
 char * LengthThenTagsToBin(LengthThenTags * o) {
@@ -490,26 +512,26 @@ char * OfflinePINEntryConfigurationToXML(OfflinePINEntryConfiguration * o) {
 	strcat(f, "<noEnterLessMin>%s</noEnterLessMin>");
 	strcat(f, "<addReqSettings>%s</addReqSettings>");
 	strcat(f, "</OfflinePINEntryConfiguration>");
-	return format(f, hex(&o->textFont, 0, 1),
+	return format(f, hexByte(o->textFont),
 			hex(o->prompt, 0, 1000),
 			hex(o->promptMAC, 0, 36),
 			hex(o->promptX, 0, 4),
 			hex(o->promptY, 0, 4),
 			hex(o->editX, 0, 4),
 			hex(o->editY, 0, 4),
-			hex(&o->formatType, 0, 1),
+			hexByte(o->formatType),
 			hex(o->formatSpMAC, 0, 9),
 			hex(o->formatSpecifier, 0, 50),
-			hex(&o->minimumKeys, 0, 1),
-			hex(&o->maximumKeys, 0, 1),
-			hex(&o->echoCharacter, 0, 1),
-			hex(&o->cursorType, 0, 1),
-			hex(&o->direction, 0, 1),
+			hexByte(o->minimumKeys),
+			hexByte(o->maximumKeys),
+			hexByte(o->echoCharacter),
+			hexByte(o->cursorType),
+			hexByte(o->direction),
 			hex(o->beepInvalidKey, 0, 4),
 			hex(o->timeOutFirstKey, 0, 4),
 			hex(o->timeOutInterKey, 0, 4),
-			hex(&o->keyType, 0, 1),
-			hex(&o->keyIndex, 0, 1),
+			hexByte(o->keyType),
+			hexByte(o->keyIndex),
 			hex(o->noEnterLessMin, 0, 4),
 			hex(o->addReqSettings, 0, 2)
 	);
@@ -619,11 +641,11 @@ char * TerminalSpecificDataToXML(TerminalSpecificData * o) {
 	char * head = format(f, hex(o->terminalCapabilities, 0, 3),
 			hex(o->additionalTerminalCapabilities, 0, 5),
 			hex(o->terminalCountryCode, 0, 2),
-			hex(&o->terminalType, 0, 1),
+			hexByte(o->terminalType),
 			hex(o->transactionCurrencyCode, 0, 2),
-			hex(&o->transactionCurrencyExponent, 0, 1),
+			hexByte(o->transactionCurrencyExponent),
 			hex(o->transactionReferenceCurrencyCode, 0, 2),
-			hex(&o->transactionReferenceCurrencyExponent, 0, 1),
+			hexByte(o->transactionReferenceCurrencyExponent),
 			hex(o->transactionReferenceCurrencyConversion, 0, 4),
 			hex(o->acquirerIdentifier, 0, 6),
 			hex(o->merchantCategoryCode, 0, 2),
@@ -632,8 +654,8 @@ char * TerminalSpecificDataToXML(TerminalSpecificData * o) {
 			hex(o->terminalRiskManagementData, 0, 8),
 			hex(o->ifdSerialNumber, 0, 8),
 			hex(o->authorizationResponseCodeList, 0, 20),
-			hex(&o->miscellaneousOptions, 0, 1),
-			hex(&o->miscellaneousOptions1, 0, 1));
+			hexByte(o->miscellaneousOptions),
+			hexByte(o->miscellaneousOptions1));
 	memset(f, 0, 1024);
 	strcat(f, "<lengthTLVData>%s</lengthTLVData>");
 	strcat(f, "<tlvData>%s</tlvData>");

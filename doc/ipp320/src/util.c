@@ -19,6 +19,14 @@ char * hex(char * s, int offset, int length) {
 	return hex;
 }
 
+char * hexByte(byte b) {
+	char * s = malloc(3);
+	s[2] = '\0';
+	s[1] = hexChar(b & 0x0f);
+	s[0] = hexChar(((b & 0xf0) >> 4) & 0x0f);
+	return s;
+}
+
 char hexChar(char c) {
 	return c > 9 ? c - 10 + 'a' : c + '0';
 }
