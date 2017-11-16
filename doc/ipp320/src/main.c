@@ -103,6 +103,7 @@ int main(void) {
 
 	out = VegaInitDataToXML(v);
 	puts(out);
+	fflush(stdout);
 
 //	print(out, 80);
 
