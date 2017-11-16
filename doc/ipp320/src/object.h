@@ -18,7 +18,7 @@
 #define RS  0x1e
 #define SPACE 0x20
 
-typedef char byte;
+typedef unsigned char byte;
 
 typedef enum EmvReasonCode {
 	EMV_USER_CANCELLED,
