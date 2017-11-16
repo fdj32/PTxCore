@@ -364,6 +364,7 @@ char * RIDToXML(RID * o) {
 			KeyDataToXML(o->keyDatas, littleEndianInt(o->keyDataTotalLength)/276),
 			hex(o->lengthGoOnlineTags, 0, 2),
 			TagsToXML(o->goOnlineTags, littleEndianInt(o->lengthGoOnlineTags)>>1),
+			hex(o->lengthEndOfTransactionTags, 0, 2),
 			LengthThenTagsToXML(o->endOfTransactionTags, 7),
 			hex(o->endOfTransactionStep, 0, 7),
 			hex(o->lengthGetPreviousAmountTags, 0, 2),
