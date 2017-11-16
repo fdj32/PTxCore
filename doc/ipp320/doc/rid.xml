@@ -1,0 +1,4190 @@
+<RID>
+	<rid>a000000152</rid>
+	<keyDataTotalLength>5004</keyDataTotalLength>
+	<keyDatas>
+		<KeyData>
+			<keyIndex>5a</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>80</keyLength>
+			<key>edd8252468a705614b4d07de3211b30031aedb6d33a4315f2cff7c97db918993c2dc02e79e2ff8a2683d5bbd0f614bc9ab360a448283ef8b9cf6731d71d6be939b7c5d0b0452d660cf24c21c47cac8e26948c8eed8e3d00c016828d642816e658dc2cfc61e7e7d7740633befe34107c1fb55dea7faaea2b25e85bed948893d07000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>cc9585e8e637191c10fcecb32b5ae1b9d410b52d</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>5b</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>90</keyLength>
+			<key>d3f45d065d4d900f68b2129afa38f549ab9ae4619e5545814e468f382049a0b9776620da60d62537f0705a2c926dbead4ca7cb43f0f0dd809584e9f7efbda3778747bc9e25c5606526fab5e491646d4dd28278691c25956c8fed5e452f2442e25edc6b0c1aa4b2e9ec4ad9b25a1b836295b823eddc5eb6e1e0a3f41b28db8c3b7e3e9b5979cd7e079ef024095a1d19dd0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>4dc5c6cab6ae96974d9dc8b2435e21f526bc7a60</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>5c</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>b0</keyLength>
+			<key>833f275fcf5ca4cb6f1bf880e54dcfeb721a316692cafeb28b698caecafa2b2d2ad8517b1efb59ddefc39f9c3b33ddee40e7a63c03e90a4dd261bc0f28b42ea6e7a1f307178e2d63fa1649155c3a5f926b4c7d7c258bca98ef90c7f4117c205e8e32c45d10e3d494059d2f2933891b979ce4a831b301b0550cdae9b67064b31d8b481b85a5b046be8ffa7bdb58dc0d7032525297f26ff619af7f15bcec0c92bcdcbc4fb207d115aa65cd04c1cf982191000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>60154098cbba350f5f486ca31083d1fc474e31f8</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>5d</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>f8</keyLength>
+			<key>ad938ea9888e5155f8cd272749172b3a8c504c17460efa0bed7cbc5fd32c4a80fd810312281b5a35562800cdc325358a9639c501a537b7ae43df263e6d232b811acdb6dde979d55d6c911173483993a423a0a5b1e1a70237885a241b8eebb5571e2d32b41f9cc5514df83f0d69270e109af1422f985a52cce04f3df269b795155a68ad2d6b660ddcd759f0a5da7b64104d22c2771ece7a5ffd40c774e441379d1132faf04cdf55b9504c6dce9f61776d81c7c45f19b9efb3749ac7d486a5ad2e781fa9d082fb2677665b99fa5f1553135a1fd2a2a9fbf625ca84a7d736521431178f13100a2516f9a43ce095b032b886c7a6ab126e203be7
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>b51ec5f7de9bb6d8bce8fb5f69ba57a04221f39b</keyCheckSum>
+		</KeyData>
+	</keyDatas>
+	<lengthGoOnlineTags>4400</lengthGoOnlineTags>
+	<goOnlineTags>
+		<Tag id="4f00" />
+		<Tag id="5700" />
+		<Tag id="8200" />
+		<Tag id="8400" />
+		<Tag id="9500" />
+		<Tag id="9a00" />
+		<Tag id="9b00" />
+		<Tag id="9c00" />
+		<Tag id="2a5f" />
+		<Tag id="305f" />
+		<Tag id="345f" />
+		<Tag id="029f" />
+		<Tag id="089f" />
+		<Tag id="099f" />
+		<Tag id="109f" />
+		<Tag id="1a9f" />
+		<Tag id="269f" />
+		<Tag id="279f" />
+		<Tag id="349f" />
+		<Tag id="359f" />
+		<Tag id="369f" />
+		<Tag id="379f" />
+		<Tag id="399f" />
+		<Tag id="419f" />
+		<Tag id="429f" />
+		<Tag id="669f" />
+		<Tag id="6b9f" />
+		<Tag id="6c9f" />
+		<Tag id="6e9f" />
+		<Tag id="719f" />
+		<Tag id="7c9f" />
+		<Tag id="0bff" />
+		<Tag id="18ff" />
+		<Tag id="1dff" />
+	</goOnlineTags>
+	<lengthEndOfTransactionTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+	</lengthEndOfTransactionTags>
+	<endOfTransactionTags>0803ff030308ff</endOfTransactionTags>
+	<endOfTransactionStep>0000</endOfTransactionStep>
+	<lengthGetPreviousAmountTags>(null)</lengthGetPreviousAmountTags>
+	<getPreviousAmountTags>2a04</getPreviousAmountTags>
+	<lengthExtendedAPIData>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+	</lengthExtendedAPIData>
+	<extendedAPIData>0000</extendedAPIData>
+	<lengthProprietaryRIDData></lengthProprietaryRIDData>
+	<proprietaryRIDData>0200</proprietaryRIDData>
+	<lengthIgnoredTags></lengthIgnoredTags>
+	<ignoreTags>00</ignoreTags>
+	<miscellaneousOptions>0400</miscellaneousOptions>
+	<lengthTLVData>ff090000</lengthTLVData>
+	<tlvData>H壠H崊利??H冹AUAV?蛋???胆???禒???禈???祼???祱???祤???祒???祊???礹???礰??L媿X??M夬L夅H壼H壡?
+	</tlvData>
+</RID>
+<RID>
+	<rid>a000000277</rid>
+	<keyDataTotalLength>6405</keyDataTotalLength>
+	<keyDatas>
+		<KeyData>
+			<keyIndex>02</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>90</keyLength>
+			<key>e0ffbee77cee02adee8b4b004d26fb46faf3ce033e3b874d73d099a966a0657497cee214e95df2bf5c9d359a3b10c05cfc9929bef3070036fd19ae661b173e486cbc9b04e4b2e2d0d8209caf5c200929fa252a21bd69a9a47488844a1de5bf8729ce5e5e92117047bdde9fbe72397fd9fc3be459d8ed06fd6cadf0aff39c93cc07b312ee2acb3d4a15e919f57481cfef0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>03</keyExponentLength>
+			<keyExponent>010001</keyExponent>
+			<keyCheckSum>baf3652a9f5d0ff45eececa55b4597b1f53be283</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>03</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>b0</keyLength>
+			<key>e51505ccecdd0799bafe097200df40ffc2154836b8d67f1e99d4d415f73c04a9fad73825d32ae5ba77fcd02597393ce4d8104b6010d5a8f28f2b47bb8298dafd63c9c0bef62af937265614e31ae2ab45b60b968db9dee55602c169f6c16d4579baa24765560300a3056f894ba8ffa566d9ccd79453d804b97da14f21f9c3528ed8b8a368a9facf05c46c13a9ba020618425ef1acf6cb4dd5dcd050273502114b59ee90ebd833f70c2f324741e79a19a1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>03</keyExponentLength>
+			<keyExponent>010001</keyExponent>
+			<keyCheckSum>0fb60a1bca38095f3cc578d2dec95f779840a343</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>07</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>f8</keyLength>
+			<key>b2ce89726b6b2d1690a0f8ca75cd0b6b1acdfbe66d53ba00c500be612fb421423684ff1868554a7722258012e588ed1cd206c67bb2f7598f3ce67f23a888b8ed7421c49a2eba224dfbd866f62e59338e9f626d0dfd4c9acc626e42ec0375ee424c93e5db5773fc98e4ac9fcdebd0521b15295c797dcabb4679c055ac374a81b245abf1092a3d46e1cce10a84f9fc2fc6ed91025121589c9aa68b56b7fbf0d86b4c8e3c9c08406dbb4609bbfc5308f325a8273cb6d36f3e0af772507bf8a2a9f5a749b5af98cceab2826c2d9c2ab9103b1bab0de92099c8072477ec564062ac38184c60dad298ef352d92dfa041dde3db260ce5302b47a7e9
+			</key>
+			<keyExponentLength>03</keyExponentLength>
+			<keyExponent>010001</keyExponent>
+			<keyCheckSum>44f2c13373a5068b63c9334e914dde6ab70ce0f1</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>09</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>80</keyLength>
+			<key>f802c308544873ad2225a81943732a4b7cffa4e3157d17cd5a7723f858f0b11e636d2930fa933778f27c7c49127e0cca317021cfe8e0f773785eb3ff07587e98ce8ed4fe9e1ca1859f41a9cf2572d8a093c5465f5a29612a45b1700f4da13814c3d4df075eaade8db4be4d7b3ae0256f7a0c12e34bd416cac4f9250c38b7e13b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>03</keyExponentLength>
+			<keyExponent>010001</keyExponent>
+			<keyCheckSum>a2974d6b8f302a923740e2bc6217075202037b8b</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>40</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>80</keyLength>
+			<key>f802c308544873ad2225a81943732a4b7cffa4e3157d17cd5a7723f858f0b11e636d2930fa933778f27c7c49127e0cca317021cfe8e0f773785eb3ff07587e98ce8ed4fe9e1ca1859f41a9cf2572d8a093c5465f5a29612a45b1700f4da13814c3d4df075eaade8db4be4d7b3ae0256f7a0c12e34bd416cac4f9250c38b7e13b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>03</keyExponentLength>
+			<keyExponent>010001</keyExponent>
+			<keyCheckSum>2015497be4b86f104bbf337691825eed64e101ca</keyCheckSum>
+		</KeyData>
+	</keyDatas>
+	<lengthGoOnlineTags>4400</lengthGoOnlineTags>
+	<goOnlineTags>
+		<Tag id="4f00" />
+		<Tag id="5700" />
+		<Tag id="8200" />
+		<Tag id="8400" />
+		<Tag id="9500" />
+		<Tag id="9a00" />
+		<Tag id="9b00" />
+		<Tag id="9c00" />
+		<Tag id="2a5f" />
+		<Tag id="305f" />
+		<Tag id="345f" />
+		<Tag id="029f" />
+		<Tag id="089f" />
+		<Tag id="099f" />
+		<Tag id="109f" />
+		<Tag id="1a9f" />
+		<Tag id="269f" />
+		<Tag id="279f" />
+		<Tag id="349f" />
+		<Tag id="359f" />
+		<Tag id="369f" />
+		<Tag id="379f" />
+		<Tag id="399f" />
+		<Tag id="419f" />
+		<Tag id="429f" />
+		<Tag id="669f" />
+		<Tag id="6b9f" />
+		<Tag id="6c9f" />
+		<Tag id="6e9f" />
+		<Tag id="719f" />
+		<Tag id="7c9f" />
+		<Tag id="0bff" />
+		<Tag id="18ff" />
+		<Tag id="1dff" />
+	</goOnlineTags>
+	<lengthEndOfTransactionTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+	</lengthEndOfTransactionTags>
+	<endOfTransactionTags>0808ff080808ff</endOfTransactionTags>
+	<endOfTransactionStep>0000</endOfTransactionStep>
+	<lengthGetPreviousAmountTags>(null)</lengthGetPreviousAmountTags>
+	<getPreviousAmountTags>2a04</getPreviousAmountTags>
+	<lengthExtendedAPIData>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+	</lengthExtendedAPIData>
+	<extendedAPIData>0000</extendedAPIData>
+	<lengthProprietaryRIDData></lengthProprietaryRIDData>
+	<proprietaryRIDData>0200</proprietaryRIDData>
+	<lengthIgnoredTags></lengthIgnoredTags>
+	<ignoreTags>00</ignoreTags>
+	<miscellaneousOptions>0400</miscellaneousOptions>
+	<lengthTLVData>ff090000</lengthTLVData>
+	<tlvData>H壠H崊利??H冹AUAV?蛋???胆???禒???禈???祼???祱???祤???祒???祊???礹???礰??L媿X??M夬L夅H壼H壡?
+	</tlvData>
+</RID>
+<RID>
+	<rid>a000000065</rid>
+	<keyDataTotalLength>5004</keyDataTotalLength>
+	<keyDatas>
+		<KeyData>
+			<keyIndex>08</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>80</keyLength>
+			<key>b74670dad1dc8983652000e5a7f2f8b35dfd083ee593e5ba895c95729f2bade9c8abf3dd9ce240c451c6ceffc768d83cbac76abb8fea58f013c647007cff7617bac2ae3981816f25cc7e5238ef34c4f02d0b01c24f80c2c65e7e7743a4fa8e23206a23ece290c26ea56db085c5c5eae26292451fc8292f9957be8ff20fad53e5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>dd36d5896228c8c4900742f107e2f91fe50bc7ee</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>0f</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>90</keyLength>
+			<key>9efbadde4071d4ef98c969eb32af854864602e515d6501fde576b310964a4f7c2ce842abefafc5dc9e26a619bcf2614fe07375b9249befa09cfee70232e75ffd647571280c76ffca87511ad255b98a6b577591af01d003bd6bf7e1fce4dfd20d0d0297ed5eca25de261f37efe9e175fb5f12d2503d8cfb060a63138511fe0e125cf3a643afd7d66dcf9682bd246ddea10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>2a1b82de00f5f0c401760adf528228d3ede0f403</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>11</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>b0</keyLength>
+			<key>a2583aa40746e3a63c22478f576d1efc5fb046135a6fc739e82b55035f71b09beb566edb9968dd649b94b6dedc033899884e908c27be1cd291e5436f762553297763daa3b890d778c0f01e3344cecdfb3ba70d7e055b8c760d0179a403d6b55f2b3b083912b183adb7927441bed3395a199eefe0debd1f5fc3264033da856f4a8b93916885bd42f9c1f456aab8cfa83ac574833eb5e87bb9d4c006a4b5346bd9e17e139ab6552d9c58bc041195336485000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>d9fd62c9dd4e6de7741e9a17fb1ff2c5db948bcb</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>13</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>f8</keyLength>
+			<key>a3270868367e6e29349fc2743ee545ac53bd3029782488997650108524fd051e3b6eaca6a9a6c1441d28889a5f46413c8f62f3645aaeb30a1521eef41fd4f3445bfa1ab29f9ac1a74d9a16b93293296cb09162b149bac22f88ad8f322d684d6b49a12413fc1b6ac70ededb18ec1585519a89b50b3d03e14063c2ca58b7c2ba7fb22799a33bcde6afcbeb4a7d64911d08d18c47f9bd14a9fad8805a15de5a38945a97919b7ab88efa11a88c0cd92c6ee7dc352ab0746abf13585913c8a4e04464b77909c6bd94341a8976c4769ea6c0d30a60f4ee8fa19e767b170df4fa80312dba61db645d5d1560873e2674e1f620083f30180bd96ca589
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>54cfae617150dfa09d3f901c9123524523ebedf3</keyCheckSum>
+		</KeyData>
+	</keyDatas>
+	<lengthGoOnlineTags>4400</lengthGoOnlineTags>
+	<goOnlineTags>
+		<Tag id="4f00" />
+		<Tag id="5700" />
+		<Tag id="8200" />
+		<Tag id="8400" />
+		<Tag id="9500" />
+		<Tag id="9a00" />
+		<Tag id="9b00" />
+		<Tag id="9c00" />
+		<Tag id="2a5f" />
+		<Tag id="305f" />
+		<Tag id="345f" />
+		<Tag id="029f" />
+		<Tag id="089f" />
+		<Tag id="099f" />
+		<Tag id="109f" />
+		<Tag id="1a9f" />
+		<Tag id="269f" />
+		<Tag id="279f" />
+		<Tag id="349f" />
+		<Tag id="359f" />
+		<Tag id="369f" />
+		<Tag id="379f" />
+		<Tag id="399f" />
+		<Tag id="419f" />
+		<Tag id="429f" />
+		<Tag id="669f" />
+		<Tag id="6b9f" />
+		<Tag id="6c9f" />
+		<Tag id="6e9f" />
+		<Tag id="719f" />
+		<Tag id="7c9f" />
+		<Tag id="0bff" />
+		<Tag id="18ff" />
+		<Tag id="1dff" />
+	</goOnlineTags>
+	<lengthEndOfTransactionTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+	</lengthEndOfTransactionTags>
+	<endOfTransactionTags>0803ff030308ff</endOfTransactionTags>
+	<endOfTransactionStep>0000</endOfTransactionStep>
+	<lengthGetPreviousAmountTags>(null)</lengthGetPreviousAmountTags>
+	<getPreviousAmountTags>2a04</getPreviousAmountTags>
+	<lengthExtendedAPIData>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+	</lengthExtendedAPIData>
+	<extendedAPIData>0000</extendedAPIData>
+	<lengthProprietaryRIDData></lengthProprietaryRIDData>
+	<proprietaryRIDData>0200</proprietaryRIDData>
+	<lengthIgnoredTags></lengthIgnoredTags>
+	<ignoreTags>00</ignoreTags>
+	<miscellaneousOptions>0400</miscellaneousOptions>
+	<lengthTLVData>ff090000</lengthTLVData>
+	<tlvData>H壠H崊利??H冹AUAV?蛋???胆???禒???禈???祼???祱???祤???祒???祊???礹???礰??L媿X??M夬L夅H壼H壡?
+	</tlvData>
+</RID>
+<RID>
+	<rid>a000000004</rid>
+	<keyDataTotalLength>7806</keyDataTotalLength>
+	<keyDatas>
+		<KeyData>
+			<keyIndex>ef</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>f8</keyLength>
+			<key>a191cb87473f29349b5d60a88b3eaee0973aa6f1a082f358d849fddff9c091f899eda9792caf09ef28f5d22404b88a2293eebbc1949c43bea4d60cfd879a1539544e09e0f09f60f065b2bf2a13ecc705f3d468b9d33ae77ad9d3f19ca40f23dcf5eb7c04dc8f69eba565b1ebcb4686cd274785530ff6f6e9ee43aa43fdb02ce00daec15c7b8fd6a9b394baba419d3f6dc85e16569be8e76989688efea2df22ff7d35c043338deaa982a02b866de5328519ebbcd6f03cdd686673847f84db651ab86c28cf1462562c577b853564a290c8556d818531268d25cc98a4cc6a0bdfffda2dcca3a94c998559e307fddf915006d9a987b07ddaeb3b
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>21766ebb0ee122afb65d7845b73db46bab65427a</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>f1</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>b0</keyLength>
+			<key>a0dcf4bde19c3546b4b6f0414d174dde294aabbb828c5a834d73aae27c99b0b053a90278007239b6459ff0bbcd7b4b9c6c50ac02ce91368da1bd21aaeadbc65347337d89b68f5c99a09d05be02dd1f8c5ba20e2f13fb2a27c41d3f85cad5cf6668e75851ec66edbf98851fd4e42c44c1d59f5984703b27d5b9f21b8fa0d93279fbbf69e090642909c9ea27f898959541aa6757f5f624104f6e1d3a9532f2a6e51515aead1b43b3d7835088a2fafa7be7000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>d8e68da167ab5a85d8c3d55ecb9b0517a1a5b4bb</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>f3</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>90</keyLength>
+			<key>98f0c770f23864c2e766df02d1e833dff4ffe92d696e1642f0a88c5694c6479d16db1537bfe29e4fdc6e6e8afd1b0eb7ea0124723c333179bf19e93f10658b2f776e829e87daeda9c94a8b3382199a350c077977c97aff08fd11310ac950a72c3ca5002ef513fccc286e646e3c5387535d509514b3b326e1234f9cb48c36ddd44b416d23654034a66f403ba511c5efa30000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>a69ac7603daf566e972dedc2cb433e07e8b01a9a</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>f8</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>80</keyLength>
+			<key>a1f5e1c9bd8650bd43ab6ee56b891ef7459c0a24fa84f9127d1a6c79d4930f6db1852e2510f18b61cd354db83a356bd190b88ab8df04284d02a4204a7b6cb7c5551977a9b36379ca3de1a08e69f301c95cc1c20506959275f41723dd5d2925290579e5a95b0df6323fc8e9273d6f849198c4996209166d9bfc973c361cc826e1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>f06ecc6d2aaebf259b7e755a38d9a9b24e2ff3dd</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>fa</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>90</keyLength>
+			<key>a90fcd55aa2d5d9963e35ed0f440177699832f49c6bab15cdae5794be93f934d4462d5d12762e48c38ba83d8445deaa74195a301a102b2f114eada0d180ee5e7a5c73e0c4e11f67a43ddab5d55683b1474cc0627f44b8d3088a492ffaadad4f42422d0e7013536c3c49ad3d0fae96459b0f6b1b6056538a3d6d44640f94467b108867dec40faaecd740c00e2b7a8852d0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>5bed4068d96ea16d2d77e03d6036fc7a160ea99c</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>fe</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>80</keyLength>
+			<key>a653eac1c0f786c8724f737f172997d63d1c3251c44402049b865bae877d0f398cbfbe8a6035e24afa086befde9351e54b95708ee672f0968bcd50dce40f783322b2aba04ef137ef18abf03c7dbc5813aeaef3aa7797ba15df7d5ba1cbaf7fd520b5a482d8d3fee105077871113e23a49af3926554a70fe10ed728cf793b62a1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>9a295b05fb390ef7923f57618a9fda2941fc34e0</keyCheckSum>
+		</KeyData>
+	</keyDatas>
+	<lengthGoOnlineTags>4400</lengthGoOnlineTags>
+	<goOnlineTags>
+		<Tag id="4f00" />
+		<Tag id="5700" />
+		<Tag id="8200" />
+		<Tag id="8400" />
+		<Tag id="9500" />
+		<Tag id="9a00" />
+		<Tag id="9b00" />
+		<Tag id="9c00" />
+		<Tag id="2a5f" />
+		<Tag id="305f" />
+		<Tag id="345f" />
+		<Tag id="029f" />
+		<Tag id="089f" />
+		<Tag id="099f" />
+		<Tag id="109f" />
+		<Tag id="1a9f" />
+		<Tag id="269f" />
+		<Tag id="279f" />
+		<Tag id="349f" />
+		<Tag id="359f" />
+		<Tag id="369f" />
+		<Tag id="379f" />
+		<Tag id="399f" />
+		<Tag id="419f" />
+		<Tag id="429f" />
+		<Tag id="669f" />
+		<Tag id="6b9f" />
+		<Tag id="6c9f" />
+		<Tag id="6e9f" />
+		<Tag id="719f" />
+		<Tag id="7c9f" />
+		<Tag id="0bff" />
+		<Tag id="18ff" />
+		<Tag id="1dff" />
+	</goOnlineTags>
+	<lengthEndOfTransactionTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+	</lengthEndOfTransactionTags>
+	<endOfTransactionTags>0803ff030308ff</endOfTransactionTags>
+	<endOfTransactionStep>0000</endOfTransactionStep>
+	<lengthGetPreviousAmountTags>(null)</lengthGetPreviousAmountTags>
+	<getPreviousAmountTags>2a04</getPreviousAmountTags>
+	<lengthExtendedAPIData>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+	</lengthExtendedAPIData>
+	<extendedAPIData>0000</extendedAPIData>
+	<lengthProprietaryRIDData></lengthProprietaryRIDData>
+	<proprietaryRIDData>0200</proprietaryRIDData>
+	<lengthIgnoredTags></lengthIgnoredTags>
+	<ignoreTags>00</ignoreTags>
+	<miscellaneousOptions>0400</miscellaneousOptions>
+	<lengthTLVData>ff090000</lengthTLVData>
+	<tlvData>H壠H崊利??H冹AUAV?蛋???胆???禒???禈???祼???祱???祤???祒???祊???礹???礰??L媿X??M夬L夅H壼H壡?
+	</tlvData>
+</RID>
+<RID>
+	<rid>a000000003</rid>
+	<keyDataTotalLength>7806</keyDataTotalLength>
+	<keyDatas>
+		<KeyData>
+			<keyIndex>50</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>80</keyLength>
+			<key>d11197590057b84196c2f4d11a8f3c05408f422a35d702f90106ea5b019bb28ae607aa9cdebcd0d81a38d48c7ebb0062d287369ec0c42124246ac30d80cd602ab7238d51084ded4698162c59d25eac1e66255b4db2352526ef0982c3b8ad3d1cce85b01db5788e75e09f44be7361366def9d1e1317b05e5d0ff5290f88a0db47000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>03</keyExponentLength>
+			<keyExponent>010001</keyExponent>
+			<keyCheckSum>b769775668cacb5d22a647d1d993141edab7237b</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>51</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>90</keyLength>
+			<key>db5fa29d1fda8c1634b04dccff148abee63c772035c79851d3512107586e02a917f7c7e885e7c4a7d529710a145334ce67dc412cb1597b77aa2543b98d19cf2cb80c522bdbea0f1b113fa2c86216c8c610a2d58f29cf3355ceb1bd3ef410d1edd1f7ae0f16897979de28c6ef293e0a19282bd1d793f1331523fc71a228800468c01a3653d14c6b4851a5c029478e757f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>b9d248075a3f23b522fe45573e04374dc4995d71</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>92</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>b0</keyLength>
+			<key>996af56f569187d09293c14810450ed8ee3357397b18a2458efaa92da3b6df6514ec060195318fd43be9b8f0cc669e3f844057cbddf8bda191bb64473bc8dc9a730db8f6b4ede3924186ffd9b8c7735789c23a36ba0b8af65372eb57ea5d89e7d14e9c7b6b557460f10885da16ac923f15af3758f0f03ebd3c5c2c949cba306db44e6a2c076c5f67e281d7ef56785dc4d75945e491f01918800a9e2dc66f60080566ce0daf8d17ead46ad8e30a247c9f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>429c954a3859cef91295f663c963e582ed6eb253</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>94</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>f8</keyLength>
+			<key>acd2b12302ee644f3f835abd1fc7a6f62cce48ffec622aa8ef062bef6fb8ba8bc68bbf6ab5870eed579bc3973e121303d34841a796d6dcbc41dbf9e52c4609795c0ccf7ee86fa1d5cb041071ed2c51d2202f63f1156c58a92d38bc60bdf424e1776e2bc9648078a03b36fb554375fc53d57c73f5160ea59f3afc5398ec7b67758d65c9bff7828b6b82d4be124a416ab7301914311ea462c19f771f31b3b57336000dff732d3b83de07052d730354d297bec72871dccf0e193f171aba27ee464c6a97690943d59bdabb2a27eb71ceebdafa1176046478fd62fec452d5ca393296530aa3f41927adfe434a2df2ae3054f8840657a26e0fc617
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>c4a3c43ccf87327d136b804160e47d43b60e6e0f</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>95</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>90</keyLength>
+			<key>be9e1fa5e9a803852999c4ab432db28600dcd9dab76dfaaa47355a0fe37b1508ac6bf38860d3c6c2e5b12a3caaf2a7005a7241ebaa7771112c74cf9a0634652fbca0e5980c54a64761ea101a114e0f0b5572add57d010b7c9c887e104ca4ee1272da66d997b9a90b5a6d624ab6c57e73c8f919000eb5f684898ef8c3dbefb330c62660bed88ea78e909aff05f6da627b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>ee1511cec71020a9b90443b37b1d5f6e703030f6</keyCheckSum>
+		</KeyData>
+		<KeyData>
+			<keyIndex>99</keyIndex>
+			<keyAlgorithmIndicator>01</keyAlgorithmIndicator>
+			<hashAlgorithmIndicator>01</hashAlgorithmIndicator>
+			<keyLength>80</keyLength>
+			<key>ab79fcc9520896967e776e64444e5dcdd6e13611874f3985722520425295eea4bd0c2781de7f31cd3d041f565f747306eed62954b17edaba3a6c5b85a1de1beb9a34141af38fcf8279c9dea0d5a6710d08db4124f041945587e20359bab47b7575ad94262d4b25f264af33dedcf28e09615e937de32edc03c54445fe7e382777000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			</key>
+			<keyExponentLength>01</keyExponentLength>
+			<keyExponent>030000</keyExponent>
+			<keyCheckSum>4abffd6b1c51212d05552e431c5b17007d2f5e6d</keyCheckSum>
+		</KeyData>
+	</keyDatas>
+	<lengthGoOnlineTags>4400</lengthGoOnlineTags>
+	<goOnlineTags>
+		<Tag id="4f00" />
+		<Tag id="5700" />
+		<Tag id="8200" />
+		<Tag id="8400" />
+		<Tag id="9500" />
+		<Tag id="9a00" />
+		<Tag id="9b00" />
+		<Tag id="9c00" />
+		<Tag id="2a5f" />
+		<Tag id="305f" />
+		<Tag id="345f" />
+		<Tag id="029f" />
+		<Tag id="089f" />
+		<Tag id="099f" />
+		<Tag id="109f" />
+		<Tag id="1a9f" />
+		<Tag id="269f" />
+		<Tag id="279f" />
+		<Tag id="349f" />
+		<Tag id="359f" />
+		<Tag id="369f" />
+		<Tag id="379f" />
+		<Tag id="399f" />
+		<Tag id="419f" />
+		<Tag id="429f" />
+		<Tag id="669f" />
+		<Tag id="6b9f" />
+		<Tag id="6c9f" />
+		<Tag id="6e9f" />
+		<Tag id="719f" />
+		<Tag id="7c9f" />
+		<Tag id="0bff" />
+		<Tag id="18ff" />
+		<Tag id="1dff" />
+	</goOnlineTags>
+	<lengthEndOfTransactionTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>64</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8a00" />
+			<Tag id="8f00" />
+			<Tag id="9500" />
+			<Tag id="9a00" />
+			<Tag id="9b00" />
+			<Tag id="9c00" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="2d5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="029f" />
+			<Tag id="039f" />
+			<Tag id="079f" />
+			<Tag id="089f" />
+			<Tag id="099f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="109f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1d9f" />
+			<Tag id="269f" />
+			<Tag id="279f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="369f" />
+			<Tag id="379f" />
+			<Tag id="399f" />
+			<Tag id="419f" />
+			<Tag id="429f" />
+			<Tag id="669f" />
+			<Tag id="6b9f" />
+			<Tag id="6c9f" />
+			<Tag id="6e9f" />
+			<Tag id="719f" />
+			<Tag id="7c9f" />
+			<Tag id="11df" />
+			<Tag id="0bff" />
+			<Tag id="18ff" />
+			<Tag id="1dff" />
+			<Tag id="29ff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+	</lengthEndOfTransactionTags>
+	<endOfTransactionTags>0803ff030308ff</endOfTransactionTags>
+	<endOfTransactionStep>0000</endOfTransactionStep>
+	<lengthGetPreviousAmountTags>(null)</lengthGetPreviousAmountTags>
+	<getPreviousAmountTags>2a04</getPreviousAmountTags>
+	<lengthExtendedAPIData>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>3a</Length>
+			<Tag id="4f00" />
+			<Tag id="5000" />
+			<Tag id="5700" />
+			<Tag id="5a00" />
+			<Tag id="8200" />
+			<Tag id="8400" />
+			<Tag id="9a00" />
+			<Tag id="9c00" />
+			<Tag id="205f" />
+			<Tag id="245f" />
+			<Tag id="285f" />
+			<Tag id="2a5f" />
+			<Tag id="305f" />
+			<Tag id="345f" />
+			<Tag id="069f" />
+			<Tag id="079f" />
+			<Tag id="0d9f" />
+			<Tag id="0e9f" />
+			<Tag id="0f9f" />
+			<Tag id="119f" />
+			<Tag id="129f" />
+			<Tag id="1a9f" />
+			<Tag id="1e9f" />
+			<Tag id="339f" />
+			<Tag id="349f" />
+			<Tag id="359f" />
+			<Tag id="399f" />
+			<Tag id="429f" />
+			<Tag id="1dff" />
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+		<LengthThenTags>
+			<Length>00</Length>
+		</LengthThenTags>
+	</lengthExtendedAPIData>
+	<extendedAPIData>0000</extendedAPIData>
+	<lengthProprietaryRIDData></lengthProprietaryRIDData>
+	<proprietaryRIDData>0200</proprietaryRIDData>
+	<lengthIgnoredTags></lengthIgnoredTags>
+	<ignoreTags>00</ignoreTags>
+	<miscellaneousOptions>0400</miscellaneousOptions>
+	<lengthTLVData>ff090000</lengthTLVData>
+	<tlvData>H壠H崊利??H冹AUAV?蛋???胆???禒???禈???祼???祱???祤???祒???祊???礹???礰??L媿X??M夬L夅H壼H壡?
+	</tlvData>
+</RID>
