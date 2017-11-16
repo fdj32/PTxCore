@@ -92,10 +92,8 @@ int main(void) {
 
 
 	LengthThenTags * ltg = v->ridSpecificData->endOfTransactionTags;
-	for(int i =0 ; i<7;i++) {
-		out = LengthThenTagsToXML(ltg+i);
-		puts(out);
-	}
+	out = LengthThenTagsToXML(ltg, 7);
+	puts(out);
 
 
 

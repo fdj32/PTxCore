@@ -245,6 +245,18 @@ KeyData * KeyDataFromBin(char * s, int length) {
 	return o;
 }
 
+char * TagsToXML(Tag * tags, int size) {
+	if(NULL == tags)
+		return NULL;
+	char * s = malloc(512);
+	for(int i =0; i < size; i++) {
+		strcat(s, "<Tag id=\"");
+		strcat(s, hex(littleEndianBin((tags+i)->id), 0, 2));
+		strcat(s, "\"/>");
+	}
+	return s;
+}
+
 char * TagsToBin(Tag * tags, int size) {
 	if (NULL == tags || 0 == size)
 		return NULL;
@@ -268,23 +280,22 @@ Tag * TagsFromBin(char * s, int length) {
 	return tags;
 }
 
-char * LengthThenTagsToXML(LengthThenTags * o) {
+char * LengthThenTagsToXML(LengthThenTags * o, int size) {
 	if(NULL == o)
 		return NULL;
-	if(0 == o->length) {
-		return "00";
+	char * s = malloc(102400);
+	for(int i=0; i<size; i++) {
+		if(0 == (o+i)->length) {
+			strcat(s, "<LengthThenTags><Length>00</Length></LengthThenTags>");
+			continue;
+		}
+		strcat(s, "<LengthThenTags><Length>");
+		strcat(s, hexByte((o+i)->length));
+		strcat(s, "</Length>");
+		int tagSize = (o+i)->length>>1;
+		strcat(s, TagsToXML((o+i)->tags, tagSize));
+		strcat(s, "</LengthThenTags>");
 	}
-	char * s = malloc(512);
-	strcat(s, "<LengthThenTags><Length>");
-	strcat(s, hexByte(o->length));
-	strcat(s, "</Length>");
-	int size = o->length>>1;
-	for(int i =0; i < size; i++) {
-		strcat(s, "<Tag id=\"");
-		strcat(s, hex(littleEndianBin((o->tags+i)->id), 0, 2));
-		strcat(s, "\"/>");
-	}
-	strcat(s, "</LengthThenTags>");
 	return s;
 }
 
@@ -321,6 +332,52 @@ int RIDLength(RID * o) {
 					+ littleEndianInt(o->lengthExtendedAPIData)
 					+ littleEndianInt(o->lengthIgnoredTags)
 					+ littleEndianInt(o->lengthTLVData);
+}
+
+char * RIDToXML(RID * o) {
+	if (NULL == o)
+		return NULL;
+	char f[1024] = "<RID>";
+	strcat(f, "<rid>%s</rid>");
+	strcat(f, "<keyDataTotalLength>%s</keyDataTotalLength>");
+	strcat(f, "<keyDatas>%s</keyDatas>");
+	strcat(f, "<lengthGoOnlineTags>%s</lengthGoOnlineTags>");
+	strcat(f, "<goOnlineTags>%s</goOnlineTags>");
+	strcat(f, "<lengthEndOfTransactionTags>%s</lengthEndOfTransactionTags>");
+	strcat(f, "<endOfTransactionTags>%s</endOfTransactionTags>");
+	strcat(f, "<endOfTransactionStep>%s</endOfTransactionStep>");
+	strcat(f, "<lengthGetPreviousAmountTags>%s</lengthGetPreviousAmountTags>");
+	strcat(f, "<getPreviousAmountTags>%s</getPreviousAmountTags>");
+	strcat(f, "<lengthExtendedAPIData>%s</lengthExtendedAPIData>");
+	strcat(f, "<extendedAPIData>%s</extendedAPIData>");
+	strcat(f, "<lengthProprietaryRIDData>%s</lengthProprietaryRIDData>");
+	strcat(f, "<proprietaryRIDData>%s</proprietaryRIDData>");
+	strcat(f, "<lengthIgnoredTags>%s</lengthIgnoredTags>");
+	strcat(f, "<ignoreTags>%s</ignoreTags>");
+	strcat(f, "<miscellaneousOptions>%s</miscellaneousOptions>");
+	strcat(f, "<lengthTLVData>%s</lengthTLVData>");
+	strcat(f, "<tlvData>%s</tlvData>");
+	strcat(f, "</RID>");
+
+	return format(f, hex(o->rid, 0, 5),
+			hex(o->keyDataTotalLength, 0, 2),
+			KeyDataToXML(o->keyDatas, littleEndianInt(o->keyDataTotalLength)/276),
+			hex(o->lengthGoOnlineTags, 0, 2),
+			TagsToXML(o->goOnlineTags, littleEndianInt(o->lengthGoOnlineTags)>>1),
+			LengthThenTagsToXML(o->endOfTransactionTags, 7),
+			hex(o->endOfTransactionStep, 0, 7),
+			hex(o->lengthGetPreviousAmountTags, 0, 2),
+			TagsToXML(o->getPreviousAmountTags, littleEndianInt(o->lengthGetPreviousAmountTags)>>1),
+			hex(o->lengthExtendedAPIData, 0, 2),
+			LengthThenTagsToXML(o->extendedAPIData, 112),
+			hex(o->lengthProprietaryRIDData, 0, 2),
+			hex(o->proprietaryRIDData, 0, littleEndianInt(o->lengthProprietaryRIDData)),
+			hex(o->lengthIgnoredTags, 0, 2),
+			hex(o->ignoreTags, 0, TagsToXML(o->ignoreTags, littleEndianInt(o->lengthIgnoredTags)>>1)),
+			hexByte(o->miscellaneousOptions),
+			hex(o->lengthTLVData, 0, 2),
+			hex(o->tlvData, 0, littleEndianInt(o->lengthTLVData))
+	);
 }
 
 char * RIDToBin(RID * o) {

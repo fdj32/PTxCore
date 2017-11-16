@@ -204,6 +204,8 @@ typedef struct Tag {
 	char * value;
 } Tag;
 
+char * TagsToXML(Tag * tags, int size);
+
 char * TagsToBin(Tag * tags, int size);
 
 Tag * TagsFromBin(char * s, int length);
@@ -213,7 +215,7 @@ typedef struct LengthThenTags {
 	Tag * tags;
 } LengthThenTags;
 
-char * LengthThenTagsToXML(LengthThenTags * o);
+char * LengthThenTagsToXML(LengthThenTags * o, int size);
 
 char * LengthThenTagsToBin(LengthThenTags * o);
 
@@ -247,6 +249,8 @@ typedef struct RID {
 } RID;
 
 int RIDLength(RID * o);
+
+char * RIDToXML(RID * o);
 
 char * RIDToBin(RID * o);
 
