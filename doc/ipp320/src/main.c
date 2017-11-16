@@ -78,9 +78,15 @@ int main(void) {
 	fileData = RIDListToBin(v->ridSpecificData);
 	out = hex(fileData, 0, littleEndianInt(v->ridDataTotalLength));
 
-	out = TerminalSpecificDataToXML(v->terminalSpecificData);
+	//out = TerminalSpecificDataToXML(v->terminalSpecificData);
 	//out = OfflinePINEntryConfigurationToXML(v->terminalSpecificData->offlinePINEntryConfiguration);
-	puts(out);
+
+	AID * aidp = v->aidSpecificData;
+	while(NULL != aidp) {
+		out = AIDToXML(aidp);
+		puts(out);
+		aidp = aidp->next;
+	}
 //	print(out, 80);
 
 //	fileData = VegaInitDataToBin(v);
