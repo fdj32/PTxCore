@@ -16,27 +16,27 @@ int AIDLength(AID * o) {
 char * AIDToXML(AID * o) {
 	if (NULL == o)
 		return NULL;
-	char f[1024] = "<AID>";
+	char f[1024] = "<AID>\n";
 	strcat(f,
-			"<applicationSelectionIndicator>%s</applicationSelectionIndicator>");
-	strcat(f, "<lengthTLVData>%s</lengthTLVData>");
-	strcat(f, "<tlvData>%s</tlvData>");
-	strcat(f, "<aidLength>%s</aidLength>");
-	strcat(f, "<aid>%s</aid>");
-	strcat(f, "<rid>%s</rid>");
-	strcat(f, "<applicationVersionNumber>%s</applicationVersionNumber>");
-	strcat(f, "<tacDefault>%s</tacDefault>");
-	strcat(f, "<tacDenial>%s</tacDenial>");
-	strcat(f, "<tacOnline>%s</tacOnline>");
-	strcat(f, "<maximumTargetPercentage>%s</maximumTargetPercentage>");
-	strcat(f, "<targetPercentage>%s</targetPercentage>");
-	strcat(f, "<thresholdValue>%s</thresholdValue>");
-	strcat(f, "<terminalFloorLimit>%s</terminalFloorLimit>");
-	strcat(f, "<defaultTDOLLength>%s</defaultTDOLLength>");
-	strcat(f, "<defaultTDOL>%s</defaultTDOL>");
-	strcat(f, "<defaultDDOLLength>%s</defaultDDOLLength>");
-	strcat(f, "<defaultDDOL>%s</defaultDDOL>");
-	strcat(f, "</AID>");
+			"<applicationSelectionIndicator>%s</applicationSelectionIndicator>\n");
+	strcat(f, "<lengthTLVData>%s</lengthTLVData>\n");
+	strcat(f, "<tlvData>%s</tlvData>\n");
+	strcat(f, "<aidLength>%s</aidLength>\n");
+	strcat(f, "<aid>%s</aid>\n");
+	strcat(f, "<rid>%s</rid>\n");
+	strcat(f, "<applicationVersionNumber>%s</applicationVersionNumber>\n");
+	strcat(f, "<tacDefault>%s</tacDefault>\n");
+	strcat(f, "<tacDenial>%s</tacDenial>\n");
+	strcat(f, "<tacOnline>%s</tacOnline>\n");
+	strcat(f, "<maximumTargetPercentage>%s</maximumTargetPercentage>\n");
+	strcat(f, "<targetPercentage>%s</targetPercentage>\n");
+	strcat(f, "<thresholdValue>%s</thresholdValue>\n");
+	strcat(f, "<terminalFloorLimit>%s</terminalFloorLimit>\n");
+	strcat(f, "<defaultTDOLLength>%s</defaultTDOLLength>\n");
+	strcat(f, "<defaultTDOL>%s</defaultTDOL>\n");
+	strcat(f, "<defaultDDOLLength>%s</defaultDDOLLength>\n");
+	strcat(f, "<defaultDDOL>%s</defaultDDOL>\n");
+	strcat(f, "</AID>\n");
 
 	return format(f, hexByte(o->applicationSelectionIndicator),
 			hexByte(o->lengthTLVData),
@@ -183,16 +183,16 @@ char * KeyDataToXML(KeyData * o, int size) {
 	if(NULL == o)
 		return NULL;
 	char * out = malloc(102400);
-	char f[1024] = "<KeyData>";
-	strcat(f, "<keyIndex>%s</keyIndex>");
-	strcat(f, "<keyAlgorithmIndicator>%s</keyAlgorithmIndicator>");
-	strcat(f, "<hashAlgorithmIndicator>%s</hashAlgorithmIndicator>");
-	strcat(f, "<keyLength>%s</keyLength>");
-	strcat(f, "<key>%s</key>");
-	strcat(f, "<keyExponentLength>%s</keyExponentLength>");
-	strcat(f, "<keyExponent>%s</keyExponent>");
-	strcat(f, "<keyCheckSum>%s</keyCheckSum>");
-	strcat(f, "</KeyData>");
+	char f[1024] = "<KeyData>\n";
+	strcat(f, "<keyIndex>%s</keyIndex>\n");
+	strcat(f, "<keyAlgorithmIndicator>%s</keyAlgorithmIndicator>\n");
+	strcat(f, "<hashAlgorithmIndicator>%s</hashAlgorithmIndicator>\n");
+	strcat(f, "<keyLength>%s</keyLength>\n");
+	strcat(f, "<key>%s</key>\n");
+	strcat(f, "<keyExponentLength>%s</keyExponentLength>\n");
+	strcat(f, "<keyExponent>%s</keyExponent>\n");
+	strcat(f, "<keyCheckSum>%s</keyCheckSum>\n");
+	strcat(f, "</KeyData>\n");
 	for(int i = 0; i < size; i++) {
 		char * s = format(f, hexByte((o+i)->keyIndex),
 				hexByte((o+i)->keyAlgorithmIndicator),
@@ -252,7 +252,7 @@ char * TagsToXML(Tag * tags, int size) {
 	for(int i =0; i < size; i++) {
 		strcat(s, "<Tag id=\"");
 		strcat(s, hex(littleEndianBin((tags+i)->id), 0, 2));
-		strcat(s, "\"/>");
+		strcat(s, "\"/>\n");
 	}
 	return s;
 }
@@ -286,15 +286,15 @@ char * LengthThenTagsToXML(LengthThenTags * o, int size) {
 	char * s = malloc(102400);
 	for(int i=0; i<size; i++) {
 		if(0 == (o+i)->length) {
-			strcat(s, "<LengthThenTags><Length>00</Length></LengthThenTags>");
+			strcat(s, "<LengthThenTags><Length>00</Length></LengthThenTags>\n");
 			continue;
 		}
-		strcat(s, "<LengthThenTags><Length>");
+		strcat(s, "<LengthThenTags><Length>\n");
 		strcat(s, hexByte((o+i)->length));
-		strcat(s, "</Length>");
+		strcat(s, "</Length>\n");
 		int tagSize = (o+i)->length>>1;
 		strcat(s, TagsToXML((o+i)->tags, tagSize));
-		strcat(s, "</LengthThenTags>");
+		strcat(s, "</LengthThenTags>\n");
 	}
 	return s;
 }
@@ -337,27 +337,27 @@ int RIDLength(RID * o) {
 char * RIDToXML(RID * o) {
 	if (NULL == o)
 		return NULL;
-	char f[1024] = "<RID>";
-	strcat(f, "<rid>%s</rid>");
-	strcat(f, "<keyDataTotalLength>%s</keyDataTotalLength>");
-	strcat(f, "<keyDatas>%s</keyDatas>");
-	strcat(f, "<lengthGoOnlineTags>%s</lengthGoOnlineTags>");
-	strcat(f, "<goOnlineTags>%s</goOnlineTags>");
-	strcat(f, "<lengthEndOfTransactionTags>%s</lengthEndOfTransactionTags>");
-	strcat(f, "<endOfTransactionTags>%s</endOfTransactionTags>");
-	strcat(f, "<endOfTransactionStep>%s</endOfTransactionStep>");
-	strcat(f, "<lengthGetPreviousAmountTags>%s</lengthGetPreviousAmountTags>");
-	strcat(f, "<getPreviousAmountTags>%s</getPreviousAmountTags>");
-	strcat(f, "<lengthExtendedAPIData>%s</lengthExtendedAPIData>");
-	strcat(f, "<extendedAPIData>%s</extendedAPIData>");
-	strcat(f, "<lengthProprietaryRIDData>0000</lengthProprietaryRIDData>");
-	strcat(f, "<proprietaryRIDData></proprietaryRIDData>");
-	strcat(f, "<lengthIgnoredTags>%s</lengthIgnoredTags>");
-	strcat(f, "<ignoreTags>%s</ignoreTags>");
-	strcat(f, "<miscellaneousOptions>%s</miscellaneousOptions>");
-	strcat(f, "<lengthTLVData>%s</lengthTLVData>");
-	strcat(f, "<tlvData>%s</tlvData>");
-	strcat(f, "</RID>");
+	char f[1024] = "<RID>\n";
+	strcat(f, "<rid>%s</rid>\n");
+	strcat(f, "<keyDataTotalLength>%s</keyDataTotalLength>\n");
+	strcat(f, "<keyDatas>%s</keyDatas>\n");
+	strcat(f, "<lengthGoOnlineTags>%s</lengthGoOnlineTags>\n");
+	strcat(f, "<goOnlineTags>%s</goOnlineTags>\n");
+	strcat(f, "<lengthEndOfTransactionTags>%s</lengthEndOfTransactionTags>\n");
+	strcat(f, "<endOfTransactionTags>%s</endOfTransactionTags>\n");
+	strcat(f, "<endOfTransactionStep>%s</endOfTransactionStep>\n");
+	strcat(f, "<lengthGetPreviousAmountTags>%s</lengthGetPreviousAmountTags>\n");
+	strcat(f, "<getPreviousAmountTags>%s</getPreviousAmountTags>\n");
+	strcat(f, "<lengthExtendedAPIData>%s</lengthExtendedAPIData>\n");
+	strcat(f, "<extendedAPIData>%s</extendedAPIData>\n");
+	strcat(f, "<lengthProprietaryRIDData>0000</lengthProprietaryRIDData>\n");
+	strcat(f, "<proprietaryRIDData></proprietaryRIDData>\n");
+	strcat(f, "<lengthIgnoredTags>%s</lengthIgnoredTags>\n");
+	strcat(f, "<ignoreTags>%s</ignoreTags>\n");
+	strcat(f, "<miscellaneousOptions>%s</miscellaneousOptions>\n");
+	strcat(f, "<lengthTLVData>%s</lengthTLVData>\n");
+	strcat(f, "<tlvData>%s</tlvData>\n");
+	strcat(f, "</RID>\n");
 
 	return format(f, hex(o->rid, 0, 5),
 			hex(o->keyDataTotalLength, 0, 2),
@@ -547,29 +547,29 @@ RID * RIDListFromBin(char * s, int length) {
 char * OfflinePINEntryConfigurationToXML(OfflinePINEntryConfiguration * o) {
 	if (NULL == o)
 		return NULL;
-	char f[1024] = "<OfflinePINEntryConfiguration>";
-	strcat(f, "<textFont>%s</textFont>");
-	strcat(f, "<prompt>%s</prompt>");
-	strcat(f, "<promptMAC>%s</promptMAC>");
-	strcat(f, "<promptX>%s</promptX>");
-	strcat(f, "<promptY>%s</promptY>");
-	strcat(f, "<editX>%s</editX>");
-	strcat(f, "<editY>%s</editY>");
-	strcat(f, "<formatType>%s</formatType>");
-	strcat(f, "<formatSpMAC>%s</formatSpMAC>");
-	strcat(f, "<formatSpecifier>%s</formatSpecifier>");
-	strcat(f, "<minimumKeys>%s</minimumKeys>");
-	strcat(f, "<maximumKeys>%s</maximumKeys>");
-	strcat(f, "<echoCharacter>%s</echoCharacter>");
-	strcat(f, "<direction>%s</direction>");
-	strcat(f, "<beepInvalidKey>%s</beepInvalidKey>");
-	strcat(f, "<timeOutFirstKey>%s</timeOutFirstKey>");
-	strcat(f, "<timeOutInterKey>%s</timeOutInterKey>");
-	strcat(f, "<keyType>%s</keyType>");
-	strcat(f, "<keyIndex>%s</keyIndex>");
-	strcat(f, "<noEnterLessMin>%s</noEnterLessMin>");
-	strcat(f, "<addReqSettings>%s</addReqSettings>");
-	strcat(f, "</OfflinePINEntryConfiguration>");
+	char f[1024] = "<OfflinePINEntryConfiguration>\n";
+	strcat(f, "<textFont>%s</textFont>\n");
+	strcat(f, "<prompt>%s</prompt>\n");
+	strcat(f, "<promptMAC>%s</promptMAC>\n");
+	strcat(f, "<promptX>%s</promptX>\n");
+	strcat(f, "<promptY>%s</promptY>\n");
+	strcat(f, "<editX>%s</editX>\n");
+	strcat(f, "<editY>%s</editY>\n");
+	strcat(f, "<formatType>%s</formatType>\n");
+	strcat(f, "<formatSpMAC>%s</formatSpMAC>\n");
+	strcat(f, "<formatSpecifier>%s</formatSpecifier>\n");
+	strcat(f, "<minimumKeys>%s</minimumKeys>\n");
+	strcat(f, "<maximumKeys>%s</maximumKeys>\n");
+	strcat(f, "<echoCharacter>%s</echoCharacter>\n");
+	strcat(f, "<direction>%s</direction>\n");
+	strcat(f, "<beepInvalidKey>%s</beepInvalidKey>\n");
+	strcat(f, "<timeOutFirstKey>%s</timeOutFirstKey>\n");
+	strcat(f, "<timeOutInterKey>%s</timeOutInterKey>\n");
+	strcat(f, "<keyType>%s</keyType>\n");
+	strcat(f, "<keyIndex>%s</keyIndex>\n");
+	strcat(f, "<noEnterLessMin>%s</noEnterLessMin>\n");
+	strcat(f, "<addReqSettings>%s</addReqSettings>\n");
+	strcat(f, "</OfflinePINEntryConfiguration>\n");
 	return format(f, hexByte(o->textFont),
 			hex(o->prompt, 0, 1000),
 			hex(o->promptMAC, 0, 36),
@@ -668,30 +668,30 @@ int TerminalSpecificDataLength(TerminalSpecificData * o) {
 char * TerminalSpecificDataToXML(TerminalSpecificData * o) {
 	if (NULL == o)
 		return NULL;
-	char f[1024] = "<TerminalSpecificData>";
-	strcat(f, "<terminalCapabilities>%s</terminalCapabilities>");
+	char f[1024] = "<TerminalSpecificData>\n";
+	strcat(f, "<terminalCapabilities>%s</terminalCapabilities>\n");
 	strcat(f,
-			"<additionalTerminalCapabilities>%s</additionalTerminalCapabilities>");
-	strcat(f, "<terminalCountryCode>%s</terminalCountryCode>");
-	strcat(f, "<terminalType>%s</terminalType>");
-	strcat(f, "<transactionCurrencyCode>%s</transactionCurrencyCode>");
-	strcat(f, "<transactionCurrencyExponent>%s</transactionCurrencyExponent>");
+			"<additionalTerminalCapabilities>%s</additionalTerminalCapabilities>\n");
+	strcat(f, "<terminalCountryCode>%s</terminalCountryCode>\n");
+	strcat(f, "<terminalType>%s</terminalType>\n");
+	strcat(f, "<transactionCurrencyCode>%s</transactionCurrencyCode>\n");
+	strcat(f, "<transactionCurrencyExponent>%s</transactionCurrencyExponent>\n");
 	strcat(f,
-			"<transactionReferenceCurrencyCode>%s</transactionReferenceCurrencyCode>");
+			"<transactionReferenceCurrencyCode>%s</transactionReferenceCurrencyCode>\n");
 	strcat(f,
-			"<transactionReferenceCurrencyExponent>%s</transactionReferenceCurrencyExponent>");
+			"<transactionReferenceCurrencyExponent>%s</transactionReferenceCurrencyExponent>\n");
 	strcat(f,
-			"<transactionReferenceCurrencyConversion>%s</transactionReferenceCurrencyConversion>");
-	strcat(f, "<acquirerIdentifier>%s</acquirerIdentifier>");
-	strcat(f, "<merchantCategoryCode>%s</merchantCategoryCode>");
-	strcat(f, "<merchantIdentifier>%s</merchantIdentifier>");
-	strcat(f, "<terminalIdentification>%s</terminalIdentification>");
-	strcat(f, "<terminalRiskManagementData>%s</terminalRiskManagementData>");
-	strcat(f, "<ifdSerialNumber>%s</ifdSerialNumber>");
+			"<transactionReferenceCurrencyConversion>%s</transactionReferenceCurrencyConversion>\n");
+	strcat(f, "<acquirerIdentifier>%s</acquirerIdentifier>\n");
+	strcat(f, "<merchantCategoryCode>%s</merchantCategoryCode>\n");
+	strcat(f, "<merchantIdentifier>%s</merchantIdentifier>\n");
+	strcat(f, "<terminalIdentification>%s</terminalIdentification>\n");
+	strcat(f, "<terminalRiskManagementData>%s</terminalRiskManagementData>\n");
+	strcat(f, "<ifdSerialNumber>%s</ifdSerialNumber>\n");
 	strcat(f,
-			"<authorizationResponseCodeList>%s</authorizationResponseCodeList>");
-	strcat(f, "<miscellaneousOptions>%s</miscellaneousOptions>");
-	strcat(f, "<miscellaneousOptions1>%s</miscellaneousOptions1>");
+			"<authorizationResponseCodeList>%s</authorizationResponseCodeList>\n");
+	strcat(f, "<miscellaneousOptions>%s</miscellaneousOptions>\n");
+	strcat(f, "<miscellaneousOptions1>%s</miscellaneousOptions1>\n");
 
 	// *** stack smashing detected ***: <unknown> terminated
 	// to fix this issue, we need to split this into 3 times of method calling
@@ -715,19 +715,19 @@ char * TerminalSpecificDataToXML(TerminalSpecificData * o) {
 			hexByte(o->miscellaneousOptions),
 			hexByte(o->miscellaneousOptions1));
 	memset(f, 0, 1024);
-	strcat(f, "<lengthTLVData>%s</lengthTLVData>");
-	strcat(f, "<tlvData>%s</tlvData>");
+	strcat(f, "<lengthTLVData>%s</lengthTLVData>\n");
+	strcat(f, "<tlvData>%s</tlvData>\n");
 	strcat(f,
-			"<lengthOfflinePINEntryConfiguration>%s</lengthOfflinePINEntryConfiguration>");
+			"<lengthOfflinePINEntryConfiguration>%s</lengthOfflinePINEntryConfiguration>\n");
 	strcat(f, "%s");
-	strcat(f, "<terminalLanguages>%s</terminalLanguages>");
-	strcat(f, "<lengthDiagnosticsTags>%s</lengthDiagnosticsTags>");
-	strcat(f, "<diagnosticsTags>%s</diagnosticsTags>");
-	strcat(f, "<lengthAppSelectionTags>%s</lengthAppSelectionTags>");
-	strcat(f, "<appSelectionTags>%s</appSelectionTags>");
-	strcat(f, "<lengthRIDApps>%s</lengthRIDApps>");
-	strcat(f, "<ridApps>%s</ridApps>");
-	strcat(f, "</TerminalSpecificData>");
+	strcat(f, "<terminalLanguages>%s</terminalLanguages>\n");
+	strcat(f, "<lengthDiagnosticsTags>%s</lengthDiagnosticsTags>\n");
+	strcat(f, "<diagnosticsTags>%s</diagnosticsTags>\n");
+	strcat(f, "<lengthAppSelectionTags>%s</lengthAppSelectionTags>\n");
+	strcat(f, "<appSelectionTags>%s</appSelectionTags>\n");
+	strcat(f, "<lengthRIDApps>%s</lengthRIDApps>\n");
+	strcat(f, "<ridApps>%s</ridApps>\n");
+	strcat(f, "</TerminalSpecificData>\n");
 
 	char * tail = format(f, hex(o->lengthTLVData, 0, 2),
 			hex(o->tlvData, 0, littleEndianInt(o->lengthTLVData)),
