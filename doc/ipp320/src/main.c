@@ -37,7 +37,7 @@ int main(void) {
 	puts(s2);
 	printf("%d\n", decodedLength);
 
-	char * fileName = "D:/hub/fdj32/PTxCore/doc/131540886937708660.init.dat";
+	char * fileName = "/media/nfeng/d/hub/fdj32/PTxCore/doc/131540886937708660.init.dat";
 
 	int fileSize = getFileSize(fileName);
 	printf("%d\n", fileSize);
@@ -69,9 +69,24 @@ int main(void) {
 	printf("%d\n", littleEndianInt(v->ridDataTotalLength));
 	printf("%d\n", littleEndianInt(v->terminalDataTotalLength));
 
-	fileData = VegaInitDataToBin(v);
-	out = hex(fileData, 0, VegaInitDataLength(v));
-	print(out, 80);
+
+//	fileData = TerminalSpecificDataToBin(v->terminalSpecificData);
+//	out = hex(fileData, 0, littleEndianInt(v->terminalDataTotalLength));
+//	puts(out);
+//	print(out, 80);
+
+	fileData = RIDListToBin(v->ridSpecificData);
+	out = hex(fileData, 0, littleEndianInt(v->ridDataTotalLength));
+
+	out = TerminalSpecificDataToXML(v->terminalSpecificData);
+	//out = OfflinePINEntryConfigurationToXML(v->terminalSpecificData->offlinePINEntryConfiguration);
+	puts(out);
+//	print(out, 80);
+
+//	fileData = VegaInitDataToBin(v);
+//	out = hex(fileData, 0, VegaInitDataLength(v));
+//	puts(out);
+//	print(out, 80);
 
 	return EXIT_SUCCESS;
 }

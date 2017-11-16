@@ -602,6 +602,8 @@ char * TerminalSpecificDataToXML(TerminalSpecificData * o) {
 	return format(f, hex(o->terminalCapabilities, 0, 3),
 			hex(o->additionalTerminalCapabilities, 0, 5),
 			hex(o->terminalCountryCode, 0, 2),
+			hex(&o->terminalType, 0, 1),
+			hex(o->transactionCurrencyCode, 0, 2),
 			hex(&o->transactionCurrencyExponent, 0, 1),
 			hex(o->transactionReferenceCurrencyCode, 0, 2),
 			hex(&o->transactionReferenceCurrencyExponent, 0, 1),
@@ -614,7 +616,7 @@ char * TerminalSpecificDataToXML(TerminalSpecificData * o) {
 			hex(o->ifdSerialNumber, 0, 8),
 			hex(o->authorizationResponseCodeList, 0, 20),
 			hex(&o->miscellaneousOptions, 0, 1),
-			hex(&o->miscellaneousOptions1, 0, 3),
+			hex(&o->miscellaneousOptions1, 0, 1),
 			hex(o->lengthTLVData, 0, 2),
 			hex(o->tlvData, 0, littleEndianInt(o->lengthTLVData)),
 			hex(o->lengthOfflinePINEntryConfiguration, 0, 2),
@@ -623,7 +625,7 @@ char * TerminalSpecificDataToXML(TerminalSpecificData * o) {
 			hex(o->lengthDiagnosticsTags, 0, 2),
 			hex(o->diagnosticsTags, 0, littleEndianInt(o->lengthDiagnosticsTags)),
 			hex(o->lengthAppSelectionTags, 0, 2),
-			hex(o->appSelectionTags, 0, littleEndianInt(o->appSelectionTags)),
+			hex(o->appSelectionTags, 0, littleEndianInt(o->lengthAppSelectionTags)),
 			hex(o->lengthRIDApps, 0, 2),
 			hex(o->ridApps, 0, littleEndianInt(o->ridApps))
 	);
