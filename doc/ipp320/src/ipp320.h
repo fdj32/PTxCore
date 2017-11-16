@@ -9,6 +9,7 @@
 #ifndef IPP320_H_
 #define IPP320_H_
 
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "rs232.h"

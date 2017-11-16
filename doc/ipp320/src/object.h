@@ -18,7 +18,7 @@
 #define RS  0x1e
 #define SPACE 0x20
 
-typedef unsigned char byte;
+typedef char byte;
 
 typedef enum EmvReasonCode {
 	EMV_USER_CANCELLED,
@@ -167,6 +167,8 @@ typedef struct AID {
 
 int AIDLength(AID * o);
 
+char * AIDToXML(AID * o);
+
 char * AIDToBin(AID * o);
 
 AID * AIDFromBin(char * s);
@@ -275,6 +277,8 @@ typedef struct OfflinePINEntryConfiguration {
 	char * addReqSettings;
 } OfflinePINEntryConfiguration;
 
+char * OfflinePINEntryConfigurationToXML(OfflinePINEntryConfiguration * o);
+
 char * OfflinePINEntryConfigurationToBin(OfflinePINEntryConfiguration * o);
 
 OfflinePINEntryConfiguration * OfflinePINEntryConfigurationFromBin(char * s);
@@ -316,6 +320,8 @@ typedef struct TerminalSpecificData {
 } TerminalSpecificData;
 
 int TerminalSpecificDataLength(TerminalSpecificData * o);
+
+char * TerminalSpecificDataToXML(TerminalSpecificData * o);
 
 char * TerminalSpecificDataToBin(TerminalSpecificData * o);
 

@@ -13,6 +13,45 @@ int AIDLength(AID * o) {
 					+ littleEndianInt(o->defaultTDOLLength);
 }
 
+char * AIDToXML(AID * o) {
+	if (NULL == o)
+		return NULL;
+	char f[1024] = "<AID>";
+	strcat(f,
+			"<applicationSelectionIndicator>%s</applicationSelectionIndicator>");
+	strcat(f, "<lengthTLVData>%s</lengthTLVData>");
+	strcat(f, "<tlvData>%s</tlvData>");
+	strcat(f, "<aidLength>%s</aidLength>");
+	strcat(f, "<aid>%s</aid>");
+	strcat(f, "<rid>%s</rid>");
+	strcat(f, "<applicationVersionNumber>%s</applicationVersionNumber>");
+	strcat(f, "<tacDefault>%s</tacDefault>");
+	strcat(f, "<tacDenial>%s</tacDenial>");
+	strcat(f, "<tacOnline>%s</tacOnline>");
+	strcat(f, "<maximumTargetPercentage>%s</maximumTargetPercentage>");
+	strcat(f, "<targetPercentage>%s</targetPercentage>");
+	strcat(f, "<thresholdValue>%s</thresholdValue>");
+	strcat(f, "<terminalFloorLimit>%s</terminalFloorLimit>");
+	strcat(f, "<defaultTDOLLength>%s</defaultTDOLLength>");
+	strcat(f, "<defaultTDOL>%s</defaultTDOL>");
+	strcat(f, "<defaultDDOLLength>%s</defaultDDOLLength>");
+	strcat(f, "<defaultDDOL>%s</defaultDDOL>");
+	strcat(f, "</AID>");
+
+	return format(f, hex(&o->applicationSelectionIndicator, 0, 1),
+			hex(&o->lengthTLVData, 0, 1),
+			hex(o->tlvData, 0, littleEndianInt(&o->lengthTLVData)),
+			hex(&o->aidLength, 0, 1), hex(o->aid, 0, 16), hex(o->rid, 0, 5),
+			hex(o->applicationVersionNumber, 0, 2), hex(o->tacDefault, 0, 5),
+			hex(o->tacDenial, 0, 5), hex(o->tacOnline, 0, 5),
+			hex(&o->maximumTargetPercentage, 0, 1),
+			hex(&o->targetPercentage, 0, 1), hex(o->thresholdValue, 0, 4),
+			hex(o->terminalFloorLimit, 0, 4), hex(o->defaultTDOLLength, 0, 2),
+			hex(o->defaultTDOL, 0, littleEndianInt(o->defaultTDOLLength)),
+			hex(o->defaultDDOLLength, 0, 2),
+			hex(o->defaultDDOL, 0, littleEndianInt(o->defaultDDOLLength)));
+}
+
 char * AIDToBin(AID * o) {
 	if (NULL == o)
 		return NULL;
@@ -398,6 +437,57 @@ RID * RIDListFromBin(char * s, int length) {
 	return o;
 }
 
+char * OfflinePINEntryConfigurationToXML(OfflinePINEntryConfiguration * o) {
+	if (NULL == o)
+		return NULL;
+	char f[1024] = "<OfflinePINEntryConfiguration>";
+	strcat(f, "<textFont>%s</textFont>");
+	strcat(f, "<prompt>%s</prompt>");
+	strcat(f, "<promptMAC>%s</promptMAC>");
+	strcat(f, "<promptX>%s</promptX>");
+	strcat(f, "<promptY>%s</promptY>");
+	strcat(f, "<editX>%s</editX>");
+	strcat(f, "<editY>%s</editY>");
+	strcat(f, "<formatType>%s</formatType>");
+	strcat(f, "<formatSpMAC>%s</formatSpMAC>");
+	strcat(f, "<formatSpecifier>%s</formatSpecifier>");
+	strcat(f, "<minimumKeys>%s</minimumKeys>");
+	strcat(f, "<maximumKeys>%s</maximumKeys>");
+	strcat(f, "<echoCharacter>%s</echoCharacter>");
+	strcat(f, "<direction>%s</direction>");
+	strcat(f, "<beepInvalidKey>%s</beepInvalidKey>");
+	strcat(f, "<timeOutFirstKey>%s</timeOutFirstKey>");
+	strcat(f, "<timeOutInterKey>%s</timeOutInterKey>");
+	strcat(f, "<keyType>%s</keyType>");
+	strcat(f, "<keyIndex>%s</keyIndex>");
+	strcat(f, "<noEnterLessMin>%s</noEnterLessMin>");
+	strcat(f, "<addReqSettings>%s</addReqSettings>");
+	strcat(f, "</OfflinePINEntryConfiguration>");
+	return format(f, hex(&o->textFont, 0, 1),
+			hex(o->prompt, 0, 1000),
+			hex(o->promptMAC, 0, 36),
+			hex(o->promptX, 0, 4),
+			hex(o->promptY, 0, 4),
+			hex(o->editX, 0, 4),
+			hex(o->editY, 0, 4),
+			hex(&o->formatType, 0, 1),
+			hex(o->formatSpMAC, 0, 9),
+			hex(o->formatSpecifier, 0, 50),
+			hex(&o->minimumKeys, 0, 1),
+			hex(&o->maximumKeys, 0, 1),
+			hex(&o->echoCharacter, 0, 1),
+			hex(&o->cursorType, 0, 1),
+			hex(&o->direction, 0, 1),
+			hex(o->beepInvalidKey, 0, 4),
+			hex(o->timeOutFirstKey, 0, 4),
+			hex(o->timeOutInterKey, 0, 4),
+			hex(&o->keyType, 0, 1),
+			hex(&o->keyIndex, 0, 1),
+			hex(o->noEnterLessMin, 0, 4),
+			hex(o->addReqSettings, 0, 2)
+	);
+}
+
 char * OfflinePINEntryConfigurationToBin(OfflinePINEntryConfiguration * o) {
 	if (NULL == o)
 		return NULL;
@@ -468,6 +558,77 @@ int TerminalSpecificDataLength(TerminalSpecificData * o) {
 					+ littleEndianInt(o->lengthRIDApps);
 }
 
+char * TerminalSpecificDataToXML(TerminalSpecificData * o) {
+	if (NULL == o)
+		return NULL;
+	char f[1024] = "<TerminalSpecificData>";
+	strcat(f, "<terminalCapabilities>%s</terminalCapabilities>");
+	strcat(f,
+			"<additionalTerminalCapabilities>%s</additionalTerminalCapabilities>");
+	strcat(f, "<terminalCountryCode>%s</terminalCountryCode>");
+	strcat(f, "<terminalType>%s</terminalType>");
+	strcat(f, "<transactionCurrencyCode>%s</transactionCurrencyCode>");
+	strcat(f, "<transactionCurrencyExponent>%s</transactionCurrencyExponent>");
+	strcat(f,
+			"<transactionReferenceCurrencyCode>%s</transactionReferenceCurrencyCode>");
+	strcat(f,
+			"<transactionReferenceCurrencyExponent>%s</transactionReferenceCurrencyExponent>");
+	strcat(f,
+			"<transactionReferenceCurrencyConversion>%s</transactionReferenceCurrencyConversion>");
+	strcat(f, "<acquirerIdentifier>%s</acquirerIdentifier>");
+	strcat(f, "<merchantCategoryCode>%s</merchantCategoryCode>");
+	strcat(f, "<merchantIdentifier>%s</merchantIdentifier>");
+	strcat(f, "<terminalIdentification>%s</terminalIdentification>");
+	strcat(f, "<terminalRiskManagementData>%s</terminalRiskManagementData>");
+	strcat(f, "<ifdSerialNumber>%s</ifdSerialNumber>");
+	strcat(f,
+			"<authorizationResponseCodeList>%s</authorizationResponseCodeList>");
+	strcat(f, "<miscellaneousOptions>%s</miscellaneousOptions>");
+	strcat(f, "<miscellaneousOptions1>%s</miscellaneousOptions1>");
+	strcat(f, "<lengthTLVData>%s</lengthTLVData>");
+	strcat(f, "<tlvData>%s</tlvData>");
+	strcat(f,
+			"<lengthOfflinePINEntryConfiguration>%s</lengthOfflinePINEntryConfiguration>");
+	strcat(f,
+			"<offlinePINEntryConfiguration>%s</offlinePINEntryConfiguration>");
+	strcat(f, "<terminalLanguages>%s</terminalLanguages>");
+	strcat(f, "<lengthDiagnosticsTags>%s</lengthDiagnosticsTags>");
+	strcat(f, "<diagnosticsTags>%s</diagnosticsTags>");
+	strcat(f, "<lengthAppSelectionTags>%s</lengthAppSelectionTags>");
+	strcat(f, "<appSelectionTags>%s</appSelectionTags>");
+	strcat(f, "<lengthRIDApps>%s</lengthRIDApps>");
+	strcat(f, "<ridApps>%s</ridApps>");
+	strcat(f, "</TerminalSpecificData>");
+	return format(f, hex(o->terminalCapabilities, 0, 3),
+			hex(o->additionalTerminalCapabilities, 0, 5),
+			hex(o->terminalCountryCode, 0, 2),
+			hex(&o->transactionCurrencyExponent, 0, 1),
+			hex(o->transactionReferenceCurrencyCode, 0, 2),
+			hex(&o->transactionReferenceCurrencyExponent, 0, 1),
+			hex(o->transactionReferenceCurrencyConversion, 0, 4),
+			hex(o->acquirerIdentifier, 0, 6),
+			hex(o->merchantCategoryCode, 0, 2),
+			hex(o->merchantIdentifier, 0, 15),
+			hex(o->terminalIdentification, 0, 8),
+			hex(o->terminalRiskManagementData, 0, 8),
+			hex(o->ifdSerialNumber, 0, 8),
+			hex(o->authorizationResponseCodeList, 0, 20),
+			hex(&o->miscellaneousOptions, 0, 1),
+			hex(&o->miscellaneousOptions1, 0, 3),
+			hex(o->lengthTLVData, 0, 2),
+			hex(o->tlvData, 0, littleEndianInt(o->lengthTLVData)),
+			hex(o->lengthOfflinePINEntryConfiguration, 0, 2),
+			OfflinePINEntryConfigurationToXML(o->offlinePINEntryConfiguration),
+			hex(o->terminalLanguages, 0, 8),
+			hex(o->lengthDiagnosticsTags, 0, 2),
+			hex(o->diagnosticsTags, 0, littleEndianInt(o->lengthDiagnosticsTags)),
+			hex(o->lengthAppSelectionTags, 0, 2),
+			hex(o->appSelectionTags, 0, littleEndianInt(o->appSelectionTags)),
+			hex(o->lengthRIDApps, 0, 2),
+			hex(o->ridApps, 0, littleEndianInt(o->ridApps))
+	);
+}
+
 char * TerminalSpecificDataToBin(TerminalSpecificData * o) {
 	if (NULL == o)
 		return NULL;
@@ -510,7 +671,7 @@ char * TerminalSpecificDataToBin(TerminalSpecificData * o) {
 	memcpy(s + 130 + tlv + offline, o->diagnosticsTags, diag);
 	memcpy(s + 130 + tlv + offline + diag, o->lengthAppSelectionTags, 2);
 	int app = littleEndianInt(o->lengthAppSelectionTags);
-	memcpy(s + 132 + tlv + offline + diag, o->diagnosticsTags, app);
+	memcpy(s + 132 + tlv + offline + diag, o->appSelectionTags, app);
 	memcpy(s + 132 + tlv + offline + diag + app, o->lengthRIDApps, 2);
 	int rid = littleEndianInt(o->lengthRIDApps);
 	memcpy(s + 134 + tlv + offline + diag + app, o->ridApps, rid);

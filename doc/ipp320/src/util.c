@@ -7,6 +7,8 @@
 #include "ipp320.h"
 
 char * hex(char * s, int offset, int length) {
+	if(NULL == s || offset < 0 || length <=0)
+		return "";
 	int hexLen = length * 2 + 1;
 	char * hex = malloc(hexLen);
 	hex[hexLen - 1] = '\0';
@@ -187,4 +189,26 @@ char * bigEndianBin(int i) {
 	s[1] = i;
 	s[0] = i >> 8;
 	return s;
+}
+
+char * format(const char * f, ...) {
+	/* 初始时假设我们只需要不超过10k字节大小的空间 */
+	int n, size = 10240;
+	char *p;
+	va_list ap;
+	if ((p = (char *) malloc(size * sizeof(char))) == NULL)
+		return NULL;
+	while (1) {
+		/* 尝试在申请的空间中进行打印操作 */
+		va_start(ap, f);
+		n = vsnprintf(p, size, f, ap);
+		va_end(ap);
+		/* 如果vsnprintf调用成功，返回该字符串 */
+		if (n > -1 && n < size)
+			return p;
+		/* vsnprintf调用失败(n<0)，或者p的空间不足够容纳size大小的字符串(n>=size)，尝试申请更大的空间*/
+		size *= 2; /* 两倍原来大小的空间 */
+		if ((p = (char *) realloc(p, size * sizeof(char))) == NULL)
+			return NULL;
+	}
 }

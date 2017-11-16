@@ -38,4 +38,6 @@ int bigEndianInt(char * s);
 
 char * bigEndianBin(int i);
 
+char * format(const char * f, ...);
+
 #endif /* UTIL_H_ */
