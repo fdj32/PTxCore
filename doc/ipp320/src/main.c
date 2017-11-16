@@ -94,14 +94,15 @@ int main(void) {
 	LengthThenTags * ltg = v->ridSpecificData->endOfTransactionTags;
 	//out = LengthThenTagsToXML(ltg, 7);
 
-	RID * ridp = v->ridSpecificData;
-	while(NULL != ridp) {
-		out = RIDToXML(ridp);
-		puts(out);
-		ridp = ridp->next;
-	}
+//	RID * ridp = v->ridSpecificData;
+//	while(NULL != ridp) {
+//		out = RIDToXML(ridp);
+//		puts(out);
+//		ridp = ridp->next;
+//	}
 
-
+	out = VegaInitDataToXML(v);
+	puts(out);
 
 //	print(out, 80);
 

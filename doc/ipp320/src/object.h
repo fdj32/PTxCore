@@ -346,6 +346,8 @@ typedef struct VegaInitData {
 
 int VegaInitDataLength(VegaInitData * o);
 
+char * VegaInitDataToXML(VegaInitData * o);
+
 char * VegaInitDataToBin(VegaInitData * o);
 
 VegaInitData * VegaInitDataFromBin(char * s);

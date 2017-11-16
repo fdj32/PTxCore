@@ -847,6 +847,48 @@ int VegaInitDataLength(VegaInitData * o) {
 					+ littleEndianInt(o->terminalDataTotalLength);
 }
 
+char * VegaInitDataToXML(VegaInitData * o) {
+	if(NULL == o)
+		return NULL;
+	char * s = malloc(102400);
+	strcat(s, "<VegaInitData>");
+
+	strcat(s, "<terminalDataTotalLength>");
+	strcat(s, hex(o->terminalDataTotalLength, 0, 2));
+	strcat(s, "</terminalDataTotalLength>");
+
+	strcat(s, "<terminalSpecificData>");
+	strcat(s, TerminalSpecificDataToXML(o->terminalSpecificData));
+	strcat(s, "</terminalSpecificData>");
+
+	strcat(s, "<ridDataTotalLength>");
+	strcat(s, hex(o->ridDataTotalLength, 0, 2));
+	strcat(s, "</ridDataTotalLength>");
+
+	strcat(s, "<ridSpecificData>");
+	RID * ridp = o->ridSpecificData;
+	while(NULL != ridp) {
+		strcat(s, RIDToXML(ridp));
+		ridp = ridp->next;
+	}
+	strcat(s, "</ridSpecificData>");
+
+	strcat(s, "<aidDataTotalLength>");
+	strcat(s, hex(o->aidDataTotalLength, 0, 2));
+	strcat(s, "</aidDataTotalLength>");
+
+	strcat(s, "<aidSpecificData>");
+	AID * aidp = o->aidSpecificData;
+	while(NULL != aidp) {
+		strcat(s, AIDToXML(aidp));
+		aidp = aidp->next;
+	}
+	strcat(s, "</aidSpecificData>");
+
+	strcat(s, "</VegaInitData>");
+	return s;
+}
+
 char * VegaInitDataToBin(VegaInitData * o) {
 	if (NULL == o)
 		return NULL;
