@@ -179,6 +179,33 @@ AID * AIDListFromBin(char * s, int length) {
 	return o;
 }
 
+char * KeyDataToXML(KeyData * o, int size) {
+	char * out = malloc(102400);
+	char f[1024] = "<KeyData>";
+	strcat(f, "<keyIndex>%s</keyIndex>");
+	strcat(f, "<keyAlgorithmIndicator>%s</keyAlgorithmIndicator>");
+	strcat(f, "<hashAlgorithmIndicator>%s</hashAlgorithmIndicator>");
+	strcat(f, "<keyLength>%s</keyLength>");
+	strcat(f, "<key>%s</key>");
+	strcat(f, "<keyExponentLength>%s</keyExponentLength>");
+	strcat(f, "<keyExponent>%s</keyExponent>");
+	strcat(f, "<keyCheckSum>%s</keyCheckSum>");
+	strcat(f, "</KeyData>");
+	for(int i = 0; i < size; i++) {
+		char * s = format(f, hex(&((o+i)->keyIndex), 0, 1),
+				hex(&((o+i)->keyAlgorithmIndicator), 0, 1),
+				hex(&((o+i)->hashAlgorithmIndicator), 0, 1),
+				hex(&((o+i)->keyLength), 0, 1),
+				hex((o+i)->key, 0, 248),
+				hex(&((o+i)->keyExponentLength), 0, 1),
+				hex((o+i)->keyExponent, 0, 3),
+				hex((o+i)->keyCheckSum, 0, 20)
+				);
+		strcat(out, s);
+	}
+	return out;
+}
+
 char * KeyDataToBin(KeyData * o, int size) {
 	if (NULL == o || 0 == size)
 		return NULL;

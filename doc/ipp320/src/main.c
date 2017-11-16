@@ -81,12 +81,16 @@ int main(void) {
 	//out = TerminalSpecificDataToXML(v->terminalSpecificData);
 	//out = OfflinePINEntryConfigurationToXML(v->terminalSpecificData->offlinePINEntryConfiguration);
 
-	AID * aidp = v->aidSpecificData;
-	while(NULL != aidp) {
-		out = AIDToXML(aidp);
-		puts(out);
-		aidp = aidp->next;
-	}
+//	AID * aidp = v->aidSpecificData;
+//	while(NULL != aidp) {
+//		out = AIDToXML(aidp);
+//		puts(out);
+//		aidp = aidp->next;
+//	}
+
+	out = KeyDataToXML(v->ridSpecificData->keyDatas, littleEndianInt(v->ridSpecificData->keyDataTotalLength)/276);
+	puts(out);
+
 //	print(out, 80);
 
 //	fileData = VegaInitDataToBin(v);

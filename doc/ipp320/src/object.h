@@ -192,6 +192,8 @@ typedef struct KeyData {
 	char * keyCheckSum;
 } KeyData;
 
+char * KeyDataToXML(KeyData * o, int size);
+
 char * KeyDataToBin(KeyData * o, int size);
 
 KeyData * KeyDataFromBin(char * s, int length);
