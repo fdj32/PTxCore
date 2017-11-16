@@ -589,8 +589,7 @@ char * TerminalSpecificDataToXML(TerminalSpecificData * o) {
 	strcat(f, "<tlvData>%s</tlvData>");
 	strcat(f,
 			"<lengthOfflinePINEntryConfiguration>%s</lengthOfflinePINEntryConfiguration>");
-	strcat(f,
-			"<offlinePINEntryConfiguration>%s</offlinePINEntryConfiguration>");
+	strcat(f, "%s");
 	strcat(f, "<terminalLanguages>%s</terminalLanguages>");
 	strcat(f, "<lengthDiagnosticsTags>%s</lengthDiagnosticsTags>");
 	strcat(f, "<diagnosticsTags>%s</diagnosticsTags>");
