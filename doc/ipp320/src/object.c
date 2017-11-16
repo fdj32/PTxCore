@@ -585,20 +585,11 @@ char * TerminalSpecificDataToXML(TerminalSpecificData * o) {
 			"<authorizationResponseCodeList>%s</authorizationResponseCodeList>");
 	strcat(f, "<miscellaneousOptions>%s</miscellaneousOptions>");
 	strcat(f, "<miscellaneousOptions1>%s</miscellaneousOptions1>");
-	strcat(f, "<lengthTLVData>%s</lengthTLVData>");
-	strcat(f, "<tlvData>%s</tlvData>");
-	strcat(f,
-			"<lengthOfflinePINEntryConfiguration>%s</lengthOfflinePINEntryConfiguration>");
-	strcat(f, "%s");
-	strcat(f, "<terminalLanguages>%s</terminalLanguages>");
-	strcat(f, "<lengthDiagnosticsTags>%s</lengthDiagnosticsTags>");
-	strcat(f, "<diagnosticsTags>%s</diagnosticsTags>");
-	strcat(f, "<lengthAppSelectionTags>%s</lengthAppSelectionTags>");
-	strcat(f, "<appSelectionTags>%s</appSelectionTags>");
-	strcat(f, "<lengthRIDApps>%s</lengthRIDApps>");
-	strcat(f, "<ridApps>%s</ridApps>");
-	strcat(f, "</TerminalSpecificData>");
-	return format(f, hex(o->terminalCapabilities, 0, 3),
+
+	// *** stack smashing detected ***: <unknown> terminated
+	// to fix this issue, we need to split this into 3 times of method calling
+
+	char * head = format(f, hex(o->terminalCapabilities, 0, 3),
 			hex(o->additionalTerminalCapabilities, 0, 5),
 			hex(o->terminalCountryCode, 0, 2),
 			hex(&o->terminalType, 0, 1),
@@ -615,8 +606,23 @@ char * TerminalSpecificDataToXML(TerminalSpecificData * o) {
 			hex(o->ifdSerialNumber, 0, 8),
 			hex(o->authorizationResponseCodeList, 0, 20),
 			hex(&o->miscellaneousOptions, 0, 1),
-			hex(&o->miscellaneousOptions1, 0, 1),
-			hex(o->lengthTLVData, 0, 2),
+			hex(&o->miscellaneousOptions1, 0, 1));
+	memset(f, 0, 1024);
+	strcat(f, "<lengthTLVData>%s</lengthTLVData>");
+	strcat(f, "<tlvData>%s</tlvData>");
+	strcat(f,
+			"<lengthOfflinePINEntryConfiguration>%s</lengthOfflinePINEntryConfiguration>");
+	strcat(f, "%s");
+	strcat(f, "<terminalLanguages>%s</terminalLanguages>");
+	strcat(f, "<lengthDiagnosticsTags>%s</lengthDiagnosticsTags>");
+	strcat(f, "<diagnosticsTags>%s</diagnosticsTags>");
+	strcat(f, "<lengthAppSelectionTags>%s</lengthAppSelectionTags>");
+	strcat(f, "<appSelectionTags>%s</appSelectionTags>");
+	strcat(f, "<lengthRIDApps>%s</lengthRIDApps>");
+	strcat(f, "<ridApps>%s</ridApps>");
+	strcat(f, "</TerminalSpecificData>");
+
+	char * tail = format(f, hex(o->lengthTLVData, 0, 2),
 			hex(o->tlvData, 0, littleEndianInt(o->lengthTLVData)),
 			hex(o->lengthOfflinePINEntryConfiguration, 0, 2),
 			OfflinePINEntryConfigurationToXML(o->offlinePINEntryConfiguration),
@@ -626,8 +632,9 @@ char * TerminalSpecificDataToXML(TerminalSpecificData * o) {
 			hex(o->lengthAppSelectionTags, 0, 2),
 			hex(o->appSelectionTags, 0, littleEndianInt(o->lengthAppSelectionTags)),
 			hex(o->lengthRIDApps, 0, 2),
-			hex(o->ridApps, 0, littleEndianInt(o->ridApps))
-	);
+			hex(o->ridApps, 0, littleEndianInt(o->ridApps)));
+
+	return format("%s%s", head, tail);
 }
 
 char * TerminalSpecificDataToBin(TerminalSpecificData * o) {
