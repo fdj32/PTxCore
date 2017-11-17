@@ -16,40 +16,27 @@ int AIDLength(AID * o) {
 char * AIDToXML(AID * o) {
 	if (NULL == o)
 		return NULL;
-	char f[1024] = "<AID>\n";
-	strcat(f,
-			"<applicationSelectionIndicator>%s</applicationSelectionIndicator>\n");
-	strcat(f, "<lengthTLVData>%s</lengthTLVData>\n");
-	strcat(f, "<tlvData>%s</tlvData>\n");
-	strcat(f, "<aidLength>%s</aidLength>\n");
-	strcat(f, "<aid>%s</aid>\n");
-	strcat(f, "<rid>%s</rid>\n");
-	strcat(f, "<applicationVersionNumber>%s</applicationVersionNumber>\n");
-	strcat(f, "<tacDefault>%s</tacDefault>\n");
-	strcat(f, "<tacDenial>%s</tacDenial>\n");
-	strcat(f, "<tacOnline>%s</tacOnline>\n");
-	strcat(f, "<maximumTargetPercentage>%s</maximumTargetPercentage>\n");
-	strcat(f, "<targetPercentage>%s</targetPercentage>\n");
-	strcat(f, "<thresholdValue>%s</thresholdValue>\n");
-	strcat(f, "<terminalFloorLimit>%s</terminalFloorLimit>\n");
-	strcat(f, "<defaultTDOLLength>%s</defaultTDOLLength>\n");
-	strcat(f, "<defaultTDOL>%s</defaultTDOL>\n");
-	strcat(f, "<defaultDDOLLength>%s</defaultDDOLLength>\n");
-	strcat(f, "<defaultDDOL>%s</defaultDDOL>\n");
-	strcat(f, "</AID>\n");
-
-	return format(f, hexByte(o->applicationSelectionIndicator),
-			hexByte(o->lengthTLVData),
-			hex(o->tlvData, 0, (int)(o->lengthTLVData)),
-			hexByte(o->aidLength), hex(o->aid, 0, 16), hex(o->rid, 0, 5),
-			hex(o->applicationVersionNumber, 0, 2), hex(o->tacDefault, 0, 5),
-			hex(o->tacDenial, 0, 5), hex(o->tacOnline, 0, 5),
-			hexByte(o->maximumTargetPercentage),
-			hexByte(o->targetPercentage), hex(o->thresholdValue, 0, 4),
-			hex(o->terminalFloorLimit, 0, 4), hex(o->defaultTDOLLength, 0, 2),
-			hex(o->defaultTDOL, 0, littleEndianInt(o->defaultTDOLLength)),
-			hex(o->defaultDDOLLength, 0, 2),
-			hex(o->defaultDDOL, 0, littleEndianInt(o->defaultDDOLLength)));
+	char * s = malloc(10240);
+	int i = 0;
+	i = sprintf(s, "<AID>\n<applicationSelectionIndicator>%s</applicationSelectionIndicator>\n", hexByte(o->applicationSelectionIndicator));
+	i += sprintf(s + i, "<lengthTLVData>%s</lengthTLVData>\n", hexByte(o->lengthTLVData));
+	i += sprintf(s + i, "<tlvData>%s</tlvData>\n", hex(o->tlvData, 0, (int)(o->lengthTLVData)));
+	i += sprintf(s + i, "<aidLength>%s</aidLength>\n", hexByte(o->aidLength));
+	i += sprintf(s + i, "<aid>%s</aid>\n", hex(o->aid, 0, 16));
+	i += sprintf(s + i, "<rid>%s</rid>\n", hex(o->rid, 0, 5));
+	i += sprintf(s + i, "<applicationVersionNumber>%s</applicationVersionNumber>\n", hex(o->applicationVersionNumber, 0, 2));
+	i += sprintf(s + i, "<tacDefault>%s</tacDefault>\n", hex(o->tacDefault, 0, 5));
+	i += sprintf(s + i, "<tacDenial>%s</tacDenial>\n", hex(o->tacDenial, 0, 5));
+	i += sprintf(s + i, "<tacOnline>%s</tacOnline>\n", hex(o->tacOnline, 0, 5));
+	i += sprintf(s + i, "<maximumTargetPercentage>%s</maximumTargetPercentage>\n", hexByte(o->maximumTargetPercentage));
+	i += sprintf(s + i, "<targetPercentage>%s</targetPercentage>\n", hexByte(o->targetPercentage));
+	i += sprintf(s + i, "<thresholdValue>%s</thresholdValue>\n", hex(o->thresholdValue, 0, 4));
+	i += sprintf(s + i, "<terminalFloorLimit>%s</terminalFloorLimit>\n", hex(o->terminalFloorLimit, 0, 4));
+	i += sprintf(s + i, "<defaultTDOLLength>%s</defaultTDOLLength>\n", hex(o->defaultTDOLLength, 0, 2));
+	i += sprintf(s + i, "<defaultTDOL>%s</defaultTDOL>\n", hex(o->defaultTDOL, 0, littleEndianInt(o->defaultTDOLLength)));
+	i += sprintf(s + i, "<defaultDDOLLength>%s</defaultDDOLLength>\n", hex(o->tacOnline, 0, 2));
+	i += sprintf(s + i, "<defaultDDOL>%s</defaultDDOL>\n</AID>\n", hex(o->defaultDDOL, 0, littleEndianInt(o->defaultDDOLLength)));
+	return s;
 }
 
 char * AIDToBin(AID * o) {
