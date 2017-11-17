@@ -503,52 +503,31 @@ RID * RIDListFromBin(char * s, int length) {
 char * OfflinePINEntryConfigurationToXML(OfflinePINEntryConfiguration * o) {
 	if (NULL == o)
 		return NULL;
-	char f[1024] = "<OfflinePINEntryConfiguration>\n";
-	strcat(f, "<textFont>%s</textFont>\n");
-	strcat(f, "<prompt>%s</prompt>\n");
-	strcat(f, "<promptMAC>%s</promptMAC>\n");
-	strcat(f, "<promptX>%s</promptX>\n");
-	strcat(f, "<promptY>%s</promptY>\n");
-	strcat(f, "<editX>%s</editX>\n");
-	strcat(f, "<editY>%s</editY>\n");
-	strcat(f, "<formatType>%s</formatType>\n");
-	strcat(f, "<formatSpMAC>%s</formatSpMAC>\n");
-	strcat(f, "<formatSpecifier>%s</formatSpecifier>\n");
-	strcat(f, "<minimumKeys>%s</minimumKeys>\n");
-	strcat(f, "<maximumKeys>%s</maximumKeys>\n");
-	strcat(f, "<echoCharacter>%s</echoCharacter>\n");
-	strcat(f, "<direction>%s</direction>\n");
-	strcat(f, "<beepInvalidKey>%s</beepInvalidKey>\n");
-	strcat(f, "<timeOutFirstKey>%s</timeOutFirstKey>\n");
-	strcat(f, "<timeOutInterKey>%s</timeOutInterKey>\n");
-	strcat(f, "<keyType>%s</keyType>\n");
-	strcat(f, "<keyIndex>%s</keyIndex>\n");
-	strcat(f, "<noEnterLessMin>%s</noEnterLessMin>\n");
-	strcat(f, "<addReqSettings>%s</addReqSettings>\n");
-	strcat(f, "</OfflinePINEntryConfiguration>\n");
-	return format(f, hexByte(o->textFont),
-			hex(o->prompt, 0, 1000),
-			hex(o->promptMAC, 0, 36),
-			hex(o->promptX, 0, 4),
-			hex(o->promptY, 0, 4),
-			hex(o->editX, 0, 4),
-			hex(o->editY, 0, 4),
-			hexByte(o->formatType),
-			hex(o->formatSpMAC, 0, 9),
-			hex(o->formatSpecifier, 0, 50),
-			hexByte(o->minimumKeys),
-			hexByte(o->maximumKeys),
-			hexByte(o->echoCharacter),
-			hexByte(o->cursorType),
-			hexByte(o->direction),
-			hex(o->beepInvalidKey, 0, 4),
-			hex(o->timeOutFirstKey, 0, 4),
-			hex(o->timeOutInterKey, 0, 4),
-			hexByte(o->keyType),
-			hexByte(o->keyIndex),
-			hex(o->noEnterLessMin, 0, 4),
-			hex(o->addReqSettings, 0, 2)
-	);
+	char * s = malloc(10240);
+	int i = 0;
+	i += sprintf(s+i, "<OfflinePINEntryConfiguration>\n<textFont>%s</textFont>\n", hexByte(o->textFont));
+	i += sprintf(s+i, "<prompt>%s</prompt>\n", hex(o->prompt, 0, 1000));
+	i += sprintf(s+i, "<promptMAC>%s</promptMAC>\n", hex(o->prompt, 0, 36));
+	i += sprintf(s+i, "<promptX>%s</promptX>\n", hex(o->promptX, 0, 4));
+	i += sprintf(s+i, "<promptY>%s</promptY>\n", hex(o->promptY, 0, 4));
+	i += sprintf(s+i, "<editX>%s</editX>\n", hex(o->editX, 0, 4));
+	i += sprintf(s+i, "<editY>%s</editY>\n", hex(o->editY, 0, 4));
+	i += sprintf(s+i, "<formatType>%s</formatType>\n", hexByte(o->formatType));
+	i += sprintf(s+i, "<formatSpMAC>%s</formatSpMAC>\n", hex(o->formatSpMAC, 0, 9));
+	i += sprintf(s+i, "<formatSpecifier>%s</formatSpecifier>\n", hex(o->formatSpecifier, 0, 50));
+	i += sprintf(s+i, "<minimumKeys>%s</minimumKeys>\n", hexByte(o->minimumKeys));
+	i += sprintf(s+i, "<maximumKeys>%s</maximumKeys>\n", hexByte(o->maximumKeys));
+	i += sprintf(s+i, "<echoCharacter>%s</echoCharacter>\n", hexByte(o->echoCharacter));
+	i += sprintf(s+i, "<cursorType>%s</cursorType>\n", hexByte(o->cursorType));
+	i += sprintf(s+i, "<direction>%s</direction>\n", hexByte(o->direction));
+	i += sprintf(s+i, "<beepInvalidKey>%s</beepInvalidKey>\n", hex(o->beepInvalidKey, 0, 4));
+	i += sprintf(s+i, "<timeOutFirstKey>%s</timeOutFirstKey>\n", hex(o->timeOutFirstKey, 0, 4));
+	i += sprintf(s+i, "<timeOutInterKey>%s</timeOutInterKey>\n", hex(o->timeOutInterKey, 0, 4));
+	i += sprintf(s+i, "<keyType>%s</keyType>\n", hexByte(o->keyType));
+	i += sprintf(s+i, "<keyIndex>%s</keyIndex>\n", hexByte(o->keyIndex));
+	i += sprintf(s+i, "<noEnterLessMin>%s</noEnterLessMin>\n", hex(o->noEnterLessMin, 0, 4));
+	i += sprintf(s+i, "<addReqSettings>%s</addReqSettings>\n", hex(o->addReqSettings, 0, 2));
+	return s;
 }
 
 char * OfflinePINEntryConfigurationToBin(OfflinePINEntryConfiguration * o) {
