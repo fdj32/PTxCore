@@ -18,7 +18,7 @@ char * AIDToXML(AID * o) {
 		return NULL;
 	char * s = malloc(10240);
 	int i = 0;
-	i = sprintf(s, "<AID>\n<applicationSelectionIndicator>%s</applicationSelectionIndicator>\n", hexByte(o->applicationSelectionIndicator));
+	i += sprintf(s + i, "<AID>\n<applicationSelectionIndicator>%s</applicationSelectionIndicator>\n", hexByte(o->applicationSelectionIndicator));
 	i += sprintf(s + i, "<lengthTLVData>%s</lengthTLVData>\n", hexByte(o->lengthTLVData));
 	i += sprintf(s + i, "<tlvData>%s</tlvData>\n", hex(o->tlvData, 0, (int)(o->lengthTLVData)));
 	i += sprintf(s + i, "<aidLength>%s</aidLength>\n", hexByte(o->aidLength));
@@ -169,30 +169,19 @@ AID * AIDListFromBin(char * s, int length) {
 char * KeyDataToXML(KeyData * o, int size) {
 	if(NULL == o)
 		return NULL;
-	char * out = malloc(102400);
-	char f[1024] = "<KeyData>\n";
-	strcat(f, "<keyIndex>%s</keyIndex>\n");
-	strcat(f, "<keyAlgorithmIndicator>%s</keyAlgorithmIndicator>\n");
-	strcat(f, "<hashAlgorithmIndicator>%s</hashAlgorithmIndicator>\n");
-	strcat(f, "<keyLength>%s</keyLength>\n");
-	strcat(f, "<key>%s</key>\n");
-	strcat(f, "<keyExponentLength>%s</keyExponentLength>\n");
-	strcat(f, "<keyExponent>%s</keyExponent>\n");
-	strcat(f, "<keyCheckSum>%s</keyCheckSum>\n");
-	strcat(f, "</KeyData>\n");
+	char * s = malloc(102400);
+	int i = 0;
 	for(int i = 0; i < size; i++) {
-		char * s = format(f, hexByte((o+i)->keyIndex),
-				hexByte((o+i)->keyAlgorithmIndicator),
-				hexByte((o+i)->hashAlgorithmIndicator),
-				hexByte((o+i)->keyLength),
-				hex((o+i)->key, 0, 248),
-				hexByte((o+i)->keyExponentLength),
-				hex((o+i)->keyExponent, 0, 3),
-				hex((o+i)->keyCheckSum, 0, 20)
-				);
-		strcat(out, s);
+		i += sprintf(s+i, "<KeyData>\n<keyIndex>%s</keyIndex>\n", hexByte((o+i)->keyIndex));
+		i += sprintf(s+i, "<keyAlgorithmIndicator>%s</keyAlgorithmIndicator>\n", hexByte((o+i)->keyAlgorithmIndicator));
+		i += sprintf(s+i, "<hashAlgorithmIndicator>%s</hashAlgorithmIndicator>\n", hexByte((o+i)->hashAlgorithmIndicator));
+		i += sprintf(s+i, "<keyLength>%s</keyLength>\n", hexByte((o+i)->keyLength));
+		i += sprintf(s+i, "<key>%s</key>\n", hex((o+i)->key, 0, 248));
+		i += sprintf(s+i, "<keyExponentLength>%s</keyExponentLength>\n", hexByte((o+i)->keyExponentLength));
+		i += sprintf(s+i, "<keyExponent>%s</keyExponent>\n", hex((o+i)->keyExponent, 0, 3));
+		i += sprintf(s+i, "<keyCheckSum>%s</keyCheckSum>\n</KeyData>\n", hex((o+i)->keyCheckSum, 0, 20));
 	}
-	return out;
+	return s;
 }
 
 char * KeyDataToBin(KeyData * o, int size) {
