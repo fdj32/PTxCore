@@ -171,15 +171,15 @@ char * KeyDataToXML(KeyData * o, int size) {
 		return NULL;
 	char * s = malloc(102400);
 	int i = 0;
-	for(int i = 0; i < size; i++) {
-		i += sprintf(s+i, "<KeyData>\n<keyIndex>%s</keyIndex>\n", hexByte((o+i)->keyIndex));
-		i += sprintf(s+i, "<keyAlgorithmIndicator>%s</keyAlgorithmIndicator>\n", hexByte((o+i)->keyAlgorithmIndicator));
-		i += sprintf(s+i, "<hashAlgorithmIndicator>%s</hashAlgorithmIndicator>\n", hexByte((o+i)->hashAlgorithmIndicator));
-		i += sprintf(s+i, "<keyLength>%s</keyLength>\n", hexByte((o+i)->keyLength));
-		i += sprintf(s+i, "<key>%s</key>\n", hex((o+i)->key, 0, 248));
-		i += sprintf(s+i, "<keyExponentLength>%s</keyExponentLength>\n", hexByte((o+i)->keyExponentLength));
-		i += sprintf(s+i, "<keyExponent>%s</keyExponent>\n", hex((o+i)->keyExponent, 0, 3));
-		i += sprintf(s+i, "<keyCheckSum>%s</keyCheckSum>\n</KeyData>\n", hex((o+i)->keyCheckSum, 0, 20));
+	for(int j = 0; j < size; j++) {
+		i += sprintf(s+i, "<KeyData>\n<keyIndex>%s</keyIndex>\n", hexByte((o+j)->keyIndex));
+		i += sprintf(s+i, "<keyAlgorithmIndicator>%s</keyAlgorithmIndicator>\n", hexByte((o+j)->keyAlgorithmIndicator));
+		i += sprintf(s+i, "<hashAlgorithmIndicator>%s</hashAlgorithmIndicator>\n", hexByte((o+j)->hashAlgorithmIndicator));
+		i += sprintf(s+i, "<keyLength>%s</keyLength>\n", hexByte((o+j)->keyLength));
+		i += sprintf(s+i, "<key>%s</key>\n", hex((o+j)->key, 0, 248));
+		i += sprintf(s+i, "<keyExponentLength>%s</keyExponentLength>\n", hexByte((o+j)->keyExponentLength));
+		i += sprintf(s+i, "<keyExponent>%s</keyExponent>\n", hex((o+j)->keyExponent, 0, 3));
+		i += sprintf(s+i, "<keyCheckSum>%s</keyCheckSum>\n</KeyData>\n", hex((o+j)->keyCheckSum, 0, 20));
 	}
 	return s;
 }
