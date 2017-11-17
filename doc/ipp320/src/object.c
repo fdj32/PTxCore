@@ -603,80 +603,38 @@ int TerminalSpecificDataLength(TerminalSpecificData * o) {
 char * TerminalSpecificDataToXML(TerminalSpecificData * o) {
 	if (NULL == o)
 		return NULL;
-	char f[1024] = "<TerminalSpecificData>\n";
-	strcat(f, "<terminalCapabilities>%s</terminalCapabilities>\n");
-	strcat(f,
-			"<additionalTerminalCapabilities>%s</additionalTerminalCapabilities>\n");
-	strcat(f, "<terminalCountryCode>%s</terminalCountryCode>\n");
-	strcat(f, "<terminalType>%s</terminalType>\n");
-	strcat(f, "<transactionCurrencyCode>%s</transactionCurrencyCode>\n");
-	strcat(f, "<transactionCurrencyExponent>%s</transactionCurrencyExponent>\n");
-	strcat(f,
-			"<transactionReferenceCurrencyCode>%s</transactionReferenceCurrencyCode>\n");
-	strcat(f,
-			"<transactionReferenceCurrencyExponent>%s</transactionReferenceCurrencyExponent>\n");
-	strcat(f,
-			"<transactionReferenceCurrencyConversion>%s</transactionReferenceCurrencyConversion>\n");
-	strcat(f, "<acquirerIdentifier>%s</acquirerIdentifier>\n");
-	strcat(f, "<merchantCategoryCode>%s</merchantCategoryCode>\n");
-	strcat(f, "<merchantIdentifier>%s</merchantIdentifier>\n");
-	strcat(f, "<terminalIdentification>%s</terminalIdentification>\n");
-	strcat(f, "<terminalRiskManagementData>%s</terminalRiskManagementData>\n");
-	strcat(f, "<ifdSerialNumber>%s</ifdSerialNumber>\n");
-	strcat(f,
-			"<authorizationResponseCodeList>%s</authorizationResponseCodeList>\n");
-	strcat(f, "<miscellaneousOptions>%s</miscellaneousOptions>\n");
-	strcat(f, "<miscellaneousOptions1>%s</miscellaneousOptions1>\n");
-
-	// *** stack smashing detected ***: <unknown> terminated
-	// to fix this issue, we need to split this into 3 times of method calling
-
-	char * head = format(f, hex(o->terminalCapabilities, 0, 3),
-			hex(o->additionalTerminalCapabilities, 0, 5),
-			hex(o->terminalCountryCode, 0, 2),
-			hexByte(o->terminalType),
-			hex(o->transactionCurrencyCode, 0, 2),
-			hexByte(o->transactionCurrencyExponent),
-			hex(o->transactionReferenceCurrencyCode, 0, 2),
-			hexByte(o->transactionReferenceCurrencyExponent),
-			hex(o->transactionReferenceCurrencyConversion, 0, 4),
-			hex(o->acquirerIdentifier, 0, 6),
-			hex(o->merchantCategoryCode, 0, 2),
-			hex(o->merchantIdentifier, 0, 15),
-			hex(o->terminalIdentification, 0, 8),
-			hex(o->terminalRiskManagementData, 0, 8),
-			hex(o->ifdSerialNumber, 0, 8),
-			hex(o->authorizationResponseCodeList, 0, 20),
-			hexByte(o->miscellaneousOptions),
-			hexByte(o->miscellaneousOptions1));
-	memset(f, 0, 1024);
-	strcat(f, "<lengthTLVData>%s</lengthTLVData>\n");
-	strcat(f, "<tlvData>%s</tlvData>\n");
-	strcat(f,
-			"<lengthOfflinePINEntryConfiguration>%s</lengthOfflinePINEntryConfiguration>\n");
-	strcat(f, "%s");
-	strcat(f, "<terminalLanguages>%s</terminalLanguages>\n");
-	strcat(f, "<lengthDiagnosticsTags>%s</lengthDiagnosticsTags>\n");
-	strcat(f, "<diagnosticsTags>%s</diagnosticsTags>\n");
-	strcat(f, "<lengthAppSelectionTags>%s</lengthAppSelectionTags>\n");
-	strcat(f, "<appSelectionTags>%s</appSelectionTags>\n");
-	strcat(f, "<lengthRIDApps>%s</lengthRIDApps>\n");
-	strcat(f, "<ridApps>%s</ridApps>\n");
-	strcat(f, "</TerminalSpecificData>\n");
-
-	char * tail = format(f, hex(o->lengthTLVData, 0, 2),
-			hex(o->tlvData, 0, littleEndianInt(o->lengthTLVData)),
-			hex(o->lengthOfflinePINEntryConfiguration, 0, 2),
-			OfflinePINEntryConfigurationToXML(o->offlinePINEntryConfiguration),
-			hex(o->terminalLanguages, 0, 8),
-			hex(o->lengthDiagnosticsTags, 0, 2),
-			hex(o->diagnosticsTags, 0, littleEndianInt(o->lengthDiagnosticsTags)),
-			hex(o->lengthAppSelectionTags, 0, 2),
-			hex(o->appSelectionTags, 0, littleEndianInt(o->lengthAppSelectionTags)),
-			hex(o->lengthRIDApps, 0, 2),
-			hex(o->ridApps, 0, littleEndianInt(o->ridApps)));
-
-	return format("%s%s", head, tail);
+	char * s = malloc(10240);
+	int i = 0;
+	i += sprintf(s+i, "<TerminalSpecificData>\n<terminalCapabilities>%s</terminalCapabilities>\n", hex(o->terminalCapabilities, 0, 3));
+	i += sprintf(s+i, "<additionalTerminalCapabilities>%s</additionalTerminalCapabilities>\n", hex(o->additionalTerminalCapabilities, 0, 5));
+	i += sprintf(s+i, "<terminalCountryCode>%s</terminalCountryCode>\n", hex(o->terminalCountryCode, 0, 2));
+	i += sprintf(s+i, "<terminalType>%s</terminalType>\n", hexByte(o->terminalType));
+	i += sprintf(s+i, "<transactionCurrencyCode>%s</transactionCurrencyCode>\n", hex(o->transactionCurrencyCode, 0, 2));
+	i += sprintf(s+i, "<transactionCurrencyExponent>%s</transactionCurrencyExponent>\n", hexByte(o->transactionCurrencyExponent));
+	i += sprintf(s+i, "<transactionReferenceCurrencyCode>%s</transactionReferenceCurrencyCode>\n", hex(o->transactionReferenceCurrencyCode, 0, 2));
+	i += sprintf(s+i, "<transactionReferenceCurrencyExponent>%s</transactionReferenceCurrencyExponent>\n", hexByte(o->transactionReferenceCurrencyExponent));
+	i += sprintf(s+i, "<transactionReferenceCurrencyConversion>%s</transactionReferenceCurrencyConversion>\n", hex(o->transactionReferenceCurrencyConversion, 0, 4));
+	i += sprintf(s+i, "<acquirerIdentifier>%s</acquirerIdentifier>\n", hex(o->acquirerIdentifier, 0, 6));
+	i += sprintf(s+i, "<merchantCategoryCode>%s</merchantCategoryCode>\n", hex(o->merchantCategoryCode, 0, 2));
+	i += sprintf(s+i, "<merchantIdentifier>%s</merchantIdentifier>\n", hex(o->merchantIdentifier, 0, 15));
+	i += sprintf(s+i, "<terminalIdentification>%s</terminalIdentification>\n", hex(o->terminalIdentification, 0, 8));
+	i += sprintf(s+i, "<terminalRiskManagementData>%s</terminalRiskManagementData>\n", hex(o->terminalRiskManagementData, 0, 8));
+	i += sprintf(s+i, "<ifdSerialNumber>%s</ifdSerialNumber>\n", hex(o->ifdSerialNumber, 0, 8));
+	i += sprintf(s+i, "<authorizationResponseCodeList>%s</authorizationResponseCodeList>\n", hex(o->authorizationResponseCodeList, 0, 20));
+	i += sprintf(s+i, "<miscellaneousOptions>%s</miscellaneousOptions>\n", hexByte(o->miscellaneousOptions));
+	i += sprintf(s+i, "<miscellaneousOptions1>%s</miscellaneousOptions1>\n", hexByte(o->miscellaneousOptions1));
+	i += sprintf(s+i, "<lengthTLVData>%s</lengthTLVData>\n", hex(o->lengthTLVData, 0, 2));
+	i += sprintf(s+i, "<tlvData>%s</tlvData>\n", hex(o->tlvData, 0, littleEndianInt(o->lengthTLVData)));
+	i += sprintf(s+i, "<lengthOfflinePINEntryConfiguration>%s</lengthOfflinePINEntryConfiguration>\n", hex(o->lengthOfflinePINEntryConfiguration, 0, 2));
+	i += sprintf(s+i, "%s", OfflinePINEntryConfigurationToXML(o->offlinePINEntryConfiguration));
+	i += sprintf(s+i, "<terminalLanguages>%s</terminalLanguages>\n", hex(o->terminalLanguages, 0, 8));
+	i += sprintf(s+i, "<lengthDiagnosticsTags>%s</lengthDiagnosticsTags>\n", hex(o->lengthDiagnosticsTags, 0, 2));
+	i += sprintf(s+i, "<diagnosticsTags>%s</diagnosticsTags>\n", hex(o->diagnosticsTags, 0, littleEndianInt(o->lengthDiagnosticsTags)));
+	i += sprintf(s+i, "<lengthAppSelectionTags>%s</lengthAppSelectionTags>\n", hex(o->lengthAppSelectionTags, 0, 2));
+	i += sprintf(s+i, "<appSelectionTags>%s</appSelectionTags>\n", hex(o->appSelectionTags, 0, littleEndianInt(o->lengthAppSelectionTags)));
+	i += sprintf(s+i, "<lengthRIDApps>%s</lengthRIDApps>\n", hex(o->lengthRIDApps, 0, 2));
+	i += sprintf(s+i, "<ridApps>%s</ridApps>\n</TerminalSpecificData>\n", hex(o->ridApps, 0, littleEndianInt(o->lengthRIDApps)));
+	return s;
 }
 
 char * TerminalSpecificDataToBin(TerminalSpecificData * o) {
