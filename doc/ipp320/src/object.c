@@ -375,18 +375,16 @@ char * RIDToBin(RID * o) {
 	memcpy(s + 22 + key + online + end + previous,
 			littleEndianBin(extended - 2), 2);
 	index = 24 + key + online + end + previous;
-	for (int i = 0; i < 7; i++) {
-		for (int j = 0; j < 8; j++) {
-			// RFU*2
-			index += 2;
-			memcpy(s + index, LengthThenTagsToBin(o->extendedAPIData + i * j),
-					1 + o->extendedAPIData[i * j].length);
-			index += 1 + o->extendedAPIData[i * j].length;
-			memcpy(s + index,
-					LengthThenTagsToBin(o->extendedAPIData + i * j + 1),
-					1 + o->extendedAPIData[i * j + 1].length);
-			index += 1 + o->extendedAPIData[i * j + 1].length;
-		}
+	for (int i = 0; i < 7 * 8; i++) {
+		// RFU*2
+		index += 2;
+		memcpy(s + index, LengthThenTagsToBin(o->extendedAPIData + i * 2),
+				1 + o->extendedAPIData[i * 2].length);
+		index += 1 + o->extendedAPIData[i * 2].length;
+		memcpy(s + index,
+				LengthThenTagsToBin(o->extendedAPIData + i * 2 + 1),
+				1 + o->extendedAPIData[i * 2 + 1].length);
+		index += 1 + o->extendedAPIData[i * 2 + 1].length;
 	}
 	// LengthProprietaryRIDData = 0x0000, ProprietaryRIDData = NULL
 	memcpy(s + 22 + key + online + end + previous + extended,
@@ -443,15 +441,13 @@ RID * RIDFromBin(char * s) {
 	int extended = littleEndianInt(o->lengthExtendedAPIData);
 	index = 22 + key + online + end + previous + 2; // ExtendedAPIData.LengthEMVStepTags
 	o->extendedAPIData = calloc(7 * 8 * 2, sizeof(LengthThenTags));
-	for (int i = 0; i < 7; i++) {
-		for (int j = 0; j < 8; j++) {
-			// RFU*2
-			index += 2;
-			o->extendedAPIData[i * j] = *LengthThenTagsFromBin(s + index);
-			index += 1 + o->extendedAPIData[i * j].length;
-			o->extendedAPIData[i * j + 1] = *LengthThenTagsFromBin(s + index);
-			index += 1 + o->extendedAPIData[i * j + 1].length;
-		}
+	for (int i = 0; i < 7 * 8; i++) {
+		// RFU*2
+		index += 2;
+		o->extendedAPIData[i * 2] = *LengthThenTagsFromBin(s + index);
+		index += 1 + o->extendedAPIData[i * 2].length;
+		o->extendedAPIData[i * 2 + 1] = *LengthThenTagsFromBin(s + index);
+		index += 1 + o->extendedAPIData[i * 2 + 1].length;
 	}
 	// LengthProprietaryRIDData = 0x0000, ProprietaryRIDData = NULL
 	o->lengthProprietaryRIDData = s + 22 + key + online + end + previous
