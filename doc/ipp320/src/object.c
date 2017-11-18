@@ -362,7 +362,7 @@ char * RIDToBin(RID * o) {
 	for (int i = 0; i < 7; i++) { // EMV Transaction Type
 		memcpy(s + index, LengthThenTagsToBin(o->endOfTransactionTags + i),
 				1 + o->endOfTransactionTags[i].length);
-		index += o->endOfTransactionTags[i].length;
+		index += 1 + o->endOfTransactionTags[i].length;
 	}
 	memcpy(s + 11 + key + online + end, o->endOfTransactionStep, 7);
 	memcpy(s + 18 + key + online + end, o->lengthGetPreviousAmountTags, 2);
