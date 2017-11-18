@@ -50,7 +50,7 @@ int main(void) {
 
 	//printf("%s\n", out);
 
-	//print(out, 80);
+//	print(out, 80);
 
 	char * li = malloc(2);
 	li[0] = 0x8e;
@@ -112,11 +112,13 @@ int main(void) {
 //		ridp = ridp->next;
 //	}
 
-	out = VegaInitDataToXML(v);
-	puts(out);
+	out = hex(VegaInitDataToBin(v), 0, fileSize);
+//	v = VegaInitDataFromBin(out);
+//	out = VegaInitDataToXML(v);
+//	puts(out);
 //	fflush(stdout);
 
-//	print(out, 80);
+	print(out, 80);
 
 //	fileData = VegaInitDataToBin(v);
 //	out = hex(fileData, 0, VegaInitDataLength(v));
