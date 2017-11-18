@@ -511,7 +511,7 @@ char * OfflinePINEntryConfigurationToXML(OfflinePINEntryConfiguration * o) {
 	if (NULL == o)
 		return NULL;
 	char * s = malloc(10240);
-	memset(s, 0, 102400);
+	memset(s, 0, 10240);
 	int i = 0;
 	i += sprintf(s+i, "<OfflinePINEntryConfiguration>\n<textFont>%s</textFont>\n", hexByte(o->textFont));
 	i += sprintf(s+i, "<prompt>%s</prompt>\n", hex(o->prompt, 0, 1000));
