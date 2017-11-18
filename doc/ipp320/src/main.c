@@ -37,7 +37,7 @@ int main(void) {
 	puts(s2);
 	printf("%d\n", decodedLength);
 
-	char * fileName = "/media/nfeng/d/hub/fdj32/PTxCore/doc/131540886937708660.init.dat";
+	char * fileName = "E:/nfeng/hub/PTxCore/doc/131540886937708660.init.dat";
 
 	int fileSize = getFileSize(fileName);
 	printf("%d\n", fileSize);
@@ -70,18 +70,22 @@ int main(void) {
 	printf("%d\n", littleEndianInt(v->terminalDataTotalLength));
 
 
-//	fileData = TerminalSpecificDataToBin(v->terminalSpecificData);
+	fileData = TerminalSpecificDataToBin(v->terminalSpecificData);
 //	out = hex(fileData, 0, littleEndianInt(v->terminalDataTotalLength));
 //	puts(out);
 //	print(out, 80);
 
-	fileData = RIDListToBin(v->ridSpecificData);
-	out = hex(fileData, 0, littleEndianInt(v->ridDataTotalLength));
+//	fileData = RIDListToBin(v->ridSpecificData);
+//	out = hex(fileData, 0, littleEndianInt(v->ridDataTotalLength));
 
-	//out = TerminalSpecificDataToXML(v->terminalSpecificData);
+//	TerminalSpecificData * tsd = TerminalSpecificDataFromBin(fileData);
+
+//	out = TerminalSpecificDataToXML(tsd);
 	//out = OfflinePINEntryConfigurationToXML(v->terminalSpecificData->offlinePINEntryConfiguration);
 
 //	AID * aidp = v->aidSpecificData;
+//	out = AIDListToBin(aidp);
+//	aidp = AIDListFromBin(out, littleEndianInt(v->aidDataTotalLength));
 //	while(NULL != aidp) {
 //		out = AIDToXML(aidp);
 //		puts(out);
@@ -91,10 +95,17 @@ int main(void) {
 	//out = KeyDataToXML(v->ridSpecificData->keyDatas, littleEndianInt(v->ridSpecificData->keyDataTotalLength)/276);
 
 
-	LengthThenTags * ltg = v->ridSpecificData->endOfTransactionTags;
+//	LengthThenTags * ltg = v->ridSpecificData->endOfTransactionTags;
 	//out = LengthThenTagsToXML(ltg, 7);
 
+	//Tag * tags = v->ridSpecificData->goOnlineTags;
+
+
+
+
 //	RID * ridp = v->ridSpecificData;
+//	out = RIDListToBin(ridp);
+//	ridp = RIDListFromBin(out, littleEndianInt(v->ridDataTotalLength));
 //	while(NULL != ridp) {
 //		out = RIDToXML(ridp);
 //		puts(out);
@@ -103,7 +114,7 @@ int main(void) {
 
 	out = VegaInitDataToXML(v);
 	puts(out);
-	fflush(stdout);
+//	fflush(stdout);
 
 //	print(out, 80);
 
