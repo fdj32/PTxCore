@@ -34,7 +34,7 @@ char * AIDToXML(AID * o) {
 	i += sprintf(s + i, "<terminalFloorLimit>%s</terminalFloorLimit>\n", hex(o->terminalFloorLimit, 0, 4));
 	i += sprintf(s + i, "<defaultTDOLLength>%s</defaultTDOLLength>\n", hex(o->defaultTDOLLength, 0, 2));
 	i += sprintf(s + i, "<defaultTDOL>%s</defaultTDOL>\n", hex(o->defaultTDOL, 0, littleEndianInt(o->defaultTDOLLength)));
-	i += sprintf(s + i, "<defaultDDOLLength>%s</defaultDDOLLength>\n", hex(o->tacOnline, 0, 2));
+	i += sprintf(s + i, "<defaultDDOLLength>%s</defaultDDOLLength>\n", hex(o->defaultDDOLLength, 0, 2));
 	i += sprintf(s + i, "<defaultDDOL>%s</defaultDDOL>\n</AID>\n", hex(o->defaultDDOL, 0, littleEndianInt(o->defaultDDOLLength)));
 	return s;
 }
