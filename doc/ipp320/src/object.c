@@ -231,7 +231,7 @@ char * TagsToXML(Tag * tags, int size) {
 	memset(s, 0, 10240);
 	int j = 0;
 	for(int i =0; i < size; i++) {
-		j += sprintf(s + j, "<Tag id=\"%s\">", hex(littleEndianBin((tags+i)->id), 0, 2));
+		j += sprintf(s + j, "<Tag id=\"%s\"/>", hex(littleEndianBin((tags+i)->id), 0, 2));
 	}
 	return s;
 }
@@ -530,7 +530,7 @@ char * OfflinePINEntryConfigurationToXML(OfflinePINEntryConfiguration * o) {
 	i += sprintf(s+i, "<keyType>%s</keyType>\n", hexByte(o->keyType));
 	i += sprintf(s+i, "<keyIndex>%s</keyIndex>\n", hexByte(o->keyIndex));
 	i += sprintf(s+i, "<noEnterLessMin>%s</noEnterLessMin>\n", hex(o->noEnterLessMin, 0, 4));
-	i += sprintf(s+i, "<addReqSettings>%s</addReqSettings>\n<OfflinePINEntryConfiguration>\n", hex(o->addReqSettings, 0, 2));
+	i += sprintf(s+i, "<addReqSettings>%s</addReqSettings>\n</OfflinePINEntryConfiguration>\n", hex(o->addReqSettings, 0, 2));
 	return s;
 }
 
@@ -750,17 +750,15 @@ int VegaInitDataLength(VegaInitData * o) {
 char * VegaInitDataToXML(VegaInitData * o) {
 	if(NULL == o)
 		return NULL;
-	char * s = malloc(102400);
-	memset(s, 0, 102400);
+	char * s = malloc(1024*1024);
+	memset(s, 0, 1024*1024);
 	strcat(s, "<VegaInitData>");
 
 	strcat(s, "<terminalDataTotalLength>");
 	strcat(s, hex(o->terminalDataTotalLength, 0, 2));
 	strcat(s, "</terminalDataTotalLength>\n");
 
-	strcat(s, "<terminalSpecificData>\n");
 	strcat(s, TerminalSpecificDataToXML(o->terminalSpecificData));
-	strcat(s, "</terminalSpecificData>\n");
 
 	strcat(s, "<ridDataTotalLength>");
 	strcat(s, hex(o->ridDataTotalLength, 0, 2));
