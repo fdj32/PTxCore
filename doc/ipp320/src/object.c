@@ -227,11 +227,11 @@ KeyData * KeyDataFromBin(char * s, int length) {
 char * TagsToXML(Tag * tags, int size) {
 	if(NULL == tags)
 		return NULL;
-	char * s = malloc(512);
-	memset(s, 0, 512);
+	char * s = malloc(10240);
+	memset(s, 0, 10240);
 	int j = 0;
 	for(int i =0; i < size; i++) {
-		j += sprintf(s, "<Tag id=\"%s\">", hex(littleEndianBin((tags+i)->id), 0, 2));
+		j += sprintf(s + j, "<Tag id=\"%s\">", hex(littleEndianBin((tags+i)->id), 0, 2));
 	}
 	return s;
 }
