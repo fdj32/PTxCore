@@ -17,7 +17,7 @@ char * AIDToXML(AID * o) {
 	if (NULL == o)
 		return NULL;
 	char * s = malloc(10240);
-	memset(o, 0, 10240);
+	memset(s, 0, 10240);
 	int i = 0;
 	i += sprintf(s + i, "<AID>\n<applicationSelectionIndicator>%s</applicationSelectionIndicator>\n", hexByte(o->applicationSelectionIndicator));
 	i += sprintf(s + i, "<lengthTLVData>%s</lengthTLVData>\n", hexByte(o->lengthTLVData));
