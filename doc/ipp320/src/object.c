@@ -17,6 +17,7 @@ char * AIDToXML(AID * o) {
 	if (NULL == o)
 		return NULL;
 	char * s = malloc(10240);
+	memset(o, 0, 10240);
 	int i = 0;
 	i += sprintf(s + i, "<AID>\n<applicationSelectionIndicator>%s</applicationSelectionIndicator>\n", hexByte(o->applicationSelectionIndicator));
 	i += sprintf(s + i, "<lengthTLVData>%s</lengthTLVData>\n", hexByte(o->lengthTLVData));
@@ -73,6 +74,7 @@ AID * AIDFromBin(char * s) {
 	if (NULL == s)
 		return NULL;
 	AID * o = malloc(sizeof(AID));
+	memset(o, 0, sizeof(AID));
 	o->applicationSelectionIndicator = s[0];
 	o->lengthTLVData = s[1];
 	o->tlvData = s + 2;
@@ -170,6 +172,7 @@ char * KeyDataToXML(KeyData * o, int size) {
 	if(NULL == o)
 		return NULL;
 	char * s = malloc(102400);
+	memset(s, 0, 102400);
 	int i = 0;
 	for(int j = 0; j < size; j++) {
 		i += sprintf(s+i, "<KeyData>\n<keyIndex>%s</keyIndex>\n", hexByte((o+j)->keyIndex));
@@ -225,6 +228,7 @@ char * TagsToXML(Tag * tags, int size) {
 	if(NULL == tags)
 		return NULL;
 	char * s = malloc(512);
+	memset(s, 0, 512);
 	int j = 0;
 	for(int i =0; i < size; i++) {
 		j += sprintf(s, "<Tag id=\"%s\">", hex(littleEndianBin((tags+i)->id), 0, 2));
@@ -259,6 +263,7 @@ char * LengthThenTagsToXML(LengthThenTags * o, int size) {
 	if(NULL == o)
 		return NULL;
 	char * s = malloc(102400);
+	memset(s, 0, 102400);
 	for(int i=0; i<size; i++) {
 		if(0 == (o+i)->length) {
 			strcat(s, "<LengthThenTags><Length>00</Length></LengthThenTags>\n");
@@ -292,6 +297,7 @@ LengthThenTags * LengthThenTagsFromBin(char * s) {
 	if (NULL == s)
 		return NULL;
 	LengthThenTags * o = malloc(sizeof(LengthThenTags));
+	memset(o, 0, sizeof(LengthThenTags));
 	o->length = s[0];
 	o->tags = TagsFromBin(s + 1, o->length);
 	return o;
@@ -313,6 +319,7 @@ char * RIDToXML(RID * o) {
 	if (NULL == o)
 		return NULL;
 	char * s = malloc(102400);
+	memset(s, 0, 102400);
 	int i = 0;
 	i += sprintf(s+i, "<RID>\n<rid>%s</rid>\n", hex(o->rid, 0, 5));
 	i += sprintf(s+i, "<keyDataTotalLength>%s</keyDataTotalLength>\n", hex(o->keyDataTotalLength, 0, 2));
@@ -411,6 +418,7 @@ RID * RIDFromBin(char * s) {
 	if (NULL == s)
 		return NULL;
 	RID * o = malloc(sizeof(RID));
+	memset(o, 0, sizeof(RID));
 	o->rid = s;
 	o->keyDataTotalLength = s + 5;
 	int key = littleEndianInt(o->keyDataTotalLength);
@@ -503,6 +511,7 @@ char * OfflinePINEntryConfigurationToXML(OfflinePINEntryConfiguration * o) {
 	if (NULL == o)
 		return NULL;
 	char * s = malloc(10240);
+	memset(s, 0, 102400);
 	int i = 0;
 	i += sprintf(s+i, "<OfflinePINEntryConfiguration>\n<textFont>%s</textFont>\n", hexByte(o->textFont));
 	i += sprintf(s+i, "<prompt>%s</prompt>\n", hex(o->prompt, 0, 1000));
@@ -564,6 +573,7 @@ OfflinePINEntryConfiguration * OfflinePINEntryConfigurationFromBin(char * s) {
 		return NULL;
 	OfflinePINEntryConfiguration * o = malloc(
 			sizeof(OfflinePINEntryConfiguration));
+	memset(o, 0, sizeof(OfflinePINEntryConfiguration));
 	o->textFont = s[0];
 	o->prompt = s + 1;
 	o->promptMAC = s + 1001;
@@ -603,6 +613,7 @@ char * TerminalSpecificDataToXML(TerminalSpecificData * o) {
 	if (NULL == o)
 		return NULL;
 	char * s = malloc(10240);
+	memset(s, 0, 10240);
 	int i = 0;
 	i += sprintf(s+i, "<TerminalSpecificData>\n<terminalCapabilities>%s</terminalCapabilities>\n", hex(o->terminalCapabilities, 0, 3));
 	i += sprintf(s+i, "<additionalTerminalCapabilities>%s</additionalTerminalCapabilities>\n", hex(o->additionalTerminalCapabilities, 0, 5));
@@ -689,6 +700,7 @@ TerminalSpecificData * TerminalSpecificDataFromBin(char * s) {
 	if (NULL == s)
 		return NULL;
 	TerminalSpecificData * o = malloc(sizeof(TerminalSpecificData));
+	memset(o, 0, sizeof(TerminalSpecificData));
 	// RFU*1
 	o->terminalCapabilities = s + 1;
 	o->additionalTerminalCapabilities = s + 4;
@@ -806,6 +818,7 @@ VegaInitData * VegaInitDataFromBin(char * s) {
 	if (NULL == s)
 		return NULL;
 	VegaInitData * o = malloc(sizeof(VegaInitData));
+	memset(o, 0, sizeof(VegaInitData));
 	o->terminalDataTotalLength = s;
 	int terminal = littleEndianInt(o->terminalDataTotalLength);
 	o->terminalSpecificData = TerminalSpecificDataFromBin(s + 2);
