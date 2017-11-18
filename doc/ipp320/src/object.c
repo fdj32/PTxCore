@@ -225,10 +225,9 @@ char * TagsToXML(Tag * tags, int size) {
 	if(NULL == tags)
 		return NULL;
 	char * s = malloc(512);
+	int j = 0;
 	for(int i =0; i < size; i++) {
-		strcat(s, "<Tag id=\"");
-		strcat(s, hex(littleEndianBin((tags+i)->id), 0, 2));
-		strcat(s, "\"/>\n");
+		j += sprintf(s, "<Tag id=\"%s\">", hex(littleEndianBin((tags+i)->id), 0, 2));
 	}
 	return s;
 }
@@ -325,10 +324,10 @@ char * RIDToXML(RID * o) {
 	i += sprintf(s+i, "<endOfTransactionStep>%s</endOfTransactionStep>\n", hex(o->endOfTransactionStep, 0, 7));
 	i += sprintf(s+i, "<lengthGetPreviousAmountTags>%s</lengthGetPreviousAmountTags>\n", hex(o->lengthGetPreviousAmountTags, 0, 2));
 	i += sprintf(s+i, "<getPreviousAmountTags>%s</getPreviousAmountTags>\n", TagsToXML(o->getPreviousAmountTags, littleEndianInt(o->lengthGetPreviousAmountTags)>>1));
-	i += sprintf(s+i, "<lengthExtendedAPIData>%s</lengthExtendedAPIData>\n", hex(o->lengthGoOnlineTags, 0, 2));
+	i += sprintf(s+i, "<lengthExtendedAPIData>%s</lengthExtendedAPIData>\n", hex(o->lengthExtendedAPIData, 0, 2));
 	i += sprintf(s+i, "<extendedAPIData>%s</extendedAPIData>\n", LengthThenTagsToXML(o->extendedAPIData, 112));
 	i += sprintf(s+i, "<lengthProprietaryRIDData>%s</lengthProprietaryRIDData>\n", hex(o->lengthProprietaryRIDData, 0, 2));
-	i += sprintf(s+i, "<proprietaryRIDData>%s</proprietaryRIDData>\n", hex(o->proprietaryRIDData, 0, littleEndianInt(o->lengthGoOnlineTags)));
+	i += sprintf(s+i, "<proprietaryRIDData>%s</proprietaryRIDData>\n", hex(o->proprietaryRIDData, 0, littleEndianInt(o->lengthProprietaryRIDData)));
 	i += sprintf(s+i, "<lengthIgnoredTags>%s</lengthIgnoredTags>\n", hex(o->lengthIgnoredTags, 0, 2));
 	i += sprintf(s+i, "<ignoreTags>%s</ignoreTags>\n", TagsToXML(o->ignoreTags, littleEndianInt(o->lengthIgnoredTags)>>1));
 	i += sprintf(s+i, "<miscellaneousOptions>%s</miscellaneousOptions>\n", hexByte(o->miscellaneousOptions));
