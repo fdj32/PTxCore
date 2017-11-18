@@ -526,7 +526,7 @@ char * OfflinePINEntryConfigurationToXML(OfflinePINEntryConfiguration * o) {
 	i += sprintf(s+i, "<keyType>%s</keyType>\n", hexByte(o->keyType));
 	i += sprintf(s+i, "<keyIndex>%s</keyIndex>\n", hexByte(o->keyIndex));
 	i += sprintf(s+i, "<noEnterLessMin>%s</noEnterLessMin>\n", hex(o->noEnterLessMin, 0, 4));
-	i += sprintf(s+i, "<addReqSettings>%s</addReqSettings>\n", hex(o->addReqSettings, 0, 2));
+	i += sprintf(s+i, "<addReqSettings>%s</addReqSettings>\n<OfflinePINEntryConfiguration>\n", hex(o->addReqSettings, 0, 2));
 	return s;
 }
 
