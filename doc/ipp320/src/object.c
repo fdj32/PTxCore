@@ -375,7 +375,7 @@ char * RIDToBin(RID * o) {
 	memcpy(s + 22 + key + online + end + previous,
 			littleEndianBin(extended - 2), 2);
 	index = 24 + key + online + end + previous;
-	for (int i = 0; i < 7 * 8; i++) {
+	for (int i = 0; i < 7 * 9; i++) {
 		// RFU*2
 		index += 2;
 		memcpy(s + index, LengthThenTagsToBin(o->extendedAPIData + i * 2),
@@ -440,8 +440,8 @@ RID * RIDFromBin(char * s) {
 	o->lengthExtendedAPIData = s + 20 + key + online + end + previous;
 	int extended = littleEndianInt(o->lengthExtendedAPIData);
 	index = 22 + key + online + end + previous + 2; // ExtendedAPIData.LengthEMVStepTags
-	o->extendedAPIData = calloc(7 * 8 * 2, sizeof(LengthThenTags));
-	for (int i = 0; i < 7 * 8; i++) {
+	o->extendedAPIData = calloc(7 * 9 * 2, sizeof(LengthThenTags));
+	for (int i = 0; i < 7 * 9; i++) {
 		// RFU*2
 		index += 2;
 		o->extendedAPIData[i * 2] = *LengthThenTagsFromBin(s + index);
