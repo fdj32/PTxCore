@@ -60,11 +60,43 @@
 #define POLL_TIME	 			100
 
 typedef struct CpxF0Command {
-	char * lgt;
-	char type;
-	char * to;
-	char cmd;
-	char * dataE;
+	char * lgt; // 2 bytes, length of application field information
+	char type; // 1 byte, message type
+	char * to; // 2 bytes, maximum timeout of execution supported by the terminal (in multiplies of 10 ms)
+	char cmd; // 1 byte, command number for the driver selected
+	char * dataE; // (LGT - 4) bytes DATA_E . data information field for the driver command selected
 } CpxF0Command;
+
+typedef struct CpxF1Command {
+	char * lgt; // 2 bytes, length of application field information
+	char type; // 1 byte, message type
+	char msgSeqId; // 1 byte, reference number for this message (if MSG ID, may be user set, if SEQ ID for Asynchronous messages, it is incremented after each successful send).
+	char msgVer; // 1 byte, message version to allow for future expansion and legacy message handling
+	char * pAppName; // 12 bytes, request message source -> payment application name
+	char * eAppName; // 12 bytes, application name of the EMV application where CPX will direct its request
+	char * dataE; // (lgt-27) bytes, EMV data information field for the CPX EMV command selected
+} CpxF1Command;
+
+typedef struct CpxF1AsyncCommand {
+	char * lgt; // 2 bytes, length of application field information
+	char type; // 1 byte, message type
+	char msgSeqId; // 1 byte, reference number for this message (if MSG ID, may be user set, if SEQ ID for Asynchronous messages, it is incremented after each successful send).
+	char status; // 1 byte,
+	char msgVer; // 1 byte, message version to allow for future expansion and legacy message handling
+	char * pAppName; // 12 bytes, request message source -> payment application name
+	char * eAppName; // 12 bytes, application name of the EMV application where CPX will direct its request
+	char * dataE; // (lgt-28) bytes, EMV data information field for the CPX EMV command selected
+} CpxF1AsyncCommand;
+
+typedef struct CpxF1Result {
+	char * lgt; // 2 bytes, length of application field information
+	char type; // 1 byte, message type
+	char msgSeqId; // 1 byte, reference number for this message (if MSG ID, may be user set, if SEQ ID for Asynchronous messages, it is incremented after each successful send).
+	char status; // 1 byte, execution status
+	char msgVer; // 1 byte, message version to allow for future expansion and legacy message handling
+	char * eAppName; // 12 bytes, response message source -> EMV application name
+	char * pAppName; // 12 bytes, application name of the payment application where CPX will direct its response
+	char * dataR; // (lgt-28) bytes, data information response field for the command selected
+} CpxF1Result;
 
 #endif /* CPX_H_ */
