@@ -18,8 +18,6 @@
 #define RS  0x1e
 #define SPACE 0x20
 
-typedef unsigned char byte;
-
 typedef enum EmvReasonCode {
 	EMV_USER_CANCELLED,
 	EMV_OK,
@@ -144,18 +142,18 @@ typedef enum EmvTransactionStep {
 } EmvTransactionStep;
 
 typedef struct AID {
-	byte applicationSelectionIndicator;
-	byte lengthTLVData;
+	char applicationSelectionIndicator;
+	char lengthTLVData;
 	char * tlvData;
-	byte aidLength;
+	char aidLength;
 	char * aid;
 	char * rid;
 	char * applicationVersionNumber;
 	char * tacDefault;
 	char * tacDenial;
 	char * tacOnline;
-	byte maximumTargetPercentage;
-	byte targetPercentage;
+	char maximumTargetPercentage;
+	char targetPercentage;
 	char * thresholdValue;
 	char * terminalFloorLimit;
 	char * defaultTDOLLength;
@@ -182,12 +180,12 @@ char * AIDListToBin(AID * o);
 AID * AIDListFromBin(char * s, int length);
 
 typedef struct KeyData {
-	byte keyIndex;
-	byte keyAlgorithmIndicator;
-	byte hashAlgorithmIndicator;
-	byte keyLength;
+	char keyIndex;
+	char keyAlgorithmIndicator;
+	char hashAlgorithmIndicator;
+	char keyLength;
 	char * key;
-	byte keyExponentLength;
+	char keyExponentLength;
 	char * keyExponent;
 	char * keyCheckSum;
 } KeyData;
@@ -211,7 +209,7 @@ char * TagsToBin(Tag * tags, int size);
 Tag * TagsFromBin(char * s, int length);
 
 typedef struct LengthThenTags {
-	byte length;
+	char length;
 	Tag * tags;
 } LengthThenTags;
 
@@ -242,7 +240,7 @@ typedef struct RID {
 	char * proprietaryRIDData;
 	char * lengthIgnoredTags;
 	Tag * ignoreTags;
-	byte miscellaneousOptions;
+	char miscellaneousOptions;
 	char * lengthTLVData;
 	char * tlvData;
 	struct RID * next;
@@ -261,26 +259,26 @@ char * RIDListToBin(RID * o);
 RID * RIDListFromBin(char * s, int length);
 
 typedef struct OfflinePINEntryConfiguration {
-	byte textFont;
+	char textFont;
 	char * prompt;
 	char * promptMAC;
 	char * promptX;
 	char * promptY;
 	char * editX;
 	char * editY;
-	byte formatType;
+	char formatType;
 	char * formatSpMAC;
 	char * formatSpecifier;
-	byte minimumKeys;
-	byte maximumKeys;
-	byte echoCharacter;
-	byte cursorType;
-	byte direction;
+	char minimumKeys;
+	char maximumKeys;
+	char echoCharacter;
+	char cursorType;
+	char direction;
 	char * beepInvalidKey;
 	char * timeOutFirstKey;
 	char * timeOutInterKey;
-	byte keyType;
-	byte keyIndex;
+	char keyType;
+	char keyIndex;
 	char * noEnterLessMin;
 	char * addReqSettings;
 } OfflinePINEntryConfiguration;
@@ -296,11 +294,11 @@ typedef struct TerminalSpecificData {
 	char * terminalCapabilities;
 	char * additionalTerminalCapabilities;
 	char * terminalCountryCode;
-	byte terminalType;
+	char terminalType;
 	char * transactionCurrencyCode;
-	byte transactionCurrencyExponent;
+	char transactionCurrencyExponent;
 	char * transactionReferenceCurrencyCode;
-	byte transactionReferenceCurrencyExponent;
+	char transactionReferenceCurrencyExponent;
 	char * transactionReferenceCurrencyConversion;
 	char * acquirerIdentifier;
 	char * merchantCategoryCode;
@@ -309,8 +307,8 @@ typedef struct TerminalSpecificData {
 	char * terminalRiskManagementData;
 	char * ifdSerialNumber;
 	char * authorizationResponseCodeList;
-	byte miscellaneousOptions;
-	byte miscellaneousOptions1;
+	char miscellaneousOptions;
+	char miscellaneousOptions1;
 	// RFU*1
 	char * lengthTLVData;
 	char * tlvData;

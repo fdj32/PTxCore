@@ -10,7 +10,7 @@
 
 char * hex(char * s, int offset, int length);
 
-char * hexByte(byte b);
+char * hexByte(char b);
 
 char hexChar(char c);
 

@@ -19,7 +19,7 @@ char * hex(char * s, int offset, int length) {
 	return hex;
 }
 
-char * hexByte(byte b) {
+char * hexByte(char b) {
 	char * s = malloc(3);
 	s[2] = '\0';
 	s[1] = hexChar(b & 0x0f);

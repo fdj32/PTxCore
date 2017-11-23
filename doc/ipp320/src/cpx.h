@@ -54,4 +54,17 @@
 #define CPXF0_MSR							"F0."
 #define CPXF1_EMV							"F1."
 
+#define MAX_RESEND				3
+#define MAX_VEGA_PACKET_SIZE 	498
+#define READ_TIMEOUT 			8000
+#define POLL_TIME	 			100
+
+typedef struct CpxF0Command {
+	char * lgt;
+	char type;
+	char * to;
+	char cmd;
+	char * dataE;
+} CpxF0Command;
+
 #endif /* CPX_H_ */
