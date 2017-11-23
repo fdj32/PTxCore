@@ -12,8 +12,9 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "rs232.h"
+#include "cpx.h"
 #include "object.h"
+#include "rs232.h"
 #include "util.h"
 
 #endif /* IPP320_H_ */
