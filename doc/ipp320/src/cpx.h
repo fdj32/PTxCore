@@ -62,9 +62,14 @@
 #define MODE_DATABITS8_PARITY_NONE_STOPBITS1	"8N1"
 #define COM_PORT_NUMBER			24 // UBUNTU is /dev/ttyACM0
 
+#define P_APP_NAME "B2_PTxEngine"
+#define E_APP_NAME "CA0C00_ApVis"
+
 int ack();
 
 int send(char * buf, int size, unsigned char * recvBuf);
+
+int cpx58display01A(char mode, char toggle, char lines, char lineStartIndex, char * prompt1, char * prompt2, char * prompt3, char * prompt4, unsigned char * recvBuf);
 
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information

@@ -39,3 +39,33 @@ int send(char * buf, int size, unsigned char * recvBuf) {
 	return n;
 }
 
+int cpx58display01A(char mode, char toggle, char lines, char lineStartIndex, char * prompt1, char * prompt2, char * prompt3, char * prompt4, unsigned char * recvBuf) {
+	unsigned char * s = malloc(74);
+	memset(s, 0, 74);
+	s[0] = STX;
+	s[1] = '5';
+	s[2] = '8';
+	s[3] = '.';
+	s[4] = mode;
+	s[5] = toggle;
+	s[6] = lines;
+	s[7] = lineStartIndex;
+	memset(s+8, SPACE, 64);
+	int n = strlen(prompt1);
+	memcpy(s+8, prompt1, ((n > 16) ? 16 : n));
+	if(NULL != prompt2) {
+		n = strlen(prompt2);
+		memcpy(s+24, prompt2, ((n > 16) ? 16 : n));
+	}
+	if(NULL != prompt3) {
+		n = strlen(prompt3);
+		memcpy(s+40, prompt3, ((n > 16) ? 16 : n));
+	}
+	if(NULL != prompt4) {
+		n = strlen(prompt4);
+		memcpy(s+56, prompt4, ((n > 16) ? 16 : n));
+	}
+	s[72] = ETX;
+	s[73] = lrc(s, 0, 73);
+	return send(s, 74, recvBuf);
+}
