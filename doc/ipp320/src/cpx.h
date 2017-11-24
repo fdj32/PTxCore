@@ -56,8 +56,15 @@
 
 #define MAX_RESEND				3
 #define MAX_VEGA_PACKET_SIZE 	498
-#define READ_TIMEOUT 			8000
-#define POLL_TIME	 			100
+#define READ_TIMEOUT 			8 // 8 second
+#define POLL_TIME	 			100 // 100 millisecond
+#define BAUD_RATE				9600
+#define MODE_DATABITS8_PARITY_NONE_STOPBITS1	"8N1"
+#define COM_PORT_NUMBER			24 // UBUNTU is /dev/ttyACM0
+
+int ack();
+
+int send(char * buf, int size);
 
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
