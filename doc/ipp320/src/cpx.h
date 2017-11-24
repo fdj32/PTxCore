@@ -64,7 +64,7 @@
 
 int ack();
 
-int send(char * buf, int size);
+int send(char * buf, int size, unsigned char * recvBuf);
 
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information

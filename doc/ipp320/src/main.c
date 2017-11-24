@@ -19,8 +19,13 @@ int main(void) {
 	for (int i = 1; i < 72; i++) {
 		s[i] = msg[i - 1];
 	}
-	send(s, 74);
 
+	unsigned char * recvBuf = malloc(1024);
+	memset(recvBuf, 0, 1024);
+	int n = send(s, 74, recvBuf);
+
+	printf("received %i bytes: %s\n", n, (char *)recvBuf);
+	printf("received %i bytes: %s\n", n, hex((char *)recvBuf, 0, n));
 
 	return EXIT_SUCCESS;
 }

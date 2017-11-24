@@ -10,20 +10,22 @@ int ack() {
 	return RS232_SendByte(COM_PORT_NUMBER, ACK);
 }
 
-int send(char * buf, int size) {
+int send(char * buf, int size, unsigned char * recvBuf) {
 	if(RS232_OpenComport(COM_PORT_NUMBER, BAUD_RATE, MODE_DATABITS8_PARITY_NONE_STOPBITS1)) {
 		printf("Can not open comport\n");
 		return(0);
 	}
 	int n = RS232_SendBuf(COM_PORT_NUMBER, buf, size);
-	unsigned char recvBuf[4096];
 	long start = clock();
 	while((clock()-start)<READ_TIMEOUT*CLOCKS_PER_SEC) {
-	    n = RS232_PollComport(COM_PORT_NUMBER, recvBuf, 4095);
+	    n = RS232_PollComport(COM_PORT_NUMBER, recvBuf, 1023);
 	    if(n > 0) {
 	    	printf("received %i bytes: %s\n", n, (char *)recvBuf);
+	    	printf("received %i bytes: %s\n", n, hex((char *)recvBuf, 0, n));
 	    	if(ACK == recvBuf[0]) {
-	    		ack();
+	    		if(n > 1) {
+	    			ack();
+	    		}
 	    		break;
 	    	}
 	    }
