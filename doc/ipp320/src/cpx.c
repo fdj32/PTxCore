@@ -185,3 +185,16 @@ int cpx5BBeep(char beepLength, char beepFrequency, unsigned char * recvBuf) {
 	s[7] = lrc(s, 0, 7);
 	return send(s, 8, recvBuf);
 }
+
+int cpx5DDeviceInformation(char option, unsigned char * recvBuf) {
+	unsigned char * s = malloc(7);
+	memset(s, 0, 7);
+	s[0] = STX;
+	s[1] = '5';
+	s[2] = 'D';
+	s[3] = '.';
+	s[4] = option;
+	s[5] = ETX;
+	s[6] = lrc(s, 0, 6);
+	return send(s, 7, recvBuf);
+}
