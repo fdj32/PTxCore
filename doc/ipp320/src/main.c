@@ -13,6 +13,6 @@ int main(void) {
 	unsigned char * recvBuf = malloc(16);
 	memset(recvBuf, 0, 16);
 	int n = cpx58display01A('0', '0', '4', '1', "Hello", "     China", "Shaanxi", "       Xi'an", recvBuf);
-
+	putchar(n);
 	return EXIT_SUCCESS;
 }

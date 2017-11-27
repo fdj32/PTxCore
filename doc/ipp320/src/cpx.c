@@ -10,7 +10,7 @@ int ack() {
 	return RS232_SendByte(COM_PORT_NUMBER, ACK);
 }
 
-int send(char * buf, int size, unsigned char * recvBuf) {
+int send(unsigned char * buf, int size, unsigned char * recvBuf) {
 	if(RS232_OpenComport(COM_PORT_NUMBER, BAUD_RATE, MODE_DATABITS8_PARITY_NONE_STOPBITS1)) {
 		printf("Can not open comport\n");
 		return(0);
@@ -67,5 +67,23 @@ int cpx58display01A(char mode, char toggle, char lines, char lineStartIndex, cha
 	}
 	s[72] = ETX;
 	s[73] = lrc(s, 0, 73);
+	return send(s, 74, recvBuf);
+}
+
+int cpx58display27(char mode, char lineStartIndex, char startPosition, char * prompt, char * promptIndex, char * maxInputLength, unsigned char * recvBuf) {
+	unsigned char * s = malloc(74);
+	memset(s, 0, 45);
+	s[0] = STX;
+	s[1] = '5';
+	s[2] = '8';
+	s[3] = '.';
+	s[4] = mode;
+	s[5] = lineStartIndex;
+	s[6] = startPosition;
+	memcpy(s+7, prompt, 32);
+	memcpy(s+39, promptIndex, 2);
+	memcpy(s+41, maxInputLength, 2);
+	s[43] = ETX;
+	s[44] = lrc(s, 0, 44);
 	return send(s, 74, recvBuf);
 }
