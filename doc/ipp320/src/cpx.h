@@ -79,6 +79,8 @@ int cpx40LoadSessionKey(char sessionKeyType, char masterkeyType, char * masterKe
 
 int cpx50Cancel(unsigned char * recvBuf);
 
+int cpx51InquireSerial(unsigned char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type
