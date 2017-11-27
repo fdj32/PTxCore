@@ -89,6 +89,8 @@ int cpx5BBeep(char beepLength, char beepFrequency, unsigned char * recvBuf);
 
 int cpx5DDeviceInformation(char option, unsigned char * recvBuf);
 
+int cpx64MacCalculation(char masterKeyIndicator, char sessionKeyLengthFlag, char * encryptedSessionKey, char * checkValue, char * macData, unsigned char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type

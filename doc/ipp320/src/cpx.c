@@ -198,3 +198,25 @@ int cpx5DDeviceInformation(char option, unsigned char * recvBuf) {
 	s[6] = lrc(s, 0, 6);
 	return send(s, 7, recvBuf);
 }
+
+int cpx64MacCalculation(char masterKeyIndicator, char sessionKeyLengthFlag, char * encryptedSessionKey, char * checkValue, char * macData, unsigned char * recvBuf) {
+	int sessionKeyLength = sessionKeyLengthFlag == '1' ? 16:32;
+	int checkValueLength = sessionKeyLengthFlag == '1' ? 0:8;
+	int macDataLength = strlen(macData);
+	unsigned char * s = malloc(8+sessionKeyLength+checkValueLength+macDataLength);
+	memset(s, 0, 8+sessionKeyLength+checkValueLength+macDataLength);
+	s[0] = STX;
+	s[1] = '6';
+	s[2] = '4';
+	s[3] = '.';
+	s[4] = masterKeyIndicator;
+	s[5] = sessionKeyLengthFlag;
+	memcpy(s+6, encryptedSessionKey, sessionKeyLength);
+	if('2' == sessionKeyLengthFlag) {
+		memcpy(s+6+sessionKeyLength, checkValue, checkValueLength);
+	}
+	memcpy(s+6+sessionKeyLength+checkValueLength, macData, macDataLength);
+	s[6+sessionKeyLength+checkValueLength+macDataLength] = ETX;
+	s[7+sessionKeyLength+checkValueLength+macDataLength] = lrc(s, 0, 7+sessionKeyLength+checkValueLength+macDataLength);
+	return send(s, 8+sessionKeyLength+checkValueLength+macDataLength, recvBuf);
+}
