@@ -171,3 +171,17 @@ int cpx59ClearDisplay(char lineNumber, unsigned char * recvBuf) {
 	s[6] = lrc(s, 0, 6);
 	return send(s, 7, recvBuf);
 }
+
+int cpx5BBeep(char beepLength, char beepFrequency, unsigned char * recvBuf) {
+	unsigned char * s = malloc(8);
+	memset(s, 0, 8);
+	s[0] = STX;
+	s[1] = '5';
+	s[2] = 'B';
+	s[3] = '.';
+	s[4] = beepLength;
+	s[5] = beepFrequency;
+	s[6] = ETX;
+	s[7] = lrc(s, 0, 7);
+	return send(s, 8, recvBuf);
+}

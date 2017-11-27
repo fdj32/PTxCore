@@ -85,6 +85,8 @@ int cpx53DiagnosticKeyCheckword(char keyIndicator, unsigned char * recvBuf);
 
 int cpx59ClearDisplay(char lineNumber, unsigned char * recvBuf);
 
+int cpx5BBeep(char beepLength, char beepFrequency, unsigned char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type
