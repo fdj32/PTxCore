@@ -81,6 +81,8 @@ int cpx50Cancel(unsigned char * recvBuf);
 
 int cpx51InquireSerial(unsigned char * recvBuf);
 
+int cpx53DiagnosticKeyCheckword(char keyIndicator, unsigned char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type

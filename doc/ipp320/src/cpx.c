@@ -145,3 +145,16 @@ int cpx51InquireSerial(unsigned char * recvBuf) {
 	s[6] = lrc(s, 0, 6);
 	return send(s, 7, recvBuf);
 }
+
+int cpx53DiagnosticKeyCheckword(char keyIndicator, unsigned char * recvBuf) {
+	unsigned char * s = malloc(7);
+	memset(s, 0, 7);
+	s[0] = STX;
+	s[1] = '5';
+	s[2] = '3';
+	s[3] = '.';
+	s[4] = keyIndicator;
+	s[5] = ETX;
+	s[6] = lrc(s, 0, 6);
+	return send(s, 7, recvBuf);
+}
