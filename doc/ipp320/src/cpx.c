@@ -71,7 +71,7 @@ int cpx58display01A(char mode, char toggle, char lines, char lineStartIndex, cha
 }
 
 int cpx58display27(char mode, char lineStartIndex, char startPosition, char * prompt, char * promptIndex, char * maxInputLength, unsigned char * recvBuf) {
-	unsigned char * s = malloc(74);
+	unsigned char * s = malloc(45);
 	memset(s, 0, 45);
 	s[0] = STX;
 	s[1] = '5';
@@ -89,7 +89,7 @@ int cpx58display27(char mode, char lineStartIndex, char startPosition, char * pr
 }
 
 int cpx31DukptpinEncryption(char timeoutValue, char displayLineNumber, char * primaryAccountNumber, char * pinDisplayPrompt, unsigned char * recvBuf) {
-	unsigned char * s = malloc(74);
+	unsigned char * s = malloc(28);
 	memset(s, 0, 28);
 	s[0] = STX;
 	s[1] = '3';
@@ -102,4 +102,21 @@ int cpx31DukptpinEncryption(char timeoutValue, char displayLineNumber, char * pr
 	s[26] = ETX;
 	s[27] = lrc(s, 0, 27);
 	return send(s, 28, recvBuf);
+}
+
+int cpx40LoadSessionKey(char sessionKeyType, char masterkeyType, char * masterKeyOrSessionKey, char * checkValue, char * keySerialNumber, unsigned char * recvBuf) {
+	unsigned char * s = malloc(48);
+	memset(s, 0, 48);
+	s[0] = STX;
+	s[1] = '4';
+	s[2] = '0';
+	s[3] = '.';
+	s[4] = sessionKeyType;
+	s[5] = masterkeyType;
+	memcpy(s+6, masterKeyOrSessionKey, 16);
+	memcpy(s+22, checkValue, 8);
+	memcpy(s+30, keySerialNumber, 16);
+	s[46] = ETX;
+	s[47] = lrc(s, 0, 47);
+	return send(s, 48, recvBuf);
 }

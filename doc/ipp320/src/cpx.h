@@ -75,6 +75,8 @@ int cpx58display27(char mode, char lineStartIndex, char startPosition, char * pr
 
 int cpx31DukptpinEncryption(char timeoutValue, char displayLineNumber, char * primaryAccountNumber, char * pinDisplayPrompt, unsigned char * recvBuf);
 
+int cpx40LoadSessionKey(char sessionKeyType, char masterkeyType, char * masterKeyOrSessionKey, char * checkValue, char * keySerialNumber, unsigned char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type
