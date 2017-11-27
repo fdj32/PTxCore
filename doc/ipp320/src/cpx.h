@@ -77,6 +77,8 @@ int cpx31DukptpinEncryption(char timeoutValue, char displayLineNumber, char * pr
 
 int cpx40LoadSessionKey(char sessionKeyType, char masterkeyType, char * masterKeyOrSessionKey, char * checkValue, char * keySerialNumber, unsigned char * recvBuf);
 
+int cpx50Cancel(unsigned char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type

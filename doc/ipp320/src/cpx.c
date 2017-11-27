@@ -120,3 +120,15 @@ int cpx40LoadSessionKey(char sessionKeyType, char masterkeyType, char * masterKe
 	s[47] = lrc(s, 0, 47);
 	return send(s, 48, recvBuf);
 }
+
+int cpx50Cancel(unsigned char * recvBuf) {
+	unsigned char * s = malloc(6);
+	memset(s, 0, 6);
+	s[0] = STX;
+	s[1] = '5';
+	s[2] = '0';
+	s[3] = '.';
+	s[4] = ETX;
+	s[5] = lrc(s, 0, 5);
+	return send(s, 6, recvBuf);
+}
