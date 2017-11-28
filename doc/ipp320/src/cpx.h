@@ -139,6 +139,9 @@ int cpx6CScrollSelect(char commandMode, char nextFunctionKey,
 		char * nextOrPreviousString, char * prevOnlyString,
 		char * nextOnlyString, char *selectListStrings[], char * recvBuf);
 
+int cpx6DTimedMultiDisplay(char mode, char timeDisplay, char funcsKeysActive,
+		char lineNumber, char *prompts[], char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type

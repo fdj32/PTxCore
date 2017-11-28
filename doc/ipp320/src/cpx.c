@@ -482,6 +482,8 @@ int cpx6CScrollSelect(char commandMode, char nextFunctionKey,
 	s[len] = RS;
 
 	for (int i = 0; i < 20; i++) {
+		if (NULL == selectListStrings[i])
+			break;
 		strcat(s, stringRightPad(selectListStrings[i], SPACE, 32));
 		len = strlen(s);
 		s[len] = RS;
@@ -492,5 +494,32 @@ int cpx6CScrollSelect(char commandMode, char nextFunctionKey,
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
 
+	return send(s, len, recvBuf);
+}
+
+int cpx6DTimedMultiDisplay(char mode, char timeDisplay, char funcsKeysActive,
+		char lineNumber, char *prompts[], char * recvBuf) {
+	char * s = malloc(1024);
+	memset(s, 0, 1024);
+	s[0] = STX;
+	s[1] = '6';
+	s[2] = 'D';
+	s[3] = '.';
+	s[4] = mode;
+	s[5] = timeDisplay;
+	s[6] = funcsKeysActive;
+	s[7] = lineNumber;
+	int len = 0;
+	for (int i = 0; i < 10; i++) {
+		if (NULL == prompts[i])
+			break;
+		strcat(s, stringRightPad(prompts[i], 0, 64));
+		len = strlen(s);
+		s[len] = FS;
+	}
+	len = strlen(s);
+	s[len] = ETX;
+	len = strlen(s);
+	s[len] = lrc(s, 0, len);
 	return send(s, len, recvBuf);
 }
