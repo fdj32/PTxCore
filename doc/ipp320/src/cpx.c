@@ -210,27 +210,25 @@ int cpx5DDeviceInformation(char option, char * recvBuf) {
 int cpx64MacCalculation(char masterKeyIndicator, char sessionKeyLengthFlag,
 		char * encryptedSessionKey, char * checkValue, char * macData,
 		char * recvBuf) {
-	int sessionKeyLength = sessionKeyLengthFlag == '1' ? 16 : 32;
-	int checkValueLength = sessionKeyLengthFlag == '1' ? 0 : 8;
-	int macDataLength = strlen(macData);
-	char * s = malloc(8 + sessionKeyLength + checkValueLength + macDataLength);
-	memset(s, 0, 8 + sessionKeyLength + checkValueLength + macDataLength);
+	char * s = malloc(512);
+	memset(s, 0, 512);
 	s[0] = STX;
 	s[1] = '6';
 	s[2] = '4';
 	s[3] = '.';
 	s[4] = masterKeyIndicator;
 	s[5] = sessionKeyLengthFlag;
-	memcpy(s + 6, encryptedSessionKey, sessionKeyLength);
-	if ('2' == sessionKeyLengthFlag) {
-		memcpy(s + 6 + sessionKeyLength, checkValue, checkValueLength);
+	strcat(s, encryptedSessionKey);
+	if ('2' == sessionKeyLengthFlag && NULL != checkValue) {
+		strcat(s, checkValue);
 	}
-	memcpy(s + 6 + sessionKeyLength + checkValueLength, macData, macDataLength);
-	s[6 + sessionKeyLength + checkValueLength + macDataLength] = ETX;
-	s[7 + sessionKeyLength + checkValueLength + macDataLength] = lrc(s, 0,
-			7 + sessionKeyLength + checkValueLength + macDataLength);
-	return send(s, 8 + sessionKeyLength + checkValueLength + macDataLength,
-			recvBuf);
+	strcat(s, macData);
+	int len = strlen(s);
+	s[len] = ETX;
+	len = strlen(s);
+	s[len] = lrc(s, 0, len);
+	len = strlen(s);
+	return send(s, len, recvBuf);
 }
 
 int cpx66MacVerification(char masterKeyIndicator, char sessionKeyLengthFlag,
