@@ -493,7 +493,7 @@ int cpx6CScrollSelect(char commandMode, char nextFunctionKey,
 	s[len] = ETX;
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
-
+	len = strlen(s);
 	return send(s, len, recvBuf);
 }
 
@@ -521,6 +521,7 @@ int cpx6DTimedMultiDisplay(char mode, char timeDisplay, char funcsKeysActive,
 	s[len] = ETX;
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
+	len = strlen(s);
 	return send(s, len, recvBuf);
 }
 
@@ -634,4 +635,48 @@ int cpx6KE2EEManualCardEntry(char lineNumber, char * prompt1,
 	s[73] = ETX;
 	s[74] = lrc(s, 0, 74);
 	return send(s, 75, recvBuf);
+}
+
+int cpx6LE2EEPinEntry(char pinEntryTimeout, char pinEntryLineNumber,
+		char keyType, char pinKeySlotIndicator, char panEncryptedFlag,
+		char * clearPanLength, char * pan, char lines, char promptLineNumber,
+		char * promptIndex, char * prompt1, char * prompt2, char * prompt3,
+		char pinBypassMode, char * recvBuf) {
+	char * s = malloc(75);
+	memset(s, 0, 75);
+	s[0] = STX;
+	s[1] = '6';
+	s[2] = 'L';
+	s[3] = '.';
+	s[4] = pinEntryTimeout;
+	s[5] = pinEntryLineNumber;
+	s[6] = keyType;
+	s[7] = pinKeySlotIndicator;
+	s[8] = panEncryptedFlag;
+	strcat(s, clearPanLength);
+	strcat(s, pan);
+	int len = strlen(s);
+	s[len] = lines;
+	len = strlen(s);
+	s[len] = promptLineNumber;
+	strcat(s, promptIndex);
+	strcat(s, prompt1);
+	len = strlen(s);
+	s[len] = FS;
+	if (NULL != prompt2) {
+		strcat(s, prompt2);
+		len = strlen(s);
+		s[len] = FS;
+	}
+	if (NULL != prompt3) {
+		strcat(s, prompt3);
+		len = strlen(s);
+		s[len] = FS;
+	}
+	len = strlen(s);
+	s[len] = ETX;
+	len = strlen(s);
+	s[len] = lrc(s, 0, len);
+	len = strlen(s);
+	return send(s, len, recvBuf);
 }

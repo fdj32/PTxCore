@@ -159,6 +159,12 @@ int cpx6KE2EEManualCardEntry(char lineNumber, char * prompt1,
 		char * prompt1index, char * prompt2, char * prompt2index,
 		char * recvBuf);
 
+int cpx6LE2EEPinEntry(char pinEntryTimeout, char pinEntryLineNumber,
+		char keyType, char pinKeySlotIndicator, char panEncryptedFlag,
+		char * clearPanLength, char * pan, char lines, char promptLineNumber,
+		char * promptIndex, char * prompt1, char * prompt2, char * prompt3,
+		char pinBypassMode, char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type
