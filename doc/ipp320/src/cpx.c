@@ -675,3 +675,24 @@ int cpx6LE2EEPinEntry(char pinEntryTimeout, char pinEntryLineNumber,
 	len = strlen(s);
 	return send(s, len, recvBuf);
 }
+
+int cpx6NE2EEEnable(char e2eeMode, char outputFormat, char keyType,
+		char keyNumber, char localStorageKey, char * recvBuf) {
+	char * s = malloc(16);
+	memset(s, 0, 16);
+	s[0] = STX;
+	s[1] = '6';
+	s[2] = 'N';
+	s[3] = '.';
+	s[4] = e2eeMode;
+	s[5] = outputFormat;
+	s[6] = keyType;
+	s[7] = keyNumber;
+	s[8] = localStorageKey; // optional, 0 is not set
+	int len = strlen(s);
+	s[len] = ETX;
+	len = strlen(s);
+	s[len] = lrc(s, 0, len);
+	len = strlen(s);
+	return send(s, len, recvBuf);
+}

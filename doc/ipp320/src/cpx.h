@@ -165,6 +165,9 @@ int cpx6LE2EEPinEntry(char pinEntryTimeout, char pinEntryLineNumber,
 		char * promptIndex, char * prompt1, char * prompt2, char * prompt3,
 		char pinBypassMode, char * recvBuf);
 
+int cpx6NE2EEEnable(char e2eeMode, char outputFormat, char keyType,
+		char keyNumber, char localStorageKey, char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type
