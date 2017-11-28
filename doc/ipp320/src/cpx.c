@@ -575,3 +575,44 @@ int cpx6HMasterSessionPinDataEntry(char pinEntryTimeout,
 	len = strlen(s);
 	return send(s, len, recvBuf);
 }
+
+int cpx6IE2EEActivateMSR(char trackNumber, char * timeout,
+		char functionKeysActive, char LinesOrTimeDelay, char lineNumber,
+		char * prompt1, char * prompt2, char * prompt3, char * prompt4,
+		char * recvBuf) {
+	char * s = malloc(128);
+	memset(s, 0, 128);
+	s[0] = STX;
+	s[1] = '6';
+	s[2] = 'I';
+	s[3] = '.';
+	s[4] = trackNumber;
+	strcat(s, timeout);
+	s[7] = functionKeysActive;
+	s[8] = LinesOrTimeDelay;
+	s[9] = lineNumber;
+	strcat(s, stringRightPad(prompt1, SPACE, 16));
+	int len = strlen(s);
+	s[len] = FS;
+	if (NULL != prompt2) {
+		strcat(s, stringRightPad(prompt2, SPACE, 16));
+		len = strlen(s);
+		s[len] = FS;
+	}
+	if (NULL != prompt3) {
+		strcat(s, stringRightPad(prompt3, SPACE, 16));
+		len = strlen(s);
+		s[len] = FS;
+	}
+	if (NULL != prompt4) {
+		strcat(s, stringRightPad(prompt4, SPACE, 16));
+		len = strlen(s);
+		s[len] = FS;
+	}
+	len = strlen(s);
+	s[len] = ETX;
+	len = strlen(s);
+	s[len] = lrc(s, 0, len);
+	len = strlen(s);
+	return send(s, len, recvBuf);
+}

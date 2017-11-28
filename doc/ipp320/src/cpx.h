@@ -150,6 +150,11 @@ int cpx6HMasterSessionPinDataEntry(char pinEntryTimeout,
 		char * promptIndex, char * prompt1, char * prompt2, char * prompt3,
 		char * recvBuf);
 
+int cpx6IE2EEActivateMSR(char trackNumber, char * timeout,
+		char functionKeysActive, char LinesOrTimeDelay, char lineNumber,
+		char * prompt1, char * prompt2, char * prompt3, char * prompt4,
+		char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type
