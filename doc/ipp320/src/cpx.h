@@ -69,13 +69,21 @@ int ack();
 
 int send(unsigned char * buf, int size, unsigned char * recvBuf);
 
-int cpx58display01A(char mode, char toggle, char lines, char lineStartIndex, char * prompt1, char * prompt2, char * prompt3, char * prompt4, unsigned char * recvBuf);
+int cpx58display01A(char mode, char toggle, char lines, char lineStartIndex,
+		char * prompt1, char * prompt2, char * prompt3, char * prompt4,
+		unsigned char * recvBuf);
 
-int cpx58display27(char mode, char lineStartIndex, char startPosition, char * prompt, char * promptIndex, char * maxInputLength, unsigned char * recvBuf);
+int cpx58display27(char mode, char lineStartIndex, char startPosition,
+		char * prompt, char * promptIndex, char * maxInputLength,
+		unsigned char * recvBuf);
 
-int cpx31DukptpinEncryption(char timeoutValue, char displayLineNumber, char * primaryAccountNumber, char * pinDisplayPrompt, unsigned char * recvBuf);
+int cpx31DukptpinEncryption(char timeoutValue, char displayLineNumber,
+		char * primaryAccountNumber, char * pinDisplayPrompt,
+		unsigned char * recvBuf);
 
-int cpx40LoadSessionKey(char sessionKeyType, char masterkeyType, char * masterKeyOrSessionKey, char * checkValue, char * keySerialNumber, unsigned char * recvBuf);
+int cpx40LoadSessionKey(char sessionKeyType, char masterkeyType,
+		char * masterKeyOrSessionKey, char * checkValue, char * keySerialNumber,
+		unsigned char * recvBuf);
 
 int cpx50Cancel(unsigned char * recvBuf);
 
@@ -89,7 +97,13 @@ int cpx5BBeep(char beepLength, char beepFrequency, unsigned char * recvBuf);
 
 int cpx5DDeviceInformation(char option, unsigned char * recvBuf);
 
-int cpx64MacCalculation(char masterKeyIndicator, char sessionKeyLengthFlag, char * encryptedSessionKey, char * checkValue, char * macData, unsigned char * recvBuf);
+int cpx64MacCalculation(char masterKeyIndicator, char sessionKeyLengthFlag,
+		char * encryptedSessionKey, char * checkValue, char * macData,
+		unsigned char * recvBuf);
+
+int cpx66MacVerification(char masterKeyIndicator, char sessionKeyLengthFlag,
+		char * encryptedSessionKey, char * checkValue, char * macField,
+		char * macData, unsigned char * recvBuf);
 
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
