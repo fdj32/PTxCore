@@ -523,3 +523,55 @@ int cpx6DTimedMultiDisplay(char mode, char timeDisplay, char funcsKeysActive,
 	s[len] = lrc(s, 0, len);
 	return send(s, len, recvBuf);
 }
+
+int cpx6HMasterSessionPinDataEntry(char pinEntryTimeout,
+		char pinEntryLineNumber, char pinEntryMinimum, char pinEntryMaximum,
+		char masterKeyIndicator, char * primaryAccountNumber,
+		char sessionKeyLength, char * encrytedSessionKey, char * checkValue,
+		char * pinDisplayPrompt, char lines, char promptLineNumber,
+		char * promptIndex, char * prompt1, char * prompt2, char * prompt3,
+		char * recvBuf) {
+	char * s = malloc(128);
+	memset(s, 0, 128);
+	s[0] = STX;
+	s[1] = '6';
+	s[2] = 'H';
+	s[3] = '.';
+	s[4] = pinEntryTimeout;
+	s[5] = pinEntryLineNumber;
+	s[6] = pinEntryMinimum;
+	s[7] = pinEntryMaximum;
+	s[8] = masterKeyIndicator;
+	strcat(s, primaryAccountNumber);
+	int len = strlen(s);
+	s[len] = sessionKeyLength;
+	strcat(s, encrytedSessionKey);
+	if ('D' == sessionKeyLength) {
+		strcat(s, checkValue);
+	}
+	strcat(s, pinDisplayPrompt);
+	len = strlen(s);
+	s[len] = lines;
+	len = strlen(s);
+	s[len] = promptLineNumber;
+	strcat(s, promptIndex);
+	strcat(s, prompt1);
+	len = strlen(s);
+	s[len] = FS;
+	if (NULL != prompt2) {
+		strcat(s, prompt2);
+		len = strlen(s);
+		s[len] = FS;
+	}
+	if (NULL != prompt3) {
+		strcat(s, prompt3);
+		len = strlen(s);
+		s[len] = FS;
+	}
+	len = strlen(s);
+	s[len] = ETX;
+	len = strlen(s);
+	s[len] = lrc(s, 0, len);
+	len = strlen(s);
+	return send(s, len, recvBuf);
+}

@@ -142,6 +142,14 @@ int cpx6CScrollSelect(char commandMode, char nextFunctionKey,
 int cpx6DTimedMultiDisplay(char mode, char timeDisplay, char funcsKeysActive,
 		char lineNumber, char *prompts[], char * recvBuf);
 
+int cpx6HMasterSessionPinDataEntry(char pinEntryTimeout,
+		char pinEntryLineNumber, char pinEntryMinimum, char pinEntryMaximum,
+		char masterKeyIndicator, char * primaryAccountNumber,
+		char sessionKeyLength, char * encrytedSessionKey, char * checkValue,
+		char * pinDisplayPrompt, char lines, char promptLineNumber,
+		char * promptIndex, char * prompt1, char * prompt2, char * prompt3,
+		char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type
