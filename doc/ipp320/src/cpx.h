@@ -108,6 +108,24 @@ int cpx67ActivateMsr(char trackNumber, char * timeout, char functionKeysActive,
 		char lines, char lineNumber, char * prompt1, char * prompt2,
 		char * prompt3, char * prompt4, char * recvBuf);
 
+int cpx6AInteracDebitSequenceInit(char swipeCardPromptLineNumber,
+		char * swipeCardPromptEnglish, char * swipeCardPromptFrench,
+		char amountOKpromptLineNumber, char * amountOKPromptEnglish,
+		char * amountOKPromptFrench, char enterTipPromptLineNumber,
+		char * enterTipPromptIndexOfMACEnglish, char * enterTipPromptEnglish,
+		char * enterTipPromptIndexOfMACFrench, char * enterTipPromptFrench,
+		char cashBackPromptLineNumber, char * cashBackPromptIndexOfMACEnglish,
+		char * cashBackPromptEnglish, char * cashBackPromptIndexOfMACFrench,
+		char cashBackPromptFrench, char totalOKpromptLineNumber,
+		char * totalOKPromptEnglish, char * totalOKPromptFrench,
+		char selectAccountpromptLineNumber, char * selectAccountPromptEnglish,
+		char * selectAccountPromptFrench, char pinEntryPromptLineNumber,
+		char * pinEntryPromptIndexOfMACEnglish, char * pinEntryPromptEnglish,
+		char * pinEntryPromptIndexOfMACFrench, char * pinEntryPromptFrench,
+		char pinErrorMessageLineNumber, char * pinErrorMessagePromptEnglish,
+		char * pinErrorMessagePromptFrench, char * serviceCodeList,
+		char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type

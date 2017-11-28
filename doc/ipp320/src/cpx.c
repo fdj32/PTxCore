@@ -301,3 +301,111 @@ int cpx67ActivateMsr(char trackNumber, char * timeout, char functionKeysActive,
 	return send(s, len, recvBuf);
 }
 
+int cpx6AInteracDebitSequenceInit(char swipeCardPromptLineNumber,
+		char * swipeCardPromptEnglish, char * swipeCardPromptFrench,
+		char amountOKpromptLineNumber, char * amountOKPromptEnglish,
+		char * amountOKPromptFrench, char enterTipPromptLineNumber,
+		char * enterTipPromptIndexOfMACEnglish, char * enterTipPromptEnglish,
+		char * enterTipPromptIndexOfMACFrench, char * enterTipPromptFrench,
+		char cashBackPromptLineNumber, char * cashBackPromptIndexOfMACEnglish,
+		char * cashBackPromptEnglish, char * cashBackPromptIndexOfMACFrench,
+		char cashBackPromptFrench, char totalOKpromptLineNumber,
+		char * totalOKPromptEnglish, char * totalOKPromptFrench,
+		char selectAccountpromptLineNumber, char * selectAccountPromptEnglish,
+		char * selectAccountPromptFrench, char pinEntryPromptLineNumber,
+		char * pinEntryPromptIndexOfMACEnglish, char * pinEntryPromptEnglish,
+		char * pinEntryPromptIndexOfMACFrench, char * pinEntryPromptFrench,
+		char pinErrorMessageLineNumber, char * pinErrorMessagePromptEnglish,
+		char * pinErrorMessagePromptFrench, char * serviceCodeList,
+		char * recvBuf) {
+	char * s = malloc(1024);
+	memset(s, 0, 1024);
+	s[0] = STX;
+	s[1] = '6';
+	s[2] = 'A';
+	s[3] = '.';
+	s[4] = swipeCardPromptLineNumber;
+	strcat(s, swipeCardPromptEnglish);
+	int len = strlen(s);
+	s[len] = FS;
+	strcat(s, swipeCardPromptFrench);
+	len = strlen(s);
+	s[len] = FS;
+
+	len = strlen(s);
+	s[len] = amountOKpromptLineNumber;
+	strcat(s, amountOKPromptEnglish);
+	len = strlen(s);
+	s[len] = FS;
+	strcat(s, amountOKPromptFrench);
+	len = strlen(s);
+	s[len] = FS;
+
+	len = strlen(s);
+	s[len] = enterTipPromptLineNumber;
+	strcat(s, enterTipPromptIndexOfMACEnglish);
+	strcat(s, enterTipPromptEnglish);
+	len = strlen(s);
+	s[len] = FS;
+	strcat(s, enterTipPromptIndexOfMACFrench);
+	strcat(s, enterTipPromptFrench);
+	len = strlen(s);
+	s[len] = FS;
+
+	len = strlen(s);
+	s[len] = cashBackPromptLineNumber;
+	strcat(s, cashBackPromptIndexOfMACEnglish);
+	strcat(s, cashBackPromptEnglish);
+	len = strlen(s);
+	s[len] = FS;
+	strcat(s, cashBackPromptIndexOfMACFrench);
+	strcat(s, cashBackPromptFrench);
+	len = strlen(s);
+	s[len] = FS;
+
+	len = strlen(s);
+	s[len] = totalOKpromptLineNumber;
+	strcat(s, totalOKPromptEnglish);
+	len = strlen(s);
+	s[len] = FS;
+	strcat(s, totalOKPromptFrench);
+	len = strlen(s);
+	s[len] = FS;
+
+	len = strlen(s);
+	s[len] = selectAccountpromptLineNumber;
+	strcat(s, selectAccountPromptEnglish);
+	len = strlen(s);
+	s[len] = FS;
+	strcat(s, selectAccountPromptFrench);
+	len = strlen(s);
+	s[len] = FS;
+
+	len = strlen(s);
+	s[len] = pinEntryPromptLineNumber;
+	strcat(s, pinEntryPromptIndexOfMACEnglish);
+	strcat(s, pinEntryPromptEnglish);
+	len = strlen(s);
+	s[len] = FS;
+	strcat(s, pinEntryPromptIndexOfMACFrench);
+	strcat(s, pinEntryPromptFrench);
+	len = strlen(s);
+	s[len] = FS;
+
+	len = strlen(s);
+	s[len] = pinErrorMessageLineNumber;
+	strcat(s, pinErrorMessagePromptEnglish);
+	len = strlen(s);
+	s[len] = FS;
+	strcat(s, pinErrorMessagePromptFrench);
+	len = strlen(s);
+	s[len] = FS;
+
+	strcat(s, serviceCodeList);
+	len = strlen(s);
+	s[len] = ETX;
+	len = strlen(s);
+	s[len] = lrc(s, 0, len);
+	len = strlen(s);
+	return send(s, len, recvBuf);
+}
