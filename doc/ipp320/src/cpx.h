@@ -155,6 +155,10 @@ int cpx6IE2EEActivateMSR(char trackNumber, char * timeout,
 		char * prompt1, char * prompt2, char * prompt3, char * prompt4,
 		char * recvBuf);
 
+int cpx6KE2EEManualCardEntry(char lineNumber, char * prompt1,
+		char * prompt1index, char * prompt2, char * prompt2index,
+		char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type

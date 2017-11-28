@@ -616,3 +616,22 @@ int cpx6IE2EEActivateMSR(char trackNumber, char * timeout,
 	len = strlen(s);
 	return send(s, len, recvBuf);
 }
+
+int cpx6KE2EEManualCardEntry(char lineNumber, char * prompt1,
+		char * prompt1index, char * prompt2, char * prompt2index,
+		char * recvBuf) {
+	char * s = malloc(75);
+	memset(s, 0, 75);
+	s[0] = STX;
+	s[1] = '6';
+	s[2] = 'K';
+	s[3] = '.';
+	s[4] = lineNumber;
+	strcat(s, stringRightPad(prompt1, SPACE, 32));
+	strcat(s, prompt1index);
+	strcat(s, stringRightPad(prompt2, SPACE, 32));
+	strcat(s, prompt2index);
+	s[73] = ETX;
+	s[74] = lrc(s, 0, 74);
+	return send(s, 75, recvBuf);
+}
