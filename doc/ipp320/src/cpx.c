@@ -12,7 +12,7 @@ int ack() {
 
 int send(unsigned char * buf, int size, unsigned char * recvBuf) {
 	if (RS232_OpenComport(COM_PORT_NUMBER, BAUD_RATE,
-			MODE_DATABITS8_PARITY_NONE_STOPBITS1)) {
+	MODE_DATABITS8_PARITY_NONE_STOPBITS1)) {
 		printf("Can not open comport\n");
 		return (0);
 	}
@@ -238,5 +238,28 @@ int cpx64MacCalculation(char masterKeyIndicator, char sessionKeyLengthFlag,
 int cpx66MacVerification(char masterKeyIndicator, char sessionKeyLengthFlag,
 		char * encryptedSessionKey, char * checkValue, char * macField,
 		char * macData, unsigned char * recvBuf) {
-	return 0;
+	int sessionKeyLength = sessionKeyLengthFlag == '1' ? 16 : 32;
+	int checkValueLength = sessionKeyLengthFlag == '1' ? 0 : 8;
+	int macDataLength = strlen(macData);
+	unsigned char * s = malloc(
+			16 + sessionKeyLength + checkValueLength + macDataLength);
+	memset(s, 0, 16 + sessionKeyLength + checkValueLength + macDataLength);
+	s[0] = STX;
+	s[1] = '6';
+	s[2] = '6';
+	s[3] = '.';
+	s[4] = masterKeyIndicator;
+	s[5] = sessionKeyLengthFlag;
+	memcpy(s + 6, encryptedSessionKey, sessionKeyLength);
+	if ('2' == sessionKeyLengthFlag) {
+		memcpy(s + 6 + sessionKeyLength, checkValue, checkValueLength);
+	}
+	memcpy(s + 6 + sessionKeyLength + checkValueLength, macField, 8);
+	memcpy(s + 14 + sessionKeyLength + checkValueLength, macData,
+			macDataLength);
+	s[14 + sessionKeyLength + checkValueLength + macDataLength] = ETX;
+	s[15 + sessionKeyLength + checkValueLength + macDataLength] = lrc(s, 0,
+			15 + sessionKeyLength + checkValueLength + macDataLength);
+	return send(s, 16 + sessionKeyLength + checkValueLength + macDataLength,
+			recvBuf);
 }
