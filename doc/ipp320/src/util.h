@@ -42,4 +42,7 @@ char * bigEndianBin(int i);
 
 char * format(const char * f, ...);
 
+char * stringRightPad(char * s, char c, int length);
+
+char * stringLeftPad(char * s, char c, int length);
 #endif /* UTIL_H_ */

@@ -446,3 +446,51 @@ int cpx6BInteracDebitSequence(char language, char * swipeCardTimeout,
 	len = strlen(s);
 	return send(s, len, recvBuf);
 }
+
+int cpx6CScrollSelect(char commandMode, char nextFunctionKey,
+		char previousFunctionKey, char showImages, char timeout,
+		char invalidBeep, char * defaultSelection, char * titleString,
+		char * nextOrPreviousString, char * prevOnlyString,
+		char * nextOnlyString, char *selectListStrings[], char * recvBuf) {
+	char * s = malloc(1024);
+	memset(s, 0, 1024);
+	s[0] = STX;
+	s[1] = '6';
+	s[2] = 'C';
+	s[3] = '.';
+	s[4] = commandMode;
+	s[5] = nextFunctionKey;
+	s[6] = previousFunctionKey;
+	s[7] = showImages;
+	s[8] = timeout;
+	s[9] = invalidBeep;
+	strcat(s, defaultSelection);
+	strcat(s, stringRightPad(titleString, SPACE, 16));
+	int len = strlen(s);
+	s[len] = RS;
+
+	strcat(s, stringRightPad(nextOrPreviousString, SPACE, 16));
+	len = strlen(s);
+	s[len] = RS;
+
+	strcat(s, stringRightPad(prevOnlyString, SPACE, 16));
+	len = strlen(s);
+	s[len] = RS;
+
+	strcat(s, stringRightPad(nextOnlyString, SPACE, 16));
+	len = strlen(s);
+	s[len] = RS;
+
+	for (int i = 0; i < 20; i++) {
+		strcat(s, stringRightPad(selectListStrings[i], SPACE, 32));
+		len = strlen(s);
+		s[len] = RS;
+	}
+
+	len = strlen(s);
+	s[len] = ETX;
+	len = strlen(s);
+	s[len] = lrc(s, 0, len);
+
+	return send(s, len, recvBuf);
+}

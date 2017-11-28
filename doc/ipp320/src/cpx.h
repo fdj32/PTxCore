@@ -133,6 +133,12 @@ int cpx6BInteracDebitSequence(char language, char * swipeCardTimeout,
 		char sessionKeyLength, char * encryptedSessionKey, char * checkValue,
 		char * primaryAccountNumber, char * recvBuf);
 
+int cpx6CScrollSelect(char commandMode, char nextFunctionKey,
+		char previousFunctionKey, char showImages, char timeout,
+		char invalidBeep, char * defaultSelection, char * titleString,
+		char * nextOrPreviousString, char * prevOnlyString,
+		char * nextOnlyString, char *selectListStrings[], char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type

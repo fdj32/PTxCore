@@ -7,7 +7,7 @@
 #include "ipp320.h"
 
 char * hex(char * s, int offset, int length) {
-	if(NULL == s || offset < 0 || length <=0)
+	if (NULL == s || offset < 0 || length <= 0)
 		return "";
 	int hexLen = length * 2 + 1;
 	char * hex = malloc(hexLen);
@@ -219,4 +219,24 @@ char * format(const char * f, ...) {
 		if ((p = (char *) realloc(p, size * sizeof(char))) == NULL)
 			return NULL;
 	}
+}
+
+char * stringRightPad(char * s, char c, int length) {
+	char * str = malloc(length + 1);
+	str[length] = 0;
+	memset(str, c, length + 1);
+	strncpy(str, s, length < strlen(s) ? length : strlen(s));
+	return str;
+}
+
+char * stringLeftPad(char * s, char c, int length) {
+	char * str = malloc(length + 1);
+	str[length] = 0;
+	memset(str, c, length + 1);
+	if (length < strlen(s)) {
+		strncpy(str, s, length);
+	} else {
+		strncpy(str + length - strlen(s), s, strlen(s));
+	}
+	return str;
 }
