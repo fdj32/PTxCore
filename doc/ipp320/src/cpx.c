@@ -409,3 +409,40 @@ int cpx6AInteracDebitSequenceInit(char swipeCardPromptLineNumber,
 	len = strlen(s);
 	return send(s, len, recvBuf);
 }
+
+int cpx6BInteracDebitSequence(char language, char * swipeCardTimeout,
+		char trackNumber, char serviceCodeFlag, char * dataEntryTimeout,
+		char pinEntryTimeout, char * pinDisplayprompt, char * amount,
+		char tipEntryEnabled, char cashbackEnabled, char masterKeyIndicator,
+		char sessionKeyLength, char * encryptedSessionKey, char * checkValue,
+		char * primaryAccountNumber, char * recvBuf) {
+	char * s = malloc(128);
+	memset(s, 0, 128);
+	s[0] = STX;
+	s[1] = '6';
+	s[2] = 'B';
+	s[3] = '.';
+	s[4] = language;
+	strcat(s, swipeCardTimeout);
+	s[7] = trackNumber;
+	s[8] = serviceCodeFlag;
+	strcat(s, dataEntryTimeout);
+	s[11] = pinEntryTimeout;
+	strcat(s, pinDisplayprompt);
+	strcat(s, amount);
+	s[25] = tipEntryEnabled;
+	s[26] = cashbackEnabled;
+	s[27] = masterKeyIndicator;
+	s[28] = sessionKeyLength;
+	strcat(s, encryptedSessionKey);
+	if ('D' == masterKeyIndicator && NULL != checkValue) {
+		strcat(s, checkValue);
+	}
+	strcat(s, primaryAccountNumber);
+	int len = strlen(s);
+	s[len] = ETX;
+	len = strlen(s);
+	s[len] = lrc(s, 0, len);
+	len = strlen(s);
+	return send(s, len, recvBuf);
+}

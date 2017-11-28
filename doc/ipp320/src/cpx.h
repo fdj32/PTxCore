@@ -126,6 +126,13 @@ int cpx6AInteracDebitSequenceInit(char swipeCardPromptLineNumber,
 		char * pinErrorMessagePromptFrench, char * serviceCodeList,
 		char * recvBuf);
 
+int cpx6BInteracDebitSequence(char language, char * swipeCardTimeout,
+		char trackNumber, char serviceCodeFlag, char * dataEntryTimeout,
+		char pinEntryTimeout, char * pinDisplayprompt, char * amount,
+		char tipEntryEnabled, char cashbackEnabled, char masterKeyIndicator,
+		char sessionKeyLength, char * encryptedSessionKey, char * checkValue,
+		char * primaryAccountNumber, char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type
