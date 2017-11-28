@@ -168,6 +168,9 @@ int cpx6LE2EEPinEntry(char pinEntryTimeout, char pinEntryLineNumber,
 int cpx6NE2EEEnable(char e2eeMode, char outputFormat, char keyType,
 		char keyNumber, char localStorageKey, char * recvBuf);
 
+int cpx6TSetDateTime(char mode, char * year, char * month, char * day,
+		char * hour, char * minute, char * second, char * recvBuf);
+
 typedef struct CpxF0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type

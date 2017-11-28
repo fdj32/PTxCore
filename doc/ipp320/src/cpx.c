@@ -696,3 +696,23 @@ int cpx6NE2EEEnable(char e2eeMode, char outputFormat, char keyType,
 	len = strlen(s);
 	return send(s, len, recvBuf);
 }
+
+int cpx6TSetDateTime(char mode, char * year, char * month, char * day,
+		char * hour, char * minute, char * second, char * recvBuf) {
+	char * s = malloc(21);
+	memset(s, 0, 21);
+	s[0] = STX;
+	s[1] = '6';
+	s[2] = 'T';
+	s[3] = '.';
+	s[4] = mode;
+	strcat(s, year);
+	strcat(s, month);
+	strcat(s, day);
+	strcat(s, hour);
+	strcat(s, minute);
+	strcat(s, second);
+	s[19] = ETX;
+	s[20] = lrc(s, 0, 20);
+	return send(s, 21, recvBuf);
+}
