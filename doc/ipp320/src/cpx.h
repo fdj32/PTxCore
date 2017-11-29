@@ -65,6 +65,7 @@
 #define P_APP_NAME "B2_PTxEngine"
 #define E_APP_NAME "CA0C00_ApVis"
 
+#define STATUS_NORMAL	0
 #define EMV_VERSION		1
 #define OPEN_SESSION 	2
 #define CLOSE_SESSION 	3
@@ -246,6 +247,10 @@ typedef struct F1AsyncCommand {
 	char * eAppName; // 12 bytes, application name of the EMV application where CPX will direct its request
 	char * dataE; // (lgt-28) bytes, EMV data information field for the CPX EMV command selected
 } F1AsyncCommand;
+
+F1AsyncCommand * f1Async(char msgSeqId, char * dataE, int len);
+
+int cpxF1Async(F1AsyncCommand * f1Async, char * recvBuf);
 
 typedef struct F1Result {
 	char * lgt; // 2 bytes, length of application field information

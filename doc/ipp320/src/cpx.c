@@ -844,7 +844,7 @@ int cpxF1(F1Command * f1cmd, char * recvBuf) {
 	memset(s, 0, encode);
 	s[0] = STX;
 	s[1] = 'F';
-	s[2] = '0';
+	s[2] = '1';
 	s[3] = '.';
 	cpx16Encode(f1, 0, len + 2, s, 4);
 	len = strlen(s);
@@ -865,7 +865,7 @@ int asynEmvAck(char msgSeqId, char * recvBuf) {
 	memset(t, 0, 16);
 	t[0] = STX;
 	t[1] = 'F';
-	t[2] = '0';
+	t[2] = '1';
 	t[3] = '.';
 	cpx16Encode(s, 0, 4, t, 4);
 	int len = strlen(t);
@@ -874,4 +874,47 @@ int asynEmvAck(char msgSeqId, char * recvBuf) {
 	t[len] = lrc(t, 0, len);
 	len = strlen(t);
 	return send(t, len, recvBuf);
+}
+
+F1AsyncCommand * f1Async(char msgSeqId, char * dataE, int len) {
+	F1AsyncCommand * f1Async = malloc(sizeof(F1AsyncCommand));
+	f1Async->lgt = bigEndianBin(28 + len);
+	f1Async->type = ASYN_EMV;
+	f1Async->msgSeqId = msgSeqId;
+	f1Async->status = STATUS_NORMAL;
+	f1Async->msgVer = EMV_VERSION;
+	f1Async->pAppName = P_APP_NAME;
+	f1Async->eAppName = E_APP_NAME;
+	f1Async->dataE = dataE;
+	return f1Async;
+}
+
+int cpxF1Async(F1AsyncCommand * f1Async, char * recvBuf) {
+	int len = bigEndianInt(f1Async->lgt);
+	char * f1 = malloc(len + 2);
+	memset(f1, 0, len + 2);
+	memcpy(f1, f1Async->lgt, 2);
+	f1[2] = f1Async->type;
+	f1[3] = f1Async->msgSeqId;
+	f1[4] = f1Async->status;
+	f1[5] = f1Async->msgVer;
+	memcpy(f1 + 6, f1Async->pAppName, 12);
+	memcpy(f1 + 18, f1Async->eAppName, 12);
+	if (len > 28 && NULL != f1Async->dataE) {
+		memcpy(f1 + 30, f1Async->dataE, len - 28);
+	}
+	int encode = (len + 2) * 2 + 6;
+	char * s = malloc(encode);
+	memset(s, 0, encode);
+	s[0] = STX;
+	s[1] = 'F';
+	s[2] = '1';
+	s[3] = '.';
+	cpx16Encode(f1, 0, len + 2, s, 4);
+	len = strlen(s);
+	s[len] = ETX;
+	len = strlen(s);
+	s[len] = lrc(s, 0, len);
+	len = strlen(s);
+	return send(s, len, recvBuf);
 }
