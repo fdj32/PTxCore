@@ -784,11 +784,11 @@ int cpxF0(F0Command * f0cmd, char * recvBuf) {
 	char * f0 = malloc(len + 2);
 	memset(f0, 0, len + 2);
 	memcpy(f0, f0cmd->lgt, 2);
-	f0[2] = 4;
-	memcpy(f0+3, f0cmd->to, 2);
+	f0[2] = f0cmd->type;
+	memcpy(f0 + 3, f0cmd->to, 2);
 	f0[5] = f0cmd->cmd;
-	if(len > 4 && NULL != f0cmd->dataE) {
-		memcpy(f0+6, f0cmd->dataE, len - 4);
+	if (len > 4 && NULL != f0cmd->dataE) {
+		memcpy(f0 + 6, f0cmd->dataE, len - 4);
 	}
 	int encode = (len + 2) * 2 + 6;
 	char * s = malloc(encode);
@@ -798,6 +798,55 @@ int cpxF0(F0Command * f0cmd, char * recvBuf) {
 	s[2] = '0';
 	s[3] = '.';
 	cpx16Encode(f0, 0, len + 2, s, 4);
+	len = strlen(s);
+	s[len] = ETX;
+	len = strlen(s);
+	s[len] = lrc(s, 0, len);
+	len = strlen(s);
+	return send(s, len, recvBuf);
+}
+
+F1Command * f1OpenSession(char msgSeqId) {
+	return f1(OPEN_SESSION, msgSeqId);
+}
+
+F1Command * f1CloseSession(char msgSeqId) {
+	return f1(CLOSE_SESSION, msgSeqId);
+}
+
+F1Command * f1(char type, char msgSeqId) {
+	F1Command * f1cmd = malloc(sizeof(F1Command));
+	f1cmd->lgt = bigEndianBin(27);
+	f1cmd->type = type;
+	f1cmd->msgSeqId = msgSeqId;
+	f1cmd->msgVer = EMV_VERSION;
+	f1cmd->pAppName = P_APP_NAME;
+	f1cmd->eAppName = E_APP_NAME;
+	f1cmd->dataE = NULL;
+	return f1cmd;
+}
+
+int cpxF1(F1Command * f1cmd, char * recvBuf) {
+	int len = bigEndianInt(f1cmd->lgt);
+	char * f1 = malloc(len + 2);
+	memset(f1, 0, len + 2);
+	memcpy(f1, f1cmd->lgt, 2);
+	f1[2] = f1cmd->type;
+	f1[3] = f1cmd->msgSeqId;
+	f1[4] = f1cmd->msgVer;
+	memcpy(f1 + 5, f1cmd->pAppName, 12);
+	memcpy(f1 + 17, f1cmd->eAppName, 12);
+	if (len > 27 && NULL != f1cmd->dataE) {
+		memcpy(f1 + 29, f1cmd->dataE, len - 27);
+	}
+	int encode = (len + 2) * 2 + 6;
+	char * s = malloc(encode);
+	memset(s, 0, encode);
+	s[0] = STX;
+	s[1] = 'F';
+	s[2] = '0';
+	s[3] = '.';
+	cpx16Encode(f1, 0, len + 2, s, 4);
 	len = strlen(s);
 	s[len] = ETX;
 	len = strlen(s);
