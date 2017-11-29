@@ -6,6 +6,8 @@
  */
 #include "ipp320.h"
 
+char MSG_ID = 1;
+
 int ack() {
 	return RS232_SendByte(COM_PORT_NUMBER, ACK);
 }
@@ -917,4 +919,37 @@ int cpxF1Async(F1AsyncCommand * f1Async, char * recvBuf) {
 	s[len] = lrc(s, 0, len);
 	len = strlen(s);
 	return send(s, len, recvBuf);
+}
+
+int vegaInit(char * initData) {
+	char * recvBuf = malloc(1024);
+	int n = cpxF1(f1OpenSession(MSG_ID), recvBuf);
+	char * p = malloc(1024);
+	n = parseResponse(recvBuf, n, p);
+	puts(hex(p, 0, n));
+	printf("%d", p[0]);
+	printf("%c", p[1]);
+	return n;
+}
+
+int parseResponse(char * s, int n, char * t) {
+	char * p = s;
+	int len = n;
+	for(int i = 0; i < n; i++) {
+		if(*p != STX) { // find the start STX
+			p++;
+			len--;
+			break;
+		}
+		if(i == n - 1) {
+			return -1;
+		}
+	}
+	if('F' != p[1]) {
+		memcpy(t, p + 1, len - 3);
+		return (len - 3);
+	} else { // F0 & F1 cpx16Decode
+		memcpy(t, p + 1, 3); // F, 0or1, .
+		return 3 + cpx16Decode(p, 4, len-6, t, 3);
+	}
 }

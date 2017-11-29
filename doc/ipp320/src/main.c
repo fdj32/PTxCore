@@ -10,9 +10,10 @@
 int main(void) {
 	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
 
-	char * recvBuf = malloc(16);
-	memset(recvBuf, 0, 16);
-	int n = cpx58display01A('0', '0', '4', '1', "Hello", "     China", "Shaanxi", "       Xi'an", recvBuf);
-	putchar(n);
+	char * fileName = "/Users/nickfeng/hub/fdj32/PTxCore/doc/131540886937708660.init.dat";
+	int fileSize = getFileSize(fileName);
+	printf("%d\n", fileSize);
+	char * fileData = loadFile(fileName);
+	int n = vegaInit(fileData);
 	return EXIT_SUCCESS;
 }

@@ -60,7 +60,9 @@
 #define POLL_TIME	 			100 // 100 millisecond
 #define BAUD_RATE				9600
 #define MODE_DATABITS8_PARITY_NONE_STOPBITS1	"8N1"
-#define COM_PORT_NUMBER			24 // UBUNTU is /dev/ttyACM0
+//#define COM_PORT_NUMBER			24 // UBUNTU is /dev/ttyACM0
+#define COM_PORT_NUMBER			38 // MacOSX USB Left is /dev/tty.usbmodem1411
+//#define COM_PORT_NUMBER			39 // MacOSX USB Right is /dev/tty.usbmodem1421
 
 #define P_APP_NAME "B2_PTxEngine"
 #define E_APP_NAME "CA0C00_ApVis"
@@ -262,5 +264,9 @@ typedef struct F1Result {
 	char * pAppName; // 12 bytes, application name of the payment application where CPX will direct its response
 	char * dataR; // (lgt-28) bytes, data information response field for the command selected
 } F1Result;
+
+int vegaInit(char * initData);
+
+int parseResponse(char * s, int n, char * t);
 
 #endif /* CPX_H_ */
