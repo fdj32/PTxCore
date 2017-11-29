@@ -717,8 +717,8 @@ int cpx6TSetDateTime(char mode, char * year, char * month, char * day,
 	return send(s, 21, recvBuf);
 }
 
-CpxF0Command * f0MsrRead(char * to, char cmd) {
-	CpxF0Command * f0cmd = malloc(sizeof(CpxF0Command));
+F0Command * f0MsrRead(char * to, char cmd) {
+	F0Command * f0cmd = malloc(sizeof(F0Command));
 	f0cmd->lgt = bigEndianBin(4);
 	f0cmd->type = 4;
 	f0cmd->to = to;
@@ -727,8 +727,8 @@ CpxF0Command * f0MsrRead(char * to, char cmd) {
 	return f0cmd;
 }
 
-CpxF0Command * f0CancelMsrRead(char * to) {
-	CpxF0Command * f0cmd = malloc(sizeof(CpxF0Command));
+F0Command * f0CancelMsrRead(char * to) {
+	F0Command * f0cmd = malloc(sizeof(F0Command));
 	f0cmd->lgt = bigEndianBin(4);
 	f0cmd->type = 4;
 	f0cmd->to = to;
@@ -737,7 +737,7 @@ CpxF0Command * f0CancelMsrRead(char * to) {
 	return f0cmd;
 }
 
-int cpxF0(CpxF0Command * f0cmd, char * recvBuf) {
+int cpxF0(F0Command * f0cmd, char * recvBuf) {
 	int len = bigEndianInt(f0cmd->lgt);
 	char * f0 = malloc(len + 2);
 	memset(f0, 0, len + 2);

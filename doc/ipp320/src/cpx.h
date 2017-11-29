@@ -171,21 +171,23 @@ int cpx6NE2EEEnable(char e2eeMode, char outputFormat, char keyType,
 int cpx6TSetDateTime(char mode, char * year, char * month, char * day,
 		char * hour, char * minute, char * second, char * recvBuf);
 
-typedef struct CpxF0Command {
+typedef struct F0Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type
 	char * to; // 2 bytes, maximum timeout of execution supported by the terminal (in multiplies of 10 ms)
 	char cmd; // 1 byte, command number for the driver selected
 	char * dataE; // (LGT - 4) bytes DATA_E . data information field for the driver command selected
-} CpxF0Command;
+} F0Command;
 
-CpxF0Command * f0MsrRead(char * to, char cmd);
+F0Command * f0MsrRead(char * to, char cmd);
 
-CpxF0Command * f0CancelMsrRead(char * to);
+F0Command * f0CancelMsrRead(char * to);
 
-int cpxF0MsrRead(CpxF0Command * f0cmd, char * recvBuf);
+F0Command * f0DefineRemoveCardPrompt(char * to);
 
-typedef struct CpxF1Command {
+int cpxF0MsrRead(F0Command * f0cmd, char * recvBuf);
+
+typedef struct F1Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type
 	char msgSeqId; // 1 byte, reference number for this message (if MSG ID, may be user set, if SEQ ID for Asynchronous messages, it is incremented after each successful send).
@@ -193,9 +195,9 @@ typedef struct CpxF1Command {
 	char * pAppName; // 12 bytes, request message source -> payment application name
 	char * eAppName; // 12 bytes, application name of the EMV application where CPX will direct its request
 	char * dataE; // (lgt-27) bytes, EMV data information field for the CPX EMV command selected
-} CpxF1Command;
+} F1Command;
 
-typedef struct CpxF1AsyncCommand {
+typedef struct F1AsyncCommand {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type
 	char msgSeqId; // 1 byte, reference number for this message (if MSG ID, may be user set, if SEQ ID for Asynchronous messages, it is incremented after each successful send).
@@ -204,9 +206,9 @@ typedef struct CpxF1AsyncCommand {
 	char * pAppName; // 12 bytes, request message source -> payment application name
 	char * eAppName; // 12 bytes, application name of the EMV application where CPX will direct its request
 	char * dataE; // (lgt-28) bytes, EMV data information field for the CPX EMV command selected
-} CpxF1AsyncCommand;
+} F1AsyncCommand;
 
-typedef struct CpxF1Result {
+typedef struct F1Result {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type
 	char msgSeqId; // 1 byte, reference number for this message (if MSG ID, may be user set, if SEQ ID for Asynchronous messages, it is incremented after each successful send).
@@ -215,6 +217,6 @@ typedef struct CpxF1Result {
 	char * eAppName; // 12 bytes, response message source -> EMV application name
 	char * pAppName; // 12 bytes, application name of the payment application where CPX will direct its response
 	char * dataR; // (lgt-28) bytes, data information response field for the command selected
-} CpxF1Result;
+} F1Result;
 
 #endif /* CPX_H_ */
