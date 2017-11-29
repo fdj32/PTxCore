@@ -181,6 +181,8 @@ typedef struct CpxF0Command {
 
 CpxF0Command * f0MsrRead(char * to, char cmd);
 
+CpxF0Command * f0CancelMsrRead(char * to);
+
 int cpxF0MsrRead(CpxF0Command * f0cmd, char * recvBuf);
 
 typedef struct CpxF1Command {

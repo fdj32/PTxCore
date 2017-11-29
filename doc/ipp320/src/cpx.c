@@ -727,6 +727,16 @@ CpxF0Command * f0MsrRead(char * to, char cmd) {
 	return f0cmd;
 }
 
+CpxF0Command * f0CancelMsrRead(char * to) {
+	CpxF0Command * f0cmd = malloc(sizeof(CpxF0Command));
+	f0cmd->lgt = bigEndianBin(4);
+	f0cmd->type = 4;
+	f0cmd->to = to;
+	f0cmd->cmd = 0x12;
+	f0cmd->dataE = NULL;
+	return f0cmd;
+}
+
 int cpxF0(CpxF0Command * f0cmd, char * recvBuf) {
 	int len = bigEndianInt(f0cmd->lgt);
 	char * f0 = malloc(len + 2);
