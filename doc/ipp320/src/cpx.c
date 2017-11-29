@@ -718,31 +718,63 @@ int cpx6TSetDateTime(char mode, char * year, char * month, char * day,
 }
 
 F0Command * f0MsrRead(char * to, char cmd) {
-	F0Command * f0cmd = malloc(sizeof(F0Command));
-	f0cmd->lgt = bigEndianBin(4);
-	f0cmd->type = 4;
-	f0cmd->to = to;
-	f0cmd->cmd = cmd;
-	f0cmd->dataE = NULL;
-	return f0cmd;
+	return f0(4, to, cmd);
 }
 
 F0Command * f0CancelMsrRead(char * to) {
-	F0Command * f0cmd = malloc(sizeof(F0Command));
-	f0cmd->lgt = bigEndianBin(4);
-	f0cmd->type = 4;
-	f0cmd->to = to;
-	f0cmd->cmd = 0x12;
-	f0cmd->dataE = NULL;
-	return f0cmd;
+	return f0(4, to, 0x12);
 }
 
 F0Command * f0DefineRemoveCardPrompt(char * to) {
+	return f0(5, to, 0x10);
+}
+
+F0Command * f0MSRwithSCDetectCancel(char * to) {
+	return f0(5, to, 0x12);
+}
+
+F0Command * f0WaitForSmartCardInsertion(char * to) {
+	return f0(7, to, 4);
+}
+
+F0Command * f0PowerUpCard(char * to) {
+	return f0(7, to, 5);
+}
+
+F0Command * f0WaitInsertAndPowerUp(char * to) {
+	return f0(7, to, 7);
+}
+
+F0Command * f0PowerUpCardAndControlsForATR(char * to) {
+	return f0(7, to, 8);
+}
+
+F0Command * f0PowerOffCard(char * to) {
+	return f0(7, to, 0x0a);
+}
+
+F0Command * f0WaitForRemovalOfCard(char * to) {
+	return f0(7, to, 0x0b);
+}
+
+F0Command * f0PowerOffCardAndWaitForSmartCardRemoval(char * to) {
+	return f0(7, to, 0x0c);
+}
+
+F0Command * f0SmartCardCommandCancel(char * to) {
+	return f0(7, to, 0x12);
+}
+
+F0Command * f0SmartCardStatus(char * to) {
+	return f0(7, to, 0x18);
+}
+
+F0Command * f0(char type, char * to, char cmd) {
 	F0Command * f0cmd = malloc(sizeof(F0Command));
 	f0cmd->lgt = bigEndianBin(4);
-	f0cmd->type = 5;
+	f0cmd->type = type;
 	f0cmd->to = to;
-	f0cmd->cmd = 0x10;
+	f0cmd->cmd = cmd;
 	f0cmd->dataE = NULL;
 	return f0cmd;
 }

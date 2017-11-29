@@ -185,6 +185,28 @@ F0Command * f0CancelMsrRead(char * to);
 
 F0Command * f0DefineRemoveCardPrompt(char * to);
 
+F0Command * f0MSRwithSCDetectCancel(char * to);
+
+F0Command * f0WaitForSmartCardInsertion(char * to);
+
+F0Command * f0PowerUpCard(char * to);
+
+F0Command * f0WaitInsertAndPowerUp(char * to);
+
+F0Command * f0PowerUpCardAndControlsForATR(char * to);
+
+F0Command * f0PowerOffCard(char * to);
+
+F0Command * f0WaitForRemovalOfCard(char * to);
+
+F0Command * f0PowerOffCardAndWaitForSmartCardRemoval(char * to);
+
+F0Command * f0SmartCardCommandCancel(char * to);
+
+F0Command * f0SmartCardStatus(char * to);
+
+F0Command * f0(char type, char * to, char cmd);
+
 int cpxF0MsrRead(F0Command * f0cmd, char * recvBuf);
 
 typedef struct F1Command {
