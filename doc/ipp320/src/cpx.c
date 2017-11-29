@@ -737,6 +737,16 @@ F0Command * f0CancelMsrRead(char * to) {
 	return f0cmd;
 }
 
+F0Command * f0DefineRemoveCardPrompt(char * to) {
+	F0Command * f0cmd = malloc(sizeof(F0Command));
+	f0cmd->lgt = bigEndianBin(4);
+	f0cmd->type = 5;
+	f0cmd->to = to;
+	f0cmd->cmd = 0x10;
+	f0cmd->dataE = NULL;
+	return f0cmd;
+}
+
 int cpxF0(F0Command * f0cmd, char * recvBuf) {
 	int len = bigEndianInt(f0cmd->lgt);
 	char * f0 = malloc(len + 2);
