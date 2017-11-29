@@ -716,3 +716,39 @@ int cpx6TSetDateTime(char mode, char * year, char * month, char * day,
 	s[20] = lrc(s, 0, 20);
 	return send(s, 21, recvBuf);
 }
+
+CpxF0Command * f0MsrRead(char * to, char cmd) {
+	CpxF0Command * f0cmd = malloc(sizeof(CpxF0Command));
+	f0cmd->lgt = bigEndianBin(4);
+	f0cmd->type = 4;
+	f0cmd->to = to;
+	f0cmd->cmd = cmd;
+	f0cmd->dataE = NULL;
+	return f0cmd;
+}
+
+int cpxF0(CpxF0Command * f0cmd, char * recvBuf) {
+	int len = bigEndianInt(f0cmd->lgt);
+	char * f0 = malloc(len + 2);
+	memset(f0, 0, len + 2);
+	memcpy(f0, f0cmd->lgt, 2);
+	f0[2] = 4;
+	memcpy(f0+3, f0cmd->to, 2);
+	f0[5] = f0cmd->cmd;
+	if(len > 4 && NULL != f0cmd->dataE) {
+		memcpy(f0+6, f0cmd->dataE, len - 4);
+	}
+	char * s = malloc(32);
+	memset(s, 0, 32);
+	s[0] = STX;
+	s[1] = 'F';
+	s[2] = '0';
+	s[3] = '.';
+	cpx16Encode(f0, 0, len + 2, s, 4);
+	len = strlen(s);
+	s[len] = ETX;
+	len = strlen(s);
+	s[len] = lrc(s, 0, len);
+	len = strlen(s);
+	return send(s, len, recvBuf);
+}

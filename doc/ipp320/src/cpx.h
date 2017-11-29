@@ -179,6 +179,10 @@ typedef struct CpxF0Command {
 	char * dataE; // (LGT - 4) bytes DATA_E . data information field for the driver command selected
 } CpxF0Command;
 
+CpxF0Command * f0MsrRead(char * to, char cmd);
+
+int cpxF0MsrRead(CpxF0Command * f0cmd, char * recvBuf);
+
 typedef struct CpxF1Command {
 	char * lgt; // 2 bytes, length of application field information
 	char type; // 1 byte, message type
