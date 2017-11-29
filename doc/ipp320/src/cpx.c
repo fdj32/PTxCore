@@ -738,8 +738,9 @@ int cpxF0(CpxF0Command * f0cmd, char * recvBuf) {
 	if(len > 4 && NULL != f0cmd->dataE) {
 		memcpy(f0+6, f0cmd->dataE, len - 4);
 	}
-	char * s = malloc(32);
-	memset(s, 0, 32);
+	int encode = (len + 2) * 2 + 6;
+	char * s = malloc(encode);
+	memset(s, 0, encode);
 	s[0] = STX;
 	s[1] = 'F';
 	s[2] = '0';
