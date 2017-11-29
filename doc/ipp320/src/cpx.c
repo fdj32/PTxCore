@@ -854,3 +854,24 @@ int cpxF1(F1Command * f1cmd, char * recvBuf) {
 	len = strlen(s);
 	return send(s, len, recvBuf);
 }
+
+int asynEmvAck(char msgSeqId, char * recvBuf) {
+	char * s = malloc(4);
+	memset(s, 0, 4);
+	s[1] = 2;
+	s[2] = ASYN_EMV_ACK;
+	s[3] = msgSeqId;
+	char * t = malloc(16);
+	memset(t, 0, 16);
+	t[0] = STX;
+	t[1] = 'F';
+	t[2] = '0';
+	t[3] = '.';
+	cpx16Encode(s, 0, 4, t, 4);
+	int len = strlen(t);
+	t[len] = ETX;
+	len = strlen(t);
+	t[len] = lrc(t, 0, len);
+	len = strlen(t);
+	return send(t, len, recvBuf);
+}

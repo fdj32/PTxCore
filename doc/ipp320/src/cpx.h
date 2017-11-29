@@ -68,6 +68,9 @@
 #define EMV_VERSION		1
 #define OPEN_SESSION 	2
 #define CLOSE_SESSION 	3
+#define ASYN_EMV			4
+#define ASYN_EMV_ACK 	5
+
 
 int ack();
 
@@ -230,6 +233,8 @@ F1Command * f1CloseSession(char msgSeqId);
 F1Command * f1(char type, char msgSeqId);
 
 int cpxF1(F1Command * f1cmd, char * recvBuf);
+
+int asynEmvAck(char msgSeqId, char * recvBuf);
 
 typedef struct F1AsyncCommand {
 	char * lgt; // 2 bytes, length of application field information
