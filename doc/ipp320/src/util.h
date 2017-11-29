@@ -45,4 +45,6 @@ char * format(const char * f, ...);
 char * stringRightPad(char * s, char c, int length);
 
 char * stringLeftPad(char * s, char c, int length);
+
+void output(char * s, int length);
 #endif /* UTIL_H_ */

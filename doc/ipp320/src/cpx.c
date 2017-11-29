@@ -926,9 +926,7 @@ int vegaInit(char * initData) {
 	int n = cpxF1(f1OpenSession(MSG_ID), recvBuf);
 	char * p = malloc(1024);
 	n = parseResponse(recvBuf, n, p);
-	puts(hex(p, 0, n));
-	printf("%d", p[0]);
-	printf("%c", p[1]);
+	output(p, n);
 	return n;
 }
 
@@ -946,10 +944,11 @@ int parseResponse(char * s, int n, char * t) {
 		}
 	}
 	if('F' != p[1]) {
-		memcpy(t, p + 1, len - 3);
+		memcpy(t, p + 1, len - 3); // STX, ETX, LRC
 		return (len - 3);
 	} else { // F0 & F1 cpx16Decode
 		memcpy(t, p + 1, 3); // F, 0or1, .
-		return 3 + cpx16Decode(p, 4, len-6, t, 3);
+		// STX, F, 0or1, ., ..., ETX, LRC
+		return (3 + cpx16Decode(p, 4, len-2, t, 3));
 	}
 }

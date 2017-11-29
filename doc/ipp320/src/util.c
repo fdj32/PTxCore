@@ -240,3 +240,13 @@ char * stringLeftPad(char * s, char c, int length) {
 	}
 	return str;
 }
+
+void output(char * s, int length) {
+	for(int i = 0; i < length; i++) {
+		if(*(s+i) < 0x20 || *(s+i) > 0x7E) {
+			printf("{%s}", hexByte(*(s+i)));
+		} else {
+			printf("%c", *(s+i));
+		}
+	}
+}
