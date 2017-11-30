@@ -12,6 +12,9 @@ int ack() {
 }
 
 int send(char * buf, int size, char * recvBuf) {
+
+	printf("sent %i bytes: %s\n", size, hex((char *) buf, 0, size));
+
 	if (RS232_OpenComport(COM_PORT_NUMBER, BAUD_RATE,
 	MODE_DATABITS8_PARITY_NONE_STOPBITS1)) {
 		printf("Can not open comport\n");
@@ -22,8 +25,8 @@ int send(char * buf, int size, char * recvBuf) {
 	while ((clock() - start) < READ_TIMEOUT * CLOCKS_PER_SEC) {
 		n = RS232_PollComport(COM_PORT_NUMBER, recvBuf, 1023);
 		if (n > 0) {
-			printf("received %i bytes: %s\n", n, (char *) recvBuf);
-			printf("received %i bytes: %s\n", n, hex((char *) recvBuf, 0, n));
+			printf("recv %i bytes: %s\n", n, (char *) recvBuf);
+			printf("recv %i bytes: %s\n", n, hex((char *) recvBuf, 0, n));
 			if (ACK == recvBuf[0] || NAK == recvBuf[0] || STX == recvBuf[0]) {
 				if (n > 1) {
 					ack();
@@ -878,7 +881,7 @@ int asynEmvAck(char msgSeqId) {
 	len = strlen(t);
 	t[len] = lrc(t, 0, len);
 	len = strlen(t);
-
+	printf("Asynchronous EMV ACK msgSeqId=%d\n", msgSeqId);
 	return RS232_SendBuf(COM_PORT_NUMBER, t, len);
 }
 
