@@ -9,6 +9,10 @@
 #ifndef IPP320_H_
 #define IPP320_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,5 +22,9 @@
 #include "object.h"
 #include "rs232.h"
 #include "util.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* IPP320_H_ */

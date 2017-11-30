@@ -8,6 +8,10 @@
 #ifndef UTIL_H_
 #define UTIL_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 char * hex(char * s, int offset, int length);
 
 char * hexByte(char b);
@@ -47,4 +51,9 @@ char * stringRightPad(char * s, char c, int length);
 char * stringLeftPad(char * s, char c, int length);
 
 void output(char * s, int length);
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* UTIL_H_ */

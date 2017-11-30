@@ -8,6 +8,10 @@
 #ifndef OBJECT_H_
 #define OBJECT_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define RFU 0x00
 #define STX 0x02
 #define ETX 0x03
@@ -354,5 +358,8 @@ char * VegaInitDataToBin(VegaInitData * o);
 
 VegaInitData * VegaInitDataFromBin(char * s);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* OBJECT_H_ */

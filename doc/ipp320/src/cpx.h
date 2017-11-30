@@ -8,6 +8,10 @@
 #ifndef CPX_H_
 #define CPX_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define CPX31_PIN_ENTRY_DUKPT 				"31."
 #define CPX40_LOAD_MASTER_SESSION_KEY 		"40."
 #define CPX41_PIN_ENTRY_MASTER_SESSION 		"41."
@@ -268,5 +272,9 @@ typedef struct F1Result {
 int vegaInit(char * initData);
 
 int parseResponse(char * s, int n, char * t);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* CPX_H_ */
