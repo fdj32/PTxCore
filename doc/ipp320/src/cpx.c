@@ -932,7 +932,7 @@ int vegaInit(char * s, int size) {
 	n = parseResponse(recvBuf, n, p);
 	output(p, n);
 
-	int msgId = 1;
+	int msgId = 0;
 
 	n = cpxF1(f1OpenSession(msgId), recvBuf);
 	n = parseResponse(recvBuf, n, p);
@@ -944,7 +944,7 @@ int vegaInit(char * s, int size) {
 		n = cpxF1(f1CloseSession(msgId), recvBuf);
 		n = parseResponse(recvBuf, n, p);
 		output(p, n);
-		msgId++;
+		msgId = 0;
 		// Open again
 		n = cpxF1(f1OpenSession(msgId), recvBuf);
 		n = parseResponse(recvBuf, n, p);
@@ -957,6 +957,7 @@ int vegaInit(char * s, int size) {
 	int dataPacketSize = 0;
 	while(index < size) {
 		char * dataPacket = malloc(MAX_VEGA_PACKET_SIZE + 4);
+		memset(dataPacket, 0, MAX_VEGA_PACKET_SIZE + 4);
 		dataPacket[0] = 0; // EmvServiceCode.EMV_INIT
 		dataPacket[1] = 0xff; // EmvReasonCode.EMV_UNDEF
 		if(size - index > initPacketSize) {
