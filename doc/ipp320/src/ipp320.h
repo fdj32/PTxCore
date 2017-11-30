@@ -13,6 +13,7 @@
 extern "C" {
 #endif
 
+#include <iconv.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
