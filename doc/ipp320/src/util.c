@@ -249,4 +249,5 @@ void output(char * s, int length) {
 			printf("%c", *(s+i));
 		}
 	}
+	puts("\n");
 }

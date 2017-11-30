@@ -6,9 +6,8 @@
  */
 #include "ipp320.h"
 
-char MSG_ID = 1;
-
 int ack() {
+	printf("Answer ACK\n");
 	return RS232_SendByte(COM_PORT_NUMBER, ACK);
 }
 
@@ -25,7 +24,7 @@ int send(char * buf, int size, char * recvBuf) {
 		if (n > 0) {
 			printf("received %i bytes: %s\n", n, (char *) recvBuf);
 			printf("received %i bytes: %s\n", n, hex((char *) recvBuf, 0, n));
-			if (ACK == recvBuf[0] || NAK == recvBuf[0]) {
+			if (ACK == recvBuf[0] || NAK == recvBuf[0] || STX == recvBuf[0]) {
 				if (n > 1) {
 					ack();
 				}
@@ -861,7 +860,7 @@ int cpxF1(F1Command * f1cmd, char * recvBuf) {
 	return send(s, len, recvBuf);
 }
 
-int asynEmvAck(char msgSeqId, char * recvBuf) {
+int asynEmvAck(char msgSeqId) {
 	char * s = malloc(4);
 	memset(s, 0, 4);
 	s[1] = 2;
@@ -879,7 +878,8 @@ int asynEmvAck(char msgSeqId, char * recvBuf) {
 	len = strlen(t);
 	t[len] = lrc(t, 0, len);
 	len = strlen(t);
-	return send(t, len, recvBuf);
+
+	return RS232_SendBuf(COM_PORT_NUMBER, t, len);
 }
 
 F1AsyncCommand * f1Async(char msgSeqId, char * dataE, int len) {
@@ -925,12 +925,59 @@ int cpxF1Async(F1AsyncCommand * f1Async, char * recvBuf) {
 	return send(s, len, recvBuf);
 }
 
-int vegaInit(char * initData) {
+int vegaInit(char * s, int size) {
 	char * recvBuf = malloc(1024);
-	int n = cpxF1(f1OpenSession(MSG_ID), recvBuf);
+	int n = cpx58display01A('0', '0', '4', '1', "", "Initializing", "", "", recvBuf);
 	char * p = malloc(1024);
 	n = parseResponse(recvBuf, n, p);
 	output(p, n);
+
+	int msgId = 1;
+
+	n = cpxF1(f1OpenSession(msgId), recvBuf);
+	n = parseResponse(recvBuf, n, p);
+	output(p, n);
+	msgId++;
+
+	if(p[7] == 7) {
+		// already open, Close it
+		n = cpxF1(f1CloseSession(msgId), recvBuf);
+		n = parseResponse(recvBuf, n, p);
+		output(p, n);
+		msgId++;
+		// Open again
+		n = cpxF1(f1OpenSession(msgId), recvBuf);
+		n = parseResponse(recvBuf, n, p);
+		output(p, n);
+		msgId++;
+	}
+
+	int index = 0;
+	const int initPacketSize = MAX_VEGA_PACKET_SIZE - 1;
+	int dataPacketSize = 0;
+	while(index < size) {
+		char * dataPacket = malloc(MAX_VEGA_PACKET_SIZE + 4);
+		dataPacket[0] = 0; // EmvServiceCode.EMV_INIT
+		dataPacket[1] = 0xff; // EmvReasonCode.EMV_UNDEF
+		if(size - index > initPacketSize) {
+			// More to follow
+			dataPacketSize = initPacketSize;
+			dataPacket[4] = 1;
+		} else {
+			// Last one
+			dataPacket[4] = 0;
+			dataPacketSize = size - index;
+		}
+		memcpy(dataPacket+2, littleEndianBin(dataPacketSize + 1), 2);
+		memcpy(dataPacket+5, s+index, dataPacketSize);
+		n = cpxF1Async(f1Async(msgId, dataPacket, dataPacketSize + 5), recvBuf);
+		n = parseResponse(recvBuf, n, p);
+		output(p, n);
+
+		asynEmvAck(msgId);
+		msgId++;
+		index += initPacketSize;
+	}
 	return n;
 }
 
@@ -941,6 +988,7 @@ int parseResponse(char * s, int n, char * t) {
 		if(*p != STX) { // find the start STX
 			p++;
 			len--;
+		} else {
 			break;
 		}
 		if(i == n - 1) {

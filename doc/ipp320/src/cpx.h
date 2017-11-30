@@ -243,7 +243,7 @@ F1Command * f1(char type, char msgSeqId);
 
 int cpxF1(F1Command * f1cmd, char * recvBuf);
 
-int asynEmvAck(char msgSeqId, char * recvBuf);
+int asynEmvAck(char msgSeqId);
 
 typedef struct F1AsyncCommand {
 	char * lgt; // 2 bytes, length of application field information
@@ -271,7 +271,7 @@ typedef struct F1Result {
 	char * dataR; // (lgt-28) bytes, data information response field for the command selected
 } F1Result;
 
-int vegaInit(char * initData);
+int vegaInit(char * s, int size);
 
 int parseResponse(char * s, int n, char * t);
 
