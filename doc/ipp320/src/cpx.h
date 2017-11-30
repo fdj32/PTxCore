@@ -233,6 +233,8 @@ typedef struct F1Command {
 	char * dataE; // (lgt-27) bytes, EMV data information field for the CPX EMV command selected
 } F1Command;
 
+F1Command * f1Version(char msgSeqId);
+
 F1Command * f1OpenSession(char msgSeqId);
 
 F1Command * f1CloseSession(char msgSeqId);

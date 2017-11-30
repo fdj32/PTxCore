@@ -808,6 +808,10 @@ int cpxF0(F0Command * f0cmd, char * recvBuf) {
 	return send(s, len, recvBuf);
 }
 
+F1Command * f1Version(char msgSeqId) {
+	return f1(EMV_VERSION, msgSeqId);
+}
+
 F1Command * f1OpenSession(char msgSeqId) {
 	return f1(OPEN_SESSION, msgSeqId);
 }
@@ -923,7 +927,7 @@ int cpxF1Async(F1AsyncCommand * f1Async, char * recvBuf) {
 
 int vegaInit(char * initData) {
 	char * recvBuf = malloc(1024);
-	int n = cpxF1(f1OpenSession(MSG_ID), recvBuf);
+	int n = cpxF1(f1Version(MSG_ID), recvBuf);
 	char * p = malloc(1024);
 	n = parseResponse(recvBuf, n, p);
 	output(p, n);
