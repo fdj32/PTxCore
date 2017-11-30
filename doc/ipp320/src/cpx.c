@@ -25,7 +25,7 @@ int send(char * buf, int size, char * recvBuf) {
 		if (n > 0) {
 			printf("received %i bytes: %s\n", n, (char *) recvBuf);
 			printf("received %i bytes: %s\n", n, hex((char *) recvBuf, 0, n));
-			if (ACK == recvBuf[0]) {
+			if (ACK == recvBuf[0] || NAK == recvBuf[0]) {
 				if (n > 1) {
 					ack();
 				}
