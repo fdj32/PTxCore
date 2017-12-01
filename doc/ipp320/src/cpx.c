@@ -75,12 +75,12 @@ int cpx58display01A(char mode, char toggle, char lines, char lineStartIndex,
 	}
 	s[72] = ETX;
 	s[73] = lrc(s, 0, 73);
-	n = send(s, 74, recvBuf);
-	char * p = malloc(8);
-	memset(p, 0, 8);
-	n = parseResponse(recvBuf, n, p);
-	output(p, n);
-	return n > 4 ? (p[4] - '0') : -1;
+	return send(s, 74, recvBuf);
+//	char * p = malloc(8);
+//	memset(p, 0, 8);
+//	n = parseResponse(recvBuf, n, p);
+//	output(p, n);
+//	return n > 4 ? (p[4] - '0') : -1;
 }
 
 int cpx58display27(char mode, char lineStartIndex, char startPosition,

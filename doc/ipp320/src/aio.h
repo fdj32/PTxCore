@@ -18,9 +18,11 @@ typedef struct Msg {
 	struct Msg * next;
 } Msg;
 
+int openComPort();
 
+void closeComPort();
 
-
+void * recvMsg(Msg * h);
 
 #ifdef __cplusplus
 }

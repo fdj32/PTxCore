@@ -28,17 +28,31 @@ int main(void) {
 	 int n = vegaInit(fileData, fileSize);
 	 */
 
-	pthread_t receiver;
-	Msg * recvHead = malloc(sizeof(Msg));
-	recvHead->next = NULL;
-	pthread_create(&receiver, NULL, sayhello, recvHead);
-	printf("hello, world! I'm father\n");
-	usleep(100);
-	if(NULL != recvHead->next) {
-		printf("%s\n", recvHead->next->msg);
-		free(recvHead->next);
-		recvHead->next = NULL;
+	int n = openComPort();
+	if(0 != n) {
+		closeComPort();
+		return EXIT_FAILURE;
 	}
+
+	pthread_t t;
+	Msg * h = malloc(sizeof(Msg));
+	h->next = NULL;
+	pthread_create(&t, NULL, recvMsg, h);
+	printf("hello, world! I'm father\n");
+
+	char * recvBuf = malloc(128);
+	memset(recvBuf, 0, 128);
+	n = cpx58display01A('0', '0', '4', '1', "", "Initializing", "", "",
+			recvBuf);
+
+	usleep(300);
+	if(NULL != h->next) {
+		printf("got %s\n", h->next->msg);
+		free(h->next);
+		h->next = NULL;
+	}
+
+	closeComPort();
 
 	return EXIT_SUCCESS;
 }
