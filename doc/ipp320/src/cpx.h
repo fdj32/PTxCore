@@ -60,8 +60,8 @@ extern "C" {
 
 #define MAX_RESEND				3
 #define MAX_VEGA_PACKET_SIZE 	498
-#define READ_TIMEOUT 			8 // 8 second
-#define POLL_TIME	 			100 // 100 millisecond
+#define READ_TIMEOUT 			3 // seconds
+#define POLL_TIME	 			100 // 100 milliseconds
 #define BAUD_RATE				9600
 #define MODE_DATABITS8_PARITY_NONE_STOPBITS1	"8N1"
 //#define COM_PORT_NUMBER			24 // UBUNTU is /dev/ttyACM0

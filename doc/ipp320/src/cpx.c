@@ -14,6 +14,7 @@ int ack() {
 int send(char * buf, int size, char * recvBuf) {
 
 	printf("sent %i bytes: %s\n", size, hex((char *) buf, 0, size));
+	output(buf, size);
 
 	if (RS232_OpenComport(COM_PORT_NUMBER, BAUD_RATE,
 	MODE_DATABITS8_PARITY_NONE_STOPBITS1)) {
@@ -22,11 +23,11 @@ int send(char * buf, int size, char * recvBuf) {
 	}
 	int n = RS232_SendBuf(COM_PORT_NUMBER, buf, size);
 	long start = clock();
-	while ((clock() - start) < READ_TIMEOUT * CLOCKS_PER_SEC) {
+	while (clock() - start < READ_TIMEOUT * CLOCKS_PER_SEC / 1000) {
 		n = RS232_PollComport(COM_PORT_NUMBER, recvBuf, 1023);
 		if (n > 0) {
 			printf("recv %i bytes: %s\n", n, (char *) recvBuf);
-			printf("recv %i bytes: %s\n", n, hex((char *) recvBuf, 0, n));
+			output(recvBuf, n);
 			if (ACK == recvBuf[0] || NAK == recvBuf[0] || STX == recvBuf[0]) {
 				if (n > 1) {
 					ack();
@@ -940,19 +941,16 @@ int vegaInit(char * s, int size) {
 	n = cpxF1(f1OpenSession(), recvBuf);
 	n = parseResponse(recvBuf, n, p);
 	output(p, n);
-	msgId++;
 
 	if(p[7] == 7) {
 		// already open, Close it
 		n = cpxF1(f1CloseSession(msgId), recvBuf);
 		n = parseResponse(recvBuf, n, p);
 		output(p, n);
-		msgId = 0;
 		// Open again
 		n = cpxF1(f1OpenSession(), recvBuf);
 		n = parseResponse(recvBuf, n, p);
 		output(p, n);
-		msgId++;
 	}
 
 	int index = 0;
@@ -978,7 +976,6 @@ int vegaInit(char * s, int size) {
 		n = parseResponse(recvBuf, n, p);
 		output(p, n);
 
-		asynEmvAck(msgId);
 		msgId++;
 		index += initPacketSize;
 	}
