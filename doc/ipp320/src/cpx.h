@@ -247,7 +247,7 @@ int openSession();
 
 int closeSession(int msgSeqId);
 
-int asynEmvAck(char msgSeqId);
+int asynEmvAck(char msgSeqId, char * recvBuf);
 
 typedef struct F1AsyncCommand {
 	char * lgt; // 2 bytes, length of application field information

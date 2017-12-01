@@ -900,7 +900,7 @@ int closeSession(int msgSeqId) {
 	return n > 7 ? p[7] : -1;
 }
 
-int asynEmvAck(char msgSeqId) {
+int asynEmvAck(char msgSeqId, char * recvBuf) {
 	char * s = malloc(4);
 	memset(s, 0, 4);
 	s[1] = 2;
@@ -919,7 +919,7 @@ int asynEmvAck(char msgSeqId) {
 	t[len] = lrc(t, 0, len);
 	len = strlen(t);
 	printf("Asynchronous EMV ACK msgSeqId=%d\n", msgSeqId);
-	return RS232_SendBuf(COM_PORT_NUMBER, t, len);
+	return send(t, len, recvBuf);
 }
 
 F1AsyncCommand * f1Async(char msgSeqId, char * dataE, int len) {
@@ -966,23 +966,24 @@ int cpxF1Async(F1AsyncCommand * f1Async, char * recvBuf) {
 }
 
 int vegaInit(char * s, int size) {
-	char * recvBuf = malloc(1024);
+	char * recvBuf = malloc(128);
+	memset(recvBuf, 0, 128);
 	int n = cpx58display01A('0', '0', '4', '1', "", "Initializing", "", "",
 			recvBuf);
 	if (0 != n) {
 		return EXIT_FAILURE;
 	}
-	char * p = malloc(1024);
 	int msgId = 0;
 	n = openSession();
 	if (0 != n) {
 		return EXIT_FAILURE;
 	}
-
 	int index = 0;
 	const int initPacketSize = MAX_VEGA_PACKET_SIZE - 1;
 	int dataPacketSize = 0;
 	while (index < size) {
+		char * p = malloc(128);
+		memset(p, 0, 128);
 		char * dataPacket = malloc(MAX_VEGA_PACKET_SIZE + 4);
 		memset(dataPacket, 0, MAX_VEGA_PACKET_SIZE + 4);
 		dataPacket[0] = 0; // EmvServiceCode.EMV_INIT
@@ -998,9 +999,12 @@ int vegaInit(char * s, int size) {
 		}
 		memcpy(dataPacket + 2, littleEndianBin(dataPacketSize + 1), 2);
 		memcpy(dataPacket + 5, s + index, dataPacketSize);
+		memset(recvBuf, 0, 128);
 		n = cpxF1Async(f1Async(msgId, dataPacket, dataPacketSize + 5), recvBuf);
 		n = parseResponse(recvBuf, n, p);
 		output(p, n);
+
+		break;
 
 		if(n > 7 && 0 == p[7]) {
 			int outSeqId = p[6];
@@ -1015,7 +1019,7 @@ int vegaInit(char * s, int size) {
 		msgId++;
 		index += initPacketSize;
 	}
-	return closeSession(msgId);
+	return n;
 }
 
 int parseResponse(char * s, int n, char * t) {
