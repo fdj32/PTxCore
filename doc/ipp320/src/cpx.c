@@ -75,7 +75,12 @@ int cpx58display01A(char mode, char toggle, char lines, char lineStartIndex,
 	}
 	s[72] = ETX;
 	s[73] = lrc(s, 0, 73);
-	return send(s, 74, recvBuf);
+	n = send(s, 74, recvBuf);
+	char * p = malloc(8);
+	memset(p, 0, 8);
+	n = parseResponse(recvBuf, n, p);
+	output(p, n);
+	return n > 4 ? (p[4] - '0') : -1;
 }
 
 int cpx58display27(char mode, char lineStartIndex, char startPosition,
@@ -864,6 +869,37 @@ int cpxF1(F1Command * f1cmd, char * recvBuf) {
 	return send(s, len, recvBuf);
 }
 
+int openSession() {
+	char * recvBuf = malloc(64);
+	memset(recvBuf, 0, 64);
+	int n = cpxF1(f1OpenSession(), recvBuf);
+	char * p = malloc(64);
+	memset(p, 0, 64);
+	n = parseResponse(recvBuf, n, p);
+	output(p, n);
+	if (p[7] == 7) {
+		// already open, Close it
+		n = closeSession(0);
+		if (0 != n) {
+			return EXIT_FAILURE;
+		}
+		// Open again
+		n = cpxF1(f1OpenSession(), recvBuf);
+		n = parseResponse(recvBuf, n, p);
+		output(p, n);
+	}
+	return n > 7 ? p[7] : -1;
+}
+
+int closeSession(int msgSeqId) {
+	char * recvBuf = malloc(64);
+	int n = cpxF1(f1CloseSession(0), recvBuf);
+	char * p = malloc(64);
+	n = parseResponse(recvBuf, n, p);
+	output(p, n);
+	return n > 7 ? p[7] : -1;
+}
+
 int asynEmvAck(char msgSeqId) {
 	char * s = malloc(4);
 	memset(s, 0, 4);
@@ -931,37 +967,27 @@ int cpxF1Async(F1AsyncCommand * f1Async, char * recvBuf) {
 
 int vegaInit(char * s, int size) {
 	char * recvBuf = malloc(1024);
-	int n = cpx58display01A('0', '0', '4', '1', "", "Initializing", "", "", recvBuf);
+	int n = cpx58display01A('0', '0', '4', '1', "", "Initializing", "", "",
+			recvBuf);
+	if (0 != n) {
+		return EXIT_FAILURE;
+	}
 	char * p = malloc(1024);
-	n = parseResponse(recvBuf, n, p);
-	output(p, n);
-
 	int msgId = 0;
-
-	n = cpxF1(f1OpenSession(), recvBuf);
-	n = parseResponse(recvBuf, n, p);
-	output(p, n);
-
-	if(p[7] == 7) {
-		// already open, Close it
-		n = cpxF1(f1CloseSession(msgId), recvBuf);
-		n = parseResponse(recvBuf, n, p);
-		output(p, n);
-		// Open again
-		n = cpxF1(f1OpenSession(), recvBuf);
-		n = parseResponse(recvBuf, n, p);
-		output(p, n);
+	n = openSession();
+	if (0 != n) {
+		return EXIT_FAILURE;
 	}
 
 	int index = 0;
 	const int initPacketSize = MAX_VEGA_PACKET_SIZE - 1;
 	int dataPacketSize = 0;
-	while(index < size) {
+	while (index < size) {
 		char * dataPacket = malloc(MAX_VEGA_PACKET_SIZE + 4);
 		memset(dataPacket, 0, MAX_VEGA_PACKET_SIZE + 4);
 		dataPacket[0] = 0; // EmvServiceCode.EMV_INIT
 		dataPacket[1] = 0xff; // EmvReasonCode.EMV_UNDEF
-		if(size - index > initPacketSize) {
+		if (size - index > initPacketSize) {
 			// More to follow
 			dataPacketSize = initPacketSize;
 			dataPacket[4] = 1;
@@ -970,8 +996,8 @@ int vegaInit(char * s, int size) {
 			dataPacket[4] = 0;
 			dataPacketSize = size - index;
 		}
-		memcpy(dataPacket+2, littleEndianBin(dataPacketSize + 1), 2);
-		memcpy(dataPacket+5, s+index, dataPacketSize);
+		memcpy(dataPacket + 2, littleEndianBin(dataPacketSize + 1), 2);
+		memcpy(dataPacket + 5, s + index, dataPacketSize);
 		n = cpxF1Async(f1Async(msgId, dataPacket, dataPacketSize + 5), recvBuf);
 		n = parseResponse(recvBuf, n, p);
 		output(p, n);
@@ -985,23 +1011,24 @@ int vegaInit(char * s, int size) {
 int parseResponse(char * s, int n, char * t) {
 	char * p = s;
 	int len = n;
-	for(int i = 0; i < n; i++) {
-		if(*p != STX) { // find the start STX
+	for (int i = 0; i < n; i++) {
+		if (*p != STX) { // find the start STX
 			p++;
 			len--;
 		} else {
 			break;
 		}
-		if(i == n - 1) {
+		if (i == n - 1) {
 			return -1;
 		}
 	}
-	if('F' != p[1]) {
+	//printf("\n%c\n", p[4]);
+	if ('F' != p[1]) {
 		memcpy(t, p + 1, len - 3); // STX, ETX, LRC
 		return (len - 3);
 	} else { // F0 & F1 cpx16Decode
 		memcpy(t, p + 1, 3); // F, 0or1, .
 		// STX, F, 0or1, ., ..., ETX, LRC
-		return (3 + cpx16Decode(p, 4, len-2, t, 3));
+		return (3 + cpx16Decode(p, 4, len - 2, t, 3));
 	}
 }

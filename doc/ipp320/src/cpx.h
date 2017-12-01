@@ -243,6 +243,10 @@ F1Command * f1(char type, char msgSeqId);
 
 int cpxF1(F1Command * f1cmd, char * recvBuf);
 
+int openSession();
+
+int closeSession(int msgSeqId);
+
 int asynEmvAck(char msgSeqId);
 
 typedef struct F1AsyncCommand {
