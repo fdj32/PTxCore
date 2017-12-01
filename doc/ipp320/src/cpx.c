@@ -1002,10 +1002,20 @@ int vegaInit(char * s, int size) {
 		n = parseResponse(recvBuf, n, p);
 		output(p, n);
 
+		if(n > 7 && 0 == p[7]) {
+			int outSeqId = p[6];
+			if(outSeqId == 0x80) {
+				// This Sequence ID is initially set to 0x80 by CPX
+				msgId = 0x80;
+			}
+ 		} else {
+			closeSession(msgId);
+			return EXIT_FAILURE;
+		}
 		msgId++;
 		index += initPacketSize;
 	}
-	return n;
+	return closeSession(msgId);
 }
 
 int parseResponse(char * s, int n, char * t) {
