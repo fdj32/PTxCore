@@ -16,32 +16,32 @@ int send(char * buf, int size, char * recvBuf) {
 	printf("sent %i bytes: %s\n", size, hex((char *) buf, 0, size));
 	output(buf, size);
 
-	if (RS232_OpenComport(COM_PORT_NUMBER, BAUD_RATE,
-	MODE_DATABITS8_PARITY_NONE_STOPBITS1)) {
-		printf("Can not open comport\n");
-		return (0);
-	}
+//	if (RS232_OpenComport(COM_PORT_NUMBER, BAUD_RATE,
+//	MODE_DATABITS8_PARITY_NONE_STOPBITS1)) {
+//		printf("Can not open comport\n");
+//		return (0);
+//	}
 	int n = RS232_SendBuf(COM_PORT_NUMBER, buf, size);
-	long start = clock();
-	while (clock() - start < READ_TIMEOUT * CLOCKS_PER_SEC / 1000) {
-		n = RS232_PollComport(COM_PORT_NUMBER, recvBuf, 1023);
-		if (n > 0) {
-			printf("recv %i bytes: %s\n", n, (char *) recvBuf);
-			output(recvBuf, n);
-			if (ACK == recvBuf[0] || NAK == recvBuf[0] || STX == recvBuf[0]) {
-				if (n > 1) {
-					ack();
-				}
-				break;
-			}
-		}
-#ifdef _WIN32
-		Sleep(POLL_TIME);
-#else
-		usleep(POLL_TIME * 1000); /* sleep for 100 milliSeconds */
-#endif
-	}
-	RS232_CloseComport(COM_PORT_NUMBER);
+//	long start = clock();
+//	while (clock() - start < READ_TIMEOUT * CLOCKS_PER_SEC / 1000) {
+//		n = RS232_PollComport(COM_PORT_NUMBER, recvBuf, 1023);
+//		if (n > 0) {
+//			printf("recv %i bytes: %s\n", n, (char *) recvBuf);
+//			output(recvBuf, n);
+//			if (ACK == recvBuf[0] || NAK == recvBuf[0] || STX == recvBuf[0]) {
+//				if (n > 1) {
+//					ack();
+//				}
+//				break;
+//			}
+//		}
+//#ifdef _WIN32
+//		Sleep(POLL_TIME);
+//#else
+//		usleep(POLL_TIME * 1000); /* sleep for 100 milliSeconds */
+//#endif
+//	}
+//	RS232_CloseComport(COM_PORT_NUMBER);
 	return n;
 }
 

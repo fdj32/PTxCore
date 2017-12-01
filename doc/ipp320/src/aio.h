@@ -12,6 +12,14 @@
 extern "C" {
 #endif
 
+typedef struct Msg {
+	char * msg;
+	int len;
+	struct Msg * next;
+} Msg;
+
+
+
 
 
 #ifdef __cplusplus
