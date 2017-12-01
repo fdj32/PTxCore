@@ -235,7 +235,7 @@ typedef struct F1Command {
 
 F1Command * f1Version(char msgSeqId);
 
-F1Command * f1OpenSession(char msgSeqId);
+F1Command * f1OpenSession();
 
 F1Command * f1CloseSession(char msgSeqId);
 

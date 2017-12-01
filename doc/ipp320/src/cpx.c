@@ -814,8 +814,8 @@ F1Command * f1Version(char msgSeqId) {
 	return f1(EMV_VERSION, msgSeqId);
 }
 
-F1Command * f1OpenSession(char msgSeqId) {
-	return f1(OPEN_SESSION, msgSeqId);
+F1Command * f1OpenSession() {
+	return f1(OPEN_SESSION, 0);
 }
 
 F1Command * f1CloseSession(char msgSeqId) {
@@ -937,7 +937,7 @@ int vegaInit(char * s, int size) {
 
 	int msgId = 0;
 
-	n = cpxF1(f1OpenSession(msgId), recvBuf);
+	n = cpxF1(f1OpenSession(), recvBuf);
 	n = parseResponse(recvBuf, n, p);
 	output(p, n);
 	msgId++;
@@ -949,7 +949,7 @@ int vegaInit(char * s, int size) {
 		output(p, n);
 		msgId = 0;
 		// Open again
-		n = cpxF1(f1OpenSession(msgId), recvBuf);
+		n = cpxF1(f1OpenSession(), recvBuf);
 		n = parseResponse(recvBuf, n, p);
 		output(p, n);
 		msgId++;
