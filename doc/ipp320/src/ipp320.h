@@ -14,11 +14,13 @@ extern "C" {
 #endif
 
 #include <iconv.h>
+#include <pthread.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include "aio.h"
 #include "cpx.h"
 #include "object.h"
 #include "rs232.h"
