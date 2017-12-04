@@ -969,18 +969,21 @@ int vegaInit(char * s, int size) {
 		memcpy(dataPacket + 5, s + index, dataPacketSize);
 		n = cpxF1Async(f1Async(msgId, dataPacket, dataPacketSize + 5));
 
-		break;
-
-		if (n > 7 && 0 == p[7]) {
+		m = getRespMsg("F1", h);
+		printf("\nm->msg[7] = %d\n", m->msg[7]);
+		if(NULL == m || 0 != m->msg[7]) {
+			closeSession(msgId);
+			return EXIT_FAILURE;
+		} else {
 			int outSeqId = p[6];
 			if (outSeqId == 0x80) {
 				// This Sequence ID is initially set to 0x80 by CPX
 				msgId = 0x80;
 			}
-		} else {
-			closeSession(msgId);
-			return EXIT_FAILURE;
 		}
+
+		break;
+
 		msgId++;
 		index += initPacketSize;
 	}

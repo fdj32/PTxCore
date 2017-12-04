@@ -26,9 +26,6 @@ void * recvMsg(Msg * h) {
 	memset(buf, 0, 1024);
 	while (1) {
 		n = RS232_PollComport(COM_PORT_NUMBER, buf, 1023);
-
-		output("recv:", buf, n);
-
 		int stx = 0, etx = 0, index = 0, len = 0;
 		while (index < n) {
 			if (buf[index] == STX) {
@@ -46,6 +43,9 @@ void * recvMsg(Msg * h) {
 									msg + 3, 0);
 				} else {
 					memcpy(msg, buf + stx + 1, len);
+				}
+				if('F' == msg[0] && '1' == msg[1] && 5 == msg[5]) {
+					continue; // ignore asynchronous emv ack
 				}
 
 				Msg * m = malloc(sizeof(Msg));
