@@ -13,7 +13,7 @@ int ack() {
 
 int send(char * buf, int size) {
 	printf("sent %i bytes: %s\n", size, hex((char *) buf, 0, size));
-	output(buf, size);
+	output("sent:", buf, size);
 	int n = RS232_SendBuf(COM_PORT_NUMBER, buf, size);
 	return n;
 }
@@ -830,34 +830,11 @@ int cpxF1(F1Command * f1cmd) {
 }
 
 int openSession() {
-	char * recvBuf = malloc(64);
-	memset(recvBuf, 0, 64);
-	int n = cpxF1(f1OpenSession());
-	char * p = malloc(64);
-	memset(p, 0, 64);
-	n = parseResponse(recvBuf, n, p);
-	output(p, n);
-	if (p[7] == 7) {
-		// already open, Close it
-		n = closeSession(0);
-		if (0 != n) {
-			return EXIT_FAILURE;
-		}
-		// Open again
-		n = cpxF1(f1OpenSession());
-		n = parseResponse(recvBuf, n, p);
-		output(p, n);
-	}
-	return n > 7 ? p[7] : -1;
+	return cpxF1(f1OpenSession());
 }
 
 int closeSession(int msgSeqId) {
-	char * recvBuf = malloc(64);
-	int n = cpxF1(f1CloseSession(0));
-	char * p = malloc(64);
-	n = parseResponse(recvBuf, n, p);
-	output(p, n);
-	return n > 7 ? p[7] : -1;
+	return cpxF1(f1CloseSession(msgSeqId));
 }
 
 int asynEmvAck(char msgSeqId) {
@@ -940,14 +917,31 @@ int vegaInit(char * s, int size) {
 
 	n = cpx58display01A('0', '0', '4', '1', "", "Initializing", "", "");
 	Msg * m = getRespMsg("58", h);
-	printf("\nm->msg[3] = %d\n", m->msg[3]);
+	printf("\nm->msg[3] = %c\n", m->msg[3]);
 	if (NULL == m || m->msg[3] != '0') {
 		return EXIT_FAILURE;
 	}
 
 	n = openSession();
 	m = getRespMsg("F1", h);
+	printf("\nm->msg[7] = %d\n", m->msg[7]);
 	if (NULL == m || m->msg[7] != 0) {
+		if (m->msg[7] == 7) {
+			// already open, close it
+			n = closeSession(0);
+			m = getRespMsg("F1", h);
+			printf("\nm->msg[7] = %d\n", m->msg[7]);
+			if (NULL == m || m->msg[7] != 0) {
+				return EXIT_FAILURE;
+			}
+			// open again
+			n = openSession();
+			m = getRespMsg("F1", h);
+			printf("\nm->msg[7] = %d\n", m->msg[7]);
+			if (NULL == m || m->msg[7] != 0) {
+				return EXIT_FAILURE;
+			}
+		}
 		return EXIT_FAILURE;
 	}
 
@@ -1025,7 +1019,8 @@ Msg * getRespMsg(const char * type, Msg * h) {
 	Msg * p = h;
 	Msg * m = NULL;
 	while (m == NULL) {
-		if (p->next != NULL && p->next->msg[0] == type[0] && p->next->msg[1] == type[1]) {
+		if (p->next != NULL && p->next->msg[0] == type[0]
+				&& p->next->msg[1] == type[1]) {
 			m = p->next;
 			p->next = p->next->next; // delete
 			m->next = NULL;

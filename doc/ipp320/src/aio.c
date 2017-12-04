@@ -27,7 +27,7 @@ void * recvMsg(Msg * h) {
 	while (1) {
 		n = RS232_PollComport(COM_PORT_NUMBER, buf, 1023);
 
-		output(buf, n);
+		output("recv:", buf, n);
 
 		int stx = 0, etx = 0, index = 0, len = 0;
 		while (index < n) {
@@ -52,7 +52,7 @@ void * recvMsg(Msg * h) {
 				m->msg = msg;
 				m->len = len;
 
-				output(msg, len);
+				output("msg:", msg, len);
 
 				if (NULL == h->next) {
 					m->next = NULL;

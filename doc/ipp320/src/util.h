@@ -52,7 +52,7 @@ char * stringRightPad(char * s, char c, int length);
 
 char * stringLeftPad(char * s, char c, int length);
 
-void output(char * s, int length);
+void output(const char * str, char * s, int length);
 
 #ifdef __cplusplus
 }
