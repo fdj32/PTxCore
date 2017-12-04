@@ -1025,7 +1025,7 @@ Msg * getRespMsg(const char * type, Msg * h) {
 	Msg * p = h;
 	Msg * m = NULL;
 	while (m == NULL) {
-		if (p->next->msg[0] == type[0] && p->next->msg[1] == type[1]) {
+		if (p->next != NULL && p->next->msg[0] == type[0] && p->next->msg[1] == type[1]) {
 			m = p->next;
 			p->next = p->next->next; // delete
 			m->next = NULL;
