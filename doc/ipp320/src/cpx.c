@@ -917,32 +917,31 @@ int vegaInit(char * s, int size) {
 
 	n = cpx58display01A('0', '0', '4', '1', "", "Initializing", "", "");
 	Msg * m = getRespMsg("58", h);
-	printf("\nm->msg[3] = %c\n", m->msg[3]);
+	printf("\ncpx58display01A m->msg[3] = %c\n", m->msg[3]);
 	if (NULL == m || m->msg[3] != '0') {
 		return EXIT_FAILURE;
 	}
 
 	n = openSession();
 	m = getRespMsg("F1", h);
-	printf("\nm->msg[7] = %d\n", m->msg[7]);
+	printf("\nopenSession m->msg[7] = %d\n", m->msg[7]);
 	if (NULL == m || m->msg[7] != 0) {
 		if (m->msg[7] == 7) {
 			// already open, close it
 			n = closeSession(0);
 			m = getRespMsg("F1", h);
-			printf("\nm->msg[7] = %d\n", m->msg[7]);
+			printf("\ncloseSession m->msg[7] = %d\n", m->msg[7]);
 			if (NULL == m || m->msg[7] != 0) {
 				return EXIT_FAILURE;
 			}
 			// open again
 			n = openSession();
 			m = getRespMsg("F1", h);
-			printf("\nm->msg[7] = %d\n", m->msg[7]);
+			printf("\nopenSession again m->msg[7] = %d\n", m->msg[7]);
 			if (NULL == m || m->msg[7] != 0) {
 				return EXIT_FAILURE;
 			}
 		}
-		return EXIT_FAILURE;
 	}
 
 	int msgId = 0;
@@ -970,7 +969,7 @@ int vegaInit(char * s, int size) {
 		n = cpxF1Async(f1Async(msgId, dataPacket, dataPacketSize + 5));
 
 		m = getRespMsg("F1", h);
-		printf("\nm->msg[7] = %d\n", m->msg[7]);
+		printf("\ncpxF1Async m->msg[7] = %d\n", m->msg[7]);
 		if(NULL == m || 0 != m->msg[7]) {
 			closeSession(msgId);
 			return EXIT_FAILURE;
