@@ -926,17 +926,46 @@ int cpxF1Async(F1AsyncCommand * f1Async) {
 }
 
 int vegaInit(char * s, int size) {
-	char * recvBuf = malloc(128);
-	memset(recvBuf, 0, 128);
-	int n = cpx58display01A('0', '0', '4', '1', "", "Initializing", "", "");
+
+	int n = openComPort();
+	if(0 != n) {
+		closeComPort();
+		return EXIT_FAILURE;
+	}
+
+	pthread_t t;
+	Msg * h = malloc(sizeof(Msg));
+	h->next = NULL;
+	pthread_create(&t, NULL, recvMsg, h);
+
+	n = cpx58display01A('0', '0', '4', '1', "", "Initializing", "", "");
 	if (0 != n) {
 		return EXIT_FAILURE;
 	}
+
+//	usleep(300);
+	if(NULL != h->next) {
+		printf("got %s\n", hex(h->next->msg, 0, h->next->len));
+		output(h->next->msg, h->next->len);
+		free(h->next);
+		h->next = NULL;
+	}
+
 	int msgId = 0;
 	n = openSession();
+
+//	usleep(300);
+	if(NULL != h->next) {
+		printf("got %s\n", hex(h->next->msg, 0, h->next->len));
+		output(h->next->msg, h->next->len);
+		free(h->next);
+		h->next = NULL;
+	}
+
 	if (0 != n) {
 		return EXIT_FAILURE;
 	}
+
 	int index = 0;
 	const int initPacketSize = MAX_VEGA_PACKET_SIZE - 1;
 	int dataPacketSize = 0;
@@ -958,10 +987,7 @@ int vegaInit(char * s, int size) {
 		}
 		memcpy(dataPacket + 2, littleEndianBin(dataPacketSize + 1), 2);
 		memcpy(dataPacket + 5, s + index, dataPacketSize);
-		memset(recvBuf, 0, 128);
 		n = cpxF1Async(f1Async(msgId, dataPacket, dataPacketSize + 5));
-		n = parseResponse(recvBuf, n, p);
-		output(p, n);
 
 		break;
 
@@ -978,6 +1004,9 @@ int vegaInit(char * s, int size) {
 		msgId++;
 		index += initPacketSize;
 	}
+
+	closeComPort();
+
 	return n;
 }
 
