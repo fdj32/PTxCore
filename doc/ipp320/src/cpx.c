@@ -1023,6 +1023,11 @@ Msg * getRespMsg(const char * type, Msg * h) {
 	Msg * p = h;
 	Msg * m = NULL;
 	while (m == NULL) {
+		if(p->next != NULL && p->next->len == 7 && p->next->msg[0] == 'F' && p->next->msg[1] == '1'
+				&& p->next->msg[5] == '5') {
+			p->next = p->next->next; // delete async emv ack
+			continue;
+		}
 		if (p->next != NULL && p->next->msg[0] == type[0]
 				&& p->next->msg[1] == type[1]) {
 			m = p->next;
