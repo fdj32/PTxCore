@@ -928,7 +928,7 @@ int cpxF1Async(F1AsyncCommand * f1Async) {
 int vegaInit(char * s, int size) {
 
 	int n = openComPort();
-	if(0 != n) {
+	if (0 != n) {
 		closeComPort();
 		return EXIT_FAILURE;
 	}
@@ -939,32 +939,9 @@ int vegaInit(char * s, int size) {
 	pthread_create(&t, NULL, recvMsg, h);
 
 	n = cpx58display01A('0', '0', '4', '1', "", "Initializing", "", "");
-	if (0 != n) {
-		return EXIT_FAILURE;
-	}
-
-//	usleep(300);
-	if(NULL != h->next) {
-		printf("got %s\n", hex(h->next->msg, 0, h->next->len));
-		output(h->next->msg, h->next->len);
-		free(h->next);
-		h->next = NULL;
-	}
 
 	int msgId = 0;
 	n = openSession();
-
-//	usleep(300);
-	if(NULL != h->next) {
-		printf("got %s\n", hex(h->next->msg, 0, h->next->len));
-		output(h->next->msg, h->next->len);
-		free(h->next);
-		h->next = NULL;
-	}
-
-	if (0 != n) {
-		return EXIT_FAILURE;
-	}
 
 	int index = 0;
 	const int initPacketSize = MAX_VEGA_PACKET_SIZE - 1;

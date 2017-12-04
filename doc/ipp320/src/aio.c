@@ -26,19 +26,43 @@ void * recvMsg(Msg * h) {
 	memset(buf, 0, 1024);
 	while (1) {
 		n = RS232_PollComport(COM_PORT_NUMBER, buf, 1023);
-		char * msg = malloc(n);
-		memset(msg, 0, n);
-		memcpy(msg, buf, n);
-		Msg * m = malloc(sizeof(Msg));
-		m->msg = msg;
-		m->len = n;
 
-		if(NULL == h->next) {
-			m->next = NULL;
-		} else {
-			m->next = h->next;
+		output(buf, n);
+
+		int stx = 0, etx = 0, index = 0, len = 0;
+		while (index < n) {
+			if (buf[index] == STX) {
+				stx = index;
+			}
+			if (buf[index] == ETX) {
+				etx = index;
+				len = etx - stx - 1;
+				char * msg = malloc(len);
+				memset(msg, 0, len);
+				if (buf[stx + 1] == 'F') {
+					memcpy(msg, buf + stx + 1, 3);
+					len = 3
+							+ cpx16Decode(buf + stx + 4, 0, etx - stx - 4,
+									msg + 3, 0);
+				} else {
+					memcpy(msg, buf + stx + 1, len);
+				}
+
+				Msg * m = malloc(sizeof(Msg));
+				m->msg = msg;
+				m->len = len;
+
+				output(msg, len);
+
+				if (NULL == h->next) {
+					m->next = NULL;
+				} else {
+					m->next = h->next;
+				}
+				h->next = m;
+			}
+			index++;
 		}
-		h->next = m;
 #ifdef _WIN32
 		Sleep(POLL_TIME);
 #else
