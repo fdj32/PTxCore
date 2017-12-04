@@ -42,8 +42,7 @@ int main(void) {
 
 	char * recvBuf = malloc(128);
 	memset(recvBuf, 0, 128);
-	n = cpx58display01A('0', '0', '4', '1', "", "Initializing", "", "",
-			recvBuf);
+	n = cpx58display01A('0', '0', '4', '1', "", "Initializing", "", "");
 
 	usleep(300);
 	if(NULL != h->next) {

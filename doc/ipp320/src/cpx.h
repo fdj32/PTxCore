@@ -78,49 +78,44 @@ extern "C" {
 #define ASYN_EMV			4
 #define ASYN_EMV_ACK 	5
 
-
 int ack();
 
-int send(char * buf, int size, char * recvBuf);
+int send(char * buf, int size);
 
 int cpx58display01A(char mode, char toggle, char lines, char lineStartIndex,
-		char * prompt1, char * prompt2, char * prompt3, char * prompt4,
-		char * recvBuf);
+		char * prompt1, char * prompt2, char * prompt3, char * prompt4);
 
 int cpx58display27(char mode, char lineStartIndex, char startPosition,
-		char * prompt, char * promptIndex, char * maxInputLength,
-		char * recvBuf);
+		char * prompt, char * promptIndex, char * maxInputLength);
 
 int cpx31DukptpinEncryption(char timeoutValue, char displayLineNumber,
-		char * primaryAccountNumber, char * pinDisplayPrompt, char * recvBuf);
+		char * primaryAccountNumber, char * pinDisplayPrompt);
 
 int cpx40LoadSessionKey(char sessionKeyType, char masterkeyType,
-		char * masterKeyOrSessionKey, char * checkValue, char * keySerialNumber,
-		char * recvBuf);
+		char * masterKeyOrSessionKey, char * checkValue, char * keySerialNumber);
 
-int cpx50Cancel(char * recvBuf);
+int cpx50Cancel();
 
-int cpx51InquireSerial(char * recvBuf);
+int cpx51InquireSerial();
 
-int cpx53DiagnosticKeyCheckword(char keyIndicator, char * recvBuf);
+int cpx53DiagnosticKeyCheckword(char keyIndicator);
 
-int cpx59ClearDisplay(char lineNumber, char * recvBuf);
+int cpx59ClearDisplay(char lineNumber);
 
-int cpx5BBeep(char beepLength, char beepFrequency, char * recvBuf);
+int cpx5BBeep(char beepLength, char beepFrequency);
 
-int cpx5DDeviceInformation(char option, char * recvBuf);
+int cpx5DDeviceInformation(char option);
 
 int cpx64MacCalculation(char masterKeyIndicator, char sessionKeyLengthFlag,
-		char * encryptedSessionKey, char * checkValue, char * macData,
-		char * recvBuf);
+		char * encryptedSessionKey, char * checkValue, char * macData);
 
 int cpx66MacVerification(char masterKeyIndicator, char sessionKeyLengthFlag,
 		char * encryptedSessionKey, char * checkValue, char * macField,
-		char * macData, char * recvBuf);
+		char * macData);
 
 int cpx67ActivateMsr(char trackNumber, char * timeout, char functionKeysActive,
 		char lines, char lineNumber, char * prompt1, char * prompt2,
-		char * prompt3, char * prompt4, char * recvBuf);
+		char * prompt3, char * prompt4);
 
 int cpx6AInteracDebitSequenceInit(char swipeCardPromptLineNumber,
 		char * swipeCardPromptEnglish, char * swipeCardPromptFrench,
@@ -137,53 +132,49 @@ int cpx6AInteracDebitSequenceInit(char swipeCardPromptLineNumber,
 		char * pinEntryPromptIndexOfMACEnglish, char * pinEntryPromptEnglish,
 		char * pinEntryPromptIndexOfMACFrench, char * pinEntryPromptFrench,
 		char pinErrorMessageLineNumber, char * pinErrorMessagePromptEnglish,
-		char * pinErrorMessagePromptFrench, char * serviceCodeList,
-		char * recvBuf);
+		char * pinErrorMessagePromptFrench, char * serviceCodeList);
 
 int cpx6BInteracDebitSequence(char language, char * swipeCardTimeout,
 		char trackNumber, char serviceCodeFlag, char * dataEntryTimeout,
 		char pinEntryTimeout, char * pinDisplayprompt, char * amount,
 		char tipEntryEnabled, char cashbackEnabled, char masterKeyIndicator,
 		char sessionKeyLength, char * encryptedSessionKey, char * checkValue,
-		char * primaryAccountNumber, char * recvBuf);
+		char * primaryAccountNumber);
 
 int cpx6CScrollSelect(char commandMode, char nextFunctionKey,
 		char previousFunctionKey, char showImages, char timeout,
 		char invalidBeep, char * defaultSelection, char * titleString,
 		char * nextOrPreviousString, char * prevOnlyString,
-		char * nextOnlyString, char *selectListStrings[], char * recvBuf);
+		char * nextOnlyString, char *selectListStrings[]);
 
 int cpx6DTimedMultiDisplay(char mode, char timeDisplay, char funcsKeysActive,
-		char lineNumber, char *prompts[], char * recvBuf);
+		char lineNumber, char *prompts[]);
 
 int cpx6HMasterSessionPinDataEntry(char pinEntryTimeout,
 		char pinEntryLineNumber, char pinEntryMinimum, char pinEntryMaximum,
 		char masterKeyIndicator, char * primaryAccountNumber,
 		char sessionKeyLength, char * encrytedSessionKey, char * checkValue,
 		char * pinDisplayPrompt, char lines, char promptLineNumber,
-		char * promptIndex, char * prompt1, char * prompt2, char * prompt3,
-		char * recvBuf);
+		char * promptIndex, char * prompt1, char * prompt2, char * prompt3);
 
 int cpx6IE2EEActivateMSR(char trackNumber, char * timeout,
 		char functionKeysActive, char LinesOrTimeDelay, char lineNumber,
-		char * prompt1, char * prompt2, char * prompt3, char * prompt4,
-		char * recvBuf);
+		char * prompt1, char * prompt2, char * prompt3, char * prompt4);
 
 int cpx6KE2EEManualCardEntry(char lineNumber, char * prompt1,
-		char * prompt1index, char * prompt2, char * prompt2index,
-		char * recvBuf);
+		char * prompt1index, char * prompt2, char * prompt2index);
 
 int cpx6LE2EEPinEntry(char pinEntryTimeout, char pinEntryLineNumber,
 		char keyType, char pinKeySlotIndicator, char panEncryptedFlag,
 		char * clearPanLength, char * pan, char lines, char promptLineNumber,
 		char * promptIndex, char * prompt1, char * prompt2, char * prompt3,
-		char pinBypassMode, char * recvBuf);
+		char pinBypassMode);
 
 int cpx6NE2EEEnable(char e2eeMode, char outputFormat, char keyType,
-		char keyNumber, char localStorageKey, char * recvBuf);
+		char keyNumber, char localStorageKey);
 
 int cpx6TSetDateTime(char mode, char * year, char * month, char * day,
-		char * hour, char * minute, char * second, char * recvBuf);
+		char * hour, char * minute, char * second);
 
 typedef struct F0Command {
 	char * lgt; // 2 bytes, length of application field information
@@ -221,7 +212,7 @@ F0Command * f0SmartCardStatus(char * to);
 
 F0Command * f0(char type, char * to, char cmd);
 
-int cpxF0MsrRead(F0Command * f0cmd, char * recvBuf);
+int cpxF0MsrRead(F0Command * f0cmd);
 
 typedef struct F1Command {
 	char * lgt; // 2 bytes, length of application field information
@@ -241,13 +232,13 @@ F1Command * f1CloseSession(char msgSeqId);
 
 F1Command * f1(char type, char msgSeqId);
 
-int cpxF1(F1Command * f1cmd, char * recvBuf);
+int cpxF1(F1Command * f1cmd);
 
 int openSession();
 
 int closeSession(int msgSeqId);
 
-int asynEmvAck(char msgSeqId, char * recvBuf);
+int asynEmvAck(char msgSeqId);
 
 typedef struct F1AsyncCommand {
 	char * lgt; // 2 bytes, length of application field information
@@ -262,7 +253,7 @@ typedef struct F1AsyncCommand {
 
 F1AsyncCommand * f1Async(char msgSeqId, char * dataE, int len);
 
-int cpxF1Async(F1AsyncCommand * f1Async, char * recvBuf);
+int cpxF1Async(F1AsyncCommand * f1Async);
 
 typedef struct F1Result {
 	char * lgt; // 2 bytes, length of application field information
