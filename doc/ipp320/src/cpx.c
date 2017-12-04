@@ -939,10 +939,19 @@ int vegaInit(char * s, int size) {
 	pthread_create(&t, NULL, recvMsg, h);
 
 	n = cpx58display01A('0', '0', '4', '1', "", "Initializing", "", "");
+	Msg * m = getRespMsg("58", h);
+	printf("\nm->msg[3] = %d\n", m->msg[3]);
+	if (NULL == m || m->msg[3] != '0') {
+		return EXIT_FAILURE;
+	}
+
+	n = openSession();
+	m = getRespMsg("F1", h);
+	if (NULL == m || m->msg[7] != 0) {
+		return EXIT_FAILURE;
+	}
 
 	int msgId = 0;
-	n = openSession();
-
 	int index = 0;
 	const int initPacketSize = MAX_VEGA_PACKET_SIZE - 1;
 	int dataPacketSize = 0;
@@ -1011,3 +1020,19 @@ int parseResponse(char * s, int n, char * t) {
 		return (3 + cpx16Decode(p, 4, len - 2, t, 3));
 	}
 }
+
+Msg * getRespMsg(const char * type, Msg * h) {
+	Msg * p = h;
+	Msg * m = NULL;
+	while (m == NULL) {
+		if (p->next->msg[0] == type[0] && p->next->msg[1] == type[1]) {
+			m = p->next;
+			p->next = p->next->next; // delete
+			m->next = NULL;
+			break;
+		}
+		sleepM(POLL_TIME);
+	}
+	return m;
+}
+

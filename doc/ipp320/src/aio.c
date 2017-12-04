@@ -63,11 +63,7 @@ void * recvMsg(Msg * h) {
 			}
 			index++;
 		}
-#ifdef _WIN32
-		Sleep(POLL_TIME);
-#else
-		usleep(POLL_TIME * 1000); /* sleep for 100 milliSeconds */
-#endif
+		sleepM(POLL_TIME);
 	}
 }
 

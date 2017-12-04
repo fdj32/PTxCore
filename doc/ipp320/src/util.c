@@ -6,6 +6,14 @@
  */
 #include "ipp320.h"
 
+void sleepM(int t) {
+#ifdef _WIN32
+	Sleep(t);
+#else
+	usleep(t * 1000); /* sleep for t milliSeconds */
+#endif
+}
+
 char * hex(char * s, int offset, int length) {
 	if (NULL == s || offset < 0 || length <= 0)
 		return "";
@@ -242,11 +250,11 @@ char * stringLeftPad(char * s, char c, int length) {
 }
 
 void output(char * s, int length) {
-	for(int i = 0; i < length; i++) {
-		if(*(s+i) < 0x20 || *(s+i) > 0x7E) {
-			printf("{%s}", hexByte(*(s+i)));
+	for (int i = 0; i < length; i++) {
+		if (*(s + i) < 0x20 || *(s + i) > 0x7E) {
+			printf("{%s}", hexByte(*(s + i)));
 		} else {
-			printf("%c", *(s+i));
+			printf("%c", *(s + i));
 		}
 	}
 	puts("\n");

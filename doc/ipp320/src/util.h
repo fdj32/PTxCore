@@ -12,6 +12,8 @@
 extern "C" {
 #endif
 
+void sleepM(int t);
+
 char * hex(char * s, int offset, int length);
 
 char * hexByte(char b);

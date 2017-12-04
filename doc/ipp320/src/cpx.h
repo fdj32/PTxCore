@@ -270,6 +270,8 @@ int vegaInit(char * s, int size);
 
 int parseResponse(char * s, int n, char * t);
 
+Msg * getRespMsg(const char * type, Msg * h);
+
 #ifdef __cplusplus
 }
 #endif
