@@ -44,9 +44,6 @@ void * recvMsg(Msg * h) {
 				} else {
 					memcpy(msg, buf + stx + 1, len);
 				}
-				if('F' == msg[0] && '1' == msg[1] && 5 == msg[5]) {
-					continue; // ignore asynchronous emv ack
-				}
 
 				Msg * m = malloc(sizeof(Msg));
 				m->msg = msg;
