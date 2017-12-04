@@ -820,6 +820,7 @@ int cpxF1(F1Command * f1cmd) {
 	s[1] = 'F';
 	s[2] = '1';
 	s[3] = '.';
+	printf("sent:F1.%s\n", hex(f1, 0, len+2));
 	cpx16Encode(f1, 0, len + 2, s, 4);
 	len = strlen(s);
 	s[len] = ETX;
@@ -893,6 +894,7 @@ int cpxF1Async(F1AsyncCommand * f1Async) {
 	s[1] = 'F';
 	s[2] = '1';
 	s[3] = '.';
+	printf("sent:F1.%s\n", hex(f1, 0, len+2));
 	cpx16Encode(f1, 0, len + 2, s, 4);
 	len = strlen(s);
 	s[len] = ETX;
