@@ -13,6 +13,7 @@
 extern "C" {
 #endif
 
+#include <curl/curl.h>
 #include <iconv.h>
 #include <pthread.h>
 #include <stdarg.h>

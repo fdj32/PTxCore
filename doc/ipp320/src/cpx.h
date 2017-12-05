@@ -80,7 +80,7 @@ extern "C" {
 
 int ack();
 
-int send(char * buf, int size);
+int sendBytes(char * buf, int size);
 
 int cpx58display01A(char mode, char toggle, char lines, char lineStartIndex,
 		char * prompt1, char * prompt2, char * prompt3, char * prompt4);

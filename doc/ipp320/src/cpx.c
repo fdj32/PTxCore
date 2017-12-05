@@ -11,7 +11,7 @@ int ack() {
 	return RS232_SendByte(COM_PORT_NUMBER, ACK);
 }
 
-int send(char * buf, int size) {
+int sendBytes(char * buf, int size) {
 	printf("sent %i bytes: %s\n", size, hex((char *) buf, 0, size));
 	output("sent:", buf, size);
 	int n = RS232_SendBuf(COM_PORT_NUMBER, buf, size);
@@ -47,7 +47,7 @@ int cpx58display01A(char mode, char toggle, char lines, char lineStartIndex,
 	}
 	s[72] = ETX;
 	s[73] = lrc(s, 0, 73);
-	return send(s, 74);
+	return sendBytes(s, 74);
 }
 
 int cpx58display27(char mode, char lineStartIndex, char startPosition,
@@ -66,7 +66,7 @@ int cpx58display27(char mode, char lineStartIndex, char startPosition,
 	memcpy(s + 41, maxInputLength, 2);
 	s[43] = ETX;
 	s[44] = lrc(s, 0, 44);
-	return send(s, 45);
+	return sendBytes(s, 45);
 }
 
 int cpx31DukptpinEncryption(char timeoutValue, char displayLineNumber,
@@ -83,7 +83,7 @@ int cpx31DukptpinEncryption(char timeoutValue, char displayLineNumber,
 	memcpy(s + 22, pinDisplayPrompt, 4);
 	s[26] = ETX;
 	s[27] = lrc(s, 0, 27);
-	return send(s, 28);
+	return sendBytes(s, 28);
 }
 
 int cpx40LoadSessionKey(char sessionKeyType, char masterkeyType,
@@ -101,7 +101,7 @@ int cpx40LoadSessionKey(char sessionKeyType, char masterkeyType,
 	memcpy(s + 30, keySerialNumber, 16);
 	s[46] = ETX;
 	s[47] = lrc(s, 0, 47);
-	return send(s, 48);
+	return sendBytes(s, 48);
 }
 
 int cpx50Cancel() {
@@ -113,7 +113,7 @@ int cpx50Cancel() {
 	s[3] = '.';
 	s[4] = ETX;
 	s[5] = lrc(s, 0, 5);
-	return send(s, 6);
+	return sendBytes(s, 6);
 }
 
 int cpx51InquireSerial() {
@@ -126,7 +126,7 @@ int cpx51InquireSerial() {
 	s[4] = 'S';
 	s[5] = ETX;
 	s[6] = lrc(s, 0, 6);
-	return send(s, 7);
+	return sendBytes(s, 7);
 }
 
 int cpx53DiagnosticKeyCheckword(char keyIndicator) {
@@ -139,7 +139,7 @@ int cpx53DiagnosticKeyCheckword(char keyIndicator) {
 	s[4] = keyIndicator;
 	s[5] = ETX;
 	s[6] = lrc(s, 0, 6);
-	return send(s, 7);
+	return sendBytes(s, 7);
 }
 
 int cpx59ClearDisplay(char lineNumber) {
@@ -152,7 +152,7 @@ int cpx59ClearDisplay(char lineNumber) {
 	s[4] = lineNumber;
 	s[5] = ETX;
 	s[6] = lrc(s, 0, 6);
-	return send(s, 7);
+	return sendBytes(s, 7);
 }
 
 int cpx5BBeep(char beepLength, char beepFrequency) {
@@ -166,7 +166,7 @@ int cpx5BBeep(char beepLength, char beepFrequency) {
 	s[5] = beepFrequency;
 	s[6] = ETX;
 	s[7] = lrc(s, 0, 7);
-	return send(s, 8);
+	return sendBytes(s, 8);
 }
 
 int cpx5DDeviceInformation(char option) {
@@ -179,7 +179,7 @@ int cpx5DDeviceInformation(char option) {
 	s[4] = option;
 	s[5] = ETX;
 	s[6] = lrc(s, 0, 6);
-	return send(s, 7);
+	return sendBytes(s, 7);
 }
 
 int cpx64MacCalculation(char masterKeyIndicator, char sessionKeyLengthFlag,
@@ -202,7 +202,7 @@ int cpx64MacCalculation(char masterKeyIndicator, char sessionKeyLengthFlag,
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
 	len = strlen(s);
-	return send(s, len);
+	return sendBytes(s, len);
 }
 
 int cpx66MacVerification(char masterKeyIndicator, char sessionKeyLengthFlag,
@@ -227,7 +227,7 @@ int cpx66MacVerification(char masterKeyIndicator, char sessionKeyLengthFlag,
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
 	len = strlen(s);
-	return send(s, len);
+	return sendBytes(s, len);
 }
 
 int cpx67ActivateMsr(char trackNumber, char * timeout, char functionKeysActive,
@@ -267,7 +267,7 @@ int cpx67ActivateMsr(char trackNumber, char * timeout, char functionKeysActive,
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
 	len = strlen(s);
-	return send(s, len);
+	return sendBytes(s, len);
 }
 
 int cpx6AInteracDebitSequenceInit(char swipeCardPromptLineNumber,
@@ -375,7 +375,7 @@ int cpx6AInteracDebitSequenceInit(char swipeCardPromptLineNumber,
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
 	len = strlen(s);
-	return send(s, len);
+	return sendBytes(s, len);
 }
 
 int cpx6BInteracDebitSequence(char language, char * swipeCardTimeout,
@@ -412,7 +412,7 @@ int cpx6BInteracDebitSequence(char language, char * swipeCardTimeout,
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
 	len = strlen(s);
-	return send(s, len);
+	return sendBytes(s, len);
 }
 
 int cpx6CScrollSelect(char commandMode, char nextFunctionKey,
@@ -462,7 +462,7 @@ int cpx6CScrollSelect(char commandMode, char nextFunctionKey,
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
 	len = strlen(s);
-	return send(s, len);
+	return sendBytes(s, len);
 }
 
 int cpx6DTimedMultiDisplay(char mode, char timeDisplay, char funcsKeysActive,
@@ -490,7 +490,7 @@ int cpx6DTimedMultiDisplay(char mode, char timeDisplay, char funcsKeysActive,
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
 	len = strlen(s);
-	return send(s, len);
+	return sendBytes(s, len);
 }
 
 int cpx6HMasterSessionPinDataEntry(char pinEntryTimeout,
@@ -541,7 +541,7 @@ int cpx6HMasterSessionPinDataEntry(char pinEntryTimeout,
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
 	len = strlen(s);
-	return send(s, len);
+	return sendBytes(s, len);
 }
 
 int cpx6IE2EEActivateMSR(char trackNumber, char * timeout,
@@ -581,7 +581,7 @@ int cpx6IE2EEActivateMSR(char trackNumber, char * timeout,
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
 	len = strlen(s);
-	return send(s, len);
+	return sendBytes(s, len);
 }
 
 int cpx6KE2EEManualCardEntry(char lineNumber, char * prompt1,
@@ -599,7 +599,7 @@ int cpx6KE2EEManualCardEntry(char lineNumber, char * prompt1,
 	strcat(s, prompt2index);
 	s[73] = ETX;
 	s[74] = lrc(s, 0, 74);
-	return send(s, 75);
+	return sendBytes(s, 75);
 }
 
 int cpx6LE2EEPinEntry(char pinEntryTimeout, char pinEntryLineNumber,
@@ -643,7 +643,7 @@ int cpx6LE2EEPinEntry(char pinEntryTimeout, char pinEntryLineNumber,
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
 	len = strlen(s);
-	return send(s, len);
+	return sendBytes(s, len);
 }
 
 int cpx6NE2EEEnable(char e2eeMode, char outputFormat, char keyType,
@@ -664,7 +664,7 @@ int cpx6NE2EEEnable(char e2eeMode, char outputFormat, char keyType,
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
 	len = strlen(s);
-	return send(s, len);
+	return sendBytes(s, len);
 }
 
 int cpx6TSetDateTime(char mode, char * year, char * month, char * day,
@@ -684,7 +684,7 @@ int cpx6TSetDateTime(char mode, char * year, char * month, char * day,
 	strcat(s, second);
 	s[19] = ETX;
 	s[20] = lrc(s, 0, 20);
-	return send(s, 21);
+	return sendBytes(s, 21);
 }
 
 F0Command * f0MsrRead(char * to, char cmd) {
@@ -773,7 +773,7 @@ int cpxF0(F0Command * f0cmd) {
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
 	len = strlen(s);
-	return send(s, len);
+	return sendBytes(s, len);
 }
 
 F1Command * f1Version(char msgSeqId) {
@@ -827,7 +827,7 @@ int cpxF1(F1Command * f1cmd) {
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
 	len = strlen(s);
-	return send(s, len);
+	return sendBytes(s, len);
 }
 
 int openSession() {
@@ -857,7 +857,7 @@ int asynEmvAck(char msgSeqId) {
 	t[len] = lrc(t, 0, len);
 	len = strlen(t);
 	printf("Asynchronous EMV ACK msgSeqId=%u\n", msgSeqId);
-	return send(t, len);
+	return sendBytes(t, len);
 }
 
 F1AsyncCommand * f1Async(char msgSeqId, char * dataE, int len) {
@@ -901,7 +901,7 @@ int cpxF1Async(F1AsyncCommand * f1Async) {
 	len = strlen(s);
 	s[len] = lrc(s, 0, len);
 	len = strlen(s);
-	return send(s, len);
+	return sendBytes(s, len);
 }
 
 int vegaInit(char * s, int size) {
