@@ -20,7 +20,7 @@ void closeComPort() {
 	RS232_CloseComport(COM_PORT_NUMBER);
 }
 
-void * recvMsg(Msg * h) {
+void * recvMsg(struct Msg * h) {
 	int n = 0;
 	char * buf = malloc(1024);
 	memset(buf, 0, 1024);

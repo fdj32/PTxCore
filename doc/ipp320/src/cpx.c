@@ -986,6 +986,13 @@ int vegaInit(char * s, int size) {
 		}
 		index += initPacketSize;
 	}
+
+	n = cpx58display01A('0', '0', '4', '1', "", "Initialized OK", "", "");
+	m = getRespMsg("58", h);
+	printf("cpx58display01A m->msg[3] = %c\n", m->msg[3]);
+	if (NULL == m || m->msg[3] != '0') {
+		return EXIT_FAILURE;
+	}
 	closeComPort();
 	return n;
 }
