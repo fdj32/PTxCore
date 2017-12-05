@@ -856,7 +856,7 @@ int asynEmvAck(char msgSeqId) {
 	len = strlen(t);
 	t[len] = lrc(t, 0, len);
 	len = strlen(t);
-	printf("Asynchronous EMV ACK msgSeqId=%d\n", msgSeqId);
+	printf("Asynchronous EMV ACK msgSeqId=%u\n", msgSeqId);
 	return send(t, len);
 }
 
@@ -905,7 +905,6 @@ int cpxF1Async(F1AsyncCommand * f1Async) {
 }
 
 int vegaInit(char * s, int size) {
-
 	int n = openComPort();
 	if (0 != n) {
 		closeComPort();
@@ -946,7 +945,7 @@ int vegaInit(char * s, int size) {
 		}
 	}
 
-	int msgId = 0;
+	unsigned char msgId = 0;
 	int index = 0;
 	const int initPacketSize = MAX_VEGA_PACKET_SIZE - 1;
 	int dataPacketSize = 0;
@@ -970,8 +969,8 @@ int vegaInit(char * s, int size) {
 		memcpy(dataPacket + 5, s + index, dataPacketSize);
 		n = cpxF1Async(f1Async(msgId, dataPacket, dataPacketSize + 5));
 
-		m = waitAsyncEmvAck((char)msgId, h);
-		if(NULL != m) {
+		m = waitAsyncEmvAck((char) msgId, h);
+		if (NULL != m) {
 			printf("recv: Async Emv Ack : %d\n", msgId);
 			msgId++;
 		}
@@ -982,18 +981,12 @@ int vegaInit(char * s, int size) {
 			closeSession(msgId);
 			return EXIT_FAILURE;
 		} else {
-			int outSeqId = m->msg[6];
-			if (outSeqId == 0x80) {
-				// This Sequence ID is initially set to 0x80 by CPX
-				msgId = 0x80;
-			}
+			printf("msgId=%u\n", (unsigned char) (m->msg[6]));
+			asynEmvAck(m->msg[6]);
 		}
-
 		index += initPacketSize;
 	}
-
 	closeComPort();
-
 	return n;
 }
 
@@ -1033,7 +1026,7 @@ Msg * getRespMsg(const char * type, Msg * h) {
 			m->next = NULL;
 			break;
 		}
-		if(p->next == NULL) {
+		if (p->next == NULL) {
 			p = h;
 		} else {
 			p = p->next;
@@ -1046,8 +1039,7 @@ Msg * getRespMsg(const char * type, Msg * h) {
 Msg * waitAsyncEmvAck(char msgSeqId, Msg * h) {
 	Msg * p = h;
 	Msg * m = NULL;
-	long start = clock();
-	while (m == NULL && (clock() - start) < CLOCKS_PER_SEC) {
+	while (m == NULL) {
 		if (p->next != NULL && p->next->len == 7 && p->next->msg[0] == 'F'
 				&& p->next->msg[1] == '1' && p->next->msg[2] == '.'
 				&& p->next->msg[3] == 0 && p->next->msg[4] == 2
@@ -1057,7 +1049,7 @@ Msg * waitAsyncEmvAck(char msgSeqId, Msg * h) {
 			m->next = NULL;
 			break;
 		}
-		if(p->next == NULL) {
+		if (p->next == NULL) {
 			p = h;
 		} else {
 			p = p->next;
