@@ -14,8 +14,9 @@ extern "C" {
 #endif
 
 #include <curl/curl.h>
-#include <expat.h>
 #include <iconv.h>
+#include <libxml/parser.h>
+#include <libxml/tree.h>
 #include <pthread.h>
 #include <stdarg.h>
 #include <stdio.h>

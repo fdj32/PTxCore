@@ -26,6 +26,55 @@ static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb,
 	return realsize;
 }
 
+/**
+ * http://xmlsoft.org/examples/tree1.c
+ *
+ * print_element_names:
+ * @a_node: the initial xml node to consider.
+ *
+ * Prints the names of the all the xml elements
+ * that are siblings or children of a given xml node.
+ */
+static void print_element_names(xmlNode * a_node) {
+	xmlNode *cur_node = NULL;
+
+	for (cur_node = a_node; cur_node; cur_node = cur_node->next) {
+		if (cur_node->type == XML_ELEMENT_NODE) {
+			printf("node type: Element, name: %s\n", cur_node->name);
+		}
+
+		print_element_names(cur_node->children);
+	}
+}
+
+/**
+ * http://xmlsoft.org/examples/parse3.c
+ *
+ * example3Func:
+ * @content: the content of the document
+ * @length: the length in bytes
+ *
+ * Parse the in memory document and free the resulting tree
+ */
+static void example3Func(const char *content, int length) {
+	xmlDocPtr doc; /* the resulting document tree */
+
+	/*
+	 * The document being in memory, it have no base per RFC 2396,
+	 * and the "noname.xml" argument will serve as its base.
+	 */
+	doc = xmlReadMemory(content, length, "noname.xml", NULL, 0);
+	if (doc == NULL) {
+		fprintf(stderr, "Failed to parse document\n");
+		return;
+	} else {
+		/*Get the root element node */
+		xmlNodePtr root_element = xmlDocGetRootElement(doc);
+		print_element_names(root_element);
+	}
+	xmlFreeDoc(doc);
+}
+
 int main(void) {
 	CURL *curl_handle;
 	CURLcode res;
@@ -39,8 +88,8 @@ int main(void) {
 	curl_handle = curl_easy_init();
 
 	curl_easy_setopt(curl_handle, CURLOPT_URL,
-			"https://qa-ams.active.com/MS/MSServer?TenderType=MERCHANT&TransactionType=GET&MerchantUser=emvca&MerchantPassword=emvca");
-//			"https://qa-ams.active.com/MS/MSServer?TenderType=EMV&TransactionType=EMV_PARAM&MerchantUser=emvca&MerchantPassword=emvca&terminalNumber=036&paymentDeviceSerialNumber=PP814365PB063182");
+//			"https://qa-ams.active.com/MS/MSServer?TenderType=MERCHANT&TransactionType=GET&MerchantUser=emvca&MerchantPassword=emvca");
+			"https://qa-ams.active.com/MS/MSServer?TenderType=EMV&TransactionType=EMV_PARAM&MerchantUser=emvca&MerchantPassword=emvca&terminalNumber=036&paymentDeviceSerialNumber=PP814365PB063182");
 	curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
 	curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (void * )&chunk);
 
@@ -63,6 +112,24 @@ int main(void) {
 		puts(chunk.memory);
 	}
 	curl_easy_cleanup(curl_handle);
+
+	/*
+	 * this initialize the library and check potential ABI mismatches
+	 * between the version it was compiled for and the actual shared
+	 * library used.
+	 */
+	LIBXML_TEST_VERSION
+	example3Func(chunk.memory, chunk.size);
+
+	/*
+	 * Cleanup function for the XML library.
+	 */
+	xmlCleanupParser();
+	/*
+	 * this is to debug memory for regression tests
+	 */
+	xmlMemoryDump();
+
 	free(chunk.memory);
 	curl_global_cleanup();
 
