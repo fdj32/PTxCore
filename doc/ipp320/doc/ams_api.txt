@@ -1,0 +1,10 @@
+
+https://qa-ams.active.com/MS/MSServer?TenderType=MERCHANT&TransactionType=GET&MerchantUser=emvca&MerchantPassword=emvca
+
+ResponseStatus=SUCCESS&ResponseMessage=Success&supportsPaymentDevices=true&paymentDeviceMerchantNumber=700000200727&paymentDeviceClientNumber=0004&language=EN&monerisStoreId=monca00441&monerisApiToken=IaIyCy2CexgOA7yKb3I8&monerisHost=esqa.moneris.com&countryNumber=840&currencyCode=124&mcc=&EnableContactless=true&ContactlessTransactionLimit=54321&CvmRequiredLimit=0&ReceiptRequiredLimit=0
+
+https://qa-ams.active.com/MS/MSServer?TenderType=EMV&TransactionType=EMV_PARAM&MerchantUser=emvca&MerchantPassword=emvca&terminalNumber=036&paymentDeviceSerialNumber=PP814365PB063182
+
+https://qa-ams.active.com/MS/MSServer?TenderType=EMV&TransactionType=EMV_PARAM&MerchantUser=emvus&MerchantPassword=emvus&terminalNumber=035&paymentDeviceSerialNumber=PP814365PB063218
+
+
