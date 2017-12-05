@@ -820,7 +820,7 @@ int cpxF1(F1Command * f1cmd) {
 	s[1] = 'F';
 	s[2] = '1';
 	s[3] = '.';
-	printf("sent:F1.%s\n", hex(f1, 0, len+2));
+	printf("sent:F1.%s\n", hex(f1, 0, len + 2));
 	cpx16Encode(f1, 0, len + 2, s, 4);
 	len = strlen(s);
 	s[len] = ETX;
@@ -894,7 +894,7 @@ int cpxF1Async(F1AsyncCommand * f1Async) {
 	s[1] = 'F';
 	s[2] = '1';
 	s[3] = '.';
-	printf("sent:F1.%s\n", hex(f1, 0, len+2));
+	printf("sent:F1.%s\n", hex(f1, 0, len + 2));
 	cpx16Encode(f1, 0, len + 2, s, 4);
 	len = strlen(s);
 	s[len] = ETX;
@@ -919,27 +919,27 @@ int vegaInit(char * s, int size) {
 
 	n = cpx58display01A('0', '0', '4', '1', "", "Initializing", "", "");
 	Msg * m = getRespMsg("58", h);
-	printf("\ncpx58display01A m->msg[3] = %c\n", m->msg[3]);
+	printf("cpx58display01A m->msg[3] = %c\n", m->msg[3]);
 	if (NULL == m || m->msg[3] != '0') {
 		return EXIT_FAILURE;
 	}
 
 	n = openSession();
 	m = getRespMsg("F1", h);
-	printf("\nopenSession m->msg[7] = %d\n", m->msg[7]);
+	printf("openSession m->msg[7] = %d\n", m->msg[7]);
 	if (NULL == m || m->msg[7] != 0) {
 		if (m->msg[7] == 7) {
 			// already open, close it
 			n = closeSession(0);
 			m = getRespMsg("F1", h);
-			printf("\ncloseSession m->msg[7] = %d\n", m->msg[7]);
+			printf("closeSession m->msg[7] = %d\n", m->msg[7]);
 			if (NULL == m || m->msg[7] != 0) {
 				return EXIT_FAILURE;
 			}
 			// open again
 			n = openSession();
 			m = getRespMsg("F1", h);
-			printf("\nopenSession again m->msg[7] = %d\n", m->msg[7]);
+			printf("openSession again m->msg[7] = %d\n", m->msg[7]);
 			if (NULL == m || m->msg[7] != 0) {
 				return EXIT_FAILURE;
 			}
@@ -970,22 +970,25 @@ int vegaInit(char * s, int size) {
 		memcpy(dataPacket + 5, s + index, dataPacketSize);
 		n = cpxF1Async(f1Async(msgId, dataPacket, dataPacketSize + 5));
 
+		m = waitAsyncEmvAck((char)msgId, h);
+		if(NULL != m) {
+			printf("recv: Async Emv Ack : %d\n", msgId);
+			msgId++;
+		}
+
 		m = getRespMsg("F1", h);
-		printf("\ncpxF1Async m->msg[7] = %d\n", m->msg[7]);
-		if(NULL == m || 0 != m->msg[7]) {
+		printf("cpxF1Async m->msg[7] = %d\n", m->msg[7]);
+		if (NULL == m || 0 != m->msg[7]) {
 			closeSession(msgId);
 			return EXIT_FAILURE;
 		} else {
-			int outSeqId = p[6];
+			int outSeqId = m->msg[6];
 			if (outSeqId == 0x80) {
 				// This Sequence ID is initially set to 0x80 by CPX
 				msgId = 0x80;
 			}
 		}
 
-		break;
-
-		msgId++;
 		index += initPacketSize;
 	}
 
@@ -1023,11 +1026,6 @@ Msg * getRespMsg(const char * type, Msg * h) {
 	Msg * p = h;
 	Msg * m = NULL;
 	while (m == NULL) {
-		if(p->next != NULL && p->next->len == 7 && p->next->msg[0] == 'F' && p->next->msg[1] == '1'
-				&& p->next->msg[5] == '5') {
-			p->next = p->next->next; // delete async emv ack
-			continue;
-		}
 		if (p->next != NULL && p->next->msg[0] == type[0]
 				&& p->next->msg[1] == type[1]) {
 			m = p->next;
@@ -1035,8 +1033,36 @@ Msg * getRespMsg(const char * type, Msg * h) {
 			m->next = NULL;
 			break;
 		}
+		if(p->next == NULL) {
+			p = h;
+		} else {
+			p = p->next;
+		}
 		sleepM(POLL_TIME);
 	}
 	return m;
 }
 
+Msg * waitAsyncEmvAck(char msgSeqId, Msg * h) {
+	Msg * p = h;
+	Msg * m = NULL;
+	long start = clock();
+	while (m == NULL && (clock() - start) < CLOCKS_PER_SEC) {
+		if (p->next != NULL && p->next->len == 7 && p->next->msg[0] == 'F'
+				&& p->next->msg[1] == '1' && p->next->msg[2] == '.'
+				&& p->next->msg[3] == 0 && p->next->msg[4] == 2
+				&& p->next->msg[5] == 5 && p->next->msg[6] == msgSeqId) {
+			m = p->next;
+			p->next = p->next->next; // delete async emv ack
+			m->next = NULL;
+			break;
+		}
+		if(p->next == NULL) {
+			p = h;
+		} else {
+			p = p->next;
+		}
+		sleepM(POLL_TIME);
+	}
+	return m;
+}

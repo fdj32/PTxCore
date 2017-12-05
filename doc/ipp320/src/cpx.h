@@ -272,6 +272,8 @@ int parseResponse(char * s, int n, char * t);
 
 Msg * getRespMsg(const char * type, Msg * h);
 
+Msg * waitAsyncEmvAck(char msgSeqId, Msg * h);
+
 #ifdef __cplusplus
 }
 #endif
