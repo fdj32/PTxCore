@@ -19,24 +19,41 @@ char * AIDToXML(AID * o) {
 	char * s = malloc(10240);
 	memset(s, 0, 10240);
 	int i = 0;
-	i += sprintf(s + i, "<AID>\n<applicationSelectionIndicator>%s</applicationSelectionIndicator>\n", hexByte(o->applicationSelectionIndicator));
-	i += sprintf(s + i, "<lengthTLVData>%s</lengthTLVData>\n", hexByte(o->lengthTLVData));
-	i += sprintf(s + i, "<tlvData>%s</tlvData>\n", hex(o->tlvData, 0, (int)(o->lengthTLVData)));
+	i +=
+			sprintf(s + i,
+					"<AID>\n<applicationSelectionIndicator>%s</applicationSelectionIndicator>\n",
+					hexByte(o->applicationSelectionIndicator));
+	i += sprintf(s + i, "<lengthTLVData>%s</lengthTLVData>\n",
+			hexByte(o->lengthTLVData));
+	i += sprintf(s + i, "<tlvData>%s</tlvData>\n",
+			hex(o->tlvData, 0, (int )(o->lengthTLVData)));
 	i += sprintf(s + i, "<aidLength>%s</aidLength>\n", hexByte(o->aidLength));
 	i += sprintf(s + i, "<aid>%s</aid>\n", hex(o->aid, 0, 16));
 	i += sprintf(s + i, "<rid>%s</rid>\n", hex(o->rid, 0, 5));
-	i += sprintf(s + i, "<applicationVersionNumber>%s</applicationVersionNumber>\n", hex(o->applicationVersionNumber, 0, 2));
-	i += sprintf(s + i, "<tacDefault>%s</tacDefault>\n", hex(o->tacDefault, 0, 5));
+	i += sprintf(s + i,
+			"<applicationVersionNumber>%s</applicationVersionNumber>\n",
+			hex(o->applicationVersionNumber, 0, 2));
+	i += sprintf(s + i, "<tacDefault>%s</tacDefault>\n",
+			hex(o->tacDefault, 0, 5));
 	i += sprintf(s + i, "<tacDenial>%s</tacDenial>\n", hex(o->tacDenial, 0, 5));
 	i += sprintf(s + i, "<tacOnline>%s</tacOnline>\n", hex(o->tacOnline, 0, 5));
-	i += sprintf(s + i, "<maximumTargetPercentage>%s</maximumTargetPercentage>\n", hexByte(o->maximumTargetPercentage));
-	i += sprintf(s + i, "<targetPercentage>%s</targetPercentage>\n", hexByte(o->targetPercentage));
-	i += sprintf(s + i, "<thresholdValue>%s</thresholdValue>\n", hex(o->thresholdValue, 0, 4));
-	i += sprintf(s + i, "<terminalFloorLimit>%s</terminalFloorLimit>\n", hex(o->terminalFloorLimit, 0, 4));
-	i += sprintf(s + i, "<defaultTDOLLength>%s</defaultTDOLLength>\n", hex(o->defaultTDOLLength, 0, 2));
-	i += sprintf(s + i, "<defaultTDOL>%s</defaultTDOL>\n", hex(o->defaultTDOL, 0, littleEndianInt(o->defaultTDOLLength)));
-	i += sprintf(s + i, "<defaultDDOLLength>%s</defaultDDOLLength>\n", hex(o->defaultDDOLLength, 0, 2));
-	i += sprintf(s + i, "<defaultDDOL>%s</defaultDDOL>\n</AID>\n", hex(o->defaultDDOL, 0, littleEndianInt(o->defaultDDOLLength)));
+	i += sprintf(s + i,
+			"<maximumTargetPercentage>%s</maximumTargetPercentage>\n",
+			hexByte(o->maximumTargetPercentage));
+	i += sprintf(s + i, "<targetPercentage>%s</targetPercentage>\n",
+			hexByte(o->targetPercentage));
+	i += sprintf(s + i, "<thresholdValue>%s</thresholdValue>\n",
+			hex(o->thresholdValue, 0, 4));
+	i += sprintf(s + i, "<terminalFloorLimit>%s</terminalFloorLimit>\n",
+			hex(o->terminalFloorLimit, 0, 4));
+	i += sprintf(s + i, "<defaultTDOLLength>%s</defaultTDOLLength>\n",
+			hex(o->defaultTDOLLength, 0, 2));
+	i += sprintf(s + i, "<defaultTDOL>%s</defaultTDOL>\n",
+			hex(o->defaultTDOL, 0, littleEndianInt(o->defaultTDOLLength)));
+	i += sprintf(s + i, "<defaultDDOLLength>%s</defaultDDOLLength>\n",
+			hex(o->defaultDDOLLength, 0, 2));
+	i += sprintf(s + i, "<defaultDDOL>%s</defaultDDOL>\n</AID>\n",
+			hex(o->defaultDDOL, 0, littleEndianInt(o->defaultDDOLLength)));
 	return s;
 }
 
@@ -169,20 +186,29 @@ AID * AIDListFromBin(char * s, int length) {
 }
 
 char * KeyDataToXML(KeyData * o, int size) {
-	if(NULL == o)
+	if (NULL == o)
 		return NULL;
 	char * s = malloc(102400);
 	memset(s, 0, 102400);
 	int i = 0;
-	for(int j = 0; j < size; j++) {
-		i += sprintf(s+i, "<KeyData>\n<keyIndex>%s</keyIndex>\n", hexByte((o+j)->keyIndex));
-		i += sprintf(s+i, "<keyAlgorithmIndicator>%s</keyAlgorithmIndicator>\n", hexByte((o+j)->keyAlgorithmIndicator));
-		i += sprintf(s+i, "<hashAlgorithmIndicator>%s</hashAlgorithmIndicator>\n", hexByte((o+j)->hashAlgorithmIndicator));
-		i += sprintf(s+i, "<keyLength>%s</keyLength>\n", hexByte((o+j)->keyLength));
-		i += sprintf(s+i, "<key>%s</key>\n", hex((o+j)->key, 0, 248));
-		i += sprintf(s+i, "<keyExponentLength>%s</keyExponentLength>\n", hexByte((o+j)->keyExponentLength));
-		i += sprintf(s+i, "<keyExponent>%s</keyExponent>\n", hex((o+j)->keyExponent, 0, 3));
-		i += sprintf(s+i, "<keyCheckSum>%s</keyCheckSum>\n</KeyData>\n", hex((o+j)->keyCheckSum, 0, 20));
+	for (int j = 0; j < size; j++) {
+		i += sprintf(s + i, "<KeyData>\n<keyIndex>%s</keyIndex>\n",
+				hexByte((o + j)->keyIndex));
+		i += sprintf(s + i,
+				"<keyAlgorithmIndicator>%s</keyAlgorithmIndicator>\n",
+				hexByte((o + j)->keyAlgorithmIndicator));
+		i += sprintf(s + i,
+				"<hashAlgorithmIndicator>%s</hashAlgorithmIndicator>\n",
+				hexByte((o + j)->hashAlgorithmIndicator));
+		i += sprintf(s + i, "<keyLength>%s</keyLength>\n",
+				hexByte((o + j)->keyLength));
+		i += sprintf(s + i, "<key>%s</key>\n", hex((o + j)->key, 0, 248));
+		i += sprintf(s + i, "<keyExponentLength>%s</keyExponentLength>\n",
+				hexByte((o + j)->keyExponentLength));
+		i += sprintf(s + i, "<keyExponent>%s</keyExponent>\n",
+				hex((o + j)->keyExponent, 0, 3));
+		i += sprintf(s + i, "<keyCheckSum>%s</keyCheckSum>\n</KeyData>\n",
+				hex((o + j)->keyCheckSum, 0, 20));
 	}
 	return s;
 }
@@ -225,13 +251,14 @@ KeyData * KeyDataFromBin(char * s, int length) {
 }
 
 char * TagsToXML(Tag * tags, int size) {
-	if(NULL == tags)
+	if (NULL == tags)
 		return NULL;
 	char * s = malloc(10240);
 	memset(s, 0, 10240);
 	int j = 0;
-	for(int i =0; i < size; i++) {
-		j += sprintf(s + j, "<Tag id=\"%s\"/>", hex(littleEndianBin((tags+i)->id), 0, 2));
+	for (int i = 0; i < size; i++) {
+		j += sprintf(s + j, "<Tag id=\"%s\"/>",
+				hex(littleEndianBin((tags + i)->id), 0, 2));
 	}
 	return s;
 }
@@ -260,20 +287,20 @@ Tag * TagsFromBin(char * s, int length) {
 }
 
 char * LengthThenTagsToXML(LengthThenTags * o, int size) {
-	if(NULL == o)
+	if (NULL == o)
 		return NULL;
 	char * s = malloc(102400);
 	memset(s, 0, 102400);
-	for(int i=0; i<size; i++) {
-		if(0 == (o+i)->length) {
+	for (int i = 0; i < size; i++) {
+		if (0 == (o + i)->length) {
 			strcat(s, "<LengthThenTags><Length>00</Length></LengthThenTags>\n");
 			continue;
 		}
 		strcat(s, "<LengthThenTags>\n<Length>");
-		strcat(s, hexByte((o+i)->length));
+		strcat(s, hexByte((o + i)->length));
 		strcat(s, "</Length>\n");
-		int tagSize = (o+i)->length>>1;
-		strcat(s, TagsToXML((o+i)->tags, tagSize));
+		int tagSize = (o + i)->length >> 1;
+		strcat(s, TagsToXML((o + i)->tags, tagSize));
 		strcat(s, "</LengthThenTags>\n");
 	}
 	return s;
@@ -321,25 +348,51 @@ char * RIDToXML(RID * o) {
 	char * s = malloc(102400);
 	memset(s, 0, 102400);
 	int i = 0;
-	i += sprintf(s+i, "<RID>\n<rid>%s</rid>\n", hex(o->rid, 0, 5));
-	i += sprintf(s+i, "<keyDataTotalLength>%s</keyDataTotalLength>\n", hex(o->keyDataTotalLength, 0, 2));
-	i += sprintf(s+i, "<keyDatas>%s</keyDatas>\n", KeyDataToXML(o->keyDatas, littleEndianInt(o->keyDataTotalLength)/276));
-	i += sprintf(s+i, "<lengthGoOnlineTags>%s</lengthGoOnlineTags>\n", hex(o->lengthGoOnlineTags, 0, 2));
-	i += sprintf(s+i, "<goOnlineTags>%s</goOnlineTags>\n", TagsToXML(o->goOnlineTags, littleEndianInt(o->lengthGoOnlineTags)>>1));
-	i += sprintf(s+i, "<lengthEndOfTransactionTags>%s</lengthEndOfTransactionTags>\n", hex(o->lengthEndOfTransactionTags, 0, 2));
-	i += sprintf(s+i, "<endOfTransactionTags>%s</endOfTransactionTags>\n", LengthThenTagsToXML(o->endOfTransactionTags, 7));
-	i += sprintf(s+i, "<endOfTransactionStep>%s</endOfTransactionStep>\n", hex(o->endOfTransactionStep, 0, 7));
-	i += sprintf(s+i, "<lengthGetPreviousAmountTags>%s</lengthGetPreviousAmountTags>\n", hex(o->lengthGetPreviousAmountTags, 0, 2));
-	i += sprintf(s+i, "<getPreviousAmountTags>%s</getPreviousAmountTags>\n", TagsToXML(o->getPreviousAmountTags, littleEndianInt(o->lengthGetPreviousAmountTags)>>1));
-	i += sprintf(s+i, "<lengthExtendedAPIData>%s</lengthExtendedAPIData>\n", hex(o->lengthExtendedAPIData, 0, 2));
-	i += sprintf(s+i, "<extendedAPIData>%s</extendedAPIData>\n", LengthThenTagsToXML(o->extendedAPIData, 112));
-	i += sprintf(s+i, "<lengthProprietaryRIDData>%s</lengthProprietaryRIDData>\n", hex(o->lengthProprietaryRIDData, 0, 2));
-	i += sprintf(s+i, "<proprietaryRIDData>%s</proprietaryRIDData>\n", hex(o->proprietaryRIDData, 0, littleEndianInt(o->lengthProprietaryRIDData)));
-	i += sprintf(s+i, "<lengthIgnoredTags>%s</lengthIgnoredTags>\n", hex(o->lengthIgnoredTags, 0, 2));
-	i += sprintf(s+i, "<ignoreTags>%s</ignoreTags>\n", TagsToXML(o->ignoreTags, littleEndianInt(o->lengthIgnoredTags)>>1));
-	i += sprintf(s+i, "<miscellaneousOptions>%s</miscellaneousOptions>\n", hexByte(o->miscellaneousOptions));
-	i += sprintf(s+i, "<lengthTLVData>%s</lengthTLVData>\n", hex(o->lengthTLVData, 0, 2));
-	i += sprintf(s+i, "<tlvData>%s</tlvData>\n</RID>\n", hex(o->tlvData, 0, littleEndianInt(o->lengthTLVData)));
+	i += sprintf(s + i, "<RID>\n<rid>%s</rid>\n", hex(o->rid, 0, 5));
+	i += sprintf(s + i, "<keyDataTotalLength>%s</keyDataTotalLength>\n",
+			hex(o->keyDataTotalLength, 0, 2));
+	i += sprintf(s + i, "<keyDatas>%s</keyDatas>\n",
+			KeyDataToXML(o->keyDatas,
+					littleEndianInt(o->keyDataTotalLength) / 276));
+	i += sprintf(s + i, "<lengthGoOnlineTags>%s</lengthGoOnlineTags>\n",
+			hex(o->lengthGoOnlineTags, 0, 2));
+	i += sprintf(s + i, "<goOnlineTags>%s</goOnlineTags>\n",
+			TagsToXML(o->goOnlineTags,
+					littleEndianInt(o->lengthGoOnlineTags) >> 1));
+	i += sprintf(s + i,
+			"<lengthEndOfTransactionTags>%s</lengthEndOfTransactionTags>\n",
+			hex(o->lengthEndOfTransactionTags, 0, 2));
+	i += sprintf(s + i, "<endOfTransactionTags>%s</endOfTransactionTags>\n",
+			LengthThenTagsToXML(o->endOfTransactionTags, 7));
+	i += sprintf(s + i, "<endOfTransactionStep>%s</endOfTransactionStep>\n",
+			hex(o->endOfTransactionStep, 0, 7));
+	i += sprintf(s + i,
+			"<lengthGetPreviousAmountTags>%s</lengthGetPreviousAmountTags>\n",
+			hex(o->lengthGetPreviousAmountTags, 0, 2));
+	i += sprintf(s + i, "<getPreviousAmountTags>%s</getPreviousAmountTags>\n",
+			TagsToXML(o->getPreviousAmountTags,
+					littleEndianInt(o->lengthGetPreviousAmountTags) >> 1));
+	i += sprintf(s + i, "<lengthExtendedAPIData>%s</lengthExtendedAPIData>\n",
+			hex(o->lengthExtendedAPIData, 0, 2));
+	i += sprintf(s + i, "<extendedAPIData>%s</extendedAPIData>\n",
+			LengthThenTagsToXML(o->extendedAPIData, 112));
+	i += sprintf(s + i,
+			"<lengthProprietaryRIDData>%s</lengthProprietaryRIDData>\n",
+			hex(o->lengthProprietaryRIDData, 0, 2));
+	i += sprintf(s + i, "<proprietaryRIDData>%s</proprietaryRIDData>\n",
+			hex(o->proprietaryRIDData, 0,
+					littleEndianInt(o->lengthProprietaryRIDData)));
+	i += sprintf(s + i, "<lengthIgnoredTags>%s</lengthIgnoredTags>\n",
+			hex(o->lengthIgnoredTags, 0, 2));
+	i += sprintf(s + i, "<ignoreTags>%s</ignoreTags>\n",
+			TagsToXML(o->ignoreTags,
+					littleEndianInt(o->lengthIgnoredTags) >> 1));
+	i += sprintf(s + i, "<miscellaneousOptions>%s</miscellaneousOptions>\n",
+			hexByte(o->miscellaneousOptions));
+	i += sprintf(s + i, "<lengthTLVData>%s</lengthTLVData>\n",
+			hex(o->lengthTLVData, 0, 2));
+	i += sprintf(s + i, "<tlvData>%s</tlvData>\n</RID>\n",
+			hex(o->tlvData, 0, littleEndianInt(o->lengthTLVData)));
 	return s;
 }
 
@@ -381,8 +434,7 @@ char * RIDToBin(RID * o) {
 		memcpy(s + index, LengthThenTagsToBin(o->extendedAPIData + i * 2),
 				1 + o->extendedAPIData[i * 2].length);
 		index += 1 + o->extendedAPIData[i * 2].length;
-		memcpy(s + index,
-				LengthThenTagsToBin(o->extendedAPIData + i * 2 + 1),
+		memcpy(s + index, LengthThenTagsToBin(o->extendedAPIData + i * 2 + 1),
 				1 + o->extendedAPIData[i * 2 + 1].length);
 		index += 1 + o->extendedAPIData[i * 2 + 1].length;
 	}
@@ -509,28 +561,44 @@ char * OfflinePINEntryConfigurationToXML(OfflinePINEntryConfiguration * o) {
 	char * s = malloc(10240);
 	memset(s, 0, 10240);
 	int i = 0;
-	i += sprintf(s+i, "<OfflinePINEntryConfiguration>\n<textFont>%s</textFont>\n", hexByte(o->textFont));
-	i += sprintf(s+i, "<prompt>%s</prompt>\n", hex(o->prompt, 0, 1000));
-	i += sprintf(s+i, "<promptMAC>%s</promptMAC>\n", hex(o->prompt, 0, 36));
-	i += sprintf(s+i, "<promptX>%s</promptX>\n", hex(o->promptX, 0, 4));
-	i += sprintf(s+i, "<promptY>%s</promptY>\n", hex(o->promptY, 0, 4));
-	i += sprintf(s+i, "<editX>%s</editX>\n", hex(o->editX, 0, 4));
-	i += sprintf(s+i, "<editY>%s</editY>\n", hex(o->editY, 0, 4));
-	i += sprintf(s+i, "<formatType>%s</formatType>\n", hexByte(o->formatType));
-	i += sprintf(s+i, "<formatSpMAC>%s</formatSpMAC>\n", hex(o->formatSpMAC, 0, 9));
-	i += sprintf(s+i, "<formatSpecifier>%s</formatSpecifier>\n", hex(o->formatSpecifier, 0, 50));
-	i += sprintf(s+i, "<minimumKeys>%s</minimumKeys>\n", hexByte(o->minimumKeys));
-	i += sprintf(s+i, "<maximumKeys>%s</maximumKeys>\n", hexByte(o->maximumKeys));
-	i += sprintf(s+i, "<echoCharacter>%s</echoCharacter>\n", hexByte(o->echoCharacter));
-	i += sprintf(s+i, "<cursorType>%s</cursorType>\n", hexByte(o->cursorType));
-	i += sprintf(s+i, "<direction>%s</direction>\n", hexByte(o->direction));
-	i += sprintf(s+i, "<beepInvalidKey>%s</beepInvalidKey>\n", hex(o->beepInvalidKey, 0, 4));
-	i += sprintf(s+i, "<timeOutFirstKey>%s</timeOutFirstKey>\n", hex(o->timeOutFirstKey, 0, 4));
-	i += sprintf(s+i, "<timeOutInterKey>%s</timeOutInterKey>\n", hex(o->timeOutInterKey, 0, 4));
-	i += sprintf(s+i, "<keyType>%s</keyType>\n", hexByte(o->keyType));
-	i += sprintf(s+i, "<keyIndex>%s</keyIndex>\n", hexByte(o->keyIndex));
-	i += sprintf(s+i, "<noEnterLessMin>%s</noEnterLessMin>\n", hex(o->noEnterLessMin, 0, 4));
-	i += sprintf(s+i, "<addReqSettings>%s</addReqSettings>\n</OfflinePINEntryConfiguration>\n", hex(o->addReqSettings, 0, 2));
+	i += sprintf(s + i,
+			"<OfflinePINEntryConfiguration>\n<textFont>%s</textFont>\n",
+			hexByte(o->textFont));
+	i += sprintf(s + i, "<prompt>%s</prompt>\n", hex(o->prompt, 0, 1000));
+	i += sprintf(s + i, "<promptMAC>%s</promptMAC>\n", hex(o->prompt, 0, 36));
+	i += sprintf(s + i, "<promptX>%s</promptX>\n", hex(o->promptX, 0, 4));
+	i += sprintf(s + i, "<promptY>%s</promptY>\n", hex(o->promptY, 0, 4));
+	i += sprintf(s + i, "<editX>%s</editX>\n", hex(o->editX, 0, 4));
+	i += sprintf(s + i, "<editY>%s</editY>\n", hex(o->editY, 0, 4));
+	i += sprintf(s + i, "<formatType>%s</formatType>\n",
+			hexByte(o->formatType));
+	i += sprintf(s + i, "<formatSpMAC>%s</formatSpMAC>\n",
+			hex(o->formatSpMAC, 0, 9));
+	i += sprintf(s + i, "<formatSpecifier>%s</formatSpecifier>\n",
+			hex(o->formatSpecifier, 0, 50));
+	i += sprintf(s + i, "<minimumKeys>%s</minimumKeys>\n",
+			hexByte(o->minimumKeys));
+	i += sprintf(s + i, "<maximumKeys>%s</maximumKeys>\n",
+			hexByte(o->maximumKeys));
+	i += sprintf(s + i, "<echoCharacter>%s</echoCharacter>\n",
+			hexByte(o->echoCharacter));
+	i += sprintf(s + i, "<cursorType>%s</cursorType>\n",
+			hexByte(o->cursorType));
+	i += sprintf(s + i, "<direction>%s</direction>\n", hexByte(o->direction));
+	i += sprintf(s + i, "<beepInvalidKey>%s</beepInvalidKey>\n",
+			hex(o->beepInvalidKey, 0, 4));
+	i += sprintf(s + i, "<timeOutFirstKey>%s</timeOutFirstKey>\n",
+			hex(o->timeOutFirstKey, 0, 4));
+	i += sprintf(s + i, "<timeOutInterKey>%s</timeOutInterKey>\n",
+			hex(o->timeOutInterKey, 0, 4));
+	i += sprintf(s + i, "<keyType>%s</keyType>\n", hexByte(o->keyType));
+	i += sprintf(s + i, "<keyIndex>%s</keyIndex>\n", hexByte(o->keyIndex));
+	i += sprintf(s + i, "<noEnterLessMin>%s</noEnterLessMin>\n",
+			hex(o->noEnterLessMin, 0, 4));
+	i +=
+			sprintf(s + i,
+					"<addReqSettings>%s</addReqSettings>\n</OfflinePINEntryConfiguration>\n",
+					hex(o->addReqSettings, 0, 2));
 	return s;
 }
 
@@ -611,35 +679,83 @@ char * TerminalSpecificDataToXML(TerminalSpecificData * o) {
 	char * s = malloc(10240);
 	memset(s, 0, 10240);
 	int i = 0;
-	i += sprintf(s+i, "<TerminalSpecificData>\n<terminalCapabilities>%s</terminalCapabilities>\n", hex(o->terminalCapabilities, 0, 3));
-	i += sprintf(s+i, "<additionalTerminalCapabilities>%s</additionalTerminalCapabilities>\n", hex(o->additionalTerminalCapabilities, 0, 5));
-	i += sprintf(s+i, "<terminalCountryCode>%s</terminalCountryCode>\n", hex(o->terminalCountryCode, 0, 2));
-	i += sprintf(s+i, "<terminalType>%s</terminalType>\n", hexByte(o->terminalType));
-	i += sprintf(s+i, "<transactionCurrencyCode>%s</transactionCurrencyCode>\n", hex(o->transactionCurrencyCode, 0, 2));
-	i += sprintf(s+i, "<transactionCurrencyExponent>%s</transactionCurrencyExponent>\n", hexByte(o->transactionCurrencyExponent));
-	i += sprintf(s+i, "<transactionReferenceCurrencyCode>%s</transactionReferenceCurrencyCode>\n", hex(o->transactionReferenceCurrencyCode, 0, 2));
-	i += sprintf(s+i, "<transactionReferenceCurrencyExponent>%s</transactionReferenceCurrencyExponent>\n", hexByte(o->transactionReferenceCurrencyExponent));
-	i += sprintf(s+i, "<transactionReferenceCurrencyConversion>%s</transactionReferenceCurrencyConversion>\n", hex(o->transactionReferenceCurrencyConversion, 0, 4));
-	i += sprintf(s+i, "<acquirerIdentifier>%s</acquirerIdentifier>\n", hex(o->acquirerIdentifier, 0, 6));
-	i += sprintf(s+i, "<merchantCategoryCode>%s</merchantCategoryCode>\n", hex(o->merchantCategoryCode, 0, 2));
-	i += sprintf(s+i, "<merchantIdentifier>%s</merchantIdentifier>\n", hex(o->merchantIdentifier, 0, 15));
-	i += sprintf(s+i, "<terminalIdentification>%s</terminalIdentification>\n", hex(o->terminalIdentification, 0, 8));
-	i += sprintf(s+i, "<terminalRiskManagementData>%s</terminalRiskManagementData>\n", hex(o->terminalRiskManagementData, 0, 8));
-	i += sprintf(s+i, "<ifdSerialNumber>%s</ifdSerialNumber>\n", hex(o->ifdSerialNumber, 0, 8));
-	i += sprintf(s+i, "<authorizationResponseCodeList>%s</authorizationResponseCodeList>\n", hex(o->authorizationResponseCodeList, 0, 20));
-	i += sprintf(s+i, "<miscellaneousOptions>%s</miscellaneousOptions>\n", hexByte(o->miscellaneousOptions));
-	i += sprintf(s+i, "<miscellaneousOptions1>%s</miscellaneousOptions1>\n", hexByte(o->miscellaneousOptions1));
-	i += sprintf(s+i, "<lengthTLVData>%s</lengthTLVData>\n", hex(o->lengthTLVData, 0, 2));
-	i += sprintf(s+i, "<tlvData>%s</tlvData>\n", hex(o->tlvData, 0, littleEndianInt(o->lengthTLVData)));
-	i += sprintf(s+i, "<lengthOfflinePINEntryConfiguration>%s</lengthOfflinePINEntryConfiguration>\n", hex(o->lengthOfflinePINEntryConfiguration, 0, 2));
-	i += sprintf(s+i, "%s", OfflinePINEntryConfigurationToXML(o->offlinePINEntryConfiguration));
-	i += sprintf(s+i, "<terminalLanguages>%s</terminalLanguages>\n", hex(o->terminalLanguages, 0, 8));
-	i += sprintf(s+i, "<lengthDiagnosticsTags>%s</lengthDiagnosticsTags>\n", hex(o->lengthDiagnosticsTags, 0, 2));
-	i += sprintf(s+i, "<diagnosticsTags>%s</diagnosticsTags>\n", hex(o->diagnosticsTags, 0, littleEndianInt(o->lengthDiagnosticsTags)));
-	i += sprintf(s+i, "<lengthAppSelectionTags>%s</lengthAppSelectionTags>\n", hex(o->lengthAppSelectionTags, 0, 2));
-	i += sprintf(s+i, "<appSelectionTags>%s</appSelectionTags>\n", hex(o->appSelectionTags, 0, littleEndianInt(o->lengthAppSelectionTags)));
-	i += sprintf(s+i, "<lengthRIDApps>%s</lengthRIDApps>\n", hex(o->lengthRIDApps, 0, 2));
-	i += sprintf(s+i, "<ridApps>%s</ridApps>\n</TerminalSpecificData>\n", hex(o->ridApps, 0, littleEndianInt(o->lengthRIDApps)));
+	i +=
+			sprintf(s + i,
+					"<TerminalSpecificData>\n<terminalCapabilities>%s</terminalCapabilities>\n",
+					hex(o->terminalCapabilities, 0, 3));
+	i +=
+			sprintf(s + i,
+					"<additionalTerminalCapabilities>%s</additionalTerminalCapabilities>\n",
+					hex(o->additionalTerminalCapabilities, 0, 5));
+	i += sprintf(s + i, "<terminalCountryCode>%s</terminalCountryCode>\n",
+			hex(o->terminalCountryCode, 0, 2));
+	i += sprintf(s + i, "<terminalType>%s</terminalType>\n",
+			hexByte(o->terminalType));
+	i += sprintf(s + i,
+			"<transactionCurrencyCode>%s</transactionCurrencyCode>\n",
+			hex(o->transactionCurrencyCode, 0, 2));
+	i += sprintf(s + i,
+			"<transactionCurrencyExponent>%s</transactionCurrencyExponent>\n",
+			hexByte(o->transactionCurrencyExponent));
+	i +=
+			sprintf(s + i,
+					"<transactionReferenceCurrencyCode>%s</transactionReferenceCurrencyCode>\n",
+					hex(o->transactionReferenceCurrencyCode, 0, 2));
+	i +=
+			sprintf(s + i,
+					"<transactionReferenceCurrencyExponent>%s</transactionReferenceCurrencyExponent>\n",
+					hexByte(o->transactionReferenceCurrencyExponent));
+	i +=
+			sprintf(s + i,
+					"<transactionReferenceCurrencyConversion>%s</transactionReferenceCurrencyConversion>\n",
+					hex(o->transactionReferenceCurrencyConversion, 0, 4));
+	i += sprintf(s + i, "<acquirerIdentifier>%s</acquirerIdentifier>\n",
+			hex(o->acquirerIdentifier, 0, 6));
+	i += sprintf(s + i, "<merchantCategoryCode>%s</merchantCategoryCode>\n",
+			hex(o->merchantCategoryCode, 0, 2));
+	i += sprintf(s + i, "<merchantIdentifier>%s</merchantIdentifier>\n",
+			hex(o->merchantIdentifier, 0, 15));
+	i += sprintf(s + i, "<terminalIdentification>%s</terminalIdentification>\n",
+			hex(o->terminalIdentification, 0, 8));
+	i += sprintf(s + i,
+			"<terminalRiskManagementData>%s</terminalRiskManagementData>\n",
+			hex(o->terminalRiskManagementData, 0, 8));
+	i += sprintf(s + i, "<ifdSerialNumber>%s</ifdSerialNumber>\n",
+			hex(o->ifdSerialNumber, 0, 8));
+	i +=
+			sprintf(s + i,
+					"<authorizationResponseCodeList>%s</authorizationResponseCodeList>\n",
+					hex(o->authorizationResponseCodeList, 0, 20));
+	i += sprintf(s + i, "<miscellaneousOptions>%s</miscellaneousOptions>\n",
+			hexByte(o->miscellaneousOptions));
+	i += sprintf(s + i, "<miscellaneousOptions1>%s</miscellaneousOptions1>\n",
+			hexByte(o->miscellaneousOptions1));
+	i += sprintf(s + i, "<lengthTLVData>%s</lengthTLVData>\n",
+			hex(o->lengthTLVData, 0, 2));
+	i += sprintf(s + i, "<tlvData>%s</tlvData>\n",
+			hex(o->tlvData, 0, littleEndianInt(o->lengthTLVData)));
+	i +=
+			sprintf(s + i,
+					"<lengthOfflinePINEntryConfiguration>%s</lengthOfflinePINEntryConfiguration>\n",
+					hex(o->lengthOfflinePINEntryConfiguration, 0, 2));
+	i += sprintf(s + i, "%s",
+			OfflinePINEntryConfigurationToXML(o->offlinePINEntryConfiguration));
+	i += sprintf(s + i, "<terminalLanguages>%s</terminalLanguages>\n",
+			hex(o->terminalLanguages, 0, 8));
+	i += sprintf(s + i, "<lengthDiagnosticsTags>%s</lengthDiagnosticsTags>\n",
+			hex(o->lengthDiagnosticsTags, 0, 2));
+	i += sprintf(s + i, "<diagnosticsTags>%s</diagnosticsTags>\n",
+			hex(o->diagnosticsTags, 0,
+					littleEndianInt(o->lengthDiagnosticsTags)));
+	i += sprintf(s + i, "<lengthAppSelectionTags>%s</lengthAppSelectionTags>\n",
+			hex(o->lengthAppSelectionTags, 0, 2));
+	i += sprintf(s + i, "<appSelectionTags>%s</appSelectionTags>\n",
+			hex(o->appSelectionTags, 0,
+					littleEndianInt(o->lengthAppSelectionTags)));
+	i += sprintf(s + i, "<lengthRIDApps>%s</lengthRIDApps>\n",
+			hex(o->lengthRIDApps, 0, 2));
+	i += sprintf(s + i, "<ridApps>%s</ridApps>\n</TerminalSpecificData>\n",
+			hex(o->ridApps, 0, littleEndianInt(o->lengthRIDApps)));
 	return s;
 }
 
@@ -738,6 +854,23 @@ TerminalSpecificData * TerminalSpecificDataFromBin(char * s) {
 	return o;
 }
 
+TerminalSpecificData * buildTerminalSpecificData(char * country) {
+	TerminalSpecificData * o = malloc(sizeof(TerminalSpecificData));
+	if (strcmp(country, "us") == 0 || strcmp(country, "US") == 0
+			|| strcmp(country, "usa") == 0 || strcmp(country, "USA") == 0
+			|| strcmp(country, "usd") == 0 || strcmp(country, "USD") == 0
+			|| strcmp(country, "840") == 0) {
+		o->terminalCapabilities = unHex(TERMINAL_CAPABILITIES_US, 0, 6);
+	} else if (strcmp(country, "ca") == 0 || strcmp(country, "CA") == 0
+			|| strcmp(country, "can") == 0 || strcmp(country, "CAN") == 0
+			|| strcmp(country, "cad") == 0 || strcmp(country, "CAD") == 0
+			|| strcmp(country, "124") == 0) {
+		o->terminalCapabilities = unHex(TERMINAL_CAPABILITIES_CA, 0, 6);
+	}
+
+	return o;
+}
+
 int VegaInitDataLength(VegaInitData * o) {
 	// append 0x00 at the end of the binary data.
 	return NULL == o ?
@@ -748,10 +881,10 @@ int VegaInitDataLength(VegaInitData * o) {
 }
 
 char * VegaInitDataToXML(VegaInitData * o) {
-	if(NULL == o)
+	if (NULL == o)
 		return NULL;
-	char * s = malloc(1024*1024);
-	memset(s, 0, 1024*1024);
+	char * s = malloc(1024 * 1024);
+	memset(s, 0, 1024 * 1024);
 	strcat(s, "<VegaInitData>");
 
 	strcat(s, "<terminalDataTotalLength>");
@@ -766,7 +899,7 @@ char * VegaInitDataToXML(VegaInitData * o) {
 
 	strcat(s, "<ridSpecificData>\n");
 	RID * ridp = o->ridSpecificData;
-	while(NULL != ridp) {
+	while (NULL != ridp) {
 		strcat(s, RIDToXML(ridp));
 		ridp = ridp->next;
 	}
@@ -778,7 +911,7 @@ char * VegaInitDataToXML(VegaInitData * o) {
 
 	strcat(s, "<aidSpecificData>\n");
 	AID * aidp = o->aidSpecificData;
-	while(NULL != aidp) {
+	while (NULL != aidp) {
 		strcat(s, AIDToXML(aidp));
 		aidp = aidp->next;
 	}

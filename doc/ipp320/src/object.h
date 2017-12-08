@@ -380,6 +380,8 @@ char * TerminalSpecificDataToBin(TerminalSpecificData * o);
 
 TerminalSpecificData * TerminalSpecificDataFromBin(char * s);
 
+TerminalSpecificData * buildTerminalSpecificData(char * country);
+
 typedef struct VegaInitData {
 	char * terminalDataTotalLength;
 	TerminalSpecificData * terminalSpecificData;
