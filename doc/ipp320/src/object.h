@@ -249,6 +249,7 @@ typedef struct Tag {
 	int id;
 	int length;
 	char * value;
+	struct Tag * next;
 } Tag;
 
 char * TagsToXML(Tag * tags, int size);
@@ -256,6 +257,10 @@ char * TagsToXML(Tag * tags, int size);
 char * TagsToBin(Tag * tags, int size);
 
 Tag * TagsFromBin(char * s, int length);
+
+int TLVToBin(Tag * tags, char * s);
+
+Tag * TLVFromBin(char * s, int length);
 
 typedef struct LengthThenTags {
 	char length;

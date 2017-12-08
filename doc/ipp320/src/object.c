@@ -286,6 +286,50 @@ Tag * TagsFromBin(char * s, int length) {
 	return tags;
 }
 
+int TLVToBin(Tag * tags, char * s) {
+	if(NULL == tags || NULL == s) {
+		return 0;
+	}
+	Tag * t = tags;
+	int length = 0;
+	while (NULL != t) {
+		memcpy(s + length, bigEndianBin(t->id), 2);
+		length += 2;
+		memcpy(s + length, bigEndianBin(t->length), 2);
+		length += 2;
+		if (t->length != 0) {
+			memcpy(s + length, t->value, t->length);
+			length += t->length;
+		}
+		t = t->next;
+	}
+	return length;
+}
+
+Tag * TLVFromBin(char * s, int length) {
+	if(NULL == s || 0 == length) {
+		return NULL;
+	}
+	Tag * head = malloc(sizeof(Tag));
+	Tag * cursor = head;
+	int index = 0;
+	while(index < length) {
+		Tag * tmp = malloc(sizeof(Tag));
+		tmp->next = NULL;
+		cursor->next = tmp;
+
+		tmp->id = bigEndianInt(s+index);
+		index += 2;
+		tmp->length = bigEndianInt(s+index);
+		index += 2;
+		tmp->value = s+index;
+		index += tmp->length;
+
+		cursor = tmp;
+	}
+	return head->next;
+}
+
 char * LengthThenTagsToXML(LengthThenTags * o, int size) {
 	if (NULL == o)
 		return NULL;
