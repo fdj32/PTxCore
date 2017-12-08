@@ -262,6 +262,8 @@ int TLVToBin(Tag * tags, char * s);
 
 Tag * TLVFromBin(char * s, int length);
 
+int buildTerminalTlvData(char * s);
+
 typedef struct LengthThenTags {
 	char length;
 	Tag * tags;

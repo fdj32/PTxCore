@@ -287,7 +287,7 @@ Tag * TagsFromBin(char * s, int length) {
 }
 
 int TLVToBin(Tag * tags, char * s) {
-	if(NULL == tags || NULL == s) {
+	if (NULL == tags || NULL == s) {
 		return 0;
 	}
 	Tag * t = tags;
@@ -307,27 +307,51 @@ int TLVToBin(Tag * tags, char * s) {
 }
 
 Tag * TLVFromBin(char * s, int length) {
-	if(NULL == s || 0 == length) {
+	if (NULL == s || 0 == length) {
 		return NULL;
 	}
 	Tag * head = malloc(sizeof(Tag));
 	Tag * cursor = head;
 	int index = 0;
-	while(index < length) {
+	while (index < length) {
 		Tag * tmp = malloc(sizeof(Tag));
 		tmp->next = NULL;
 		cursor->next = tmp;
 
-		tmp->id = bigEndianInt(s+index);
+		tmp->id = bigEndianInt(s + index);
 		index += 2;
-		tmp->length = bigEndianInt(s+index);
+		tmp->length = bigEndianInt(s + index);
 		index += 2;
-		tmp->value = s+index;
+		tmp->value = s + index;
 		index += tmp->length;
 
 		cursor = tmp;
 	}
 	return head->next;
+}
+
+int buildTerminalTlvData(char * s) {
+	if (NULL == s) {
+		return 0;
+	}
+	s[0] = 0xff;
+	s[1] = 0x09;
+
+	Tag * tags = malloc(sizeof(Tag) * 10);
+	for (int i = 0; i < 9; i++) {
+		tags[i].next = tags + i + 1;
+	}
+	tags[9].next = NULL;
+
+	tags[0].id = 0xdf65;
+	tags[0].length = 4;
+	char * df65 = malloc(4);
+	memset(df65, 0xff, 4);
+	tags[0].value = df65;
+
+	int n = TLVToBin(tags, s + 4);
+	memcpy(s + 2, bigEndianBin(n), 2);
+	return n + 4;
 }
 
 char * LengthThenTagsToXML(LengthThenTags * o, int size) {
