@@ -338,6 +338,8 @@ char * OfflinePINEntryConfigurationToBin(OfflinePINEntryConfiguration * o);
 
 OfflinePINEntryConfiguration * OfflinePINEntryConfigurationFromBin(char * s);
 
+OfflinePINEntryConfiguration * buildOfflinePINEntryConfiguration();
+
 typedef struct TerminalSpecificData {
 	//RFU*1
 	char * terminalCapabilities;

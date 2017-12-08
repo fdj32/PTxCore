@@ -565,7 +565,8 @@ char * OfflinePINEntryConfigurationToXML(OfflinePINEntryConfiguration * o) {
 			"<OfflinePINEntryConfiguration>\n<textFont>%s</textFont>\n",
 			hexByte(o->textFont));
 	i += sprintf(s + i, "<prompt>%s</prompt>\n", hex(o->prompt, 0, 1000));
-	i += sprintf(s + i, "<promptMAC>%s</promptMAC>\n", hex(o->prompt, 0, 36));
+	i += sprintf(s + i, "<promptMAC>%s</promptMAC>\n",
+			hex(o->promptMAC, 0, 36));
 	i += sprintf(s + i, "<promptX>%s</promptX>\n", hex(o->promptX, 0, 4));
 	i += sprintf(s + i, "<promptY>%s</promptY>\n", hex(o->promptY, 0, 4));
 	i += sprintf(s + i, "<editX>%s</editX>\n", hex(o->editX, 0, 4));
@@ -660,6 +661,65 @@ OfflinePINEntryConfiguration * OfflinePINEntryConfigurationFromBin(char * s) {
 	o->keyIndex = s[1131];
 	o->noEnterLessMin = s + 1132;
 	o->addReqSettings = s + 1136;
+	return o;
+}
+
+OfflinePINEntryConfiguration * buildOfflinePINEntryConfiguration() {
+	OfflinePINEntryConfiguration * o = malloc(
+			sizeof(OfflinePINEntryConfiguration));
+	o->textFont = 2;
+	char * prompt = malloc(1000);
+	memset(prompt, 0, 1000);
+	memcpy(prompt, "ENTER PIN & OK  ", 16);
+	memcpy(prompt + 250, "ENTRER NIP & OK ", 16);
+
+	char * promptY = malloc(4);
+	memset(promptY, 0, 4);
+	promptY[0] = 1;
+	o->promptY = promptY;
+
+	char * editY = malloc(4);
+	memset(editY, 0, 4);
+	editY[0] = 2;
+	o->editY = editY;
+
+	o->formatType = 2;
+	o->minimumKeys = 4;
+	o->maximumKeys = 0x0c;
+	o->echoCharacter = '*'; // 0x2a
+	o->cursorType = 2;
+	// Direction of display of PIN entry
+	// 0 = DIR_LEFT_TO_RIGHT = from left to right
+	// 1 = DIR_RIGHT_TO_LEFT = from right to left
+	o->direction = 1;
+
+	char * beepInvalidKey = malloc(4);
+	memset(beepInvalidKey, 0, 4);
+	beepInvalidKey[0] = 1;
+	o->beepInvalidKey = beepInvalidKey;
+
+	char * timeOutFirstKey = malloc(4);
+	memset(timeOutFirstKey, 0, 4);
+	timeOutFirstKey[0] = 0x58;
+	timeOutFirstKey[1] = 0x1b;
+	// 0x1770 = 6000, * 10ms = 60s
+	// 0x1b58 = 7000, * 10ms = 70s
+	o->timeOutFirstKey = timeOutFirstKey;
+
+	char * timeOutInterKey = malloc(4);
+	memset(timeOutInterKey, 0, 4);
+	timeOutInterKey[0] = 0xdc;
+	timeOutInterKey[0] = 0x05;
+	// 0x05dc = 1500, * 10ms = 15s
+	o->timeOutInterKey = timeOutInterKey;
+
+	o->keyType = 1;
+
+	char * addReqSettings = malloc(2);
+	memset(addReqSettings, 0, 4);
+	addReqSettings[1] = 0x10;
+	o->addReqSettings = addReqSettings;
+
 	return o;
 }
 
@@ -866,7 +926,7 @@ TerminalSpecificData * buildTerminalSpecificData(char * country,
 		o->terminalCountryCode = unHex(TERMINAL_CURRENCY_CODE_US, 0, 4);
 		o->transactionCurrencyCode = unHex(TRANSACTION_CURRENCY_CODE_US, 0, 4);
 		o->transactionReferenceCurrencyCode = unHex(
-				TRANSACTION_REFERENCE_CURRENCY_CODE_US, 0, 4);
+		TRANSACTION_REFERENCE_CURRENCY_CODE_US, 0, 4);
 	} else if (strcmp(country, "ca") == 0 || strcmp(country, "CA") == 0
 			|| strcmp(country, "can") == 0 || strcmp(country, "CAN") == 0
 			|| strcmp(country, "cad") == 0 || strcmp(country, "CAD") == 0
@@ -875,16 +935,16 @@ TerminalSpecificData * buildTerminalSpecificData(char * country,
 		o->terminalCountryCode = unHex(TERMINAL_CURRENCY_CODE_CA, 0, 4);
 		o->transactionCurrencyCode = unHex(TRANSACTION_CURRENCY_CODE_CA, 0, 4);
 		o->transactionReferenceCurrencyCode = unHex(
-				TRANSACTION_REFERENCE_CURRENCY_CODE_CA, 0, 4);
+		TRANSACTION_REFERENCE_CURRENCY_CODE_CA, 0, 4);
 	}
 	o->additionalTerminalCapabilities = unHex(ADDITIONAL_TERMINAL_CAPABILITIES,
 			0, 10);
 	o->terminalType = unHexByte(TERMINAL_TYPE);
 	o->transactionCurrencyExponent = unHexByte(TRANSACTION_CURRENCY_EXPONENT);
 	o->transactionReferenceCurrencyExponent = unHexByte(
-			TRANSACTION_REFERENCE_CURRENCY_EXPONENT);
+	TRANSACTION_REFERENCE_CURRENCY_EXPONENT);
 	o->transactionReferenceCurrencyConversion = unHex(
-			TRANSACTION_REFERENCE_CURRENCY_CONVERSION, 0, 8);
+	TRANSACTION_REFERENCE_CURRENCY_CONVERSION, 0, 8);
 	o->acquirerIdentifier = unHex(ACQUIRER_IDENTIFIER, 0, 12);
 	o->merchantCategoryCode = unHex(MERCHANT_CATEGORY_CODE, 0, 4);
 	o->merchantIdentifier = merchantIdentifier;
