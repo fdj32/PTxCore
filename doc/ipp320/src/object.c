@@ -854,19 +854,50 @@ TerminalSpecificData * TerminalSpecificDataFromBin(char * s) {
 	return o;
 }
 
-TerminalSpecificData * buildTerminalSpecificData(char * country) {
+TerminalSpecificData * buildTerminalSpecificData(char * country,
+		char * merchantIdentifier, char * terminalIdentification,
+		char * ifdSerialNumber) {
 	TerminalSpecificData * o = malloc(sizeof(TerminalSpecificData));
 	if (strcmp(country, "us") == 0 || strcmp(country, "US") == 0
 			|| strcmp(country, "usa") == 0 || strcmp(country, "USA") == 0
 			|| strcmp(country, "usd") == 0 || strcmp(country, "USD") == 0
 			|| strcmp(country, "840") == 0) {
 		o->terminalCapabilities = unHex(TERMINAL_CAPABILITIES_US, 0, 6);
+		o->terminalCountryCode = unHex(TERMINAL_CURRENCY_CODE_US, 0, 4);
+		o->transactionCurrencyCode = unHex(TRANSACTION_CURRENCY_CODE_US, 0, 4);
+		o->transactionReferenceCurrencyCode = unHex(
+				TRANSACTION_REFERENCE_CURRENCY_CODE_US, 0, 4);
 	} else if (strcmp(country, "ca") == 0 || strcmp(country, "CA") == 0
 			|| strcmp(country, "can") == 0 || strcmp(country, "CAN") == 0
 			|| strcmp(country, "cad") == 0 || strcmp(country, "CAD") == 0
 			|| strcmp(country, "124") == 0) {
 		o->terminalCapabilities = unHex(TERMINAL_CAPABILITIES_CA, 0, 6);
+		o->terminalCountryCode = unHex(TERMINAL_CURRENCY_CODE_CA, 0, 4);
+		o->transactionCurrencyCode = unHex(TRANSACTION_CURRENCY_CODE_CA, 0, 4);
+		o->transactionReferenceCurrencyCode = unHex(
+				TRANSACTION_REFERENCE_CURRENCY_CODE_CA, 0, 4);
 	}
+	o->additionalTerminalCapabilities = unHex(ADDITIONAL_TERMINAL_CAPABILITIES,
+			0, 10);
+	o->terminalType = unHexByte(TERMINAL_TYPE);
+	o->transactionCurrencyExponent = unHexByte(TRANSACTION_CURRENCY_EXPONENT);
+	o->transactionReferenceCurrencyExponent = unHexByte(
+			TRANSACTION_REFERENCE_CURRENCY_EXPONENT);
+	o->transactionReferenceCurrencyConversion = unHex(
+			TRANSACTION_REFERENCE_CURRENCY_CONVERSION, 0, 8);
+	o->acquirerIdentifier = unHex(ACQUIRER_IDENTIFIER, 0, 12);
+	o->merchantCategoryCode = unHex(MERCHANT_CATEGORY_CODE, 0, 4);
+	o->merchantIdentifier = merchantIdentifier;
+	o->terminalIdentification = terminalIdentification;
+	o->terminalRiskManagementData = unHex(TERMINAL_RISK_MANAGEMENT_DATA, 0, 16);
+	if (NULL == ifdSerialNumber || strlen(ifdSerialNumber) == 0) {
+		o->ifdSerialNumber = unHex(IFD_SERIAL_NUMBER_DEFAULT, 0, 16);
+	} else {
+		o->ifdSerialNumber = ifdSerialNumber;
+	}
+	o->authorizationResponseCodeList = AUTHORIZATION_RESPONSE_CODE_LIST;
+	o->miscellaneousOptions = MISCELLANEOUS_OPTIONS;
+	o->miscellaneousOptions1 = MISCELLANEOUS_OPTIONS_1;
 
 	return o;
 }

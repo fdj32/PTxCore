@@ -18,6 +18,8 @@ char * hex(char * s, int offset, int length);
 
 char * hexByte(char b);
 
+char unHexByte(char * s);
+
 char hexChar(char c);
 
 char unHexChar(char c);

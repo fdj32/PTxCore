@@ -32,9 +32,11 @@ extern "C" {
 #define TERMINAL_COUNTRY_CODE_US	"0840"
 #define TERMINAL_COUNTRY_CODE_CA	"0124"
 #define TERMINAL_TYPE "22"
+#define TRANSACTION_CURRENCY_CODE_US "0840"
+#define TRANSACTION_CURRENCY_CODE_CA "0124"
+#define TRANSACTION_CURRENCY_EXPONENT "02"
 #define TERMINAL_CURRENCY_CODE_US	"0840"
 #define TERMINAL_CURRENCY_CODE_CA	"0124"
-#define TRANSACTION_CURRENCY_EXPONENT "02"
 #define TRANSACTION_REFERENCE_CURRENCY_CODE_US "0840"
 #define TRANSACTION_REFERENCE_CURRENCY_CODE_CA "0124"
 #define TRANSACTION_REFERENCE_CURRENCY_EXPONENT "02"
@@ -51,7 +53,7 @@ extern "C" {
 #define EMV_PA_GET_OFFLINE_PIN 0x10
 #define EMV_USE_MULTIMESSAGING 0x02
 #define ADD_INP_ONELINE_EDIT 0x1000
-#define MISCELLANEOUS_OPTIONS EMV_ALWAYS_CALL_APP_SELECTION|EMV_PASS_AID_ON_APPLICATION_SELECTION
+#define MISCELLANEOUS_OPTIONS (char)(EMV_ALWAYS_CALL_APP_SELECTION|EMV_PASS_AID_ON_APPLICATION_SELECTION)
 #define MISCELLANEOUS_OPTIONS_1 EMV_USE_MULTIMESSAGING
 #define LENGTH_GO_ONLINE_TAGS "1e00" // 0x001e = 30
 #define GO_ONLINE_TAGS "95009b00029f089f099f109f1a9f269f279f349f369f379f399f419f1dff"
@@ -380,7 +382,9 @@ char * TerminalSpecificDataToBin(TerminalSpecificData * o);
 
 TerminalSpecificData * TerminalSpecificDataFromBin(char * s);
 
-TerminalSpecificData * buildTerminalSpecificData(char * country);
+TerminalSpecificData * buildTerminalSpecificData(char * country,
+		char * merchantIdentifier, char * terminalIdentification,
+		char * ifdSerialNumber);
 
 typedef struct VegaInitData {
 	char * terminalDataTotalLength;

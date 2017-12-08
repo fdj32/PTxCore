@@ -35,6 +35,10 @@ char * hexByte(char b) {
 	return s;
 }
 
+char unHexByte(char * s) {
+	return (char)(unHexChar(s[0] << 4) & unHexChar(s[1]));
+}
+
 char hexChar(char c) {
 	return c > 9 ? c - 10 + 'a' : c + '0';
 }
