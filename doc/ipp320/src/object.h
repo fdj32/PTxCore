@@ -402,7 +402,7 @@ TerminalSpecificData * TerminalSpecificDataFromBin(char * s);
 
 TerminalSpecificData * buildTerminalSpecificData(char * country,
 		char * merchantIdentifier, char * terminalIdentification,
-		char * ifdSerialNumber);
+		char * ifdSerialNumber, char * ridApps);
 
 typedef struct VegaInitData {
 	char * terminalDataTotalLength;

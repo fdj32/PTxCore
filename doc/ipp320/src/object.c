@@ -330,8 +330,7 @@ Tag * TLVFromBin(char * s, int length) {
 	return head->next;
 }
 
-int buildTerminalTlvData(char * s, char * terminalCapabilities,
-		char * supportedRids) {
+int buildTerminalTlvData(char * s, char * terminalCapabilities, char * ridApps) {
 	if (NULL == s) {
 		return 0;
 	}
@@ -372,20 +371,20 @@ int buildTerminalTlvData(char * s, char * terminalCapabilities,
 	tags[5].length = 2;
 	char * ff0a = malloc(2);
 	memset(ff0a, 0, 2);
-	if (NULL != strstr(supportedRids, RID_VISA)) {
+	if (NULL != strstr(ridApps, RID_VISA)) {
 		ff0a[0] |= 0x05;
 	}
-	if (NULL != strstr(supportedRids, RID_MASTERCARD)) {
+	if (NULL != strstr(ridApps, RID_MASTERCARD)) {
 		ff0a[0] |= 0x18;
 	}
-	if (NULL != strstr(supportedRids, RID_AMEX)) {
+	if (NULL != strstr(ridApps, RID_AMEX)) {
 		ff0a[1] |= 0x04;
 	}
-	if (NULL != strstr(supportedRids, RID_INTERAC)) {
+	if (NULL != strstr(ridApps, RID_INTERAC)) {
 		ff0a[1] |= 0x80;
 	}
-	if (NULL != strstr(supportedRids, RID_DISCOVER)
-			|| NULL != strstr(supportedRids, RID_DINERSCLUB)) {
+	if (NULL != strstr(ridApps, RID_DISCOVER)
+			|| NULL != strstr(ridApps, RID_DINERSCLUB)) {
 		ff0a[1] |= 0x08;
 	}
 	tags[5].value = ff0a;
@@ -1048,7 +1047,7 @@ TerminalSpecificData * TerminalSpecificDataFromBin(char * s) {
 
 TerminalSpecificData * buildTerminalSpecificData(char * country,
 		char * merchantIdentifier, char * terminalIdentification,
-		char * ifdSerialNumber) {
+		char * ifdSerialNumber, char * ridApps) {
 	TerminalSpecificData * o = malloc(sizeof(TerminalSpecificData));
 	if (strcmp(country, "us") == 0 || strcmp(country, "US") == 0
 			|| strcmp(country, "usa") == 0 || strcmp(country, "USA") == 0
@@ -1090,7 +1089,19 @@ TerminalSpecificData * buildTerminalSpecificData(char * country,
 	o->authorizationResponseCodeList = AUTHORIZATION_RESPONSE_CODE_LIST;
 	o->miscellaneousOptions = MISCELLANEOUS_OPTIONS;
 	o->miscellaneousOptions1 = MISCELLANEOUS_OPTIONS_1;
-
+	char * tlvData = malloc(256);
+	memset(tlvData, 0, 256);
+	o->lengthTLVData = littleEndianBin(
+			buildTerminalTlvData(tlvData, o->terminalCapabilities, ridApps));
+	o->tlvData = tlvData;
+	o->lengthOfflinePINEntryConfiguration = littleEndianBin(1138);
+	o->offlinePINEntryConfiguration = buildOfflinePINEntryConfiguration();
+	char languages[8] = { 'e', 'n', 'f', 'r', 0, 0, 0, 0 };
+	o->terminalLanguages = languages;
+	o->lengthDiagnosticsTags = littleEndianBin(0);
+	o->lengthAppSelectionTags = littleEndianBin(0);
+	o->lengthRIDApps = littleEndianBin(strlen(ridApps));
+	o->ridApps = ridApps;
 	return o;
 }
 
