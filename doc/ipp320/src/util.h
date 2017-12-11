@@ -16,6 +16,8 @@ void sleepM(int t);
 
 char * hex(char * s, int offset, int length);
 
+char * hexStr(char * s);
+
 char * hexByte(char b);
 
 char unHexByte(char * s);
@@ -25,6 +27,8 @@ char hexChar(char c);
 char unHexChar(char c);
 
 char * unHex(char * s, int offset, int length);
+
+char * unHexStr(char * s);
 
 char lrc(char * s , int offset, int length);
 

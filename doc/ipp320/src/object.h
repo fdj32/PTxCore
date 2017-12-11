@@ -67,6 +67,13 @@ extern "C" {
 #define LENGTH_IGNORE_TAGS "0200" // byte length
 #define IGNORE_TAGS "169f"
 
+#define RID_VISA 		"A000000003"
+#define RID_MASTERCARD 	"A000000004"
+#define RID_AMEX			"A000000025"
+#define RID_INTERAC		"A000000277"
+#define RID_DISCOVER 	"A000000324"
+#define RID_DINERSCLUB	"A000000152"
+
 typedef enum EmvReasonCode {
 	EMV_USER_CANCELLED,
 	EMV_OK,
@@ -262,7 +269,7 @@ int TLVToBin(Tag * tags, char * s);
 
 Tag * TLVFromBin(char * s, int length);
 
-int buildTerminalTlvData(char * s);
+int buildTerminalTlvData(char * s, char * terminalCapabilities, char * supportedRids);
 
 typedef struct LengthThenTags {
 	char length;

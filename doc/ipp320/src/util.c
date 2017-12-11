@@ -27,6 +27,10 @@ char * hex(char * s, int offset, int length) {
 	return hex;
 }
 
+char * hexStr(char * s) {
+	return hex(s, 0, strlen(s));
+}
+
 char * hexByte(char b) {
 	char * s = malloc(3);
 	s[2] = '\0';
@@ -36,7 +40,7 @@ char * hexByte(char b) {
 }
 
 char unHexByte(char * s) {
-	return (char)(unHexChar(s[0] << 4) & unHexChar(s[1]));
+	return (char) (unHexChar(s[0] << 4) & unHexChar(s[1]));
 }
 
 char hexChar(char c) {
@@ -57,6 +61,10 @@ char * unHex(char * s, int offset, int length) {
 		t[i] = (char) ((unHexChar(s[i]) << 4) + unHexChar(s[i + 1]));
 	}
 	return t;
+}
+
+char * unHexStr(char * s) {
+	return unHex(s, 0, strlen(s));
 }
 
 char lrc(char * s, int offset, int length) {

@@ -330,7 +330,8 @@ Tag * TLVFromBin(char * s, int length) {
 	return head->next;
 }
 
-int buildTerminalTlvData(char * s) {
+int buildTerminalTlvData(char * s, char * terminalCapabilities,
+		char * supportedRids) {
 	if (NULL == s) {
 		return 0;
 	}
@@ -348,6 +349,65 @@ int buildTerminalTlvData(char * s) {
 	char * df65 = malloc(4);
 	memset(df65, 0xff, 4);
 	tags[0].value = df65;
+
+	tags[1].id = 0xdf66;
+	tags[1].length = 4;
+	char * df66 = malloc(4);
+	memset(df66, 0xff, 4);
+	tags[1].value = df66;
+
+	tags[2].id = 0x9f33;
+	tags[2].length = 3;
+	tags[2].value = unHexStr(terminalCapabilities);
+
+	tags[3].id = 0x9f35;
+	tags[3].length = 1;
+	tags[3].value = unHexStr(TERMINAL_TYPE);
+
+	tags[4].id = 0x9f40;
+	tags[4].length = 5;
+	tags[4].value = unHexStr(ADDITIONAL_TERMINAL_CAPABILITIES);
+
+	tags[5].id = 0xff0a;
+	tags[5].length = 2;
+	char * ff0a = malloc(2);
+	memset(ff0a, 0, 2);
+	if (NULL != strstr(supportedRids, RID_VISA)) {
+		ff0a[0] |= 0x05;
+	}
+	if (NULL != strstr(supportedRids, RID_MASTERCARD)) {
+		ff0a[0] |= 0x18;
+	}
+	if (NULL != strstr(supportedRids, RID_AMEX)) {
+		ff0a[1] |= 0x04;
+	}
+	if (NULL != strstr(supportedRids, RID_INTERAC)) {
+		ff0a[1] |= 0x80;
+	}
+	if (NULL != strstr(supportedRids, RID_DISCOVER)
+			|| NULL != strstr(supportedRids, RID_DINERSCLUB)) {
+		ff0a[1] |= 0x08;
+	}
+	tags[5].value = ff0a;
+
+	tags[6].id = 0xff0e;
+	tags[6].length = 1;
+	char * ff0e = malloc(1);
+	ff0e[0] = 0x02; // EMV_INGENICO_KERNEL
+	tags[6].value = ff0e;
+
+	tags[7].id = 0xff10;
+	tags[7].length = 1;
+	char * ff10 = malloc(1);
+	ff10[0] = 0x00; // External Reader Timeout
+	tags[7].value = ff10;
+
+	tags[8].id = 0xff17;
+	tags[8].length = 2;
+	char * ff17 = malloc(2);
+	ff17[0] = 0x00;
+	ff17[0] = 0x00; // Additional Configuration
+	tags[8].value = ff17;
 
 	int n = TLVToBin(tags, s + 4);
 	memcpy(s + 2, bigEndianBin(n), 2);
