@@ -74,6 +74,8 @@ extern "C" {
 #define RID_DISCOVER 	"A000000324"
 #define RID_DINERSCLUB	"A000000152"
 
+#define VISA_TTQ "b2204000" // Terminal Transaction Qualifiers
+
 typedef enum EmvReasonCode {
 	EMV_USER_CANCELLED,
 	EMV_OK,

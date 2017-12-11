@@ -409,6 +409,10 @@ int buildTerminalTlvData(char * s, char * terminalCapabilities,
 	ff17[0] = 0x00; // Additional Configuration
 	tags[8].value = ff17;
 
+	tags[9].id = 0x9f66;
+	tags[9].length = 4;
+	tags[9].value = unHexStr(VISA_TTQ);
+
 	int n = TLVToBin(tags, s + 4);
 	memcpy(s + 2, bigEndianBin(n), 2);
 	return n + 4;
