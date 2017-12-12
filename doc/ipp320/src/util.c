@@ -14,8 +14,8 @@ void sleepM(int t) {
 #endif
 }
 
-char * hex(char * s, int offset, int length) {
-	if (NULL == s || offset < 0 || length <= 0)
+char * hex(char * s, int length) {
+	if (NULL == s || length <= 0)
 		return "";
 	int hexLen = length * 2 + 1;
 	char * hex = malloc(hexLen);
@@ -28,7 +28,7 @@ char * hex(char * s, int offset, int length) {
 }
 
 char * hexStr(char * s) {
-	return hex(s, 0, strlen(s));
+	return hex(s, strlen(s));
 }
 
 char * hexByte(char b) {
@@ -51,7 +51,7 @@ char unHexChar(char c) {
 	return c >= '0' && c <= '9' ? (c - '0') : (c - 'a');
 }
 
-char * unHex(char * s, int offset, int length) {
+char * unHex(char * s, int length) {
 	if (NULL == s || 0 == length)
 		return NULL;
 	int size = length >> 1;
@@ -64,7 +64,7 @@ char * unHex(char * s, int offset, int length) {
 }
 
 char * unHexStr(char * s) {
-	return unHex(s, 0, strlen(s));
+	return unHex(s, strlen(s));
 }
 
 char lrc(char * s, int offset, int length) {

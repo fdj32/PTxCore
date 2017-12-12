@@ -14,7 +14,7 @@ extern "C" {
 
 void sleepM(int t);
 
-char * hex(char * s, int offset, int length);
+char * hex(char * s, int length);
 
 char * hexStr(char * s);
 
@@ -26,7 +26,7 @@ char hexChar(char c);
 
 char unHexChar(char c);
 
-char * unHex(char * s, int offset, int length);
+char * unHex(char * s, int length);
 
 char * unHexStr(char * s);
 
