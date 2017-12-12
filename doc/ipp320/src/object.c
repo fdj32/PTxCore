@@ -801,11 +801,21 @@ OfflinePINEntryConfiguration * buildOfflinePINEntryConfiguration() {
 	memset(prompt, 0, 1000);
 	memcpy(prompt, "ENTER PIN & OK  ", 16);
 	memcpy(prompt + 250, "ENTRER NIP & OK ", 16);
+	o->prompt = prompt;
+
+	o->promptMAC = malloc(36);
+	memset(o->promptMAC, 0, 36);
+
+	o->promptX = malloc(4);
+	memset(o->promptX, 0, 4);
 
 	char * promptY = malloc(4);
 	memset(promptY, 0, 4);
 	promptY[0] = 1;
 	o->promptY = promptY;
+
+	o->editX = malloc(4);
+	memset(o->editX, 0, 4);
 
 	char * editY = malloc(4);
 	memset(editY, 0, 4);
@@ -813,6 +823,13 @@ OfflinePINEntryConfiguration * buildOfflinePINEntryConfiguration() {
 	o->editY = editY;
 
 	o->formatType = 2;
+
+	o->formatSpMAC = malloc(9);
+	memset(o->formatSpMAC, 0, 9);
+
+	o->formatSpecifier = malloc(50);
+	memset(o->formatSpecifier, 0, 50);
+
 	o->minimumKeys = 4;
 	o->maximumKeys = 0x0c;
 	o->echoCharacter = '*'; // 0x2a
@@ -843,6 +860,10 @@ OfflinePINEntryConfiguration * buildOfflinePINEntryConfiguration() {
 	o->timeOutInterKey = timeOutInterKey;
 
 	o->keyType = 1;
+	o->keyIndex = 0;
+
+	o->noEnterLessMin = malloc(4);
+	memset(o->noEnterLessMin, 0, 4);
 
 	char * addReqSettings = malloc(2);
 	memset(addReqSettings, 0, 4);
@@ -1093,7 +1114,12 @@ TerminalSpecificData * buildTerminalSpecificData(char * country,
 	o->tlvData = tlvData;
 	o->lengthOfflinePINEntryConfiguration = littleEndianBin(1138);
 	o->offlinePINEntryConfiguration = buildOfflinePINEntryConfiguration();
-	char languages[8] = { 'e', 'n', 'f', 'r', 0, 0, 0, 0 };
+	char * languages = malloc(8);
+	memset(languages, 0, 8);
+	languages[0] = 'e';
+	languages[1] = 'n';
+	languages[2] = 'f';
+	languages[3] = 'r';
 	o->terminalLanguages = languages;
 	o->lengthDiagnosticsTags = littleEndianBin(0);
 	o->lengthAppSelectionTags = littleEndianBin(0);

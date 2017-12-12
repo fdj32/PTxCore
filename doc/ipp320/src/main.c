@@ -135,3 +135,9 @@ int main(void) {
 
 	return 0;
 }
+
+void test_buildTerminalSpecificData() {
+	TerminalSpecificData * o = buildTerminalSpecificData("ca", "700000200727   ", "00000036", "        ", "CA0C00_ApVis A000000025 A000000152 A000000277 A000000065 A000000004 A000000003\n");
+	puts(TerminalSpecificDataToXML(o));
+}
+
