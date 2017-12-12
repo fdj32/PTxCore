@@ -40,7 +40,7 @@ char * hexByte(char b) {
 }
 
 char unHexByte(char * s) {
-	return (char) (unHexChar(s[0] << 4) & unHexChar(s[1]));
+	return (char) (unHexChar(s[0]) << 4 | unHexChar(s[1]));
 }
 
 char hexChar(char c) {
