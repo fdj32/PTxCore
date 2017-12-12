@@ -48,7 +48,7 @@ char hexChar(char c) {
 }
 
 char unHexChar(char c) {
-	return c >= '0' && c <= '9' ? (c - '0') : (c - 'a');
+	return c >= '0' && c <= '9' ? (c - '0') : (c - 'a' + 10);
 }
 
 char * unHex(char * s, int length) {
@@ -58,7 +58,7 @@ char * unHex(char * s, int length) {
 	char * t = malloc(size);
 	memset(t, 0, size);
 	for (int i = 0; i < size; i++) {
-		t[i] = (char) ((unHexChar(s[i]) << 4) + unHexChar(s[i + 1]));
+		t[i] = (char) ((unHexChar(s[i * 2]) << 4) + unHexChar(s[i * 2 + 1]));
 	}
 	return t;
 }
