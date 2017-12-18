@@ -97,6 +97,10 @@ BINRange * parseBINRanges(xmlNodePtr BINRanges) {
 					if(strcmp(node->name, "Card") == 0) {
 						tmp->card = node->children->content;
 						printf("Card:%s\n", tmp->card);
+					} else if(strcmp(node->name, "Lengths") == 0) {
+						tmp->lengths = string2IntList(node->children->content, ',');
+					} else if(strcmp(node->name, "Prefixes") == 0) {
+						tmp->prefixes = string2StringList(node->children->content, ',');
 					}
 				}
 				node = node->next;
