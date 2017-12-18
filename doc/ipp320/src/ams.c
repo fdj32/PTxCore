@@ -111,3 +111,29 @@ BINRange * parseBINRanges(xmlNodePtr BINRanges) {
 	}
 	return head;
 }
+
+Param * parseParam(char *content, int length) {
+	Param * p = NULL;
+	xmlDocPtr doc;
+	doc = xmlReadMemory(content, length, "noname.xml", NULL, 0);
+	if (doc == NULL) {
+		fprintf(stderr, "Failed to parse document\n");
+		return NULL;
+	} else {
+		/*Get the root element node */
+		xmlNodePtr root_element = xmlDocGetRootElement(doc);
+		p = malloc(sizeof(Param));
+		xmlNodePtr child = root_element->children;
+		while (NULL != child) {
+			if (child->type == XML_ELEMENT_NODE) {
+				if (strcmp(child->name, "BINRanges") == 0) {
+					puts("found BINRanges\n");
+					p->binRangeHead = parseBINRanges(child);
+				}
+			}
+			child = child->next;
+		}
+	}
+	xmlFreeDoc(doc);
+	return p;
+}

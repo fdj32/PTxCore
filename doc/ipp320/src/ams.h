@@ -62,6 +62,8 @@ typedef struct Param {
 	CAKey * caKeyHead;
 } Param;
 
+Param * parseParam(char *content, int length);
+
 #ifdef __cplusplus
 }
 #endif
