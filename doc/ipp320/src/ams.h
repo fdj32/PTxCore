@@ -58,6 +58,8 @@ typedef struct CAKey {
 	struct CAKey * next;
 } CAKey;
 
+CAKey * parseCAKey(xmlNodePtr PTxCoreCAKeys);
+
 typedef struct Param {
 	BINRange * binRangeHead;
 	RIDSetting * ridHead;

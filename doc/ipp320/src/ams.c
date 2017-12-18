@@ -173,6 +173,43 @@ RIDSetting * parseRIDSetting(xmlNodePtr PTxCoreSettings) {
 	return head;
 }
 
+CAKey * parseCAKey(xmlNodePtr PTxCoreCAKeys) {
+	xmlNodePtr caKey = PTxCoreCAKeys->children;
+	CAKey * head = malloc(sizeof(CAKey));
+	head->next = NULL;
+	CAKey * ptr = head;
+	while (NULL != caKey) {
+		if (caKey->type == XML_ELEMENT_NODE
+				&& strcmp(caKey->name, "CAKey") == 0) {
+			puts("CAKey\n");
+			CAKey * tmp = malloc(sizeof(CAKey));
+			xmlNodePtr node = caKey->children;
+			while (NULL != node) {
+				if (node->type == XML_ELEMENT_NODE) {
+					if (strcmp(node->name, "RID") == 0) {
+						tmp->rid = node->children->content;
+					} else if (strcmp(node->name, "Index") == 0) {
+						tmp->index = unHexByte(node->children->content);
+					} else if (strcmp(node->name, "Modulus") == 0) {
+						tmp->modulus = node->children->content;
+					} else if (strcmp(node->name, "Exponent") == 0) {
+						tmp->exponent = unHexByte(node->children->content);
+					} else if (strcmp(node->name, "Hash") == 0) {
+						tmp->hash = node->children->content;
+					}
+				}
+				node = node->next;
+			}
+
+			tmp->next = NULL;
+			ptr->next = tmp;
+			ptr = tmp;
+		}
+		caKey = caKey->next;
+	}
+	return head;
+}
+
 Param * parseParam(char *content, int length) {
 	Param * p = NULL;
 	xmlDocPtr doc;
@@ -193,6 +230,9 @@ Param * parseParam(char *content, int length) {
 				} else if (strcmp(child->name, "PTxCoreSettings") == 0) {
 					puts("found PTxCoreSettings\n");
 					p->ridHead = parseRIDSetting(child);
+				} else if (strcmp(child->name, "PTxCoreCAKeys") == 0) {
+					puts("found PTxCoreCAKeys\n");
+					p->caKeyHead = parseCAKey(child);
 				}
 			}
 			child = child->next;
