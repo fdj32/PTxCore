@@ -33,6 +33,8 @@ typedef struct BINRange {
 	struct BINRange * next;
 } BINRange;
 
+BINRange * parseBINRanges(xmlNodePtr BINRanges);
+
 typedef struct RIDSetting {
 	char * tacDenial;
 	char * tacOnline;

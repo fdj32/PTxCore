@@ -81,40 +81,6 @@ static void example3Func(const char *content, int length) {
 	xmlFreeDoc(doc);
 }
 
-BINRange * parseBINRanges(xmlNodePtr BINRanges) {
-	xmlNodePtr binRange = BINRanges->children;
-	BINRange * head = malloc(sizeof(BINRange));
-	head->next = NULL;
-	BINRange * ptr = head;
-	while(NULL != binRange) {
-		if(binRange->type == XML_ELEMENT_NODE && strcmp(binRange->name, "BINRange") == 0) {
-			puts("BINRange\n");
-			BINRange * tmp = malloc(sizeof(BINRange));
-
-			xmlNodePtr node = binRange->children;
-			while(NULL != node) {
-				if(node->type == XML_ELEMENT_NODE) {
-					if(strcmp(node->name, "Card") == 0) {
-						tmp->card = node->children->content;
-						printf("Card:%s\n", tmp->card);
-					} else if(strcmp(node->name, "Lengths") == 0) {
-						tmp->lengths = string2IntList(node->children->content, ',');
-					} else if(strcmp(node->name, "Prefixes") == 0) {
-						tmp->prefixes = string2StringList(node->children->content, ',');
-					}
-				}
-				node = node->next;
-			}
-
-			tmp->next = NULL;
-			ptr->next = tmp;
-			ptr = tmp;
-		}
-		binRange = binRange->next;
-	}
-	return head;
-}
-
 Param * parseParam(char *content, int length) {
 	Param * p = NULL;
 	xmlDocPtr doc;
