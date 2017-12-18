@@ -160,8 +160,15 @@ void parseParamDown() {
 	example3Func(fileData, fileSize);
 }
 
-
+void parseStringList() {
+	IntList * il = string2IntList("1,,-1,,,-20,30,102", ',');
+	while(NULL != il->next) {
+		printf("il->next->i=%d\n", il->next->i);
+		il = il->next;
+	}
+}
 
 int main(void) {
-	parseParamDown();
+	//parseParamDown();
+	parseStringList();
 }
