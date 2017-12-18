@@ -81,6 +81,62 @@ static void example3Func(const char *content, int length) {
 	xmlFreeDoc(doc);
 }
 
+BINRange * parseBINRanges(xmlNodePtr BINRanges) {
+	xmlNodePtr binRange = BINRanges->children;
+	BINRange * head = malloc(sizeof(BINRange));
+	head->next = NULL;
+	BINRange * ptr = head;
+	while(NULL != binRange) {
+		if(binRange->type == XML_ELEMENT_NODE && strcmp(binRange->name, "BINRange") == 0) {
+			puts("BINRange\n");
+			BINRange * tmp = malloc(sizeof(BINRange));
+
+			xmlNodePtr node = binRange->children;
+			while(NULL != node) {
+				if(node->type == XML_ELEMENT_NODE) {
+					if(strcmp(node->name, "Card") == 0) {
+						tmp->card = node->children->content;
+						printf("Card:%s\n", tmp->card);
+					}
+				}
+				node = node->next;
+			}
+
+			tmp->next = NULL;
+			ptr->next = tmp;
+			ptr = tmp;
+		}
+		binRange = binRange->next;
+	}
+	return head;
+}
+
+Param * parseParam(char *content, int length) {
+	Param * p = NULL;
+	xmlDocPtr doc;
+	doc = xmlReadMemory(content, length, "noname.xml", NULL, 0);
+	if (doc == NULL) {
+		fprintf(stderr, "Failed to parse document\n");
+		return NULL;
+	} else {
+		/*Get the root element node */
+		xmlNodePtr root_element = xmlDocGetRootElement(doc);
+		p = malloc(sizeof(Param));
+		xmlNodePtr child = root_element->children;
+		while(NULL != child) {
+			if(child->type == XML_ELEMENT_NODE) {
+				if(strcmp(child->name, "BINRanges") == 0) {
+					puts("found BINRanges\n");
+					p->binRangeHead = parseBINRanges(child);
+				}
+			}
+			child = child->next;
+		}
+	}
+	xmlFreeDoc(doc);
+	return p;
+}
+
 int main0(void) {
 	CURL *curl_handle;
 	CURLcode res;
@@ -157,7 +213,7 @@ void parseParamDown() {
 
 	puts(fileData);
 
-	example3Func(fileData, fileSize);
+	parseParam(fileData, fileSize);
 }
 
 void parseStringList() {
@@ -169,6 +225,5 @@ void parseStringList() {
 }
 
 int main(void) {
-	//parseParamDown();
-	parseStringList();
+	parseParamDown();
 }

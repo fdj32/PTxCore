@@ -12,6 +12,9 @@ StringList * string2StringList(char * s, char c) {
 		return NULL;
 	}
 	int length = strlen(s);
+	if (0 == length) {
+		return NULL;
+	}
 	int start = 0, end = 0;
 	StringList * sl = malloc(sizeof(StringList));
 	sl->next = NULL;
@@ -43,6 +46,9 @@ IntList * string2IntList(char * s, char c) {
 		return NULL;
 	}
 	int length = strlen(s);
+	if (0 == length) {
+		return NULL;
+	}
 	int start = 0, end = 0;
 	IntList * il = malloc(sizeof(IntList));
 	il->next = NULL;
