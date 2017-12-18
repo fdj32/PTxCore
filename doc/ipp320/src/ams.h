@@ -17,10 +17,14 @@ typedef struct StringList {
 	struct StringList * next;
 } StringList;
 
+StringList * string2StringList(char * s, char c);
+
 typedef struct IntList {
 	int i;
 	struct IntList * next;
 } IntList;
+
+IntList * string2IntList(char * s, char c);
 
 typedef struct BINRange {
 	char * card;
