@@ -79,7 +79,7 @@ static void example3Func(const char *content, int length) {
 	xmlFreeDoc(doc);
 }
 
-int main(void) {
+int main0(void) {
 	CURL *curl_handle;
 	CURLcode res;
 
@@ -145,3 +145,119 @@ void test_buildTerminalSpecificData() {
 	puts(TerminalSpecificDataToXML(o));
 }
 
+static Param * parseParam(const char *content, int length) {
+	xmlDocPtr doc; /* the resulting document tree */
+
+	/*
+	 * The document being in memory, it have no base per RFC 2396,
+	 * and the "noname.xml" argument will serve as its base.
+	 */
+	doc = xmlReadMemory(content, length, "noname.xml", NULL, 0);
+	Param * param = NULL;
+	if (doc == NULL) {
+		fprintf(stderr, "Failed to parse document\n");
+		return NULL;
+	} else {
+		/*Get the root element node */
+		xmlNodePtr root_element = xmlDocGetRootElement(doc);
+		param = malloc(sizeof(Param));
+		BINRange * binRangePtr = param->binRangeHead; // empty
+		RIDSetting * ridPtr = param->ridHead;
+		CAKey * caKeyPtr = param->caKeyHead;
+		xmlNode * node = root_element->children;
+		xmlNode * nodePtr = NULL;
+		if(strcmp(node->name, "BINRanges") == 0) {
+			node = node->children;
+			while(NULL != node) { // BINRange
+				BINRange * binRangeTmp = malloc(sizeof(BINRange));
+				nodePtr = node->children;
+				while(NULL != nodePtr) {
+					if(strcmp(nodePtr->name, "Card")) {
+						binRangeTmp->card = nodePtr->content;
+					} else if(strcmp(nodePtr->name, "Lengths")) {
+
+					} else if(strcmp(nodePtr->name, "Prefixes")) {
+
+					}
+				}
+				binRangePtr->next = binRangeTmp;
+				binRangePtr = binRangeTmp;
+				node = node->next;
+			}
+		} else if (strcmp(node->name, "PTxCoreSettings") == 0) {
+			node = node->children;
+			while(NULL != node) { // RID
+				RIDSetting * ridTmp = malloc(sizeof(RIDSetting));
+				nodePtr = node->children;
+				while(NULL != nodePtr) {
+					if(strcmp(nodePtr->name, "TACDenial")) {
+						ridTmp->tacDenial = nodePtr->content;
+					} else if(strcmp(nodePtr->name, "TACOnline")) {
+						ridTmp->tacOnline = nodePtr->content;
+					} else if(strcmp(nodePtr->name, "TACDefault")) {
+						ridTmp->tacDefault = nodePtr->content;
+					} else if(strcmp(nodePtr->name, "Value")) {
+						ridTmp->value = nodePtr->content;
+					} else if(strcmp(nodePtr->name, "Name")) {
+						ridTmp->name = nodePtr->content;
+					} else if(strcmp(nodePtr->name, "AID")) {
+						nodePtr = node->children;
+						if(strcmp(nodePtr->name, "EnableFallback")) {
+							ridTmp->enableFallback = nodePtr->content;
+						} else if(strcmp(nodePtr->name, "FloorLimit")) {
+							ridTmp->floorLimit = atoi(nodePtr->content);
+						} else if(strcmp(nodePtr->name, "Threshold")) {
+							ridTmp->threshold = atoi(nodePtr->content);
+						}
+					}
+				}
+				ridPtr->next = ridTmp;
+				ridPtr = ridTmp;
+				node = node->next;
+			}
+		} else if (strcmp(node->name, "PTxCoreCAKeys") == 0) {
+			node = node->children;
+			while(NULL != node) { // CAKey
+				CAKey * caKeyTmp = malloc(sizeof(CAKey));
+				nodePtr = node->children;
+				while(NULL != nodePtr) {
+					if(strcmp(nodePtr->name, "RID")) {
+						caKeyTmp->rid = nodePtr->content;
+					} else if(strcmp(nodePtr->name, "Index")) {
+						caKeyTmp->index = nodePtr->content[0];
+					} else if(strcmp(nodePtr->name, "Modulus")) {
+						caKeyTmp->modulus = nodePtr->content;
+					} else if(strcmp(nodePtr->name, "Exponent")) {
+						caKeyTmp->exponent = nodePtr->content[0];
+					} else if(strcmp(nodePtr->name, "Hash")) {
+						caKeyTmp->hash = nodePtr->content;
+					}
+				}
+				caKeyPtr->next = caKeyTmp;
+				caKeyPtr = caKeyTmp;
+				node = node->next;
+			}
+		}
+	}
+	xmlFreeDoc(doc);
+	return param;
+}
+
+void parseParamDown() {
+	char * fileName = "/Users/nickfeng/hub/fdj32/PTxCore/doc/ipp320/doc/param_down.xml";
+
+	int fileSize = getFileSize(fileName);
+	printf("%d\n", fileSize);
+
+	char * fileData = loadFile(fileName);
+
+	puts(fileData);
+
+	parseParam(fileData, fileSize);
+}
+
+
+
+int main(void) {
+	parseParamDown();
+}

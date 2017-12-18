@@ -23,6 +23,7 @@ extern "C" {
 #include <string.h>
 #include <time.h>
 #include "aio.h"
+#include "ams.h"
 #include "cpx.h"
 #include "object.h"
 #include "rs232.h"
