@@ -47,6 +47,8 @@ typedef struct RIDSetting {
 	struct RIDSetting * next;
 } RIDSetting;
 
+RIDSetting * parseRIDSetting(xmlNodePtr PTxCoreSettings);
+
 typedef struct CAKey {
 	char * rid;
 	char index;
