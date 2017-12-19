@@ -58,6 +58,7 @@ char * StringList2string(StringList * sl, char * c) {
 		strcat(s, c);
 		slp = slp->next;
 	}
+	s[strlen(s) - 1] = 0;
 	return s;
 }
 
@@ -117,6 +118,7 @@ char * IntList2string(IntList * il, char * c) {
 		strcat(s, c);
 		ilp = ilp->next;
 	}
+	s[strlen(s) - 1] = 0;
 	return s;
 }
 
@@ -206,21 +208,21 @@ RIDSetting * parseRIDSetting(xmlNodePtr PTxCoreSettings) {
 			while (NULL != node) {
 				if (node->type == XML_ELEMENT_NODE) {
 					if (strcmp(node->name, "TACDenial") == 0) {
-						tmp->tacDenial = node->children->content;
+						tmp->tacDenial = strdup(node->children->content);
 					} else if (strcmp(node->name, "TACOnline") == 0) {
-						tmp->tacOnline = node->children->content;
+						tmp->tacOnline = strdup(node->children->content);
 					} else if (strcmp(node->name, "TACDefault") == 0) {
-						tmp->tacDefault = node->children->content;
+						tmp->tacDefault = strdup(node->children->content);
 					} else if (strcmp(node->name, "Value") == 0) {
-						tmp->value = node->children->content;
+						tmp->value = strdup(node->children->content);
 					} else if (strcmp(node->name, "Name") == 0) {
-						tmp->name = node->children->content;
+						tmp->name = strdup(node->children->content);
 					} else if (strcmp(node->name, "AID") == 0) {
 						xmlNodePtr nodeAID = node->children;
 						while (NULL != nodeAID) {
 							if (strcmp(nodeAID->name, "EnableFallback") == 0) {
 								tmp->enableFallback =
-										nodeAID->children->content;
+										strdup(nodeAID->children->content);
 							} else if (strcmp(nodeAID->name, "FloorLimit")
 									== 0) {
 								tmp->floorLimit = atoi(
@@ -316,15 +318,15 @@ CAKey * parseCAKey(xmlNodePtr PTxCoreCAKeys) {
 			while (NULL != node) {
 				if (node->type == XML_ELEMENT_NODE) {
 					if (strcmp(node->name, "RID") == 0) {
-						tmp->rid = node->children->content;
+						tmp->rid = strdup(node->children->content);
 					} else if (strcmp(node->name, "Index") == 0) {
 						tmp->index = unHexByte(node->children->content);
 					} else if (strcmp(node->name, "Modulus") == 0) {
-						tmp->modulus = node->children->content;
+						tmp->modulus = strdup(node->children->content);
 					} else if (strcmp(node->name, "Exponent") == 0) {
 						tmp->exponent = unHexByte(node->children->content);
 					} else if (strcmp(node->name, "Hash") == 0) {
-						tmp->hash = node->children->content;
+						tmp->hash = strdup(node->children->content);
 					}
 				}
 				node = node->next;
