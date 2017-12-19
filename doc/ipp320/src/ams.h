@@ -19,12 +19,16 @@ typedef struct StringList {
 
 StringList * string2StringList(char * s, char c);
 
+char * StringList2string(StringList * sl, char * c);
+
 typedef struct IntList {
 	int i;
 	struct IntList * next;
 } IntList;
 
 IntList * string2IntList(char * s, char c);
+
+char * IntList2string(IntList * il, char * c);
 
 typedef struct BINRange {
 	char * card;

@@ -41,6 +41,26 @@ StringList * string2StringList(char * s, char c) {
 	return sl;
 }
 
+char * StringList2string(StringList * sl, char * c) {
+	if(NULL == sl) {
+		return NULL;
+	}
+	int buffLength = 1024;
+	char * s = malloc(buffLength);
+	memset(s, 0, buffLength);
+	StringList * slp = sl;
+	while(NULL != slp->next) {
+		if(strlen(s) + strlen(slp->s) >= buffLength) {
+			buffLength *= 2;
+			s = realloc(s, buffLength);
+		}
+		strcat(s, slp->s);
+		strcat(s, c);
+		slp = slp->next;
+	}
+	return s;
+}
+
 IntList * string2IntList(char * s, char c) {
 	if (NULL == s) {
 		return NULL;
@@ -73,6 +93,29 @@ IntList * string2IntList(char * s, char c) {
 		end++;
 	}
 	return il;
+}
+
+char * IntList2string(IntList * il, char * c) {
+	if(NULL == il) {
+		return NULL;
+	}
+	int buffLength = 1024;
+	char * s = malloc(buffLength);
+	memset(s, 0, buffLength);
+	IntList * ilp = il;
+	while(NULL != ilp->next) {
+		char tmp[16];
+//		itoa(ilp->i, tmp, 10); // itoa is not supported in mac
+		sprintf(tmp, "%d", ilp->i);
+		if(strlen(s) + strlen(tmp) >= buffLength) {
+			buffLength *= 2;
+			s = realloc(s, buffLength);
+		}
+		strcat(s, tmp);
+		strcat(s, c);
+		ilp = ilp->next;
+	}
+	return s;
 }
 
 BINRange * parseBINRanges(xmlNodePtr BINRanges) {
