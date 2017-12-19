@@ -130,7 +130,6 @@ BINRange * parseBINRanges(xmlNodePtr BINRanges) {
 	while (NULL != binRange) {
 		if (binRange->type == XML_ELEMENT_NODE
 				&& strcmp(binRange->name, "BINRange") == 0) {
-			puts("BINRange\n");
 			BINRange * tmp = malloc(sizeof(BINRange));
 
 			xmlNodePtr node = binRange->children;
@@ -138,7 +137,6 @@ BINRange * parseBINRanges(xmlNodePtr BINRanges) {
 				if (node->type == XML_ELEMENT_NODE) {
 					if (strcmp(node->name, "Card") == 0) {
 						tmp->card = strdup(node->children->content);
-						printf("Card:%s\n", tmp->card);
 					} else if (strcmp(node->name, "Lengths") == 0) {
 						if (NULL == node->children) {
 							tmp->lengths = NULL;
@@ -202,7 +200,6 @@ RIDSetting * parseRIDSetting(xmlNodePtr PTxCoreSettings) {
 	RIDSetting * ptr = head;
 	while (NULL != rid) {
 		if (rid->type == XML_ELEMENT_NODE && strcmp(rid->name, "RID") == 0) {
-			puts("RID\n");
 			RIDSetting * tmp = malloc(sizeof(RIDSetting));
 			xmlNodePtr node = rid->children;
 			while (NULL != node) {
@@ -221,8 +218,8 @@ RIDSetting * parseRIDSetting(xmlNodePtr PTxCoreSettings) {
 						xmlNodePtr nodeAID = node->children;
 						while (NULL != nodeAID) {
 							if (strcmp(nodeAID->name, "EnableFallback") == 0) {
-								tmp->enableFallback =
-										strdup(nodeAID->children->content);
+								tmp->enableFallback = strdup(
+										nodeAID->children->content);
 							} else if (strcmp(nodeAID->name, "FloorLimit")
 									== 0) {
 								tmp->floorLimit = atoi(
@@ -312,7 +309,6 @@ CAKey * parseCAKey(xmlNodePtr PTxCoreCAKeys) {
 	while (NULL != caKey) {
 		if (caKey->type == XML_ELEMENT_NODE
 				&& strcmp(caKey->name, "CAKey") == 0) {
-			puts("CAKey\n");
 			CAKey * tmp = malloc(sizeof(CAKey));
 			xmlNodePtr node = caKey->children;
 			while (NULL != node) {
@@ -392,13 +388,10 @@ Param * parseParam(char *content, int length) {
 		while (NULL != child) {
 			if (child->type == XML_ELEMENT_NODE) {
 				if (strcmp(child->name, "BINRanges") == 0) {
-					puts("found BINRanges\n");
 					p->binRangeHead = parseBINRanges(child);
 				} else if (strcmp(child->name, "PTxCoreSettings") == 0) {
-					puts("found PTxCoreSettings\n");
 					p->ridHead = parseRIDSetting(child);
 				} else if (strcmp(child->name, "PTxCoreCAKeys") == 0) {
-					puts("found PTxCoreCAKeys\n");
 					p->caKeyHead = parseCAKey(child);
 				}
 			}
