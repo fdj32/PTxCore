@@ -157,7 +157,8 @@ void parseParamDown() {
 
 	puts(fileData);
 
-	parseParam(fileData, fileSize);
+	Param * p = parseParam(fileData, fileSize);
+	puts(Param2string(p));
 }
 
 void parseStringList() {

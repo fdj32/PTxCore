@@ -48,8 +48,8 @@ char * StringList2string(StringList * sl, char * c) {
 	int buffLength = 1024;
 	char * s = malloc(buffLength);
 	memset(s, 0, buffLength);
-	StringList * slp = sl;
-	while (NULL != slp->next) {
+	StringList * slp = sl->next;
+	while (NULL != slp) {
 		if (strlen(s) + strlen(slp->s) >= buffLength) {
 			buffLength *= 2;
 			s = realloc(s, buffLength);
@@ -63,10 +63,12 @@ char * StringList2string(StringList * sl, char * c) {
 
 IntList * string2IntList(char * s, char c) {
 	if (NULL == s) {
+		perror("string2IntList char * s is NULL");
 		return NULL;
 	}
 	int length = strlen(s);
 	if (0 == length) {
+		perror("string2IntList char * s length is 0");
 		return NULL;
 	}
 	int start = 0, end = 0;
@@ -102,8 +104,8 @@ char * IntList2string(IntList * il, char * c) {
 	int buffLength = 1024;
 	char * s = malloc(buffLength);
 	memset(s, 0, buffLength);
-	IntList * ilp = il;
-	while (NULL != ilp->next) {
+	IntList * ilp = il->next;
+	while (NULL != ilp) {
 		char tmp[16];
 //		itoa(ilp->i, tmp, 10); // itoa is not supported in mac
 		sprintf(tmp, "%d", ilp->i);
@@ -133,7 +135,7 @@ BINRange * parseBINRanges(xmlNodePtr BINRanges) {
 			while (NULL != node) {
 				if (node->type == XML_ELEMENT_NODE) {
 					if (strcmp(node->name, "Card") == 0) {
-						tmp->card = node->children->content;
+						tmp->card = strdup(node->children->content);
 						printf("Card:%s\n", tmp->card);
 					} else if (strcmp(node->name, "Lengths") == 0) {
 						if (NULL == node->children) {
@@ -165,6 +167,7 @@ BINRange * parseBINRanges(xmlNodePtr BINRanges) {
 
 char * BINRange2string(BINRange * o) {
 	if (NULL == o) {
+		perror("BINRange2string BINRange * o is NULL");
 		return NULL;
 	}
 	int buffLength = 102400;
@@ -406,6 +409,7 @@ Param * parseParam(char *content, int length) {
 
 char * Param2string(Param * o) {
 	if (NULL == o) {
+		perror("Param2string Param * o is NULL");
 		return NULL;
 	}
 	int buffLength = 102400;
