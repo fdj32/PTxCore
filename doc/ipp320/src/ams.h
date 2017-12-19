@@ -39,6 +39,8 @@ typedef struct BINRange {
 
 BINRange * parseBINRanges(xmlNodePtr BINRanges);
 
+char * BINRange2string(BINRange * o);
+
 typedef struct RIDSetting {
 	char * tacDenial;
 	char * tacOnline;
@@ -53,6 +55,8 @@ typedef struct RIDSetting {
 
 RIDSetting * parseRIDSetting(xmlNodePtr PTxCoreSettings);
 
+char * RIDSetting2string(RIDSetting * o);
+
 typedef struct CAKey {
 	char * rid;
 	char index;
@@ -64,6 +68,8 @@ typedef struct CAKey {
 
 CAKey * parseCAKey(xmlNodePtr PTxCoreCAKeys);
 
+char * CAKey2string(CAKey * o);
+
 typedef struct Param {
 	BINRange * binRangeHead;
 	RIDSetting * ridHead;
@@ -71,6 +77,8 @@ typedef struct Param {
 } Param;
 
 Param * parseParam(char *content, int length);
+
+char * Param2string(Param * o);
 
 #ifdef __cplusplus
 }

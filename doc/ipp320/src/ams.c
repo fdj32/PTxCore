@@ -42,15 +42,15 @@ StringList * string2StringList(char * s, char c) {
 }
 
 char * StringList2string(StringList * sl, char * c) {
-	if(NULL == sl) {
+	if (NULL == sl) {
 		return NULL;
 	}
 	int buffLength = 1024;
 	char * s = malloc(buffLength);
 	memset(s, 0, buffLength);
 	StringList * slp = sl;
-	while(NULL != slp->next) {
-		if(strlen(s) + strlen(slp->s) >= buffLength) {
+	while (NULL != slp->next) {
+		if (strlen(s) + strlen(slp->s) >= buffLength) {
 			buffLength *= 2;
 			s = realloc(s, buffLength);
 		}
@@ -96,18 +96,18 @@ IntList * string2IntList(char * s, char c) {
 }
 
 char * IntList2string(IntList * il, char * c) {
-	if(NULL == il) {
+	if (NULL == il) {
 		return NULL;
 	}
 	int buffLength = 1024;
 	char * s = malloc(buffLength);
 	memset(s, 0, buffLength);
 	IntList * ilp = il;
-	while(NULL != ilp->next) {
+	while (NULL != ilp->next) {
 		char tmp[16];
 //		itoa(ilp->i, tmp, 10); // itoa is not supported in mac
 		sprintf(tmp, "%d", ilp->i);
-		if(strlen(s) + strlen(tmp) >= buffLength) {
+		if (strlen(s) + strlen(tmp) >= buffLength) {
 			buffLength *= 2;
 			s = realloc(s, buffLength);
 		}
@@ -163,6 +163,33 @@ BINRange * parseBINRanges(xmlNodePtr BINRanges) {
 	return head;
 }
 
+char * BINRange2string(BINRange * o) {
+	if (NULL == o) {
+		return NULL;
+	}
+	int buffLength = 102400;
+	char * s = malloc(buffLength);
+	memset(s, 0, buffLength);
+	BINRange * p = o->next;
+	while (NULL != p) {
+		strcat(s, "<BINRange>");
+		strcat(s, "<Card>");
+		strcat(s, p->card);
+		strcat(s, "</Card>");
+		strcat(s, "<Lengths>");
+		char * tmp = IntList2string(p->lengths, ",");
+		strcat(s, tmp == NULL ? "" : tmp);
+		strcat(s, "</Lengths>");
+		strcat(s, "<Prefixes>");
+		tmp = StringList2string(p->prefixes, ",");
+		strcat(s, tmp == NULL ? "" : tmp);
+		strcat(s, "</Prefixes>");
+		strcat(s, "</BINRange>");
+		p = p->next;
+	}
+	return s;
+}
+
 RIDSetting * parseRIDSetting(xmlNodePtr PTxCoreSettings) {
 	xmlNodePtr rid = PTxCoreSettings->children;
 	RIDSetting * head = malloc(sizeof(RIDSetting));
@@ -216,6 +243,62 @@ RIDSetting * parseRIDSetting(xmlNodePtr PTxCoreSettings) {
 	return head;
 }
 
+char * RIDSetting2string(RIDSetting * o) {
+	if (NULL == o) {
+		return NULL;
+	}
+	int buffLength = 102400;
+	char * s = malloc(buffLength);
+	memset(s, 0, buffLength);
+	RIDSetting * p = o->next;
+	while (NULL != p) {
+		strcat(s, "<RID>");
+		strcat(s, "<TACDenial>");
+		strcat(s, p->tacDenial);
+		strcat(s, "</TACDenial>");
+
+		strcat(s, "<TACOnline>");
+		strcat(s, p->tacOnline);
+		strcat(s, "</TACOnline>");
+
+		strcat(s, "<TACDefault>");
+		strcat(s, p->tacDefault);
+		strcat(s, "</TACDefault>");
+
+		strcat(s, "<Value>");
+		strcat(s, p->value);
+		strcat(s, "</Value>");
+
+		strcat(s, "<Name>");
+		strcat(s, p->name);
+		strcat(s, "</Name>");
+
+		strcat(s, "<AID>");
+
+		strcat(s, "<EnableFallback>");
+		strcat(s, p->enableFallback);
+		strcat(s, "</EnableFallback>");
+
+		strcat(s, "<FloorLimit>");
+		char floorLimit[16];
+		sprintf(floorLimit, "%d", p->floorLimit);
+		strcat(s, floorLimit);
+		strcat(s, "</FloorLimit>");
+
+		strcat(s, "<Threshold>");
+		char threshold[16];
+		sprintf(threshold, "%d", p->threshold);
+		strcat(s, threshold);
+		strcat(s, "</Threshold>");
+
+		strcat(s, "</AID>");
+
+		strcat(s, "</RID>");
+		p = p->next;
+	}
+	return s;
+}
+
 CAKey * parseCAKey(xmlNodePtr PTxCoreCAKeys) {
 	xmlNodePtr caKey = PTxCoreCAKeys->children;
 	CAKey * head = malloc(sizeof(CAKey));
@@ -253,6 +336,42 @@ CAKey * parseCAKey(xmlNodePtr PTxCoreCAKeys) {
 	return head;
 }
 
+char * CAKey2string(CAKey * o) {
+	if (NULL == o) {
+		return NULL;
+	}
+	int buffLength = 102400;
+	char * s = malloc(buffLength);
+	memset(s, 0, buffLength);
+	CAKey * p = o->next;
+	while (NULL != p) {
+		strcat(s, "<CAKey>");
+		strcat(s, "<RID>");
+		strcat(s, p->rid);
+		strcat(s, "</RID>");
+
+		strcat(s, "<Index>");
+		strcat(s, hexByte(p->index));
+		strcat(s, "</Index>");
+
+		strcat(s, "<Modulus>");
+		strcat(s, p->modulus);
+		strcat(s, "</Modulus>");
+
+		strcat(s, "<Exponent>");
+		strcat(s, hexByte(p->exponent));
+		strcat(s, "</Exponent>");
+
+		strcat(s, "<Hash>");
+		strcat(s, p->hash);
+		strcat(s, "</Hash>");
+
+		strcat(s, "</CAKey>");
+		p = p->next;
+	}
+	return s;
+}
+
 Param * parseParam(char *content, int length) {
 	Param * p = NULL;
 	xmlDocPtr doc;
@@ -283,4 +402,26 @@ Param * parseParam(char *content, int length) {
 	}
 	xmlFreeDoc(doc);
 	return p;
+}
+
+char * Param2string(Param * o) {
+	if (NULL == o) {
+		return NULL;
+	}
+	int buffLength = 102400;
+	char * s = malloc(buffLength);
+	memset(s, 0, buffLength);
+	strcat(s, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+	strcat(s, "<EmvParameterDownloadResponse>");
+	strcat(s, "<BINRanges>");
+	strcat(s, BINRange2string(o->binRangeHead));
+	strcat(s, "</BINRanges>");
+	strcat(s, "<PTxCoreSettings>");
+	strcat(s, RIDSetting2string(o->ridHead));
+	strcat(s, "</PTxCoreSettings>");
+	strcat(s, "<PTxCoreCAKeys>");
+	strcat(s, CAKey2string(o->caKeyHead));
+	strcat(s, "</PTxCoreCAKeys>");
+	strcat(s, "</EmvParameterDownloadResponse>");
+	return s;
 }
