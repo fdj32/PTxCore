@@ -184,6 +184,11 @@ AID * AIDListFromBin(char * s, int length) {
 	return o;
 }
 
+AID * buildAidSpecificData(Param * param) {
+	AID * head = malloc(sizeof(AID));
+	return head;
+}
+
 char * KeyDataToXML(KeyData * o, int size) {
 	if (NULL == o)
 		return NULL;

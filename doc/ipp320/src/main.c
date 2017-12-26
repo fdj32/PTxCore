@@ -170,5 +170,19 @@ void parseStringList() {
 }
 
 int main(void) {
-	parseParamDown();
+//	parseParamDown();
+//	test_buildTerminalSpecificData();
+	int a = sizeof("helloworld");
+	int b = strlen("helloworld");
+	printf("a=%d,b=%d\n", a, b);
+
+	struct timeval   tv;
+	gettimeofday(&tv, NULL);
+	time_t sec = tv.tv_sec;
+	struct tm tm;
+	localtime_r(&sec, &tm);
+	printf("tm.tm_gmtoff=%d, TimeZone=%c%02d%02d\n", tm.tm_gmtoff,
+			tm.tm_gmtoff >= 0 ? '+' : '-',
+					(int)((tm.tm_gmtoff / 60) / 60),
+					(int)((tm.tm_gmtoff / 60) % 60));
 }

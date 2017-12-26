@@ -237,6 +237,8 @@ char * AIDListToBin(AID * o);
 
 AID * AIDListFromBin(char * s, int length);
 
+AID * buildAidSpecificData(Param * param);
+
 typedef struct KeyData {
 	char keyIndex;
 	char keyAlgorithmIndicator;
