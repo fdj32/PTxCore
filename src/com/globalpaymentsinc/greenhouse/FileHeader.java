@@ -131,7 +131,7 @@ public class FileHeader {
 		sb.append(StringUtils.leftPad(cardGroupId, 6, '0'));
 		sb.append(bigBatchId);
 		sb.append(StringUtils.repeat(" ", 8));
-		sb.append(customerDefined);
+		sb.append(StringUtils.rightPad(customerDefined, 32, ' '));
 		sb.append(StringUtils.repeat(" ", 8));
 		return sb.toString();
 	}
