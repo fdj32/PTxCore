@@ -48,7 +48,7 @@ public class CustomerDefined {
 	}
 
 	public static CustomerDefined fromString(String s) {
-		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("CD  ")) {
+		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("CD")) {
 			return null;
 		}
 		CustomerDefined cd = new CustomerDefined();

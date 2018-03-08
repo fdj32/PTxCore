@@ -111,7 +111,7 @@ public class TerminalTrailerRequest {
 	}
 
 	public static TerminalTrailerRequest fromString(String s) {
-		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("TT  ")) {
+		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("TT")) {
 			return null;
 		}
 		TerminalTrailerRequest tt = new TerminalTrailerRequest();

@@ -130,7 +130,7 @@ public class AccountInquiryRequest {
 	}
 
 	public static AccountInquiryRequest fromString(String s) {
-		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("DI  ")) {
+		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("DI")) {
 			return null;
 		}
 		AccountInquiryRequest di = new AccountInquiryRequest();

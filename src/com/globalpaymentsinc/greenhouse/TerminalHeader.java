@@ -93,7 +93,7 @@ public class TerminalHeader {
 	}
 
 	public static TerminalHeader fromString(String s) {
-		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("TH  ")) {
+		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("TH")) {
 			return null;
 		}
 		TerminalHeader th = new TerminalHeader();

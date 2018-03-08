@@ -137,7 +137,7 @@ public class FileHeader {
 	}
 
 	public FileHeader fromString(String s) {
-		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("FH  ")) {
+		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("FH")) {
 			return null;
 		}
 		FileHeader fh = new FileHeader();

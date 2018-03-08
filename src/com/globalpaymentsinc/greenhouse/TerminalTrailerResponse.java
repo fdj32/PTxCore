@@ -138,7 +138,7 @@ public class TerminalTrailerResponse {
 	}
 
 	public static TerminalTrailerResponse fromString(String s) {
-		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("TT  ")) {
+		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("TT")) {
 			return null;
 		}
 		TerminalTrailerResponse tt = new TerminalTrailerResponse();

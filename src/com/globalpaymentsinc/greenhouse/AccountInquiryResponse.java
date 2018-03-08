@@ -232,7 +232,7 @@ public class AccountInquiryResponse {
 	}
 
 	public static AccountInquiryResponse fromString(String s) {
-		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("DI  ")) {
+		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("DI")) {
 			return null;
 		}
 		AccountInquiryResponse di = new AccountInquiryResponse();
