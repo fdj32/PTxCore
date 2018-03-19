@@ -191,4 +191,21 @@ public class Lever3L2 {
 		return sb.toString();
 	}
 
+	public static Lever3L2 fromString(String s) {
+		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("L2")) {
+			return null;
+		}
+		Lever3L2 l2 = new Lever3L2();
+		l2.setUnitPrice(s.substring(2, 14));
+		l2.setUnitPriceExponent(s.charAt(14));
+		l2.setDebitCreditIndicator(s.charAt(15));
+		l2.setProductCode(s.substring(16, 31));
+		l2.setItemDiscount(s.substring(31, 43));
+		l2.setItemDiscountRate(s.substring(43, 48));
+		l2.setItemDiscountRateExponent(s.charAt(48));
+		l2.setItemCommodityCode(s.substring(49, 64));
+		l2.setZeroCostToCustomerIndicator(s.charAt(64));
+		return l2;
+	}
+
 }
