@@ -8,7 +8,7 @@ import org.apache.commons.lang.StringUtils;
  * @author nickfeng
  *
  */
-public class Level3P3 {
+public class BLevel3P3 {
 	/**
 	 * Record Type, 1-2, AN 2, Always P3.
 	 */
@@ -31,7 +31,7 @@ public class Level3P3 {
 	 * being purchased in a standard commodity group. Space - Not applicable
 	 */
 	private String commodityCode;
-	
+
 	/* Filler, 58-71, AN 14, Space Filled. */
 
 	/**
@@ -46,6 +46,13 @@ public class Level3P3 {
 	 * Record 1 (L1) or Temporary Services Detail Request Record 1 (T1) addenda.
 	 */
 	private String totalAddenda;
+
+	/* Filler, 75-94, AN 20, Space Filled. */
+
+	/**
+	 * Record Sequence Number, 95-100, N 6, Previous Record Sequence Number plus 1.
+	 */
+	private String recordSequenceNumber;
 
 	public String getRecordType() {
 		return recordType;
@@ -87,6 +94,14 @@ public class Level3P3 {
 		this.totalAddenda = totalAddenda;
 	}
 
+	public String getRecordSequenceNumber() {
+		return recordSequenceNumber;
+	}
+
+	public void setRecordSequenceNumber(String recordSequenceNumber) {
+		this.recordSequenceNumber = recordSequenceNumber;
+	}
+
 	@Override
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
@@ -96,19 +111,21 @@ public class Level3P3 {
 		sb.append(commodityCode);
 		sb.append(StringUtils.repeat(" ", 14));
 		sb.append(totalAddenda);
-		sb.append(StringUtils.repeat(" ", 6));
+		sb.append(StringUtils.repeat(" ", 20));
+		sb.append(StringUtils.leftPad(recordSequenceNumber, 6, '0'));
 		return sb.toString();
 	}
 
-	public static Level3P3 fromString(String s) {
+	public static BLevel3P3 fromString(String s) {
 		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("P3")) {
 			return null;
 		}
-		Level3P3 p3 = new Level3P3();
+		BLevel3P3 p3 = new BLevel3P3();
 		p3.setMerchantVatNumber(s.substring(2, 22));
 		p3.setCustomerVatNumber(s.substring(22, 42));
 		p3.setCommodityCode(s.substring(42, 57));
 		p3.setTotalAddenda(s.substring(71, 74));
+		p3.setRecordSequenceNumber(s.substring(94, 100));
 		return p3;
 	}
 
