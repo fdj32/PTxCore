@@ -137,7 +137,7 @@ public class BLevel3L1 {
 	}
 
 	public static BLevel3L1 fromString(String s) {
-		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("L1")) {
+		if (StringUtils.isEmpty(s) || s.length() != 100 || !s.startsWith("L1")) {
 			return null;
 		}
 		BLevel3L1 l1 = new BLevel3L1();

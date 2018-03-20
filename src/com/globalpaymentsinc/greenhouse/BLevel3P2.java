@@ -131,7 +131,7 @@ public class BLevel3P2 {
 	}
 
 	public static BLevel3P2 fromString(String s) {
-		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("P2")) {
+		if (StringUtils.isEmpty(s) || s.length() != 100 || !s.startsWith("P2")) {
 			return null;
 		}
 		BLevel3P2 p2 = new BLevel3P2();
