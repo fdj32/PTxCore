@@ -60,7 +60,7 @@ public class BMarketDataAddendum {
 		sb.append(recordType);
 		sb.append(StringUtils.rightPad(marketData, 92, ' '));
 		sb.append(StringUtils.leftPad(recordSequenceNumber, 6, '0'));
-		return "BMarketDataAddendum []";
+		return sb.toString();
 	}
 
 	public static BMarketDataAddendum fromString(String s) {
