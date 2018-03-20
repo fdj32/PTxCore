@@ -8,7 +8,7 @@ import org.apache.commons.lang.StringUtils;
  * @author nickfeng
  *
  */
-public class Lever3P2 {
+public class Level3P2 {
 	/**
 	 * Record Type, 1-2, AN 2, Always P2.
 	 */
@@ -117,11 +117,11 @@ public class Lever3P2 {
 		return sb.toString();
 	}
 
-	public static Lever3P2 fromString(String s) {
+	public static Level3P2 fromString(String s) {
 		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("P2")) {
 			return null;
 		}
-		Lever3P2 p2 = new Lever3P2();
+		Level3P2 p2 = new Level3P2();
 		p2.setReferenceNumber(s.substring(2, 27));
 		p2.setNationalTax(s.substring(27, 39));
 		p2.setOtherTax(s.substring(39, 51));

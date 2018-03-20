@@ -8,7 +8,7 @@ import org.apache.commons.lang.StringUtils;
  * @author nickfeng
  *
  */
-public class Lever3P3 {
+public class Level3P3 {
 	/**
 	 * Record Type, 1-2, AN 2, Always P3.
 	 */
@@ -98,11 +98,11 @@ public class Lever3P3 {
 		return sb.toString();
 	}
 
-	public static Lever3P3 fromString(String s) {
+	public static Level3P3 fromString(String s) {
 		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("P3")) {
 			return null;
 		}
-		Lever3P3 p3 = new Lever3P3();
+		Level3P3 p3 = new Level3P3();
 		p3.setMerchantVatNumber(s.substring(2, 22));
 		p3.setCustomerVatNumber(s.substring(22, 42));
 		p3.setCommodityCode(s.substring(42, 57));

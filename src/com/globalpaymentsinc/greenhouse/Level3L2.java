@@ -8,7 +8,7 @@ import org.apache.commons.lang.StringUtils;
  * @author nickfeng
  *
  */
-public class Lever3L2 {
+public class Level3L2 {
 
 	/**
 	 * Record Type, 1-2, AN 2, Always L2.
@@ -191,11 +191,11 @@ public class Lever3L2 {
 		return sb.toString();
 	}
 
-	public static Lever3L2 fromString(String s) {
+	public static Level3L2 fromString(String s) {
 		if (StringUtils.isEmpty(s) || s.length() != 80 || !s.startsWith("L2")) {
 			return null;
 		}
-		Lever3L2 l2 = new Lever3L2();
+		Level3L2 l2 = new Level3L2();
 		l2.setUnitPrice(s.substring(2, 14));
 		l2.setUnitPriceExponent(s.charAt(14));
 		l2.setDebitCreditIndicator(s.charAt(15));
