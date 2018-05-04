@@ -5,7 +5,7 @@ import org.apache.commons.lang.StringUtils;
 public class CreditDetailTransactionRecord53 {
 
 	/**
-	 * 1-10, Refer to Control Section – Record Type = '10'
+	 * 1-10, Refer to Control Section – Record Type = '53'
 	 */
 	private ControlSection cs;
 
