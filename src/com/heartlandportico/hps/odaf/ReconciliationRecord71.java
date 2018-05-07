@@ -5,7 +5,7 @@ import org.apache.commons.lang.StringUtils;
 public class ReconciliationRecord71 {
 
 	/**
-	 * 1-10, Refer to Control Section – Record Type = '70'
+	 * 1-10, Refer to Control Section – Record Type = '71'
 	 */
 	private ControlSection cs;
 
