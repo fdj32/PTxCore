@@ -19,7 +19,7 @@ public class ReconciliationRecord76 {
 
 	private char[] processingFeeSign = new char[9];
 
-	/* Filler, 59-250, AN 192, Space Filled. */
+	/* Filler, 225-250, AN 26, Space Filled. */
 
 	public String[] getCardholderInstitutionId() {
 		return cardholderInstitutionId;
@@ -80,7 +80,7 @@ public class ReconciliationRecord76 {
 			sb.append(processingFeeAmount[i]);
 			sb.append(processingFeeSign[i]);
 		}
-		sb.append(StringUtils.repeat(" ", 192));
+		sb.append(StringUtils.repeat(" ", 26));
 		return sb.toString();
 	}
 
