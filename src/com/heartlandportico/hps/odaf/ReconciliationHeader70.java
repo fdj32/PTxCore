@@ -2,7 +2,7 @@ package com.heartlandportico.hps.odaf;
 
 import org.apache.commons.lang.StringUtils;
 
-public class ReconciliationBatchHeader70 {
+public class ReconciliationHeader70 {
 
 	/**
 	 * 1-10, Refer to Control Section – Record Type = '70'
@@ -41,11 +41,11 @@ public class ReconciliationBatchHeader70 {
 		return sb.toString();
 	}
 
-	public static ReconciliationBatchHeader70 fromString(String s) {
+	public static ReconciliationHeader70 fromString(String s) {
 		if (StringUtils.isEmpty(s) || s.length() != 250) {
 			return null;
 		}
-		ReconciliationBatchHeader70 o = new ReconciliationBatchHeader70();
+		ReconciliationHeader70 o = new ReconciliationHeader70();
 		o.setCs(ControlSection.fromString(s.substring(0, 10)));
 		o.setBatchIdentifier(s.substring(10, 16));
 		return o;

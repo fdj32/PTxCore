@@ -2,7 +2,7 @@ package com.heartlandportico.hps.odaf;
 
 import org.apache.commons.lang.StringUtils;
 
-public class BatchHeader20 {
+public class DetailHeader20 {
 
 	/**
 	 * 1-10, Refer to Control Section – Record Type = '20'
@@ -117,11 +117,11 @@ public class BatchHeader20 {
 		return sb.toString();
 	}
 
-	public static BatchHeader20 fromString(String s) {
+	public static DetailHeader20 fromString(String s) {
 		if (StringUtils.isEmpty(s) || s.length() != 250) {
 			return null;
 		}
-		BatchHeader20 o = new BatchHeader20();
+		DetailHeader20 o = new DetailHeader20();
 		o.setCs(ControlSection.fromString(s.substring(0, 10)));
 		o.setBatchType(s.substring(10, 13));
 		o.setDivisionNumber(s.substring(13, 16));

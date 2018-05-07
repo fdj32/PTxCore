@@ -2,7 +2,7 @@ package com.heartlandportico.hps.odaf;
 
 import org.apache.commons.lang.StringUtils;
 
-public class CreditDetailTransactionRecord53 {
+public class CreditDetail53 {
 
 	/**
 	 * 1-10, Refer to Control Section – Record Type = '53'
@@ -310,11 +310,11 @@ public class CreditDetailTransactionRecord53 {
 		return sb.toString();
 	}
 
-	public static CreditDetailTransactionRecord53 fromString(String s) {
+	public static CreditDetail53 fromString(String s) {
 		if (StringUtils.isEmpty(s) || s.length() != 250) {
 			return null;
 		}
-		CreditDetailTransactionRecord53 o = new CreditDetailTransactionRecord53();
+		CreditDetail53 o = new CreditDetail53();
 		o.setCs(ControlSection.fromString(s.substring(0, 10)));
 		o.setActualInterchangeCode(s.substring(10, 14));
 		o.setCurrencyCode(s.substring(19, 22));

@@ -2,7 +2,7 @@ package com.heartlandportico.hps.odaf;
 
 import org.apache.commons.lang.StringUtils;
 
-public class CreditAdjustmentDetailTransactionRecord56 {
+public class CreditAdjustmentDetail56 {
 
 	/**
 	 * 1-10, Refer to Control Section – Record Type = '56'
@@ -194,11 +194,11 @@ public class CreditAdjustmentDetailTransactionRecord56 {
 		return sb.toString();
 	}
 
-	public static CreditAdjustmentDetailTransactionRecord56 fromString(String s) {
+	public static CreditAdjustmentDetail56 fromString(String s) {
 		if (StringUtils.isEmpty(s) || s.length() != 250) {
 			return null;
 		}
-		CreditAdjustmentDetailTransactionRecord56 o = new CreditAdjustmentDetailTransactionRecord56();
+		CreditAdjustmentDetail56 o = new CreditAdjustmentDetail56();
 		o.setCs(ControlSection.fromString(s.substring(0, 10)));
 		o.setMerchantIdNumber(s.substring(10, 25));
 		o.setFundingDate(s.substring(25, 33));

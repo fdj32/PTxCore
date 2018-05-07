@@ -2,7 +2,7 @@ package com.heartlandportico.hps.odaf;
 
 import org.apache.commons.lang.StringUtils;
 
-public class ReconciliationRecord73 {
+public class Reconciliation73 {
 
 	/**
 	 * 1-10, Refer to Control Section – Record Type = '73'
@@ -377,11 +377,11 @@ public class ReconciliationRecord73 {
 		return sb.toString();
 	}
 
-	public static ReconciliationRecord73 fromString(String s) {
+	public static Reconciliation73 fromString(String s) {
 		if (StringUtils.isEmpty(s) || s.length() != 250) {
 			return null;
 		}
-		ReconciliationRecord73 o = new ReconciliationRecord73();
+		Reconciliation73 o = new Reconciliation73();
 		o.setCs(ControlSection.fromString(s.substring(0, 10)));
 		o.setVisaSalesAmount(s.substring(10, 21));
 		o.setVisaAmountSign(s.charAt(21));
