@@ -2,9 +2,6 @@ package com.heartlandportico.hps.fdf;
 
 import org.apache.commons.lang.StringUtils;
 
-import com.heartlandportico.hps.odaf.ControlSection;
-import com.heartlandportico.hps.odaf.FileHeader10;
-
 public class FileHeader10 {
 
 	/**
