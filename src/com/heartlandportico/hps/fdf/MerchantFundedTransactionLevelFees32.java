@@ -41,7 +41,7 @@ public class MerchantFundedTransactionLevelFees32 {
 	 */
 	private String[] feeAmount = new String[5];
 
-	/* Filler, 339-550, AN 212, Space Filled. */
+	/* Filler, 347-550, AN 204, Space Filled. */
 
 	public String getRecordType() {
 		return recordType;
@@ -111,7 +111,7 @@ public class MerchantFundedTransactionLevelFees32 {
 			sb.append(debitCreditInd[i]);
 			sb.append(feeAmount[i]);
 		}
-		sb.append(StringUtils.repeat(" ", 212));
+		sb.append(StringUtils.repeat(" ", 204));
 		return sb.toString();
 	}
 
