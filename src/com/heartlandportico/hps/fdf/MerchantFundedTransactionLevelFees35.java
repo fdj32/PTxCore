@@ -5,7 +5,7 @@ import org.apache.commons.lang.StringUtils;
 public class MerchantFundedTransactionLevelFees35 {
 
 	/**
-	 * 1-2, '20'
+	 * 1-2, '35'
 	 */
 	private String recordType;
 

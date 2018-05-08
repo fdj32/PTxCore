@@ -5,7 +5,7 @@ import org.apache.commons.lang.StringUtils;
 public class MerchantDeposit31 {
 
 	/**
-	 * 1-2, '20'
+	 * 1-2, '31'
 	 */
 	private String recordType;
 
