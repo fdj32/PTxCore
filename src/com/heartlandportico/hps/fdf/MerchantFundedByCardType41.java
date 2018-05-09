@@ -2,10 +2,10 @@ package com.heartlandportico.hps.fdf;
 
 import org.apache.commons.lang.StringUtils;
 
-public class MerchantFundedBatchByCardType39 {
+public class MerchantFundedByCardType41 {
 
 	/**
-	 * 1-2, '39'
+	 * 1-2, '41'
 	 */
 	private String recordType;
 
@@ -16,116 +16,101 @@ public class MerchantFundedBatchByCardType39 {
 	private String recordSequenceNumber;
 
 	/**
-	 * 9-24, Unique ID internally assigned to each Batch
+	 * 8-14, YYMMDD
 	 */
-	private String uniqueBatchId;
+	private String fundingDate;
 
 	/**
-	 * 25-36
-	 */
-	private String batchId;
-
-	/**
-	 * 37-48
-	 */
-	private String terminalId;
-
-	/**
-	 * 49-52
-	 */
-	private String terminalNumber;
-
-	/**
-	 * 53-63, Total Visa Net Sales Amount
+	 * 15-25, Total Visa Net Sales Amount
 	 */
 	private String visaAmount;
 
 	/**
-	 * 64, Total Visa Net Sales Amount Sign
+	 * 26, Total Visa Net Sales Amount Sign
 	 */
 	private char visaSign;
 
 	/**
-	 * 65-75, Total MasterCard Net Sales Amount
+	 * 27-37, Total MasterCard Net Sales Amount
 	 */
 	private String mastercardAmount;
 
 	/**
-	 * 76, Total MasterCard Net Sales Amount Sign
+	 * 38, Total MasterCard Net Sales Amount Sign
 	 */
 	private char mastercardSign;
 
 	/**
-	 * 77-87, Total AMEX Net Sales Amount
+	 * 39-49, Total AMEX Net Sales Amount
 	 */
 	private String amexAmount;
 
 	/**
-	 * 88, Total AMEX Net Sales Amount Sign
+	 * 50, Total AMEX Net Sales Amount Sign
 	 */
 	private char amexSign;
 
 	/**
-	 * 89-99, Total Diners Net Sales Amount
+	 * 51-61, Total Diners Net Sales Amount
 	 */
 	private String dinersAmount;
 
 	/**
-	 * 100, Total Diners Net Sales Amount Sign
+	 * 62, Total Diners Net Sales Amount Sign
 	 */
 	private char dinersSign;
 
 	/**
-	 * 101-111, Total JCB Net Sales Amount
+	 * 63-73, Total JCB Net Sales Amount
 	 */
 	private String jcbAmount;
 
 	/**
-	 * 112, Total JCB Net Sales Amount Sign
+	 * 74, Total JCB Net Sales Amount Sign
 	 */
 	private char jcbSign;
 
 	/**
-	 * 113-123, Total Discover Net Sales Amount
+	 * 75-85, Total Discover Net Sales Amount
 	 */
 	private String discoverAmount;
 
 	/**
-	 * 124, Total Discover Net Sales Amount Sign
+	 * 86, Total Discover Net Sales Amount Sign
 	 */
 	private char discoverSign;
 
 	/**
-	 * 125-135, Total Debit Net Sales Amount
+	 * 87-97, Total Debit Net Sales Amount
 	 */
 	private String debitAmount;
 
 	/**
-	 * 136, Total Debit Net Sales Amount Sign
+	 * 98, Total Debit Net Sales Amount Sign
 	 */
 	private char debitSign;
 
 	/**
-	 * 137-147, Total EBT Net Sales Amount
+	 * 99-109, Total EBT Net Sales Amount
 	 */
 	private String ebtAmount;
 
 	/**
-	 * 148, Total EBT Net Sales Amount Sign
+	 * 110, Total EBT Net Sales Amount Sign
 	 */
 	private char ebtSign;
 
 	/**
-	 * 149-159, Total GSBN Net Sales Amount
+	 * 111-121, Total GSBN Net Sales Amount
 	 */
 	private String gsbnAmount;
 
 	/**
-	 * 160, Total GSBN Net Sales Amount Sign
+	 * 122, Total GSBN Net Sales Amount Sign
 	 */
 	private char gsbnSign;
 
-	/* Filler, 161-550, AN 390, Space Filled. */
+	/* Filler, 123-550, AN 428, Space Filled. */
 
 	public String getRecordType() {
 		return recordType;
@@ -143,36 +128,12 @@ public class MerchantFundedBatchByCardType39 {
 		this.recordSequenceNumber = recordSequenceNumber;
 	}
 
-	public String getUniqueBatchId() {
-		return uniqueBatchId;
+	public String getFundingDate() {
+		return fundingDate;
 	}
 
-	public void setUniqueBatchId(String uniqueBatchId) {
-		this.uniqueBatchId = uniqueBatchId;
-	}
-
-	public String getBatchId() {
-		return batchId;
-	}
-
-	public void setBatchId(String batchId) {
-		this.batchId = batchId;
-	}
-
-	public String getTerminalId() {
-		return terminalId;
-	}
-
-	public void setTerminalId(String terminalId) {
-		this.terminalId = terminalId;
-	}
-
-	public String getTerminalNumber() {
-		return terminalNumber;
-	}
-
-	public void setTerminalNumber(String terminalNumber) {
-		this.terminalNumber = terminalNumber;
+	public void setFundingDate(String fundingDate) {
+		this.fundingDate = fundingDate;
 	}
 
 	public String getVisaAmount() {
@@ -324,10 +285,7 @@ public class MerchantFundedBatchByCardType39 {
 		StringBuffer sb = new StringBuffer();
 		sb.append(recordType);
 		sb.append(recordSequenceNumber);
-		sb.append(uniqueBatchId);
-		sb.append(batchId);
-		sb.append(terminalId);
-		sb.append(terminalNumber);
+		sb.append(fundingDate);
 		sb.append(visaAmount);
 		sb.append(visaSign);
 		sb.append(mastercardAmount);
@@ -346,39 +304,36 @@ public class MerchantFundedBatchByCardType39 {
 		sb.append(ebtSign);
 		sb.append(gsbnAmount);
 		sb.append(gsbnSign);
-		sb.append(StringUtils.repeat(" ", 390));
+		sb.append(StringUtils.repeat(" ", 428));
 		return sb.toString();
 	}
 
-	public static MerchantFundedBatchByCardType39 fromString(String s) {
+	public static MerchantFundedByCardType41 fromString(String s) {
 		if (StringUtils.isEmpty(s) || s.length() != 550) {
 			return null;
 		}
-		MerchantFundedBatchByCardType39 o = new MerchantFundedBatchByCardType39();
+		MerchantFundedByCardType41 o = new MerchantFundedByCardType41();
 		o.setRecordType(s.substring(0, 2));
 		o.setRecordSequenceNumber(s.substring(2, 8));
-		o.setUniqueBatchId(s.substring(8, 24));
-		o.setBatchId(s.substring(24, 36));
-		o.setTerminalId(s.substring(36, 48));
-		o.setTerminalNumber(s.substring(48, 52));
-		o.setVisaAmount(s.substring(52, 63));
-		o.setVisaSign(s.charAt(63));
-		o.setMastercardAmount(s.substring(64, 75));
-		o.setMastercardSign(s.charAt(75));
-		o.setAmexAmount(s.substring(76, 87));
-		o.setAmexSign(s.charAt(87));
-		o.setDinersAmount(s.substring(88, 99));
-		o.setDinersSign(s.charAt(99));
-		o.setJcbAmount(s.substring(100, 111));
-		o.setJcbSign(s.charAt(111));
-		o.setDiscoverAmount(s.substring(112, 123));
-		o.setDiscoverSign(s.charAt(123));
-		o.setDebitAmount(s.substring(124, 135));
-		o.setDebitSign(s.charAt(135));
-		o.setEbtAmount(s.substring(136, 147));
-		o.setEbtSign(s.charAt(147));
-		o.setGsbnAmount(s.substring(148, 159));
-		o.setGsbnSign(s.charAt(159));
+		o.setFundingDate(s.substring(8, 14));
+		o.setVisaAmount(s.substring(14, 25));
+		o.setVisaSign(s.charAt(25));
+		o.setMastercardAmount(s.substring(26, 37));
+		o.setMastercardSign(s.charAt(37));
+		o.setAmexAmount(s.substring(38, 49));
+		o.setAmexSign(s.charAt(49));
+		o.setDinersAmount(s.substring(50, 61));
+		o.setDinersSign(s.charAt(61));
+		o.setJcbAmount(s.substring(62, 73));
+		o.setJcbSign(s.charAt(73));
+		o.setDiscoverAmount(s.substring(74, 85));
+		o.setDiscoverSign(s.charAt(85));
+		o.setDebitAmount(s.substring(86, 97));
+		o.setDebitSign(s.charAt(97));
+		o.setEbtAmount(s.substring(98, 109));
+		o.setEbtSign(s.charAt(109));
+		o.setGsbnAmount(s.substring(110, 121));
+		o.setGsbnSign(s.charAt(121));
 		return o;
 	}
 

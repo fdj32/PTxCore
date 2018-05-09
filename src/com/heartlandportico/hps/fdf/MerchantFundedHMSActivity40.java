@@ -5,7 +5,7 @@ import org.apache.commons.lang.StringUtils;
 public class MerchantFundedHMSActivity40 {
 
 	/**
-	 * 1-2, '34'
+	 * 1-2, '40'
 	 */
 	private String recordType;
 
@@ -304,7 +304,7 @@ public class MerchantFundedHMSActivity40 {
 		sb.append(freezeTxnCount);
 		sb.append(unfreezeTxnCount);
 		sb.append(promoReversalTxnCount);
-		sb.append(StringUtils.repeat(" ", 390));
+		sb.append(StringUtils.repeat(" ", 428));
 		return sb.toString();
 	}
 
