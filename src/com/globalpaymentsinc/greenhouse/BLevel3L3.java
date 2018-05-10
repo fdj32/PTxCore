@@ -261,7 +261,7 @@ public class BLevel3L3 {
 		l3.setTaxRateExponent1(s.charAt(59));
 		l3.setTaxTypeIdentifier1(s.substring(60, 62));
 
-		l2.setRecordSequenceNumber(s.substring(94, 100));
+		l3.setRecordSequenceNumber(s.substring(94, 100));
 		return l3;
 	}
 
