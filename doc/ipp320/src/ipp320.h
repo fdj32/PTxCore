@@ -2,7 +2,7 @@
  * ipp320.h
  * all relevant include headers are included here,
  * the c files should include this file only.
- *  Created on: 2017Äê11ÔÂ10ÈÕ
+ *  Created on: 2017-11-10
  *      Author: Administrator
  */
 
